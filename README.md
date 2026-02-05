@@ -52,6 +52,13 @@ Le backend expose `POST /similar` qui attend un JSON `{"word": "kichta", "topn":
 
 Note: Le modèle Word2Bezbar est distribué pour **usage académique/recherche uniquement** et derive de paroles Genius. Respectez la mention « @RapMinerz » dans les projets publics.
 
+## Render (backend gratuit)
+Pour Render, utilise ce start command :
+```bash
+bash backend/render_start.sh
+```
+Le script télécharge automatiquement Word2Bezbar-large si absent, puis démarre Uvicorn.
+
 ## Générer une liste “top tracks” (2017+, rap/hip-hop/R&B)
 Pour éviter une simple liste d’artistes en dur, tu peux générer automatiquement une liste de morceaux FR très streamés depuis 2017.
 Le script combine :
