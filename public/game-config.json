@@ -117,3997 +117,5298 @@
       "artist": "Ninho",
       "title": "La vie qu'on mène",
       "year": 2019,
-      "totalStreams": 265180774
+      "totalStreams": 265180774,
+      "lyricsId": 4026797,
+      "lyricsPath": "lyrics/4026797.txt"
     },
     {
       "artist": "Naps",
       "title": "La kiffance",
       "year": 2021,
-      "totalStreams": 173006138
+      "totalStreams": 173006138,
+      "lyricsId": 6524530,
+      "lyricsPath": "lyrics/6524530.txt"
     },
     {
       "artist": "Ninho",
       "title": "Lettre à une femme",
       "year": 2020,
-      "totalStreams": 155870444
+      "totalStreams": 155870444,
+      "lyricsId": 5327377,
+      "lyricsPath": "lyrics/5327377.txt"
     },
     {
       "artist": "Ninho",
       "title": "Putana",
       "year": 2019,
-      "totalStreams": 144123734
+      "totalStreams": 144123734,
+      "lyricsId": 4343709,
+      "lyricsPath": "lyrics/4343709.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Laboratoire",
       "year": 2023,
-      "totalStreams": 143107042
+      "totalStreams": 143107042,
+      "lyricsId": 8651562,
+      "lyricsPath": "lyrics/8651562.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Meuda",
       "year": 2022,
-      "totalStreams": 141923154
+      "totalStreams": 141923154,
+      "lyricsId": 7971542,
+      "lyricsPath": "lyrics/7971542.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Trop beau",
       "year": 2018,
-      "totalStreams": 124949177
+      "totalStreams": 124949177,
+      "lyricsId": 4143950,
+      "lyricsPath": "lyrics/4143950.txt"
     },
     {
       "artist": "Gazo",
       "title": "DIE",
       "year": 2022,
-      "totalStreams": 117574072
+      "totalStreams": 117574072,
+      "lyricsId": 8145919,
+      "lyricsPath": "lyrics/8145919.txt"
     },
     {
       "artist": "OBOY",
       "title": "Cabeza",
       "year": 2020,
-      "totalStreams": 114911014
+      "totalStreams": 114911014,
+      "lyricsId": 5710514,
+      "lyricsPath": "lyrics/5710514.txt"
     },
     {
       "artist": "Booba",
       "title": "Dolce Camara",
       "year": 2024,
-      "totalStreams": 114446918
+      "totalStreams": 114446918,
+      "lyricsId": 10025580,
+      "lyricsPath": "lyrics/10025580.txt"
     },
     {
       "artist": "OBOY",
       "title": "TDB",
       "year": 2021,
-      "totalStreams": 114378720
+      "totalStreams": 114378720,
+      "lyricsId": 6963243,
+      "lyricsPath": "lyrics/6963243.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Chemin d'or",
       "year": 2023,
-      "totalStreams": 113835997
+      "totalStreams": 113835997,
+      "lyricsId": 8846224,
+      "lyricsPath": "lyrics/8846224.txt"
     },
     {
       "artist": "Ninho",
       "title": "Jefe",
       "year": 2021,
-      "totalStreams": 112313963
+      "totalStreams": 112313963,
+      "lyricsId": 7376372,
+      "lyricsPath": "lyrics/7376372.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Saiyan",
       "year": 2023,
-      "totalStreams": 110566483
+      "totalStreams": 110566483,
+      "lyricsId": 9179512,
+      "lyricsPath": "lyrics/9179512.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Tu connais",
       "year": 2023,
-      "totalStreams": 106855734
+      "totalStreams": 106855734,
+      "lyricsId": 9543422,
+      "lyricsPath": "lyrics/9543422.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Solitaire",
       "year": 2022,
-      "totalStreams": 102593448
+      "totalStreams": 102593448,
+      "lyricsId": 8059445,
+      "lyricsPath": "lyrics/8059445.txt"
     },
     {
       "artist": "OBOY",
       "title": "Avec Toi",
       "year": 2019,
-      "totalStreams": 102340060
+      "totalStreams": 102340060,
+      "lyricsId": 4610818,
+      "lyricsPath": "lyrics/4610818.txt"
     },
     {
       "artist": "PLK",
       "title": "Nouvelles",
       "year": 2023,
-      "totalStreams": 99989090
+      "totalStreams": 99989090,
+      "lyricsId": 8985141,
+      "lyricsPath": "lyrics/8985141.txt"
     },
     {
       "artist": "Ninho",
       "title": "Maman ne le sait pas",
       "year": 2019,
-      "totalStreams": 97833004
+      "totalStreams": 97833004,
+      "lyricsId": 4343705,
+      "lyricsPath": "lyrics/4343705.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Aucune attache",
       "year": 2024,
-      "totalStreams": 92493026
+      "totalStreams": 92493026,
+      "lyricsId": 10102046,
+      "lyricsPath": "lyrics/10102046.txt"
     },
     {
       "artist": "PLK",
       "title": "Émotif (Booska 1H)",
       "year": 2019,
-      "totalStreams": 91536165
+      "totalStreams": 91536165,
+      "lyricsId": 4015617,
+      "lyricsPath": "lyrics/4015617.txt"
     },
     {
       "artist": "VEN1",
       "title": "Hakayet",
       "year": 2025,
-      "totalStreams": 89126307
+      "totalStreams": 89126307,
+      "lyricsId": 9861966,
+      "lyricsPath": "lyrics/9861966.txt"
     },
     {
       "artist": "Gradur",
       "title": "Ne reviens pas",
       "year": 2019,
-      "totalStreams": 87290321
+      "totalStreams": 87290321,
+      "lyricsId": 5002054,
+      "lyricsPath": "lyrics/5002054.txt"
     },
     {
       "artist": "Gazo",
       "title": "MAMI WATA",
       "year": 2023,
-      "totalStreams": 86827517
+      "totalStreams": 86827517,
+      "lyricsId": 9775152,
+      "lyricsPath": "lyrics/9775152.txt"
     },
     {
       "artist": "KeBlack",
       "title": "LAISSE MOI",
       "year": 2023,
-      "totalStreams": 86310771
+      "totalStreams": 86310771,
+      "lyricsId": 9502457,
+      "lyricsPath": "lyrics/9502457.txt"
     },
     {
       "artist": "disiz",
       "title": "melodrama",
       "year": 2025,
-      "totalStreams": 81629002
+      "totalStreams": 81629002,
+      "lyricsId": 12465893,
+      "lyricsPath": "lyrics/12465893.txt"
     },
     {
       "artist": "Gazo",
       "title": "NANANI NANANA",
       "year": 2024,
-      "totalStreams": 81104325
+      "totalStreams": 81104325,
+      "lyricsId": 11077228,
+      "lyricsPath": "lyrics/11077228.txt"
     },
     {
       "artist": "Naps",
       "title": "Best life",
       "year": 2021,
-      "totalStreams": 79918166
+      "totalStreams": 79918166,
+      "lyricsId": 6870278,
+      "lyricsPath": "lyrics/6870278.txt"
     },
     {
       "artist": "Ninho",
       "title": "Goutte d'eau",
       "year": 2019,
-      "totalStreams": 79689175
+      "totalStreams": 79689175,
+      "lyricsId": 4329732,
+      "lyricsPath": "lyrics/4329732.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Boucan",
       "year": 2024,
-      "totalStreams": 79390537
+      "totalStreams": 79390537,
+      "lyricsId": 10284761,
+      "lyricsPath": "lyrics/10284761.txt"
     },
     {
       "artist": "Dadju",
       "title": "I love you",
       "year": 2024,
-      "totalStreams": 79138937
+      "totalStreams": 79138937,
+      "lyricsId": 9808372,
+      "lyricsPath": "lyrics/9808372.txt"
     },
     {
       "artist": "Gazo",
       "title": "FLEURS",
       "year": 2022,
-      "totalStreams": 78049410
+      "totalStreams": 78049410,
+      "lyricsId": 8145933,
+      "lyricsPath": "lyrics/8145933.txt"
     },
     {
       "artist": "Ninho",
       "title": "VVS",
       "year": 2021,
-      "totalStreams": 77787567
+      "totalStreams": 77787567,
+      "lyricsId": 7376399,
+      "lyricsPath": "lyrics/7376399.txt"
     },
     {
       "artist": "ZEG P",
       "title": "FADE UP",
       "year": 2022,
-      "totalStreams": 76620043
+      "totalStreams": 76620043,
+      "lyricsId": 7679708,
+      "lyricsPath": "lyrics/7679708.txt"
     },
     {
       "artist": "Tiakola",
       "title": "MANON B",
       "year": 2024,
-      "totalStreams": 75251350
+      "totalStreams": 75251350,
+      "lyricsId": 10802114,
+      "lyricsPath": "lyrics/10802114.txt"
     },
     {
       "artist": "Nono La Grinta",
       "title": "Paris",
       "year": 2025,
-      "totalStreams": 74992979
+      "totalStreams": 74992979,
+      "lyricsId": 11604835,
+      "lyricsPath": "lyrics/11604835.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Pétunias",
       "year": 2024,
-      "totalStreams": 74564298
+      "totalStreams": 74564298,
+      "lyricsId": 10932878,
+      "lyricsPath": "lyrics/10932878.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Melrose Place",
       "year": 2025,
-      "totalStreams": 74404115
+      "totalStreams": 74404115,
+      "lyricsId": 11645336,
+      "lyricsPath": "lyrics/11645336.txt"
     },
     {
       "artist": "Ninho",
       "title": "Zipette",
       "year": 2020,
-      "totalStreams": 73988434
+      "totalStreams": 73988434,
+      "lyricsId": 5327365,
+      "lyricsPath": "lyrics/5327365.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Pyramide",
       "year": 2024,
-      "totalStreams": 73407860
+      "totalStreams": 73407860,
+      "lyricsId": 9982512,
+      "lyricsPath": "lyrics/9982512.txt"
     },
     {
       "artist": "Franglish",
       "title": "Position",
       "year": 2024,
-      "totalStreams": 73353300
+      "totalStreams": 73353300,
+      "lyricsId": 10053776,
+      "lyricsPath": "lyrics/10053776.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Mood",
       "year": 2024,
-      "totalStreams": 73281619
+      "totalStreams": 73281619,
+      "lyricsId": 11526991,
+      "lyricsPath": "lyrics/11526991.txt"
     },
     {
       "artist": "Dadju",
       "title": "Reine",
       "year": 2017,
-      "totalStreams": 72654647
+      "totalStreams": 72654647,
+      "lyricsId": 2969229,
+      "lyricsPath": "lyrics/2969229.txt"
     },
     {
       "artist": "Soso Maness",
       "title": "Petrouchka",
       "year": 2021,
-      "totalStreams": 72395069
+      "totalStreams": 72395069,
+      "lyricsId": 6800896,
+      "lyricsPath": "lyrics/6800896.txt"
     },
     {
       "artist": "Hatik",
       "title": "Angela",
       "year": 2020,
-      "totalStreams": 72186847
+      "totalStreams": 72186847,
+      "lyricsId": 4823453,
+      "lyricsPath": "lyrics/4823453.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Moulaga",
       "year": 2019,
-      "totalStreams": 72052896
+      "totalStreams": 72052896,
+      "lyricsId": 4595372,
+      "lyricsPath": "lyrics/4595372.txt"
     },
     {
       "artist": "Gazo",
       "title": "HAINE&SEX",
       "year": 2021,
-      "totalStreams": 71578317
+      "totalStreams": 71578317,
+      "lyricsId": 6448003,
+      "lyricsPath": "lyrics/6448003.txt"
     },
     {
       "artist": "Guy2Bezbar",
       "title": "Monaco",
       "year": 2024,
-      "totalStreams": 70933010
+      "totalStreams": 70933010,
+      "lyricsId": 10629888,
+      "lyricsPath": "lyrics/10629888.txt"
     },
     {
       "artist": "Naps",
       "title": "6.3",
       "year": 2020,
-      "totalStreams": 70455979
+      "totalStreams": 70455979,
+      "lyricsId": 5233354,
+      "lyricsPath": "lyrics/5233354.txt"
     },
     {
       "artist": "L2B",
       "title": "Pélican",
       "year": 2025,
-      "totalStreams": 69184636
+      "totalStreams": 69184636,
+      "lyricsId": 11441198,
+      "lyricsPath": "lyrics/11441198.txt"
     },
     {
       "artist": "Josman",
       "title": "Intro",
       "year": 2022,
-      "totalStreams": 67704922
+      "totalStreams": 67704922,
+      "lyricsId": 7741768,
+      "lyricsPath": "lyrics/7741768.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Air Max",
       "year": 2018,
-      "totalStreams": 67561480
+      "totalStreams": 67561480,
+      "lyricsId": 3858556,
+      "lyricsPath": "lyrics/3858556.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Gasolina",
       "year": 2022,
-      "totalStreams": 67445594
+      "totalStreams": 67445594,
+      "lyricsId": 7877530,
+      "lyricsPath": "lyrics/7877530.txt"
     },
     {
       "artist": "Dadju",
       "title": "Grand bain",
       "year": 2020,
-      "totalStreams": 66291699
+      "totalStreams": 66291699,
+      "lyricsId": 5682476,
+      "lyricsPath": "lyrics/5682476.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Daddy chocolat",
       "year": 2021,
-      "totalStreams": 64994145
+      "totalStreams": 64994145,
+      "lyricsId": 6870731,
+      "lyricsPath": "lyrics/6870731.txt"
     },
     {
       "artist": "Werenoi",
       "title": "La League",
       "year": 2022,
-      "totalStreams": 63036014
+      "totalStreams": 63036014,
+      "lyricsId": 6718186,
+      "lyricsPath": "lyrics/6718186.txt"
     },
     {
       "artist": "PLK",
       "title": "Attentat",
       "year": 2021,
-      "totalStreams": 61679172
+      "totalStreams": 61679172,
+      "lyricsId": 7349392,
+      "lyricsPath": "lyrics/7349392.txt"
     },
     {
       "artist": "Vegedream",
       "title": "Elle est bonne sa mère",
       "year": 2019,
-      "totalStreams": 61341563
+      "totalStreams": 61341563,
+      "lyricsId": 4592965,
+      "lyricsPath": "lyrics/4592965.txt"
     },
     {
       "artist": "PLK",
       "title": "Faut pas",
       "year": 2024,
-      "totalStreams": 61306812
+      "totalStreams": 61306812,
+      "lyricsId": 10001683,
+      "lyricsPath": "lyrics/10001683.txt"
     },
     {
       "artist": "Gazo",
       "title": "RAPPEL",
       "year": 2022,
-      "totalStreams": 60392400
+      "totalStreams": 60392400,
+      "lyricsId": 8145102,
+      "lyricsPath": "lyrics/8145102.txt"
     },
     {
       "artist": "Vacra",
       "title": "Tiki Taka",
       "year": 2023,
-      "totalStreams": 60256010
+      "totalStreams": 60256010,
+      "lyricsId": 8546644,
+      "lyricsPath": "lyrics/8546644.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Elle pleut",
       "year": 2019,
-      "totalStreams": 59104617
+      "totalStreams": 59104617,
+      "lyricsId": 4611276,
+      "lyricsPath": "lyrics/4611276.txt"
     },
     {
       "artist": "Joé Dwèt Filé",
       "title": "4 Kampé",
       "year": 2024,
-      "totalStreams": 57343966
+      "totalStreams": 57343966,
+      "lyricsId": 11656923,
+      "lyricsPath": "lyrics/11656923.txt"
     },
     {
       "artist": "Tayc",
       "title": "Le temps",
       "year": 2021,
-      "totalStreams": 57212208
+      "totalStreams": 57212208,
+      "lyricsId": 6390668,
+      "lyricsPath": "lyrics/6390668.txt"
     },
     {
       "artist": "Naps",
       "title": "C'est carré le S",
       "year": 2023,
-      "totalStreams": 56900032
+      "totalStreams": 56900032,
+      "lyricsId": 8962234,
+      "lyricsPath": "lyrics/8962234.txt"
     },
     {
       "artist": "RnBoi",
       "title": "MON BÉBÉ",
       "year": 2025,
-      "totalStreams": 56828432
+      "totalStreams": 56828432,
+      "lyricsId": 12565498,
+      "lyricsPath": "lyrics/12565498.txt"
     },
     {
       "artist": "Ninho",
       "title": "Un Poco",
       "year": 2018,
-      "totalStreams": 56824258
+      "totalStreams": 56824258,
+      "lyricsId": 3612121,
+      "lyricsPath": "lyrics/3612121.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Run",
       "year": 2025,
-      "totalStreams": 55537329
+      "totalStreams": 55537329,
+      "lyricsId": 11301279,
+      "lyricsPath": "lyrics/11301279.txt"
     },
     {
       "artist": "Yorssy",
       "title": "CRF - Nouvelle École",
       "year": 2024,
-      "totalStreams": 55255894
+      "totalStreams": 55255894,
+      "lyricsId": 10619349,
+      "lyricsPath": "lyrics/10619349.txt"
     },
     {
       "artist": "Werenoi",
       "title": "All eyes on me",
       "year": 2022,
-      "totalStreams": 54277696
+      "totalStreams": 54277696,
+      "lyricsId": 8595914,
+      "lyricsPath": "lyrics/8595914.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Maudit",
       "year": 2024,
-      "totalStreams": 54146572
+      "totalStreams": 54146572,
+      "lyricsId": 9982529,
+      "lyricsPath": "lyrics/9982529.txt"
     },
     {
       "artist": "Orelsan",
       "title": "La Quête",
       "year": 2021,
-      "totalStreams": 53991819
+      "totalStreams": 53991819,
+      "lyricsId": 7325566,
+      "lyricsPath": "lyrics/7325566.txt"
     },
     {
       "artist": "PLK",
       "title": "Demain",
       "year": 2023,
-      "totalStreams": 53673450
+      "totalStreams": 53673450,
+      "lyricsId": 8984490,
+      "lyricsPath": "lyrics/8984490.txt"
     },
     {
       "artist": "Naza",
       "title": "Joli bébé",
       "year": 2020,
-      "totalStreams": 53653678
+      "totalStreams": 53653678,
+      "lyricsId": 5944182,
+      "lyricsPath": "lyrics/5944182.txt"
     },
     {
       "artist": "THEODORT",
       "title": "Wayeh",
       "year": 2024,
-      "totalStreams": 53138624
+      "totalStreams": 53138624,
+      "lyricsId": 10179079,
+      "lyricsPath": "lyrics/10179079.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Piano",
       "year": 2025,
-      "totalStreams": 53022876
+      "totalStreams": 53022876,
+      "lyricsId": 11625106,
+      "lyricsPath": "lyrics/11625106.txt"
     },
     {
       "artist": "Ninho",
       "title": "Vrais",
       "year": 2018,
-      "totalStreams": 52938121
+      "totalStreams": 52938121,
+      "lyricsId": 3612125,
+      "lyricsPath": "lyrics/3612125.txt"
     },
     {
       "artist": "Beendo Z",
       "title": "Pas bête",
       "year": 2022,
-      "totalStreams": 52469938
+      "totalStreams": 52469938,
+      "lyricsId": 8085767,
+      "lyricsPath": "lyrics/8085767.txt"
     },
     {
       "artist": "disiz",
       "title": "RENCONTRE",
       "year": 2022,
-      "totalStreams": 51852027
+      "totalStreams": 51852027,
+      "lyricsId": 7703119,
+      "lyricsPath": "lyrics/7703119.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Jour meilleur",
       "year": 2021,
-      "totalStreams": 51166230
+      "totalStreams": 51166230,
+      "lyricsId": 7325574,
+      "lyricsPath": "lyrics/7325574.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Tricheur",
       "year": 2019,
-      "totalStreams": 51039131
+      "totalStreams": 51039131,
+      "lyricsId": 4611270,
+      "lyricsPath": "lyrics/4611270.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Pookie",
       "year": 2018,
-      "totalStreams": 51003153
+      "totalStreams": 51003153,
+      "lyricsId": 4009405,
+      "lyricsPath": "lyrics/4009405.txt"
     },
     {
       "artist": "Lacrim",
       "title": "No lo sé",
       "year": 2024,
-      "totalStreams": 50638109
+      "totalStreams": 50638109,
+      "lyricsId": 10494804,
+      "lyricsPath": "lyrics/10494804.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Djadja",
       "year": 2018,
-      "totalStreams": 50556721
+      "totalStreams": 50556721,
+      "lyricsId": 3632242,
+      "lyricsPath": "lyrics/3632242.txt"
     },
     {
       "artist": "Ninho",
       "title": "Tout en Gucci",
       "year": 2020,
-      "totalStreams": 50543122
+      "totalStreams": 50543122,
+      "lyricsId": 6107426,
+      "lyricsPath": "lyrics/6107426.txt"
     },
     {
       "artist": "Ninho",
       "title": "Coco",
       "year": 2024,
-      "totalStreams": 49918891
+      "totalStreams": 49918891,
+      "lyricsId": 10632138,
+      "lyricsPath": "lyrics/10632138.txt"
     },
     {
       "artist": "Werenoi",
       "title": "10.03.2023",
       "year": 2023,
-      "totalStreams": 49568957
+      "totalStreams": 49568957,
+      "lyricsId": 8853998,
+      "lyricsPath": "lyrics/8853998.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Doudou",
       "year": 2021,
-      "totalStreams": 49550521
+      "totalStreams": 49550521,
+      "lyricsId": 7430905,
+      "lyricsPath": "lyrics/7430905.txt"
     },
     {
       "artist": "PLK",
       "title": "Pilote",
       "year": 2020,
-      "totalStreams": 49041611
+      "totalStreams": 49041611,
+      "lyricsId": 5838739,
+      "lyricsPath": "lyrics/5838739.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Mélanine",
       "year": 2024,
-      "totalStreams": 48326013
+      "totalStreams": 48326013,
+      "lyricsId": 10349235,
+      "lyricsPath": "lyrics/10349235.txt"
     },
     {
       "artist": "Dadju",
       "title": "Compliqué",
       "year": 2020,
-      "totalStreams": 48310438
+      "totalStreams": 48310438,
+      "lyricsId": 4658823,
+      "lyricsPath": "lyrics/4658823.txt"
     },
     {
       "artist": "Ziak",
       "title": "Fixette - Bonus",
       "year": 2021,
-      "totalStreams": 47739491
+      "totalStreams": 47739491,
+      "lyricsId": 5515231,
+      "lyricsPath": "lyrics/5515231.txt"
     },
     {
       "artist": "Lomepal",
       "title": "1000°C",
       "year": 2018,
-      "totalStreams": 47632597
+      "totalStreams": 47632597,
+      "lyricsId": 3960533,
+      "lyricsPath": "lyrics/3960533.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Dans l'univers",
       "year": 2019,
-      "totalStreams": 47213607
+      "totalStreams": 47213607,
+      "lyricsId": 4611286,
+      "lyricsPath": "lyrics/4611286.txt"
     },
     {
       "artist": "47ter",
       "title": "Côte Ouest",
       "year": 2019,
-      "totalStreams": 47053699
+      "totalStreams": 47053699,
+      "lyricsId": 4104284,
+      "lyricsPath": "lyrics/4104284.txt"
     },
     {
       "artist": "PLK",
       "title": "Un peu de haine",
       "year": 2019,
-      "totalStreams": 46945427
+      "totalStreams": 46945427,
+      "lyricsId": 4820989,
+      "lyricsPath": "lyrics/4820989.txt"
     },
     {
       "artist": "Vegedream",
       "title": "Ramenez la coupe à la maison",
       "year": 2018,
-      "totalStreams": 46732077
+      "totalStreams": 46732077,
+      "lyricsId": 3844246,
+      "lyricsPath": "lyrics/3844246.txt"
     },
     {
       "artist": "Vacra",
       "title": "Confidences",
       "year": 2024,
-      "totalStreams": 46628183
+      "totalStreams": 46628183,
+      "lyricsId": 10377996,
+      "lyricsPath": "lyrics/10377996.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Gasolina",
       "year": 2021,
-      "totalStreams": 46510027
+      "totalStreams": 46510027,
+      "lyricsId": 7062070,
+      "lyricsPath": "lyrics/7062070.txt"
     },
     {
       "artist": "Tiakola",
       "title": "M3lo",
       "year": 2022,
-      "totalStreams": 46508120
+      "totalStreams": 46508120,
+      "lyricsId": 7926389,
+      "lyricsPath": "lyrics/7926389.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Khapta",
       "year": 2019,
-      "totalStreams": 46210928
+      "totalStreams": 46210928,
+      "lyricsId": 4174350,
+      "lyricsPath": "lyrics/4174350.txt"
     },
     {
       "artist": "Booba",
       "title": "Mona Lisa",
       "year": 2021,
-      "totalStreams": 46144635
+      "totalStreams": 46144635,
+      "lyricsId": 6524933,
+      "lyricsPath": "lyrics/6524933.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Mauvaise",
       "year": 2023,
-      "totalStreams": 45557227
+      "totalStreams": 45557227,
+      "lyricsId": 9543427,
+      "lyricsPath": "lyrics/9543427.txt"
     },
     {
       "artist": "Vald",
       "title": "Désaccordé",
       "year": 2018,
-      "totalStreams": 45144520
+      "totalStreams": 45144520,
+      "lyricsId": 3399990,
+      "lyricsPath": "lyrics/3399990.txt"
     },
     {
       "artist": "Moha La Squale",
       "title": "Ma belle",
       "year": 2019,
-      "totalStreams": 44662851
+      "totalStreams": 44662851,
+      "lyricsId": 4746417,
+      "lyricsPath": "lyrics/4746417.txt"
     },
     {
       "artist": "Josman",
       "title": "J'aime Bien!",
       "year": 2018,
-      "totalStreams": 44524323
+      "totalStreams": 44524323,
+      "lyricsId": 3765624,
+      "lyricsPath": "lyrics/3765624.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Decrescendo",
       "year": 2022,
-      "totalStreams": 44251840
+      "totalStreams": 44251840,
+      "lyricsId": 8335956,
+      "lyricsPath": "lyrics/8335956.txt"
     },
     {
       "artist": "Ninho",
       "title": "Vérité",
       "year": 2021,
-      "totalStreams": 42467687
+      "totalStreams": 42467687,
+      "lyricsId": 7376377,
+      "lyricsPath": "lyrics/7376377.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "RR 9.1",
       "year": 2019,
-      "totalStreams": 42448321
+      "totalStreams": 42448321,
+      "lyricsId": 4445253,
+      "lyricsPath": "lyrics/4445253.txt"
     },
     {
       "artist": "Nono La Grinta",
       "title": "LOVE YOU",
       "year": 2025,
-      "totalStreams": 41959011
+      "totalStreams": 41959011,
+      "lyricsId": 12523813,
+      "lyricsPath": "lyrics/12523813.txt"
     },
     {
       "artist": "PLK",
       "title": "Ça mène à rien",
       "year": 2024,
-      "totalStreams": 41663537
+      "totalStreams": 41663537,
+      "lyricsId": 9946231,
+      "lyricsPath": "lyrics/9946231.txt"
     },
     {
       "artist": "Tiakola",
       "title": "PONA NINI",
       "year": 2024,
-      "totalStreams": 41490252
+      "totalStreams": 41490252,
+      "lyricsId": 10840201,
+      "lyricsPath": "lyrics/10840201.txt"
     },
     {
       "artist": "Cheu-B",
       "title": "Catalina",
       "year": 2025,
-      "totalStreams": 41295492
+      "totalStreams": 41295492,
+      "lyricsId": 12089124,
+      "lyricsPath": "lyrics/12089124.txt"
     },
     {
       "artist": "Gazo",
       "title": "CELINE 3X",
       "year": 2022,
-      "totalStreams": 41140841
+      "totalStreams": 41140841,
+      "lyricsId": 7980537,
+      "lyricsPath": "lyrics/7980537.txt"
     },
     {
       "artist": "4Keus",
       "title": "MD",
       "year": 2020,
-      "totalStreams": 41139470
+      "totalStreams": 41139470,
+      "lyricsId": 5080063,
+      "lyricsPath": "lyrics/5080063.txt"
     },
     {
       "artist": "VEN1",
       "title": "Vanilla",
       "year": 2025,
-      "totalStreams": 40635371
+      "totalStreams": 40635371,
+      "lyricsId": 10439282,
+      "lyricsPath": "lyrics/10439282.txt"
     },
     {
       "artist": "Hatik",
       "title": "La meilleure",
       "year": 2020,
-      "totalStreams": 40594821
+      "totalStreams": 40594821,
+      "lyricsId": 5237691,
+      "lyricsPath": "lyrics/5237691.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Poney",
       "year": 2025,
-      "totalStreams": 40473767
+      "totalStreams": 40473767,
+      "lyricsId": 11639686,
+      "lyricsPath": "lyrics/11639686.txt"
     },
     {
       "artist": "Therapie TAXI",
       "title": "Hit Sale",
       "year": 2018,
-      "totalStreams": 39732409
+      "totalStreams": 39732409,
+      "lyricsId": 3344546,
+      "lyricsPath": "lyrics/3344546.txt"
     },
     {
       "artist": "PLK",
       "title": "Problèmes",
       "year": 2019,
-      "totalStreams": 39240712
+      "totalStreams": 39240712,
+      "lyricsId": 4708898,
+      "lyricsPath": "lyrics/4708898.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Coffre plein",
       "year": 2020,
-      "totalStreams": 39222863
+      "totalStreams": 39222863,
+      "lyricsId": 6042742,
+      "lyricsPath": "lyrics/6042742.txt"
     },
     {
       "artist": "Naps",
       "title": "La danse des bandits",
       "year": 2021,
-      "totalStreams": 38991702
+      "totalStreams": 38991702,
+      "lyricsId": 6599475,
+      "lyricsPath": "lyrics/6599475.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Ciao",
       "year": 2023,
-      "totalStreams": 38813818
+      "totalStreams": 38813818,
+      "lyricsId": 8846202,
+      "lyricsPath": "lyrics/8846202.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Copines",
       "year": 2018,
-      "totalStreams": 38528813
+      "totalStreams": 38528813,
+      "lyricsId": 3918473,
+      "lyricsPath": "lyrics/3918473.txt"
     },
     {
       "artist": "L2B",
       "title": "Movie",
       "year": 2025,
-      "totalStreams": 38512898
+      "totalStreams": 38512898,
+      "lyricsId": 10963770,
+      "lyricsPath": "lyrics/10963770.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Aristocrate",
       "year": 2019,
-      "totalStreams": 38231173
+      "totalStreams": 38231173,
+      "lyricsId": 4174418,
+      "lyricsPath": "lyrics/4174418.txt"
     },
     {
       "artist": "Gazo",
       "title": "MAUVAIS 2X",
       "year": 2021,
-      "totalStreams": 38033039
+      "totalStreams": 38033039,
+      "lyricsId": 7232707,
+      "lyricsPath": "lyrics/7232707.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Jolie nana",
       "year": 2020,
-      "totalStreams": 38014979
+      "totalStreams": 38014979,
+      "lyricsId": 5755236,
+      "lyricsPath": "lyrics/5755236.txt"
     },
     {
       "artist": "La Mano 1.9",
       "title": "I'M SORRY",
       "year": 2025,
-      "totalStreams": 36897424
+      "totalStreams": 36897424,
+      "lyricsId": 10499920,
+      "lyricsPath": "lyrics/10499920.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "40%",
       "year": 2019,
-      "totalStreams": 36817697
+      "totalStreams": 36817697,
+      "lyricsId": 4950517,
+      "lyricsPath": "lyrics/4950517.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Les méchants",
       "year": 2019,
-      "totalStreams": 36803295
+      "totalStreams": 36803295,
+      "lyricsId": 4156786,
+      "lyricsPath": "lyrics/4156786.txt"
     },
     {
       "artist": "Naza",
       "title": "Loin de moi",
       "year": 2020,
-      "totalStreams": 36726768
+      "totalStreams": 36726768,
+      "lyricsId": 4895438,
+      "lyricsPath": "lyrics/4895438.txt"
     },
     {
       "artist": "L2B",
       "title": "Tout Pour L'équipe",
       "year": 2025,
-      "totalStreams": 35884039
+      "totalStreams": 35884039,
+      "lyricsId": 11731374,
+      "lyricsPath": "lyrics/11731374.txt"
     },
     {
       "artist": "Bramsito",
       "title": "Sale mood",
       "year": 2019,
-      "totalStreams": 35533210
+      "totalStreams": 35533210,
+      "lyricsId": 4060549,
+      "lyricsPath": "lyrics/4060549.txt"
     },
     {
       "artist": "Ninho",
       "title": "Collabo",
       "year": 2024,
-      "totalStreams": 35308549
+      "totalStreams": 35308549,
+      "lyricsId": 10990988,
+      "lyricsPath": "lyrics/10990988.txt"
     },
     {
       "artist": "Booba",
       "title": "Ridin'",
       "year": 2017,
-      "totalStreams": 35207755
+      "totalStreams": 35207755,
+      "lyricsId": 3185013,
+      "lyricsPath": "lyrics/3185013.txt"
     },
     {
       "artist": "Jok'air",
       "title": "Las Vegas",
       "year": 2019,
-      "totalStreams": 35104759
+      "totalStreams": 35104759,
+      "lyricsId": 4360239,
+      "lyricsPath": "lyrics/4360239.txt"
     },
     {
       "artist": "La Mano 1.9",
       "title": "Sexy Woman",
       "year": 2025,
-      "totalStreams": 35100927
+      "totalStreams": 35100927,
+      "lyricsId": 11271955,
+      "lyricsPath": "lyrics/11271955.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Baby",
       "year": 2025,
-      "totalStreams": 35086228
+      "totalStreams": 35086228,
+      "lyricsId": 8706121,
+      "lyricsPath": "lyrics/8706121.txt"
     },
     {
       "artist": "Franglish",
       "title": "My Salsa",
       "year": 2020,
-      "totalStreams": 34974829
+      "totalStreams": 34974829,
+      "lyricsId": 5650081,
+      "lyricsPath": "lyrics/5650081.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Complètement sonné",
       "year": 2018,
-      "totalStreams": 34910708
+      "totalStreams": 34910708,
+      "lyricsId": 3646228,
+      "lyricsPath": "lyrics/3646228.txt"
     },
     {
       "artist": "Tiakola",
       "title": "La clé",
       "year": 2022,
-      "totalStreams": 34129185
+      "totalStreams": 34129185,
+      "lyricsId": 7515482,
+      "lyricsPath": "lyrics/7515482.txt"
     },
     {
       "artist": "Franglish",
       "title": "Génération impolie",
       "year": 2025,
-      "totalStreams": 34075880
+      "totalStreams": 34075880,
+      "lyricsId": 12524136,
+      "lyricsPath": "lyrics/12524136.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Freeze Raël",
       "year": 2020,
-      "totalStreams": 33731854
+      "totalStreams": 33731854,
+      "lyricsId": 5891048,
+      "lyricsPath": "lyrics/5891048.txt"
     },
     {
       "artist": "Lefa",
       "title": "Bitch",
       "year": 2019,
-      "totalStreams": 33684226
+      "totalStreams": 33684226,
+      "lyricsId": 4658818,
+      "lyricsPath": "lyrics/4658818.txt"
     },
     {
       "artist": "DJ Snake",
       "title": "Taki Taki",
       "year": 2019,
-      "totalStreams": 33541837
+      "totalStreams": 33541837,
+      "lyricsId": 3920132,
+      "lyricsPath": "lyrics/3920132.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Triple V",
       "year": 2025,
-      "totalStreams": 33275152
+      "totalStreams": 33275152,
+      "lyricsId": 11639696,
+      "lyricsPath": "lyrics/11639696.txt"
     },
     {
       "artist": "Booba",
       "title": "JAUNÉ",
       "year": 2020,
-      "totalStreams": 33167477
+      "totalStreams": 33167477,
+      "lyricsId": 5420055,
+      "lyricsPath": "lyrics/5420055.txt"
     },
     {
       "artist": "Lomepal",
       "title": "À peu près",
       "year": 2022,
-      "totalStreams": 32998155
+      "totalStreams": 32998155,
+      "lyricsId": 8335910,
+      "lyricsPath": "lyrics/8335910.txt"
     },
     {
       "artist": "Zokush",
       "title": "1 2 3 4",
       "year": 2023,
-      "totalStreams": 32502092
+      "totalStreams": 32502092,
+      "lyricsId": 9255473,
+      "lyricsPath": "lyrics/9255473.txt"
     },
     {
       "artist": "Vitaa",
       "title": "Avant toi",
       "year": 2019,
-      "totalStreams": 32465604
+      "totalStreams": 32465604,
+      "lyricsId": 4725199,
+      "lyricsPath": "lyrics/4725199.txt"
     },
     {
       "artist": "Ninho",
       "title": "No love",
       "year": 2023,
-      "totalStreams": 31948089
+      "totalStreams": 31948089,
+      "lyricsId": 9277725,
+      "lyricsPath": "lyrics/9277725.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Dégaine",
       "year": 2022,
-      "totalStreams": 31367828
+      "totalStreams": 31367828,
+      "lyricsId": 7774899,
+      "lyricsPath": "lyrics/7774899.txt"
     },
     {
       "artist": "Ziak",
       "title": "Raspoutine",
       "year": 2020,
-      "totalStreams": 31113691
+      "totalStreams": 31113691,
+      "lyricsId": 5269680,
+      "lyricsPath": "lyrics/5269680.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Mode AV",
       "year": 2022,
-      "totalStreams": 30747522
+      "totalStreams": 30747522,
+      "lyricsId": 7971522,
+      "lyricsPath": "lyrics/7971522.txt"
     },
     {
       "artist": "Ninho",
       "title": "Eurostar",
       "year": 2023,
-      "totalStreams": 30736066
+      "totalStreams": 30736066,
+      "lyricsId": 9277726,
+      "lyricsPath": "lyrics/9277726.txt"
     },
     {
       "artist": "Dadju",
       "title": "Bob Marley",
       "year": 2017,
-      "totalStreams": 30498154
+      "totalStreams": 30498154,
+      "lyricsId": 3287075,
+      "lyricsPath": "lyrics/3287075.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Train de vie",
       "year": 2018,
-      "totalStreams": 30338376
+      "totalStreams": 30338376,
+      "lyricsId": 3808393,
+      "lyricsPath": "lyrics/3808393.txt"
     },
     {
       "artist": "Laylow",
       "title": "SPECIAL",
       "year": 2021,
-      "totalStreams": 30315221
+      "totalStreams": 30315221,
+      "lyricsId": 6962408,
+      "lyricsPath": "lyrics/6962408.txt"
     },
     {
       "artist": "Gazo",
       "title": "BECTE",
       "year": 2022,
-      "totalStreams": 30019424
+      "totalStreams": 30019424,
+      "lyricsId": 8145432,
+      "lyricsPath": "lyrics/8145432.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "Michael Jordan",
       "year": 2025,
-      "totalStreams": 30011299
+      "totalStreams": 30011299,
+      "lyricsId": 10142206,
+      "lyricsPath": "lyrics/10142206.txt"
     },
     {
       "artist": "Ninho",
       "title": "De l'autre côté",
       "year": 2017,
-      "totalStreams": 29887145
+      "totalStreams": 29887145,
+      "lyricsId": 3220856,
+      "lyricsPath": "lyrics/3220856.txt"
     },
     {
       "artist": "Tiakola",
       "title": "1h55",
       "year": 2024,
-      "totalStreams": 29874887
+      "totalStreams": 29874887,
+      "lyricsId": 10845458,
+      "lyricsPath": "lyrics/10845458.txt"
     },
     {
       "artist": "1PLIKÉ140",
       "title": "CANADA",
       "year": 2022,
-      "totalStreams": 29862090
+      "totalStreams": 29862090,
+      "lyricsId": 7565413,
+      "lyricsPath": "lyrics/7565413.txt"
     },
     {
       "artist": "Kerchak",
       "title": "Saison 2",
       "year": 2024,
-      "totalStreams": 29831235
+      "totalStreams": 29831235,
+      "lyricsId": 9907515,
+      "lyricsPath": "lyrics/9907515.txt"
     },
     {
       "artist": "SEYSEY",
       "title": "Mia",
       "year": 2023,
-      "totalStreams": 29313397
+      "totalStreams": 29313397,
+      "lyricsId": 12030725,
+      "lyricsPath": "lyrics/12030725.txt"
     },
     {
       "artist": "Kerchak",
       "title": "Peur",
       "year": 2022,
-      "totalStreams": 29294598
+      "totalStreams": 29294598,
+      "lyricsId": 8375560,
+      "lyricsPath": "lyrics/8375560.txt"
     },
     {
       "artist": "Wejdene",
       "title": "Anissa",
       "year": 2020,
-      "totalStreams": 29257882
+      "totalStreams": 29257882,
+      "lyricsId": 5469011,
+      "lyricsPath": "lyrics/5469011.txt"
     },
     {
       "artist": "Bolémvn",
       "title": "10K",
       "year": 2020,
-      "totalStreams": 29164494
+      "totalStreams": 29164494,
+      "lyricsId": 5557180,
+      "lyricsPath": "lyrics/5557180.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Yeux disent",
       "year": 2017,
-      "totalStreams": 28847147
+      "totalStreams": 28847147,
+      "lyricsId": 3100053,
+      "lyricsPath": "lyrics/3100053.txt"
     },
     {
       "artist": "Dadju",
       "title": "Jaloux",
       "year": 2019,
-      "totalStreams": 28577657
+      "totalStreams": 28577657,
+      "lyricsId": 3981798,
+      "lyricsPath": "lyrics/3981798.txt"
     },
     {
       "artist": "Dadju",
       "title": "Dieu merci",
       "year": 2021,
-      "totalStreams": 28455455
+      "totalStreams": 28455455,
+      "lyricsId": 6012716,
+      "lyricsPath": "lyrics/6012716.txt"
     },
     {
       "artist": "Dosseh",
       "title": "Habitué",
       "year": 2018,
-      "totalStreams": 28438734
+      "totalStreams": 28438734,
+      "lyricsId": 3709290,
+      "lyricsPath": "lyrics/3709290.txt"
     },
     {
       "artist": "Gazo",
       "title": "MOLLY - A COLORS SHOW",
       "year": 2022,
-      "totalStreams": 28359443
+      "totalStreams": 28359443,
+      "lyricsId": 8547009,
+      "lyricsPath": "lyrics/8547009.txt"
     },
     {
       "artist": "RnBoi",
       "title": "BTRD",
       "year": 2025,
-      "totalStreams": 28315459
+      "totalStreams": 28315459,
+      "lyricsId": 11997417,
+      "lyricsPath": "lyrics/11997417.txt"
     },
     {
       "artist": "Gazo",
       "title": "NO LÈCHE",
       "year": 2023,
-      "totalStreams": 28043867
+      "totalStreams": 28043867,
+      "lyricsId": 8693522,
+      "lyricsPath": "lyrics/8693522.txt"
     },
     {
       "artist": "PLK",
       "title": "Il pleut à Paris",
       "year": 2024,
-      "totalStreams": 27878143
+      "totalStreams": 27878143,
+      "lyricsId": 9946262,
+      "lyricsPath": "lyrics/9946262.txt"
     },
     {
       "artist": "Mister V",
       "title": "Jamais",
       "year": 2020,
-      "totalStreams": 27604643
+      "totalStreams": 27604643,
+      "lyricsId": 5073722,
+      "lyricsPath": "lyrics/5073722.txt"
     },
     {
       "artist": "Amel Bent",
       "title": "1,2,3",
       "year": 2021,
-      "totalStreams": 27334869
+      "totalStreams": 27334869,
+      "lyricsId": 6112187,
+      "lyricsPath": "lyrics/6112187.txt"
     },
     {
       "artist": "Gazo",
       "title": "NOTRE DAME",
       "year": 2023,
-      "totalStreams": 27324059
+      "totalStreams": 27324059,
+      "lyricsId": 9775148,
+      "lyricsPath": "lyrics/9775148.txt"
     },
     {
       "artist": "Siboy",
       "title": "Mobali",
       "year": 2017,
-      "totalStreams": 27238156
+      "totalStreams": 27238156,
+      "lyricsId": 3110990,
+      "lyricsPath": "lyrics/3110990.txt"
     },
     {
       "artist": "Dadju",
       "title": "Mon soleil",
       "year": 2021,
-      "totalStreams": 26724686
+      "totalStreams": 26724686,
+      "lyricsId": 6835578,
+      "lyricsPath": "lyrics/6835578.txt"
     },
     {
       "artist": "MHD",
       "title": "Afro Trap Part. 11 (King Kong)",
       "year": 2021,
-      "totalStreams": 26585641
+      "totalStreams": 26585641,
+      "lyricsId": 6845931,
+      "lyricsPath": "lyrics/6845931.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Tout seul",
       "year": 2023,
-      "totalStreams": 26186430
+      "totalStreams": 26186430,
+      "lyricsId": 8846207,
+      "lyricsPath": "lyrics/8846207.txt"
     },
     {
       "artist": "Gazo",
       "title": "CARTIER",
       "year": 2023,
-      "totalStreams": 26019140
+      "totalStreams": 26019140,
+      "lyricsId": 9775147,
+      "lyricsPath": "lyrics/9775147.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Shavkat",
       "year": 2023,
-      "totalStreams": 25613954
+      "totalStreams": 25613954,
+      "lyricsId": 9357430,
+      "lyricsPath": "lyrics/9357430.txt"
     },
     {
       "artist": "Naps",
       "title": "Vamos",
       "year": 2022,
-      "totalStreams": 25456421
+      "totalStreams": 25456421,
+      "lyricsId": 8068179,
+      "lyricsPath": "lyrics/8068179.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Rêves bizarres",
       "year": 2018,
-      "totalStreams": 25263802
+      "totalStreams": 25263802,
+      "lyricsId": 4088140,
+      "lyricsPath": "lyrics/4088140.txt"
     },
     {
       "artist": "Orelsan",
       "title": "L'odeur de l'essence",
       "year": 2021,
-      "totalStreams": 25253407
+      "totalStreams": 25253407,
+      "lyricsId": 7325573,
+      "lyricsPath": "lyrics/7325573.txt"
     },
     {
       "artist": "Ninho",
       "title": "Mamacita",
       "year": 2017,
-      "totalStreams": 25138070
+      "totalStreams": 25138070,
+      "lyricsId": 3146483,
+      "lyricsPath": "lyrics/3146483.txt"
     },
     {
       "artist": "Jok'air",
       "title": "Bonbon à la menthe",
       "year": 2019,
-      "totalStreams": 25006464
+      "totalStreams": 25006464,
+      "lyricsId": 4360236,
+      "lyricsPath": "lyrics/4360236.txt"
     },
     {
       "artist": "Tayc",
       "title": "N'y pense plus",
       "year": 2020,
-      "totalStreams": 24988429
+      "totalStreams": 24988429,
+      "lyricsId": 5683711,
+      "lyricsPath": "lyrics/5683711.txt"
     },
     {
       "artist": "OBOY",
       "title": "Mélodie",
       "year": 2020,
-      "totalStreams": 24826693
+      "totalStreams": 24826693,
+      "lyricsId": 5726465,
+      "lyricsPath": "lyrics/5726465.txt"
     },
     {
       "artist": "MHD",
       "title": "Bella",
       "year": 2018,
-      "totalStreams": 24663010
+      "totalStreams": 24663010,
+      "lyricsId": 3845967,
+      "lyricsPath": "lyrics/3845967.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Joie de filles",
       "year": 2024,
-      "totalStreams": 24373060
+      "totalStreams": 24373060,
+      "lyricsId": 10494814,
+      "lyricsPath": "lyrics/10494814.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "La dot",
       "year": 2018,
-      "totalStreams": 24248040
+      "totalStreams": 24248040,
+      "lyricsId": 4009403,
+      "lyricsPath": "lyrics/4009403.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Panama",
       "year": 2023,
-      "totalStreams": 24083862
+      "totalStreams": 24083862,
+      "lyricsId": 9760226,
+      "lyricsPath": "lyrics/9760226.txt"
     },
     {
       "artist": "Tayc",
       "title": "Room 69",
       "year": 2023,
-      "totalStreams": 23716270
+      "totalStreams": 23716270,
+      "lyricsId": 8797601,
+      "lyricsPath": "lyrics/8797601.txt"
     },
     {
       "artist": "Josman",
       "title": "Ailleurs",
       "year": 2023,
-      "totalStreams": 23539784
+      "totalStreams": 23539784,
+      "lyricsId": 9672633,
+      "lyricsPath": "lyrics/9672633.txt"
     },
     {
       "artist": "Tayc",
       "title": "D O D O",
       "year": 2021,
-      "totalStreams": 23116615
+      "totalStreams": 23116615,
+      "lyricsId": 7247121,
+      "lyricsPath": "lyrics/7247121.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Du propre",
       "year": 2021,
-      "totalStreams": 23105780
+      "totalStreams": 23105780,
+      "lyricsId": 7325567,
+      "lyricsPath": "lyrics/7325567.txt"
     },
     {
       "artist": "Jok'air",
       "title": "Nos souvenirs",
       "year": 2019,
-      "totalStreams": 23064246
+      "totalStreams": 23064246,
+      "lyricsId": 4360240,
+      "lyricsPath": "lyrics/4360240.txt"
     },
     {
       "artist": "Ninho",
       "title": "M.I.L.S 2.0",
       "year": 2018,
-      "totalStreams": 22717242
+      "totalStreams": 22717242,
+      "lyricsId": 3612112,
+      "lyricsPath": "lyrics/3612112.txt"
     },
     {
       "artist": "Dosseh",
       "title": "L'odeur du charbon",
       "year": 2019,
-      "totalStreams": 22553660
+      "totalStreams": 22553660,
+      "lyricsId": 4654363,
+      "lyricsPath": "lyrics/4654363.txt"
     },
     {
       "artist": "S.Pri Noir",
       "title": "Juste pour voir",
       "year": 2018,
-      "totalStreams": 22522163
+      "totalStreams": 22522163,
+      "lyricsId": 3625965,
+      "lyricsPath": "lyrics/3625965.txt"
     },
     {
       "artist": "Werenoi",
       "title": "3 singes",
       "year": 2022,
-      "totalStreams": 22446263
+      "totalStreams": 22446263,
+      "lyricsId": 8630851,
+      "lyricsPath": "lyrics/8630851.txt"
     },
     {
       "artist": "La Fouine",
       "title": "Flying Blue",
       "year": 2025,
-      "totalStreams": 22423744
+      "totalStreams": 22423744,
+      "lyricsId": 12394168,
+      "lyricsPath": "lyrics/12394168.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Tee",
       "year": 2022,
-      "totalStreams": 22190591
+      "totalStreams": 22190591,
+      "lyricsId": 8062593,
+      "lyricsPath": "lyrics/8062593.txt"
     },
     {
       "artist": "Dadju",
       "title": "Django",
       "year": 2017,
-      "totalStreams": 22092014
+      "totalStreams": 22092014,
+      "lyricsId": 3287082,
+      "lyricsPath": "lyrics/3287082.txt"
     },
     {
       "artist": "Soso Maness",
       "title": "So Maness",
       "year": 2020,
-      "totalStreams": 21803369
+      "totalStreams": 21803369,
+      "lyricsId": 5321798,
+      "lyricsPath": "lyrics/5321798.txt"
     },
     {
       "artist": "Jok'air",
       "title": "Elles ont trop joué avec mon cœur",
       "year": 2021,
-      "totalStreams": 21755789
+      "totalStreams": 21755789,
+      "lyricsId": 6260066,
+      "lyricsPath": "lyrics/6260066.txt"
     },
     {
       "artist": "Kerchak",
       "title": "Calme toi",
       "year": 2022,
-      "totalStreams": 21639525
+      "totalStreams": 21639525,
+      "lyricsId": 8255797,
+      "lyricsPath": "lyrics/8255797.txt"
     },
     {
       "artist": "Ninho",
       "title": "Money",
       "year": 2019,
-      "totalStreams": 21513109
+      "totalStreams": 21513109,
+      "lyricsId": 4383541,
+      "lyricsPath": "lyrics/4383541.txt"
     },
     {
       "artist": "Gazo",
       "title": "KASSAV",
       "year": 2021,
-      "totalStreams": 21471920
+      "totalStreams": 21471920,
+      "lyricsId": 5999174,
+      "lyricsPath": "lyrics/5999174.txt"
     },
     {
       "artist": "Gradur",
       "title": "Trucs de choses",
       "year": 2021,
-      "totalStreams": 21327781
+      "totalStreams": 21327781,
+      "lyricsId": 7041132,
+      "lyricsPath": "lyrics/7041132.txt"
     },
     {
       "artist": "Ninho",
       "title": "Aïcha",
       "year": 2021,
-      "totalStreams": 21281650
+      "totalStreams": 21281650,
+      "lyricsId": 7376380,
+      "lyricsPath": "lyrics/7376380.txt"
     },
     {
       "artist": "Sadek",
       "title": "Madre mia",
       "year": 2017,
-      "totalStreams": 21276847
+      "totalStreams": 21276847,
+      "lyricsId": 3233289,
+      "lyricsPath": "lyrics/3233289.txt"
     },
     {
       "artist": "Gazo",
       "title": "KAT",
       "year": 2025,
-      "totalStreams": 21252100
+      "totalStreams": 21252100,
+      "lyricsId": 12115659,
+      "lyricsPath": "lyrics/12115659.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Dans un verre",
       "year": 2024,
-      "totalStreams": 21247663
+      "totalStreams": 21247663,
+      "lyricsId": 9982521,
+      "lyricsPath": "lyrics/9982521.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Quotidien",
       "year": 2019,
-      "totalStreams": 21185543
+      "totalStreams": 21185543,
+      "lyricsId": 4445260,
+      "lyricsPath": "lyrics/4445260.txt"
     },
     {
       "artist": "Nahir",
       "title": "Piranha",
       "year": 2023,
-      "totalStreams": 21102292
+      "totalStreams": 21102292,
+      "lyricsId": 9157676,
+      "lyricsPath": "lyrics/9157676.txt"
     },
     {
       "artist": "Ninho",
       "title": "Fendi",
       "year": 2018,
-      "totalStreams": 21074567
+      "totalStreams": 21074567,
+      "lyricsId": 3612113,
+      "lyricsPath": "lyrics/3612113.txt"
     },
     {
       "artist": "Mac Tyer",
       "title": "Moto",
       "year": 2020,
-      "totalStreams": 21074126
+      "totalStreams": 21074126,
+      "lyricsId": 5771876,
+      "lyricsPath": "lyrics/5771876.txt"
     },
     {
       "artist": "Joé Dwèt Filé",
       "title": "Jolie madame",
       "year": 2021,
-      "totalStreams": 21051877
+      "totalStreams": 21051877,
+      "lyricsId": 6669214,
+      "lyricsPath": "lyrics/6669214.txt"
     },
     {
       "artist": "Dadju",
       "title": "Par amour",
       "year": 2017,
-      "totalStreams": 21045991
+      "totalStreams": 21045991,
+      "lyricsId": 3287078,
+      "lyricsPath": "lyrics/3287078.txt"
     },
     {
       "artist": "Orelsan",
       "title": "CP_009_ Évidemment",
       "year": 2022,
-      "totalStreams": 20944808
+      "totalStreams": 20944808,
+      "lyricsId": 8474558,
+      "lyricsPath": "lyrics/8474558.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Scarface",
       "year": 2021,
-      "totalStreams": 20795612
+      "totalStreams": 20795612,
+      "lyricsId": 7103735,
+      "lyricsPath": "lyrics/7103735.txt"
     },
     {
       "artist": "DJ Kawest",
       "title": "Mode avion",
       "year": 2024,
-      "totalStreams": 20786035
+      "totalStreams": 20786035,
+      "lyricsId": 12343302,
+      "lyricsPath": "lyrics/12343302.txt"
     },
     {
       "artist": "Bolémvn",
       "title": "Ça canarde",
       "year": 2021,
-      "totalStreams": 20706521
+      "totalStreams": 20706521,
+      "lyricsId": 6932651,
+      "lyricsPath": "lyrics/6932651.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Plus Jamais",
       "year": 2020,
-      "totalStreams": 20533109
+      "totalStreams": 20533109,
+      "lyricsId": 6134114,
+      "lyricsPath": "lyrics/6134114.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Escorte",
       "year": 2023,
-      "totalStreams": 20455343
+      "totalStreams": 20455343,
+      "lyricsId": 8846218,
+      "lyricsPath": "lyrics/8846218.txt"
     },
     {
       "artist": "PLK",
       "title": "On sait jamais",
       "year": 2020,
-      "totalStreams": 20391743
+      "totalStreams": 20391743,
+      "lyricsId": 5838742,
+      "lyricsPath": "lyrics/5838742.txt"
     },
     {
       "artist": "Dadju",
       "title": "Ma vie",
       "year": 2020,
-      "totalStreams": 20387616
-    },
-    {
-      "artist": "L'Algérino",
-      "title": "Va Bene - Extrait de la BOF de \"Taxi 5\"",
-      "year": 2018,
-      "totalStreams": 20135318
+      "totalStreams": 20387616,
+      "lyricsId": 4932046,
+      "lyricsPath": "lyrics/4932046.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Baddies",
       "year": 2025,
-      "totalStreams": 20135033
+      "totalStreams": 20135033,
+      "lyricsId": 11867721,
+      "lyricsPath": "lyrics/11867721.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Cheum",
       "year": 2019,
-      "totalStreams": 20129804
+      "totalStreams": 20129804,
+      "lyricsId": 4611268,
+      "lyricsPath": "lyrics/4611268.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Vulgaire",
       "year": 2022,
-      "totalStreams": 20019383
+      "totalStreams": 20019383,
+      "lyricsId": 8064686,
+      "lyricsPath": "lyrics/8064686.txt"
     },
     {
       "artist": "Ninho",
       "title": "Rose",
       "year": 2017,
-      "totalStreams": 19847206
+      "totalStreams": 19847206,
+      "lyricsId": 3220854,
+      "lyricsPath": "lyrics/3220854.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Comportement",
       "year": 2017,
-      "totalStreams": 19802597
+      "totalStreams": 19802597,
+      "lyricsId": 2871354,
+      "lyricsPath": "lyrics/2871354.txt"
     },
     {
       "artist": "Dadju",
       "title": "Oublie-le",
       "year": 2017,
-      "totalStreams": 19728495
+      "totalStreams": 19728495,
+      "lyricsId": 3287068,
+      "lyricsPath": "lyrics/3287068.txt"
     },
     {
       "artist": "Booba",
       "title": "Arc-en-ciel",
       "year": 2019,
-      "totalStreams": 19609208
+      "totalStreams": 19609208,
+      "lyricsId": 4557098,
+      "lyricsPath": "lyrics/4557098.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "Crois-moi",
       "year": 2020,
-      "totalStreams": 19431377
+      "totalStreams": 19431377,
+      "lyricsId": 5337926,
+      "lyricsPath": "lyrics/5337926.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Basique",
       "year": 2017,
-      "totalStreams": 19362223
+      "totalStreams": 19362223,
+      "lyricsId": 3242791,
+      "lyricsPath": "lyrics/3242791.txt"
     },
     {
       "artist": "Ninho",
       "title": "Pirate",
       "year": 2020,
-      "totalStreams": 19334716
+      "totalStreams": 19334716,
+      "lyricsId": 5298772,
+      "lyricsPath": "lyrics/5298772.txt"
     },
     {
       "artist": "Naps",
       "title": "En détente",
       "year": 2019,
-      "totalStreams": 19194481
+      "totalStreams": 19194481,
+      "lyricsId": 4622866,
+      "lyricsPath": "lyrics/4622866.txt"
     },
     {
       "artist": "Yorssy",
       "title": "Racks - Booska Nouvelle École",
       "year": 2024,
-      "totalStreams": 19119050
+      "totalStreams": 19119050,
+      "lyricsId": 10699824,
+      "lyricsPath": "lyrics/10699824.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Jamal",
       "year": 2022,
-      "totalStreams": 19115814
+      "totalStreams": 19115814,
+      "lyricsId": 7685135,
+      "lyricsPath": "lyrics/7685135.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Marie",
       "year": 2019,
-      "totalStreams": 19056451
+      "totalStreams": 19056451,
+      "lyricsId": 4886159,
+      "lyricsPath": "lyrics/4886159.txt"
     },
     {
       "artist": "Laylow",
       "title": "R9R-LINE",
       "year": 2021,
-      "totalStreams": 19054905
+      "totalStreams": 19054905,
+      "lyricsId": 6962422,
+      "lyricsPath": "lyrics/6962422.txt"
     },
     {
       "artist": "PLK",
       "title": "Monégasque",
       "year": 2019,
-      "totalStreams": 19014135
+      "totalStreams": 19014135,
+      "lyricsId": 3939700,
+      "lyricsPath": "lyrics/3939700.txt"
     },
     {
       "artist": "Ninho",
       "title": "Arme de poing",
       "year": 2021,
-      "totalStreams": 18957226
+      "totalStreams": 18957226,
+      "lyricsId": 7376376,
+      "lyricsPath": "lyrics/7376376.txt"
     },
     {
       "artist": "Dadju",
       "title": "Amour toxic",
       "year": 2020,
-      "totalStreams": 18812316
+      "totalStreams": 18812316,
+      "lyricsId": 5979151,
+      "lyricsPath": "lyrics/5979151.txt"
     },
     {
       "artist": "Gradur",
       "title": "Rari",
       "year": 2019,
-      "totalStreams": 18728760
+      "totalStreams": 18728760,
+      "lyricsId": 4034940,
+      "lyricsPath": "lyrics/4034940.txt"
     },
     {
       "artist": "Ninho",
       "title": "Outro",
       "year": 2021,
-      "totalStreams": 18683998
+      "totalStreams": 18683998,
+      "lyricsId": 4411740,
+      "lyricsPath": "lyrics/4411740.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Taga",
       "year": 2018,
-      "totalStreams": 18675622
+      "totalStreams": 18675622,
+      "lyricsId": 3835731,
+      "lyricsPath": "lyrics/3835731.txt"
     },
     {
       "artist": "PLK",
       "title": "C'est mort",
       "year": 2020,
-      "totalStreams": 18672416
+      "totalStreams": 18672416,
+      "lyricsId": 5316748,
+      "lyricsPath": "lyrics/5316748.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Fallait pas",
       "year": 2018,
-      "totalStreams": 18651044
+      "totalStreams": 18651044,
+      "lyricsId": 3327125,
+      "lyricsPath": "lyrics/3327125.txt"
     },
     {
       "artist": "Bramsito",
       "title": "Criminel",
       "year": 2020,
-      "totalStreams": 18648389
+      "totalStreams": 18648389,
+      "lyricsId": 5573690,
+      "lyricsPath": "lyrics/5573690.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Calumet",
       "year": 2020,
-      "totalStreams": 18646197
+      "totalStreams": 18646197,
+      "lyricsId": 5148208,
+      "lyricsPath": "lyrics/5148208.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Bobo",
       "year": 2021,
-      "totalStreams": 18587938
+      "totalStreams": 18587938,
+      "lyricsId": 6849733,
+      "lyricsPath": "lyrics/6849733.txt"
     },
     {
       "artist": "Imen Es",
       "title": "1ère fois",
       "year": 2020,
-      "totalStreams": 18529369
+      "totalStreams": 18529369,
+      "lyricsId": 5211083,
+      "lyricsPath": "lyrics/5211083.txt"
     },
     {
       "artist": "menace Santana",
       "title": "MaDrug",
       "year": 2022,
-      "totalStreams": 18158072
+      "totalStreams": 18158072,
+      "lyricsId": 8431515,
+      "lyricsPath": "lyrics/8431515.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "La C",
       "year": 2018,
-      "totalStreams": 17851198
+      "totalStreams": 17851198,
+      "lyricsId": 3904193,
+      "lyricsPath": "lyrics/3904193.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Sheitana",
       "year": 2018,
-      "totalStreams": 17839404
+      "totalStreams": 17839404,
+      "lyricsId": 3943097,
+      "lyricsPath": "lyrics/3943097.txt"
     },
     {
       "artist": "Booba",
       "title": "BB",
       "year": 2018,
-      "totalStreams": 17748616
+      "totalStreams": 17748616,
+      "lyricsId": 3994652,
+      "lyricsPath": "lyrics/3994652.txt"
     },
     {
       "artist": "JKSN",
       "title": "Christian Dior",
       "year": 2024,
-      "totalStreams": 17731092
+      "totalStreams": 17731092,
+      "lyricsId": 9793050,
+      "lyricsPath": "lyrics/9793050.txt"
     },
     {
       "artist": "Ziak",
       "title": "Akimbo",
       "year": 2021,
-      "totalStreams": 17634929
+      "totalStreams": 17634929,
+      "lyricsId": 7326128,
+      "lyricsPath": "lyrics/7326128.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Bling Bling",
       "year": 2017,
-      "totalStreams": 17507244
+      "totalStreams": 17507244,
+      "lyricsId": 3265894,
+      "lyricsPath": "lyrics/3265894.txt"
     },
     {
       "artist": "Booba",
       "title": "Friday",
       "year": 2017,
-      "totalStreams": 17444560
+      "totalStreams": 17444560,
+      "lyricsId": 3338504,
+      "lyricsPath": "lyrics/3338504.txt"
     },
     {
       "artist": "Ninho",
       "title": "Promo",
       "year": 2020,
-      "totalStreams": 17416036
+      "totalStreams": 17416036,
+      "lyricsId": 5327364,
+      "lyricsPath": "lyrics/5327364.txt"
     },
     {
       "artist": "Nono La Grinta",
       "title": "Terrain",
       "year": 2025,
-      "totalStreams": 17354798
+      "totalStreams": 17354798,
+      "lyricsId": 12051374,
+      "lyricsPath": "lyrics/12051374.txt"
     },
     {
       "artist": "Ninho",
       "title": "Intro",
       "year": 2026,
-      "totalStreams": 17335206
+      "totalStreams": 17335206,
+      "lyricsId": 5327368,
+      "lyricsPath": "lyrics/5327368.txt"
     },
     {
       "artist": "Ninho",
       "title": "Sky Priority",
       "year": 2021,
-      "totalStreams": 17090708
+      "totalStreams": 17090708,
+      "lyricsId": 7376374,
+      "lyricsPath": "lyrics/7376374.txt"
     },
     {
       "artist": "Dadju",
       "title": "Toko Toko",
       "year": 2023,
-      "totalStreams": 17057979
+      "totalStreams": 17057979,
+      "lyricsId": 7901137,
+      "lyricsPath": "lyrics/7901137.txt"
     },
     {
       "artist": "Booba",
       "title": "PGP",
       "year": 2019,
-      "totalStreams": 17030815
+      "totalStreams": 17030815,
+      "lyricsId": 4255248,
+      "lyricsPath": "lyrics/4255248.txt"
     },
     {
       "artist": "menace Santana",
       "title": "Guapman",
       "year": 2022,
-      "totalStreams": 16927135
+      "totalStreams": 16927135,
+      "lyricsId": 8168346,
+      "lyricsPath": "lyrics/8168346.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Atasanté",
       "year": 2022,
-      "totalStreams": 16906676
+      "totalStreams": 16906676,
+      "lyricsId": 7971524,
+      "lyricsPath": "lyrics/7971524.txt"
     },
     {
       "artist": "Ninho",
       "title": "Jamais",
       "year": 2019,
-      "totalStreams": 16900433
+      "totalStreams": 16900433,
+      "lyricsId": 4022073,
+      "lyricsPath": "lyrics/4022073.txt"
     },
     {
       "artist": "Gazo",
       "title": "BODIES",
       "year": 2022,
-      "totalStreams": 16873405
+      "totalStreams": 16873405,
+      "lyricsId": 8145463,
+      "lyricsPath": "lyrics/8145463.txt"
     },
     {
       "artist": "Orelsan",
       "title": "La pluie",
       "year": 2017,
-      "totalStreams": 16841377
+      "totalStreams": 16841377,
+      "lyricsId": 3266713,
+      "lyricsPath": "lyrics/3266713.txt"
     },
     {
       "artist": "VEN1",
       "title": "Menace fantôme",
       "year": 2024,
-      "totalStreams": 16772305
+      "totalStreams": 16772305,
+      "lyricsId": 11144692,
+      "lyricsPath": "lyrics/11144692.txt"
     },
     {
       "artist": "Wejdene",
       "title": "Coco",
       "year": 2020,
-      "totalStreams": 16725525
+      "totalStreams": 16725525,
+      "lyricsId": 5735303,
+      "lyricsPath": "lyrics/5735303.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Je pense à toi",
       "year": 2017,
-      "totalStreams": 16725514
+      "totalStreams": 16725514,
+      "lyricsId": 3166270,
+      "lyricsPath": "lyrics/3166270.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Ce soir ne sors pas",
       "year": 2017,
-      "totalStreams": 16663897
+      "totalStreams": 16663897,
+      "lyricsId": 3144179,
+      "lyricsPath": "lyrics/3144179.txt"
     },
     {
       "artist": "Vitaa",
       "title": "Ça va ça vient",
       "year": 2019,
-      "totalStreams": 16596043
+      "totalStreams": 16596043,
+      "lyricsId": 4644688,
+      "lyricsPath": "lyrics/4644688.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Évidemment",
       "year": 2018,
-      "totalStreams": 16400005
+      "totalStreams": 16400005,
+      "lyricsId": 4143394,
+      "lyricsPath": "lyrics/4143394.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Bad Boy",
       "year": 2018,
-      "totalStreams": 16398152
+      "totalStreams": 16398152,
+      "lyricsId": 3327112,
+      "lyricsPath": "lyrics/3327112.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Bimbo",
       "year": 2021,
-      "totalStreams": 16345776
+      "totalStreams": 16345776,
+      "lyricsId": 6828445,
+      "lyricsPath": "lyrics/6828445.txt"
     },
     {
       "artist": "Ninho",
       "title": "Elle m'a eu",
       "year": 2017,
-      "totalStreams": 16306614
+      "totalStreams": 16306614,
+      "lyricsId": 3220858,
+      "lyricsPath": "lyrics/3220858.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Si j'savais",
       "year": 2022,
-      "totalStreams": 16304862
+      "totalStreams": 16304862,
+      "lyricsId": 7935777,
+      "lyricsPath": "lyrics/7935777.txt"
     },
     {
       "artist": "Tiakola",
       "title": "X",
       "year": 2024,
-      "totalStreams": 16244687
+      "totalStreams": 16244687,
+      "lyricsId": 10125269,
+      "lyricsPath": "lyrics/10125269.txt"
     },
     {
       "artist": "100 Blaze",
       "title": "Binks",
       "year": 2019,
-      "totalStreams": 16239439
+      "totalStreams": 16239439,
+      "lyricsId": 4590823,
+      "lyricsPath": "lyrics/4590823.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Gun salute",
       "year": 2019,
-      "totalStreams": 16198993
+      "totalStreams": 16198993,
+      "lyricsId": 4220944,
+      "lyricsPath": "lyrics/4220944.txt"
     },
     {
       "artist": "Ninho",
       "title": "À Kinshasa",
       "year": 2019,
-      "totalStreams": 16092170
+      "totalStreams": 16092170,
+      "lyricsId": 4343712,
+      "lyricsPath": "lyrics/4343712.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Boston George",
       "year": 2020,
-      "totalStreams": 15969885
+      "totalStreams": 15969885,
+      "lyricsId": 5902199,
+      "lyricsPath": "lyrics/5902199.txt"
     },
     {
       "artist": "Booba",
       "title": "Saga",
       "year": 2024,
-      "totalStreams": 15895477
+      "totalStreams": 15895477,
+      "lyricsId": 10025814,
+      "lyricsPath": "lyrics/10025814.txt"
     },
     {
       "artist": "Booba",
       "title": "Petite fille",
       "year": 2017,
-      "totalStreams": 15813829
+      "totalStreams": 15813829,
+      "lyricsId": 3339216,
+      "lyricsPath": "lyrics/3339216.txt"
     },
     {
       "artist": "L2B",
       "title": "Overbooking",
       "year": 2025,
-      "totalStreams": 15691840
+      "totalStreams": 15691840,
+      "lyricsId": 11492600,
+      "lyricsPath": "lyrics/11492600.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "On se reverra plus",
       "year": 2022,
-      "totalStreams": 15603387
+      "totalStreams": 15603387,
+      "lyricsId": 7784213,
+      "lyricsPath": "lyrics/7784213.txt"
     },
     {
       "artist": "PLK",
       "title": "Dingue",
       "year": 2019,
-      "totalStreams": 15590650
+      "totalStreams": 15590650,
+      "lyricsId": 4266075,
+      "lyricsPath": "lyrics/4266075.txt"
     },
     {
       "artist": "Wejdene",
       "title": "Je t’aime de ouf",
       "year": 2021,
-      "totalStreams": 15500595
+      "totalStreams": 15500595,
+      "lyricsId": 6617609,
+      "lyricsPath": "lyrics/6617609.txt"
     },
     {
       "artist": "Tayc",
       "title": "Salomé",
       "year": 2021,
-      "totalStreams": 15476859
+      "totalStreams": 15476859,
+      "lyricsId": 7427614,
+      "lyricsPath": "lyrics/7427614.txt"
     },
     {
       "artist": "Booba",
       "title": "DKR",
       "year": 2017,
-      "totalStreams": 15451926
+      "totalStreams": 15451926,
+      "lyricsId": 2869602,
+      "lyricsPath": "lyrics/2869602.txt"
     },
     {
       "artist": "Gradur",
       "title": "TI TI TI",
       "year": 2024,
-      "totalStreams": 15405884
+      "totalStreams": 15405884,
+      "lyricsId": 10524588,
+      "lyricsPath": "lyrics/10524588.txt"
     },
     {
       "artist": "Houari",
       "title": "Vanillée",
       "year": 2024,
-      "totalStreams": 15387823
+      "totalStreams": 15387823,
+      "lyricsId": 10578341,
+      "lyricsPath": "lyrics/10578341.txt"
     },
     {
       "artist": "PLK",
       "title": "Périph",
       "year": 2024,
-      "totalStreams": 15370215
+      "totalStreams": 15370215,
+      "lyricsId": 9831129,
+      "lyricsPath": "lyrics/9831129.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Boulot",
       "year": 2024,
-      "totalStreams": 15350885
+      "totalStreams": 15350885,
+      "lyricsId": 11128762,
+      "lyricsPath": "lyrics/11128762.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "La vie du binks",
       "year": 2021,
-      "totalStreams": 15337840
+      "totalStreams": 15337840,
+      "lyricsId": 6328297,
+      "lyricsPath": "lyrics/6328297.txt"
     },
     {
       "artist": "Gazo",
       "title": "PROBATION",
       "year": 2024,
-      "totalStreams": 15327026
+      "totalStreams": 15327026,
+      "lyricsId": 11077125,
+      "lyricsPath": "lyrics/11077125.txt"
     },
     {
       "artist": "Hatik",
       "title": "Prison pour mineurs",
       "year": 2020,
-      "totalStreams": 15294857
+      "totalStreams": 15294857,
+      "lyricsId": 5304113,
+      "lyricsPath": "lyrics/5304113.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Défaite de famille",
       "year": 2017,
-      "totalStreams": 15237540
+      "totalStreams": 15237540,
+      "lyricsId": 3267190,
+      "lyricsPath": "lyrics/3267190.txt"
     },
     {
       "artist": "Ziak",
       "title": "Galerie",
       "year": 2021,
-      "totalStreams": 15098124
+      "totalStreams": 15098124,
+      "lyricsId": 6826964,
+      "lyricsPath": "lyrics/6826964.txt"
     },
     {
       "artist": "Vald",
       "title": "Anunnaki",
       "year": 2022,
-      "totalStreams": 15091542
+      "totalStreams": 15091542,
+      "lyricsId": 7014767,
+      "lyricsPath": "lyrics/7014767.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Matin",
       "year": 2019,
-      "totalStreams": 15066750
+      "totalStreams": 15066750,
+      "lyricsId": 4445244,
+      "lyricsPath": "lyrics/4445244.txt"
     },
     {
       "artist": "Booba",
       "title": "RATPI WORLD",
       "year": 2021,
-      "totalStreams": 15043543
+      "totalStreams": 15043543,
+      "lyricsId": 6326541,
+      "lyricsPath": "lyrics/6326541.txt"
     },
     {
       "artist": "Moha La Squale",
       "title": "Bandolero",
       "year": 2018,
-      "totalStreams": 15011420
+      "totalStreams": 15011420,
+      "lyricsId": 3498196,
+      "lyricsPath": "lyrics/3498196.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Hypé",
       "year": 2024,
-      "totalStreams": 14874904
+      "totalStreams": 14874904,
+      "lyricsId": 9947041,
+      "lyricsPath": "lyrics/9947041.txt"
     },
     {
       "artist": "Jok'air",
       "title": "Big Daddy Jok",
       "year": 2017,
-      "totalStreams": 14867233
+      "totalStreams": 14867233,
+      "lyricsId": 3001038,
+      "lyricsPath": "lyrics/3001038.txt"
     },
     {
       "artist": "1PLIKÉ140",
       "title": "LOPSA STORY",
       "year": 2020,
-      "totalStreams": 14864190
+      "totalStreams": 14864190,
+      "lyricsId": 6216326,
+      "lyricsPath": "lyrics/6216326.txt"
     },
     {
       "artist": "Lefa",
       "title": "Paradise",
       "year": 2018,
-      "totalStreams": 14812145
+      "totalStreams": 14812145,
+      "lyricsId": 3580005,
+      "lyricsPath": "lyrics/3580005.txt"
     },
     {
       "artist": "Ninho",
       "title": "Paris c'est magique",
       "year": 2019,
-      "totalStreams": 14750083
+      "totalStreams": 14750083,
+      "lyricsId": 4343698,
+      "lyricsPath": "lyrics/4343698.txt"
     },
     {
       "artist": "Moha La Squale",
       "title": "Luna",
       "year": 2018,
-      "totalStreams": 14744698
+      "totalStreams": 14744698,
+      "lyricsId": 3701196,
+      "lyricsPath": "lyrics/3701196.txt"
     },
     {
       "artist": "Ziak",
       "title": "Même pas un grincement",
       "year": 2023,
-      "totalStreams": 14650486
+      "totalStreams": 14650486,
+      "lyricsId": 8436100,
+      "lyricsPath": "lyrics/8436100.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Gramme 2 peuf",
       "year": 2017,
-      "totalStreams": 14544957
+      "totalStreams": 14544957,
+      "lyricsId": 2922170,
+      "lyricsPath": "lyrics/2922170.txt"
     },
     {
       "artist": "Ninho",
       "title": "Sans peine",
       "year": 2019,
-      "totalStreams": 14520952
+      "totalStreams": 14520952,
+      "lyricsId": 4026105,
+      "lyricsPath": "lyrics/4026105.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Tourner la tête",
       "year": 2020,
-      "totalStreams": 14458243
+      "totalStreams": 14458243,
+      "lyricsId": 5710392,
+      "lyricsPath": "lyrics/5710392.txt"
     },
     {
       "artist": "Dosseh",
       "title": "A chaque jour...",
       "year": 2018,
-      "totalStreams": 14367800
+      "totalStreams": 14367800,
+      "lyricsId": 3795640,
+      "lyricsPath": "lyrics/3795640.txt"
     },
     {
       "artist": "OBOY",
       "title": "Cruel",
       "year": 2021,
-      "totalStreams": 14367703
+      "totalStreams": 14367703,
+      "lyricsId": 6134363,
+      "lyricsPath": "lyrics/6134363.txt"
     },
     {
       "artist": "Vald",
       "title": "Journal perso II",
       "year": 2019,
-      "totalStreams": 14337997
+      "totalStreams": 14337997,
+      "lyricsId": 4863220,
+      "lyricsPath": "lyrics/4863220.txt"
     },
     {
       "artist": "Kendji Girac",
       "title": "Bebeto",
       "year": 2021,
-      "totalStreams": 14315424
+      "totalStreams": 14315424,
+      "lyricsId": 6010772,
+      "lyricsPath": "lyrics/6010772.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Tout va bien",
       "year": 2017,
-      "totalStreams": 14112452
+      "totalStreams": 14112452,
+      "lyricsId": 3267189,
+      "lyricsPath": "lyrics/3267189.txt"
     },
     {
       "artist": "M. Pokora",
       "title": "Tombé",
       "year": 2019,
-      "totalStreams": 13976501
+      "totalStreams": 13976501,
+      "lyricsId": 4470727,
+      "lyricsPath": "lyrics/4470727.txt"
     },
     {
       "artist": "Guy2Bezbar",
       "title": "Jerrican",
       "year": 2025,
-      "totalStreams": 13968532
+      "totalStreams": 13968532,
+      "lyricsId": 11439421,
+      "lyricsPath": "lyrics/11439421.txt"
     },
     {
       "artist": "Laylow",
       "title": "UNE HISTOIRE ÉTRANGE",
       "year": 2021,
-      "totalStreams": 13860253
+      "totalStreams": 13860253,
+      "lyricsId": 6962413,
+      "lyricsPath": "lyrics/6962413.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Rolls",
       "year": 2018,
-      "totalStreams": 13719498
+      "totalStreams": 13719498,
+      "lyricsId": 3943091,
+      "lyricsPath": "lyrics/3943091.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "42",
       "year": 2024,
-      "totalStreams": 13640113
+      "totalStreams": 13640113,
+      "lyricsId": 10544567,
+      "lyricsPath": "lyrics/10544567.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Sucette",
       "year": 2018,
-      "totalStreams": 13633661
+      "totalStreams": 13633661,
+      "lyricsId": 4009409,
+      "lyricsPath": "lyrics/4009409.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Cadeau",
       "year": 2023,
-      "totalStreams": 13612918
+      "totalStreams": 13612918,
+      "lyricsId": 8706227,
+      "lyricsPath": "lyrics/8706227.txt"
     },
     {
       "artist": "Ninho",
       "title": "Jeune Lossa",
       "year": 2019,
-      "totalStreams": 13509016
+      "totalStreams": 13509016,
+      "lyricsId": 4343699,
+      "lyricsPath": "lyrics/4343699.txt"
     },
     {
       "artist": "Ninho",
       "title": "Filon",
       "year": 2020,
-      "totalStreams": 13365095
+      "totalStreams": 13365095,
+      "lyricsId": 5327382,
+      "lyricsPath": "lyrics/5327382.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Diarabi",
       "year": 2017,
-      "totalStreams": 13308220
+      "totalStreams": 13308220,
+      "lyricsId": 3265891,
+      "lyricsPath": "lyrics/3265891.txt"
     },
     {
       "artist": "Dadju",
       "title": "Bobo au cœur",
       "year": 2020,
-      "totalStreams": 13259109
+      "totalStreams": 13259109,
+      "lyricsId": 5007891,
+      "lyricsPath": "lyrics/5007891.txt"
     },
     {
       "artist": "Tiakola",
       "title": "T.I.A - A COLORS SHOW",
       "year": 2024,
-      "totalStreams": 13222903
+      "totalStreams": 13222903,
+      "lyricsId": 9590682,
+      "lyricsPath": "lyrics/9590682.txt"
     },
     {
       "artist": "Franglish",
       "title": "La Pluie",
       "year": 2025,
-      "totalStreams": 13075740
+      "totalStreams": 13075740,
+      "lyricsId": 11503461,
+      "lyricsPath": "lyrics/11503461.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "La Marseillaise",
       "year": 2023,
-      "totalStreams": 13050611
+      "totalStreams": 13050611,
+      "lyricsId": 5705872,
+      "lyricsPath": "lyrics/5705872.txt"
     },
     {
       "artist": "PLK",
       "title": "Pelo",
       "year": 2023,
-      "totalStreams": 13017244
+      "totalStreams": 13017244,
+      "lyricsId": 8985145,
+      "lyricsPath": "lyrics/8985145.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Noche",
       "year": 2017,
-      "totalStreams": 12991351
+      "totalStreams": 12991351,
+      "lyricsId": 3263697,
+      "lyricsPath": "lyrics/3263697.txt"
     },
     {
       "artist": "PLK",
       "title": "A la base",
       "year": 2021,
-      "totalStreams": 12946216
+      "totalStreams": 12946216,
+      "lyricsId": 7285218,
+      "lyricsPath": "lyrics/7285218.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Mauvais ordre",
       "year": 2022,
-      "totalStreams": 12828578
+      "totalStreams": 12828578,
+      "lyricsId": 8238699,
+      "lyricsPath": "lyrics/8238699.txt"
     },
     {
       "artist": "Naps",
       "title": "Rappelle-toi",
       "year": 2019,
-      "totalStreams": 12625245
+      "totalStreams": 12625245,
+      "lyricsId": 4622840,
+      "lyricsPath": "lyrics/4622840.txt"
     },
     {
       "artist": "Tiakola",
       "title": "RESTE-LÀ",
       "year": 2024,
-      "totalStreams": 12574321
+      "totalStreams": 12574321,
+      "lyricsId": 10845457,
+      "lyricsPath": "lyrics/10845457.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Goulag",
       "year": 2020,
-      "totalStreams": 12557335
+      "totalStreams": 12557335,
+      "lyricsId": 5720006,
+      "lyricsPath": "lyrics/5720006.txt"
     },
     {
       "artist": "Vitaa",
       "title": "Je te le donne (en duo avec Slimane)",
       "year": 2023,
-      "totalStreams": 12377573
+      "totalStreams": 12377573,
+      "lyricsId": 8640664,
+      "lyricsPath": "lyrics/8640664.txt"
     },
     {
       "artist": "Amel Bent",
       "title": "Jusqu'au bout",
       "year": 2021,
-      "totalStreams": 12363389
+      "totalStreams": 12363389,
+      "lyricsId": 5650555,
+      "lyricsPath": "lyrics/5650555.txt"
     },
     {
       "artist": "Kendji Girac",
       "title": "Dans mes bras",
       "year": 2021,
-      "totalStreams": 12312533
+      "totalStreams": 12312533,
+      "lyricsId": 6010769,
+      "lyricsPath": "lyrics/6010769.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Mômes",
       "year": 2018,
-      "totalStreams": 12308416
+      "totalStreams": 12308416,
+      "lyricsId": 4144095,
+      "lyricsPath": "lyrics/4144095.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Shonen",
       "year": 2021,
-      "totalStreams": 12267541
+      "totalStreams": 12267541,
+      "lyricsId": 7325564,
+      "lyricsPath": "lyrics/7325564.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Selfie",
       "year": 2022,
-      "totalStreams": 12231373
+      "totalStreams": 12231373,
+      "lyricsId": 8399490,
+      "lyricsPath": "lyrics/8399490.txt"
     },
     {
       "artist": "Mister V",
       "title": "Gang",
       "year": 2020,
-      "totalStreams": 12203309
+      "totalStreams": 12203309,
+      "lyricsId": 5109444,
+      "lyricsPath": "lyrics/5109444.txt"
     },
     {
       "artist": "Hatik",
       "title": "ma p'tite étoile",
       "year": 2021,
-      "totalStreams": 12162814
+      "totalStreams": 12162814,
+      "lyricsId": 6479910,
+      "lyricsPath": "lyrics/6479910.txt"
     },
     {
       "artist": "La Fouine",
       "title": "Etat des lieux - Part 1",
       "year": 2025,
-      "totalStreams": 12154500
+      "totalStreams": 12154500,
+      "lyricsId": 11709873,
+      "lyricsPath": "lyrics/11709873.txt"
     },
     {
       "artist": "Werenoi",
       "title": "16.02.2024",
       "year": 2024,
-      "totalStreams": 12125081
+      "totalStreams": 12125081,
+      "lyricsId": 9982535,
+      "lyricsPath": "lyrics/9982535.txt"
     },
     {
       "artist": "Ninho",
       "title": "Freestyle LVL UP 1",
       "year": 2023,
-      "totalStreams": 11994359
+      "totalStreams": 11994359,
+      "lyricsId": 9060862,
+      "lyricsPath": "lyrics/9060862.txt"
     },
     {
       "artist": "Mister V",
       "title": "Pirelli",
       "year": 2020,
-      "totalStreams": 11978824
+      "totalStreams": 11978824,
+      "lyricsId": 5109441,
+      "lyricsPath": "lyrics/5109441.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Jour de plus",
       "year": 2023,
-      "totalStreams": 11948213
+      "totalStreams": 11948213,
+      "lyricsId": 9386670,
+      "lyricsPath": "lyrics/9386670.txt"
     },
     {
       "artist": "Bolémvn",
       "title": "Sankhara #4 (Chic)",
       "year": 2019,
-      "totalStreams": 11920139
+      "totalStreams": 11920139,
+      "lyricsId": 4856889,
+      "lyricsPath": "lyrics/4856889.txt"
     },
     {
       "artist": "Ninho",
       "title": "OG",
       "year": 2021,
-      "totalStreams": 11915457
+      "totalStreams": 11915457,
+      "lyricsId": 7376401,
+      "lyricsPath": "lyrics/7376401.txt"
     },
     {
       "artist": "La Mano 1.9",
       "title": "Businessman",
       "year": 2025,
-      "totalStreams": 11853891
+      "totalStreams": 11853891,
+      "lyricsId": 11841163,
+      "lyricsPath": "lyrics/11841163.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Oh la folle",
       "year": 2019,
-      "totalStreams": 11851958
+      "totalStreams": 11851958,
+      "lyricsId": 4352633,
+      "lyricsPath": "lyrics/4352633.txt"
     },
     {
       "artist": "Ninho",
       "title": "No Life",
       "year": 2021,
-      "totalStreams": 11802290
+      "totalStreams": 11802290,
+      "lyricsId": 7376378,
+      "lyricsPath": "lyrics/7376378.txt"
     },
     {
       "artist": "Tiakola",
       "title": "PLAISIR NOCIF",
       "year": 2024,
-      "totalStreams": 11740497
+      "totalStreams": 11740497,
+      "lyricsId": 10845097,
+      "lyricsPath": "lyrics/10845097.txt"
     },
     {
       "artist": "Ninho",
       "title": "M.I.L.S 3",
       "year": 2020,
-      "totalStreams": 11675057
+      "totalStreams": 11675057,
+      "lyricsId": 5298432,
+      "lyricsPath": "lyrics/5298432.txt"
     },
     {
       "artist": "Sadek",
       "title": "Kimono",
       "year": 2018,
-      "totalStreams": 11661409
+      "totalStreams": 11661409,
+      "lyricsId": 6177574,
+      "lyricsPath": "lyrics/6177574.txt"
     },
     {
       "artist": "THEODORT",
       "title": "Toko dombi",
       "year": 2024,
-      "totalStreams": 11598872
+      "totalStreams": 11598872,
+      "lyricsId": 10179048,
+      "lyricsPath": "lyrics/10179048.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Les étoiles vagabondes",
       "year": 2019,
-      "totalStreams": 11590878
+      "totalStreams": 11590878,
+      "lyricsId": 4611267,
+      "lyricsPath": "lyrics/4611267.txt"
     },
     {
       "artist": "Ninho",
       "title": "Goutte d’eau",
       "year": 2019,
-      "totalStreams": 11547991
+      "totalStreams": 11547991,
+      "lyricsId": 4329732,
+      "lyricsPath": "lyrics/4329732.txt"
     },
     {
       "artist": "1PLIKÉ140",
       "title": "ONGBAK 2",
       "year": 2021,
-      "totalStreams": 11491775
+      "totalStreams": 11491775,
+      "lyricsId": 6660603,
+      "lyricsPath": "lyrics/6660603.txt"
     },
     {
       "artist": "47ter",
       "title": "L'adresse",
       "year": 2019,
-      "totalStreams": 11399488
+      "totalStreams": 11399488,
+      "lyricsId": 4898834,
+      "lyricsPath": "lyrics/4898834.txt"
     },
     {
       "artist": "Naps",
       "title": "Carré VIP",
       "year": 2020,
-      "totalStreams": 11337483
+      "totalStreams": 11337483,
+      "lyricsId": 5228948,
+      "lyricsPath": "lyrics/5228948.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Doudou",
       "year": 2020,
-      "totalStreams": 11293188
+      "totalStreams": 11293188,
+      "lyricsId": 6035182,
+      "lyricsPath": "lyrics/6035182.txt"
     },
     {
       "artist": "Dadju",
       "title": "Sous contrôle",
       "year": 2017,
-      "totalStreams": 11248762
+      "totalStreams": 11248762,
+      "lyricsId": 3167468,
+      "lyricsPath": "lyrics/3167468.txt"
     },
     {
       "artist": "MHD",
       "title": "Pololo",
       "year": 2021,
-      "totalStreams": 11127797
+      "totalStreams": 11127797,
+      "lyricsId": 6940140,
+      "lyricsPath": "lyrics/6940140.txt"
     },
     {
       "artist": "PLK",
       "title": "Bénef",
       "year": 2020,
-      "totalStreams": 11113531
+      "totalStreams": 11113531,
+      "lyricsId": 5797905,
+      "lyricsPath": "lyrics/5797905.txt"
     },
     {
       "artist": "Gazo",
       "title": "100K",
       "year": 2023,
-      "totalStreams": 11020958
+      "totalStreams": 11020958,
+      "lyricsId": 9623712,
+      "lyricsPath": "lyrics/9623712.txt"
     },
     {
       "artist": "OBOY",
       "title": "Cosmos",
       "year": 2021,
-      "totalStreams": 10978699
+      "totalStreams": 10978699,
+      "lyricsId": 7034372,
+      "lyricsPath": "lyrics/7034372.txt"
     },
     {
       "artist": "Ninho",
       "title": "Freestyle LVL UP 2",
       "year": 2023,
-      "totalStreams": 10978129
+      "totalStreams": 10978129,
+      "lyricsId": 9095625,
+      "lyricsPath": "lyrics/9095625.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Notes pour trop tard",
       "year": 2017,
-      "totalStreams": 10945645
+      "totalStreams": 10945645,
+      "lyricsId": 3266715,
+      "lyricsPath": "lyrics/3266715.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Magot",
       "year": 2023,
-      "totalStreams": 10934775
+      "totalStreams": 10934775,
+      "lyricsId": 9542697,
+      "lyricsPath": "lyrics/9542697.txt"
     },
     {
       "artist": "Booba",
       "title": "Dolce Vita",
       "year": 2020,
-      "totalStreams": 10890681
+      "totalStreams": 10890681,
+      "lyricsId": 5760823,
+      "lyricsPath": "lyrics/5760823.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Alunissons",
       "year": 2019,
-      "totalStreams": 10848643
+      "totalStreams": 10848643,
+      "lyricsId": 4611114,
+      "lyricsPath": "lyrics/4611114.txt"
     },
     {
       "artist": "Booba",
       "title": "113",
       "year": 2017,
-      "totalStreams": 10784672
+      "totalStreams": 10784672,
+      "lyricsId": 3338458,
+      "lyricsPath": "lyrics/3338458.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Ténébreux #1",
       "year": 2018,
-      "totalStreams": 10756345
+      "totalStreams": 10756345,
+      "lyricsId": 3365015,
+      "lyricsPath": "lyrics/3365015.txt"
     },
     {
       "artist": "Ninho",
       "title": "La vivance",
       "year": 2019,
-      "totalStreams": 10668237
+      "totalStreams": 10668237,
+      "lyricsId": 4343701,
+      "lyricsPath": "lyrics/4343701.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Allo",
       "year": 2021,
-      "totalStreams": 10641630
+      "totalStreams": 10641630,
+      "lyricsId": 6598660,
+      "lyricsPath": "lyrics/6598660.txt"
     },
     {
       "artist": "KeBlack",
       "title": "Bazardée",
       "year": 2017,
-      "totalStreams": 10528285
+      "totalStreams": 10528285,
+      "lyricsId": 2904301,
+      "lyricsPath": "lyrics/2904301.txt"
     },
     {
       "artist": "Lujipeka",
       "title": "Poupée Russe",
       "year": 2021,
-      "totalStreams": 10525110
+      "totalStreams": 10525110,
+      "lyricsId": 3839554,
+      "lyricsPath": "lyrics/3839554.txt"
     },
     {
       "artist": "Orelsan",
       "title": "San",
       "year": 2017,
-      "totalStreams": 10483359
+      "totalStreams": 10483359,
+      "lyricsId": 3267187,
+      "lyricsPath": "lyrics/3267187.txt"
     },
     {
       "artist": "Dabs",
       "title": "Ouloulou",
       "year": 2019,
-      "totalStreams": 10442997
+      "totalStreams": 10442997,
+      "lyricsId": 2945795,
+      "lyricsPath": "lyrics/2945795.txt"
     },
     {
       "artist": "Ninho",
       "title": "La maison que je voulais",
       "year": 2021,
-      "totalStreams": 10407734
+      "totalStreams": 10407734,
+      "lyricsId": 7376464,
+      "lyricsPath": "lyrics/7376464.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Cellophané",
       "year": 2019,
-      "totalStreams": 10373389
+      "totalStreams": 10373389,
+      "lyricsId": 4404467,
+      "lyricsPath": "lyrics/4404467.txt"
     },
     {
       "artist": "Vianney",
       "title": "Je suis fou",
       "year": 2023,
-      "totalStreams": 10275953
+      "totalStreams": 10275953,
+      "lyricsId": 9501008,
+      "lyricsPath": "lyrics/9501008.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Location",
       "year": 2024,
-      "totalStreams": 10274015
+      "totalStreams": 10274015,
+      "lyricsId": 9982522,
+      "lyricsPath": "lyrics/9982522.txt"
     },
     {
       "artist": "Naps",
       "title": "Favela",
       "year": 2018,
-      "totalStreams": 10217060
+      "totalStreams": 10217060,
+      "lyricsId": 3526804,
+      "lyricsPath": "lyrics/3526804.txt"
     },
     {
       "artist": "Laylow",
       "title": "Vent de l'est",
       "year": 2018,
-      "totalStreams": 10192210
+      "totalStreams": 10192210,
+      "lyricsId": 4137367,
+      "lyricsPath": "lyrics/4137367.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Doggy",
       "year": 2024,
-      "totalStreams": 10166794
+      "totalStreams": 10166794,
+      "lyricsId": 10216839,
+      "lyricsPath": "lyrics/10216839.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "7 sur 7",
       "year": 2020,
-      "totalStreams": 10163052
+      "totalStreams": 10163052,
+      "lyricsId": 5843656,
+      "lyricsPath": "lyrics/5843656.txt"
     },
     {
       "artist": "Ninho",
       "title": "Jusqu'à minuit",
       "year": 2019,
-      "totalStreams": 10038675
+      "totalStreams": 10038675,
+      "lyricsId": 4343708,
+      "lyricsPath": "lyrics/4343708.txt"
     },
     {
       "artist": "47ter",
       "title": "On avait dit",
       "year": 2019,
-      "totalStreams": 10016880
+      "totalStreams": 10016880,
+      "lyricsId": 4898835,
+      "lyricsPath": "lyrics/4898835.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "L'enfoiré",
       "year": 2019,
-      "totalStreams": 10004537
+      "totalStreams": 10004537,
+      "lyricsId": 4057574,
+      "lyricsPath": "lyrics/4057574.txt"
     },
     {
       "artist": "Naza",
       "title": "Tout donner",
       "year": 2025,
-      "totalStreams": 10002646
+      "totalStreams": 10002646,
+      "lyricsId": 11930009,
+      "lyricsPath": "lyrics/11930009.txt"
     },
     {
       "artist": "Naza",
       "title": "Connectés",
       "year": 2025,
-      "totalStreams": 9950223
+      "totalStreams": 9950223,
+      "lyricsId": 12156017,
+      "lyricsPath": "lyrics/12156017.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Valise",
       "year": 2020,
-      "totalStreams": 9916998
+      "totalStreams": 9916998,
+      "lyricsId": 5308990,
+      "lyricsPath": "lyrics/5308990.txt"
     },
     {
       "artist": "Niaks",
       "title": "Mahmouma",
       "year": 2023,
-      "totalStreams": 9839348
+      "totalStreams": 9839348,
+      "lyricsId": 9436634,
+      "lyricsPath": "lyrics/9436634.txt"
     },
     {
       "artist": "Luidji",
       "title": "Pour deux âmes solitaires (Part.1)",
       "year": 2017,
-      "totalStreams": 9778376
+      "totalStreams": 9778376,
+      "lyricsId": 3299881,
+      "lyricsPath": "lyrics/3299881.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Chambre 122",
       "year": 2018,
-      "totalStreams": 9776567
+      "totalStreams": 9776567,
+      "lyricsId": 3929421,
+      "lyricsPath": "lyrics/3929421.txt"
     },
     {
       "artist": "MHD",
       "title": "Bébé",
       "year": 2018,
-      "totalStreams": 9728690
+      "totalStreams": 9728690,
+      "lyricsId": 3908900,
+      "lyricsPath": "lyrics/3908900.txt"
     },
     {
       "artist": "Lomepal",
       "title": "X-men",
       "year": 2018,
-      "totalStreams": 9666184
+      "totalStreams": 9666184,
+      "lyricsId": 4143334,
+      "lyricsPath": "lyrics/4143334.txt"
     },
     {
       "artist": "Lomepal",
       "title": "La vérité",
       "year": 2018,
-      "totalStreams": 9661439
+      "totalStreams": 9661439,
+      "lyricsId": 4142050,
+      "lyricsPath": "lyrics/4142050.txt"
     },
     {
       "artist": "Ninho",
       "title": "25 G",
       "year": 2023,
-      "totalStreams": 9641221
+      "totalStreams": 9641221,
+      "lyricsId": 9194384,
+      "lyricsPath": "lyrics/9194384.txt"
     },
     {
       "artist": "Ninho",
       "title": "Mood",
       "year": 2021,
-      "totalStreams": 9625334
+      "totalStreams": 9625334,
+      "lyricsId": 7376381,
+      "lyricsPath": "lyrics/7376381.txt"
     },
     {
       "artist": "Sadek",
       "title": "Bep Bep",
       "year": 2018,
-      "totalStreams": 9620475
+      "totalStreams": 9620475,
+      "lyricsId": 3805438,
+      "lyricsPath": "lyrics/3805438.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Voyage léger",
       "year": 2019,
-      "totalStreams": 9609562
+      "totalStreams": 9609562,
+      "lyricsId": 4611278,
+      "lyricsPath": "lyrics/4611278.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Oh bah oui",
       "year": 2017,
-      "totalStreams": 9548237
+      "totalStreams": 9548237,
+      "lyricsId": 3036682,
+      "lyricsPath": "lyrics/3036682.txt"
     },
     {
       "artist": "Médine",
       "title": "KYLL",
       "year": 2018,
-      "totalStreams": 9519256
+      "totalStreams": 9519256,
+      "lyricsId": 4112677,
+      "lyricsPath": "lyrics/4112677.txt"
     },
     {
       "artist": "Sadek",
       "title": "TP",
       "year": 2023,
-      "totalStreams": 9509194
+      "totalStreams": 9509194,
+      "lyricsId": 9128832,
+      "lyricsPath": "lyrics/9128832.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Jalouse",
       "year": 2025,
-      "totalStreams": 9493284
+      "totalStreams": 9493284,
+      "lyricsId": 11639713,
+      "lyricsPath": "lyrics/11639713.txt"
     },
     {
       "artist": "Rsko",
       "title": "BOOM BOOM",
       "year": 2023,
-      "totalStreams": 9439997
+      "totalStreams": 9439997,
+      "lyricsId": 10087666,
+      "lyricsPath": "lyrics/10087666.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Ailleurs",
       "year": 2025,
-      "totalStreams": 9424807
+      "totalStreams": 9424807,
+      "lyricsId": 12608710,
+      "lyricsPath": "lyrics/12608710.txt"
     },
     {
       "artist": "DJ Kayz",
       "title": "Monte le son",
       "year": 2021,
-      "totalStreams": 9408033
+      "totalStreams": 9408033,
+      "lyricsId": 5978595,
+      "lyricsPath": "lyrics/5978595.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Cosmos",
       "year": 2021,
-      "totalStreams": 9403114
+      "totalStreams": 9403114,
+      "lyricsId": 6465033,
+      "lyricsPath": "lyrics/6465033.txt"
     },
     {
       "artist": "S.Pri Noir",
       "title": "Maman dort",
       "year": 2020,
-      "totalStreams": 9360400
+      "totalStreams": 9360400,
+      "lyricsId": 5394934,
+      "lyricsPath": "lyrics/5394934.txt"
     },
     {
       "artist": "Ninho",
       "title": "Binks to Binks 6",
       "year": 2019,
-      "totalStreams": 9332951
+      "totalStreams": 9332951,
+      "lyricsId": 4188780,
+      "lyricsPath": "lyrics/4188780.txt"
     },
     {
       "artist": "OBOY",
       "title": "Je M'en Tape",
       "year": 2019,
-      "totalStreams": 9317997
+      "totalStreams": 9317997,
+      "lyricsId": 4610816,
+      "lyricsPath": "lyrics/4610816.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Mortel",
       "year": 2019,
-      "totalStreams": 9311406
+      "totalStreams": 9311406,
+      "lyricsId": 5031340,
+      "lyricsPath": "lyrics/5031340.txt"
     },
     {
       "artist": "VEN1",
       "title": "SD Night",
       "year": 2024,
-      "totalStreams": 9306261
+      "totalStreams": 9306261,
+      "lyricsId": 10626464,
+      "lyricsPath": "lyrics/10626464.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Cellophané",
       "year": 2017,
-      "totalStreams": 9263914
+      "totalStreams": 9263914,
+      "lyricsId": 2893546,
+      "lyricsPath": "lyrics/2893546.txt"
     },
     {
       "artist": "Booba",
       "title": "Drapeau noir",
       "year": 2017,
-      "totalStreams": 9257230
+      "totalStreams": 9257230,
+      "lyricsId": 3338490,
+      "lyricsPath": "lyrics/3338490.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "La machine",
       "year": 2020,
-      "totalStreams": 9250115
+      "totalStreams": 9250115,
+      "lyricsId": 6134125,
+      "lyricsPath": "lyrics/6134125.txt"
     },
     {
       "artist": "Kerchak",
       "title": "T'aimerais",
       "year": 2024,
-      "totalStreams": 9186537
+      "totalStreams": 9186537,
+      "lyricsId": 9838252,
+      "lyricsPath": "lyrics/9838252.txt"
     },
     {
       "artist": "Booba",
       "title": "GLAIVE",
       "year": 2019,
-      "totalStreams": 9134695
+      "totalStreams": 9134695,
+      "lyricsId": 4744473,
+      "lyricsPath": "lyrics/4744473.txt"
     },
     {
       "artist": "Tiitof",
       "title": "Mwen An Sa",
       "year": 2025,
-      "totalStreams": 9105663
+      "totalStreams": 9105663,
+      "lyricsId": 5216681,
+      "lyricsPath": "lyrics/5216681.txt"
     },
     {
       "artist": "Ninho",
       "title": "Big Pac",
       "year": 2019,
-      "totalStreams": 9101022
+      "totalStreams": 9101022,
+      "lyricsId": 4343703,
+      "lyricsPath": "lyrics/4343703.txt"
     },
     {
       "artist": "Orelsan",
       "title": "La fête est finie",
       "year": 2017,
-      "totalStreams": 9056883
+      "totalStreams": 9056883,
+      "lyricsId": 3267188,
+      "lyricsPath": "lyrics/3267188.txt"
     },
     {
       "artist": "Ninho",
       "title": "La puerta",
       "year": 2020,
-      "totalStreams": 9054566
+      "totalStreams": 9054566,
+      "lyricsId": 5327369,
+      "lyricsPath": "lyrics/5327369.txt"
     },
     {
       "artist": "PLK",
       "title": "Toute l'année",
       "year": 2019,
-      "totalStreams": 8996967
+      "totalStreams": 8996967,
+      "lyricsId": 4820991,
+      "lyricsPath": "lyrics/4820991.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Casseurs Flowters Infinity",
       "year": 2021,
-      "totalStreams": 8934999
+      "totalStreams": 8934999,
+      "lyricsId": 7325576,
+      "lyricsPath": "lyrics/7325576.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Allez nique ta mère",
       "year": 2020,
-      "totalStreams": 8928346
+      "totalStreams": 8928346,
+      "lyricsId": 5653450,
+      "lyricsPath": "lyrics/5653450.txt"
     },
     {
       "artist": "Gazo",
       "title": "TCHIN 2X",
       "year": 2021,
-      "totalStreams": 8916015
+      "totalStreams": 8916015,
+      "lyricsId": 6245175,
+      "lyricsPath": "lyrics/6245175.txt"
     },
     {
       "artist": "Vald",
       "title": "Peon",
       "year": 2022,
-      "totalStreams": 8899942
+      "totalStreams": 8899942,
+      "lyricsId": 7639703,
+      "lyricsPath": "lyrics/7639703.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Menteur menteur",
       "year": 2019,
-      "totalStreams": 8892032
+      "totalStreams": 8892032,
+      "lyricsId": 4611153,
+      "lyricsPath": "lyrics/4611153.txt"
     },
     {
       "artist": "Ninho",
       "title": "Problèmes du matin",
       "year": 2020,
-      "totalStreams": 8823563
+      "totalStreams": 8823563,
+      "lyricsId": 6004338,
+      "lyricsPath": "lyrics/6004338.txt"
     },
     {
       "artist": "Ninho",
       "title": "Tokarev",
       "year": 2019,
-      "totalStreams": 8797201
+      "totalStreams": 8797201,
+      "lyricsId": 4343700,
+      "lyricsPath": "lyrics/4343700.txt"
     },
     {
       "artist": "Booba",
       "title": "Scarface",
       "year": 2017,
-      "totalStreams": 8796735
+      "totalStreams": 8796735,
+      "lyricsId": 58273,
+      "lyricsPath": "lyrics/58273.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Athéna",
       "year": 2021,
-      "totalStreams": 8771662
+      "totalStreams": 8771662,
+      "lyricsId": 7325593,
+      "lyricsPath": "lyrics/7325593.txt"
     },
     {
       "artist": "MHD",
       "title": "Afro Trap Pt. 8 (Never)",
       "year": 2017,
-      "totalStreams": 8751645
+      "totalStreams": 8751645,
+      "lyricsId": 2958741,
+      "lyricsPath": "lyrics/2958741.txt"
     },
     {
       "artist": "L'Algérino",
       "title": "Sapapaya",
       "year": 2021,
-      "totalStreams": 8749356
+      "totalStreams": 8749356,
+      "lyricsId": 6807426,
+      "lyricsPath": "lyrics/6807426.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Seul avec du monde autour",
       "year": 2021,
-      "totalStreams": 8740017
+      "totalStreams": 8740017,
+      "lyricsId": 7325571,
+      "lyricsPath": "lyrics/7325571.txt"
     },
     {
       "artist": "PLK",
       "title": "Décembre",
       "year": 2023,
-      "totalStreams": 8715293
+      "totalStreams": 8715293,
+      "lyricsId": 8866845,
+      "lyricsPath": "lyrics/8866845.txt"
     },
     {
       "artist": "Hornet La Frappe",
       "title": "Maghrébin",
       "year": 2017,
-      "totalStreams": 8692044
+      "totalStreams": 8692044,
+      "lyricsId": 3245988,
+      "lyricsPath": "lyrics/3245988.txt"
     },
     {
       "artist": "Booba",
       "title": "Nougat",
       "year": 2017,
-      "totalStreams": 8679883
+      "totalStreams": 8679883,
+      "lyricsId": 3142711,
+      "lyricsPath": "lyrics/3142711.txt"
     },
     {
       "artist": "Lefa",
       "title": "Smile",
       "year": 2020,
-      "totalStreams": 8657791
+      "totalStreams": 8657791,
+      "lyricsId": 5629732,
+      "lyricsPath": "lyrics/5629732.txt"
     },
     {
       "artist": "Ninho",
       "title": "Coffrer",
       "year": 2018,
-      "totalStreams": 8648017
+      "totalStreams": 8648017,
+      "lyricsId": 3611869,
+      "lyricsPath": "lyrics/3611869.txt"
     },
     {
       "artist": "La Mano 1.9",
       "title": "Crime ensoleillé",
       "year": 2025,
-      "totalStreams": 8647104
-    },
-    {
-      "artist": "Freeze corleone",
-      "title": "Téléphone - Extrait de CRCLR MVT SAISON II",
-      "year": 2021,
-      "totalStreams": 8606100
+      "totalStreams": 8647104,
+      "lyricsId": 12063533,
+      "lyricsPath": "lyrics/12063533.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Premier pas",
       "year": 2019,
-      "totalStreams": 8560941
+      "totalStreams": 8560941,
+      "lyricsId": 4611277,
+      "lyricsPath": "lyrics/4611277.txt"
     },
     {
       "artist": "Luidji",
       "title": "Reste en Vie",
       "year": 2023,
-      "totalStreams": 8547191
+      "totalStreams": 8547191,
+      "lyricsId": 9251889,
+      "lyricsPath": "lyrics/9251889.txt"
     },
     {
       "artist": "Dadju",
       "title": "Lionne",
       "year": 2017,
-      "totalStreams": 8544354
+      "totalStreams": 8544354,
+      "lyricsId": 3014625,
+      "lyricsPath": "lyrics/3014625.txt"
     },
     {
       "artist": "Ninho",
       "title": "Athéna",
       "year": 2021,
-      "totalStreams": 8541371
+      "totalStreams": 8541371,
+      "lyricsId": 7376382,
+      "lyricsPath": "lyrics/7376382.txt"
     },
     {
       "artist": "Booba",
       "title": "5G",
       "year": 2021,
-      "totalStreams": 8532146
+      "totalStreams": 8532146,
+      "lyricsId": 6133881,
+      "lyricsPath": "lyrics/6133881.txt"
     },
     {
       "artist": "47ter",
       "title": "Vivre",
       "year": 2021,
-      "totalStreams": 8512925
-    },
-    {
-      "artist": "Vegedream",
-      "title": "La fuite - Vegedream X Dj Leska / Edit MIx",
-      "year": 2018,
-      "totalStreams": 8465593
+      "totalStreams": 8512925,
+      "lyricsId": 6110744,
+      "lyricsPath": "lyrics/6110744.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "Entre les murs",
       "year": 2019,
-      "totalStreams": 8428524
+      "totalStreams": 8428524,
+      "lyricsId": 3942253,
+      "lyricsPath": "lyrics/3942253.txt"
     },
     {
       "artist": "Vald",
       "title": "Dragon",
       "year": 2018,
-      "totalStreams": 8416087
+      "totalStreams": 8416087,
+      "lyricsId": 3441983,
+      "lyricsPath": "lyrics/3441983.txt"
     },
     {
       "artist": "Naestro",
       "title": "Bella ciao",
       "year": 2020,
-      "totalStreams": 8355317
+      "totalStreams": 8355317,
+      "lyricsId": 3716809,
+      "lyricsPath": "lyrics/3716809.txt"
     },
     {
       "artist": "DJ Snake",
       "title": "SG",
       "year": 2021,
-      "totalStreams": 8299735
+      "totalStreams": 8299735,
+      "lyricsId": 6829329,
+      "lyricsPath": "lyrics/6829329.txt"
     },
     {
       "artist": "Naps",
       "title": "Recherché",
       "year": 2018,
-      "totalStreams": 8288917
+      "totalStreams": 8288917,
+      "lyricsId": 3493622,
+      "lyricsPath": "lyrics/3493622.txt"
     },
     {
       "artist": "JYEUHAIR",
       "title": "Peace - Nouvelle École",
       "year": 2024,
-      "totalStreams": 8274436
+      "totalStreams": 8274436,
+      "lyricsId": 10638864,
+      "lyricsPath": "lyrics/10638864.txt"
     },
     {
       "artist": "menace Santana",
       "title": "Skiboy",
       "year": 2021,
-      "totalStreams": 8246408
+      "totalStreams": 8246408,
+      "lyricsId": 6688422,
+      "lyricsPath": "lyrics/6688422.txt"
     },
     {
       "artist": "Ikaz Boi",
       "title": "BALLE DANS LE COEUR",
       "year": 2023,
-      "totalStreams": 8239882
+      "totalStreams": 8239882,
+      "lyricsId": 9563390,
+      "lyricsPath": "lyrics/9563390.txt"
     },
     {
       "artist": "Ninho",
       "title": "Laisse pas traîner ton fils",
       "year": 2017,
-      "totalStreams": 8238837
+      "totalStreams": 8238837,
+      "lyricsId": 3220852,
+      "lyricsPath": "lyrics/3220852.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Grande armée",
       "year": 2017,
-      "totalStreams": 8237569
+      "totalStreams": 8237569,
+      "lyricsId": 2990418,
+      "lyricsPath": "lyrics/2990418.txt"
     },
     {
       "artist": "Imen Es",
       "title": "Essaie encore",
       "year": 2021,
-      "totalStreams": 8184293
+      "totalStreams": 8184293,
+      "lyricsId": 6726145,
+      "lyricsPath": "lyrics/6726145.txt"
     },
     {
       "artist": "Laylow",
       "title": "IVERSON",
       "year": 2021,
-      "totalStreams": 8175724
+      "totalStreams": 8175724,
+      "lyricsId": 6962395,
+      "lyricsPath": "lyrics/6962395.txt"
     },
     {
       "artist": "Booba",
       "title": "Gotham",
       "year": 2018,
-      "totalStreams": 8166744
+      "totalStreams": 8166744,
+      "lyricsId": 3614094,
+      "lyricsPath": "lyrics/3614094.txt"
     },
     {
       "artist": "La Fouine",
       "title": "Broken",
       "year": 2025,
-      "totalStreams": 8099977
+      "totalStreams": 8099977,
+      "lyricsId": 12682660,
+      "lyricsPath": "lyrics/12682660.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Grisaille",
       "year": 2023,
-      "totalStreams": 8051289
+      "totalStreams": 8051289,
+      "lyricsId": 8846205,
+      "lyricsPath": "lyrics/8846205.txt"
     },
     {
       "artist": "PLK",
       "title": "Chandon et Moët",
       "year": 2020,
-      "totalStreams": 7951965
+      "totalStreams": 7951965,
+      "lyricsId": 5838777,
+      "lyricsPath": "lyrics/5838777.txt"
     },
     {
       "artist": "4Keus",
       "title": "En bas",
       "year": 2020,
-      "totalStreams": 7921407
+      "totalStreams": 7921407,
+      "lyricsId": 4735264,
+      "lyricsPath": "lyrics/4735264.txt"
     },
     {
       "artist": "JKSN",
       "title": "Seine-Saint-Denis",
       "year": 2024,
-      "totalStreams": 7918551
+      "totalStreams": 7918551,
+      "lyricsId": 9983762,
+      "lyricsPath": "lyrics/9983762.txt"
     },
     {
       "artist": "Tayc",
       "title": "P A S C O M M E Ç A",
       "year": 2021,
-      "totalStreams": 7891257
+      "totalStreams": 7891257,
+      "lyricsId": 7284373,
+      "lyricsPath": "lyrics/7284373.txt"
     },
     {
       "artist": "Tayc",
       "title": "Dis moi comment.",
       "year": 2021,
-      "totalStreams": 7877597
+      "totalStreams": 7877597,
+      "lyricsId": 6960598,
+      "lyricsPath": "lyrics/6960598.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Billet",
       "year": 2018,
-      "totalStreams": 7832462
+      "totalStreams": 7832462,
+      "lyricsId": 3327124,
+      "lyricsPath": "lyrics/3327124.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Christophe",
       "year": 2017,
-      "totalStreams": 7821986
+      "totalStreams": 7821986,
+      "lyricsId": 3266710,
+      "lyricsPath": "lyrics/3266710.txt"
     },
     {
       "artist": "Moha La Squale",
       "title": "Bienvenue à La Banane",
       "year": 2018,
-      "totalStreams": 7732571
+      "totalStreams": 7732571,
+      "lyricsId": 3276846,
+      "lyricsPath": "lyrics/3276846.txt"
     },
     {
       "artist": "Ninho",
       "title": "Every day",
       "year": 2020,
-      "totalStreams": 7725296
+      "totalStreams": 7725296,
+      "lyricsId": 5327378,
+      "lyricsPath": "lyrics/5327378.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Zone",
       "year": 2017,
-      "totalStreams": 7686199
+      "totalStreams": 7686199,
+      "lyricsId": 3266712,
+      "lyricsPath": "lyrics/3266712.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Takotsubo",
       "year": 2019,
-      "totalStreams": 7673789
+      "totalStreams": 7673789,
+      "lyricsId": 4611109,
+      "lyricsPath": "lyrics/4611109.txt"
     },
     {
       "artist": "Booba",
       "title": "VVV",
       "year": 2021,
-      "totalStreams": 7654580
+      "totalStreams": 7654580,
+      "lyricsId": 6360226,
+      "lyricsPath": "lyrics/6360226.txt"
     },
     {
       "artist": "Ninho",
       "title": "LES DIAMANTS DE BOKASSA",
       "year": 2026,
-      "totalStreams": 7645377
+      "totalStreams": 7645377,
+      "lyricsId": 12920864,
+      "lyricsPath": "lyrics/12920864.txt"
     },
     {
       "artist": "Tayc",
       "title": "Comme toi",
       "year": 2020,
-      "totalStreams": 7643636
+      "totalStreams": 7643636,
+      "lyricsId": 6174242,
+      "lyricsPath": "lyrics/6174242.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Soldat",
       "year": 2019,
-      "totalStreams": 7612413
+      "totalStreams": 7612413,
+      "lyricsId": 4019823,
+      "lyricsPath": "lyrics/4019823.txt"
     },
     {
       "artist": "Ziak",
       "title": "Fixette",
       "year": 2021,
-      "totalStreams": 7592119
+      "totalStreams": 7592119,
+      "lyricsId": 6074273,
+      "lyricsPath": "lyrics/6074273.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "MW2",
       "year": 2023,
-      "totalStreams": 7575985
+      "totalStreams": 7575985,
+      "lyricsId": 9386652,
+      "lyricsPath": "lyrics/9386652.txt"
     },
     {
       "artist": "La Fève",
       "title": "MAUVAIS PAYEUR",
       "year": 2021,
-      "totalStreams": 7568892
+      "totalStreams": 7568892,
+      "lyricsId": 7306981,
+      "lyricsPath": "lyrics/7306981.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Aventador",
       "year": 2019,
-      "totalStreams": 7566301
+      "totalStreams": 7566301,
+      "lyricsId": 4308678,
+      "lyricsPath": "lyrics/4308678.txt"
     },
     {
       "artist": "Booba",
       "title": "Trône",
       "year": 2017,
-      "totalStreams": 7552574
+      "totalStreams": 7552574,
+      "lyricsId": 3339215,
+      "lyricsPath": "lyrics/3339215.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Paradis",
       "year": 2017,
-      "totalStreams": 7552373
+      "totalStreams": 7552373,
+      "lyricsId": 3267195,
+      "lyricsPath": "lyrics/3267195.txt"
     },
     {
       "artist": "La Mano 1.9",
       "title": "Canon",
       "year": 2024,
-      "totalStreams": 7529270
+      "totalStreams": 7529270,
+      "lyricsId": 10330881,
+      "lyricsPath": "lyrics/10330881.txt"
     },
     {
       "artist": "Ninho",
       "title": "911",
       "year": 2024,
-      "totalStreams": 7505708
+      "totalStreams": 7505708,
+      "lyricsId": 10656064,
+      "lyricsPath": "lyrics/10656064.txt"
     },
     {
       "artist": "Tiakola",
       "title": "G.A.N.G",
       "year": 2024,
-      "totalStreams": 7457802
+      "totalStreams": 7457802,
+      "lyricsId": 10845069,
+      "lyricsPath": "lyrics/10845069.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Rap catéchisme",
       "year": 2020,
-      "totalStreams": 7400581
+      "totalStreams": 7400581,
+      "lyricsId": 5891051,
+      "lyricsPath": "lyrics/5891051.txt"
     },
     {
       "artist": "Vald",
       "title": "Vitrine",
       "year": 2017,
-      "totalStreams": 7400172
+      "totalStreams": 7400172,
+      "lyricsId": 2931547,
+      "lyricsPath": "lyrics/2931547.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Traîtres",
       "year": 2017,
-      "totalStreams": 7373929
+      "totalStreams": 7373929,
+      "lyricsId": 2970214,
+      "lyricsPath": "lyrics/2970214.txt"
     },
     {
       "artist": "Ninho",
       "title": "YSL",
       "year": 2021,
-      "totalStreams": 7363638
+      "totalStreams": 7363638,
+      "lyricsId": 7376402,
+      "lyricsPath": "lyrics/7376402.txt"
     },
     {
       "artist": "RnBoi",
       "title": "AVEC MOI",
       "year": 2026,
-      "totalStreams": 7304264
+      "totalStreams": 7304264,
+      "lyricsId": 12969786,
+      "lyricsPath": "lyrics/12969786.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Le bruit qui court",
       "year": 2019,
-      "totalStreams": 7297276
+      "totalStreams": 7297276,
+      "lyricsId": 4611275,
+      "lyricsPath": "lyrics/4611275.txt"
     },
     {
       "artist": "Ninho",
       "title": "L'ancien",
       "year": 2019,
-      "totalStreams": 7250582
+      "totalStreams": 7250582,
+      "lyricsId": 4343706,
+      "lyricsPath": "lyrics/4343706.txt"
     },
     {
       "artist": "S-Crew",
       "title": "22",
       "year": 2022,
-      "totalStreams": 7242086
+      "totalStreams": 7242086,
+      "lyricsId": 8029056,
+      "lyricsPath": "lyrics/8029056.txt"
     },
     {
       "artist": "Naps",
       "title": "Georgina",
       "year": 2025,
-      "totalStreams": 7238914
+      "totalStreams": 7238914,
+      "lyricsId": 12649242,
+      "lyricsPath": "lyrics/12649242.txt"
     },
     {
       "artist": "Gazo",
       "title": "Drill FR 4",
       "year": 2020,
-      "totalStreams": 7202437
+      "totalStreams": 7202437,
+      "lyricsId": 5680166,
+      "lyricsPath": "lyrics/5680166.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Hasarder",
       "year": 2022,
-      "totalStreams": 7169906
+      "totalStreams": 7169906,
+      "lyricsId": 8198495,
+      "lyricsPath": "lyrics/8198495.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "L'addition",
       "year": 2019,
-      "totalStreams": 7143257
+      "totalStreams": 7143257,
+      "lyricsId": 4015204,
+      "lyricsPath": "lyrics/4015204.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Oula",
       "year": 2018,
-      "totalStreams": 7130363
+      "totalStreams": 7130363,
+      "lyricsId": 4009413,
+      "lyricsPath": "lyrics/4009413.txt"
     },
     {
       "artist": "L2B",
       "title": "C'est Quoi Ton Délire",
       "year": 2025,
-      "totalStreams": 7120198
+      "totalStreams": 7120198,
+      "lyricsId": 11719012,
+      "lyricsPath": "lyrics/11719012.txt"
     },
     {
       "artist": "Sadek",
       "title": "La Vache",
       "year": 2017,
-      "totalStreams": 7099408
+      "totalStreams": 7099408,
+      "lyricsId": 3194214,
+      "lyricsPath": "lyrics/3194214.txt"
     },
     {
       "artist": "Naza",
       "title": "Une histoire",
       "year": 2024,
-      "totalStreams": 7093627
+      "totalStreams": 7093627,
+      "lyricsId": 10498226,
+      "lyricsPath": "lyrics/10498226.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Baise le monde",
       "year": 2021,
-      "totalStreams": 7092627
+      "totalStreams": 7092627,
+      "lyricsId": 7325575,
+      "lyricsPath": "lyrics/7325575.txt"
     },
     {
       "artist": "Zkr",
       "title": "Tu vois comment ?",
       "year": 2021,
-      "totalStreams": 7086118
+      "totalStreams": 7086118,
+      "lyricsId": 6257308,
+      "lyricsPath": "lyrics/6257308.txt"
     },
     {
       "artist": "Ninho",
       "title": "RER D",
       "year": 2021,
-      "totalStreams": 7082650
+      "totalStreams": 7082650,
+      "lyricsId": 7376379,
+      "lyricsPath": "lyrics/7376379.txt"
     },
     {
       "artist": "Sadek",
       "title": "Dans la lune",
       "year": 2017,
-      "totalStreams": 7052665
+      "totalStreams": 7052665,
+      "lyricsId": 3084721,
+      "lyricsPath": "lyrics/3084721.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "FeFe",
       "year": 2019,
-      "totalStreams": 6946560
+      "totalStreams": 6946560,
+      "lyricsId": 4268259,
+      "lyricsPath": "lyrics/4268259.txt"
     },
     {
       "artist": "KeBlack",
       "title": "J'ai déconné",
       "year": 2017,
-      "totalStreams": 6932306
+      "totalStreams": 6932306,
+      "lyricsId": 2408187,
+      "lyricsPath": "lyrics/2408187.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Rêve mieux",
       "year": 2021,
-      "totalStreams": 6927261
+      "totalStreams": 6927261,
+      "lyricsId": 7325569,
+      "lyricsPath": "lyrics/7325569.txt"
     },
     {
       "artist": "Ninho",
       "title": "+971",
       "year": 2026,
-      "totalStreams": 6906094
+      "totalStreams": 6906094,
+      "lyricsId": 12751086,
+      "lyricsPath": "lyrics/12751086.txt"
     },
     {
       "artist": "Josman",
       "title": "Brûle",
       "year": 2022,
-      "totalStreams": 6899436
+      "totalStreams": 6899436,
+      "lyricsId": 7741775,
+      "lyricsPath": "lyrics/7741775.txt"
     },
     {
       "artist": "Ninho",
       "title": "Privilège",
       "year": 2020,
-      "totalStreams": 6897999
+      "totalStreams": 6897999,
+      "lyricsId": 6107408,
+      "lyricsPath": "lyrics/6107408.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Ciel noir",
       "year": 2019,
-      "totalStreams": 6897270
+      "totalStreams": 6897270,
+      "lyricsId": 4611269,
+      "lyricsPath": "lyrics/4611269.txt"
     },
     {
       "artist": "Ninho",
       "title": "Caramelo",
       "year": 2017,
-      "totalStreams": 6896017
+      "totalStreams": 6896017,
+      "lyricsId": 3220851,
+      "lyricsPath": "lyrics/3220851.txt"
     },
     {
       "artist": "Tiakola",
       "title": "MBIFE",
       "year": 2025,
-      "totalStreams": 6884079
+      "totalStreams": 6884079,
+      "lyricsId": 12008754,
+      "lyricsPath": "lyrics/12008754.txt"
     },
     {
       "artist": "Booba",
       "title": "E.L.E.P.H.A.N.T",
       "year": 2017,
-      "totalStreams": 6880132
+      "totalStreams": 6880132,
+      "lyricsId": 2825917,
+      "lyricsPath": "lyrics/2825917.txt"
     },
     {
       "artist": "L2B",
       "title": "Jump",
       "year": 2025,
-      "totalStreams": 6876896
+      "totalStreams": 6876896,
+      "lyricsId": 11911109,
+      "lyricsPath": "lyrics/11911109.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Pousse toi",
       "year": 2021,
-      "totalStreams": 6865529
+      "totalStreams": 6865529,
+      "lyricsId": 6825978,
+      "lyricsPath": "lyrics/6825978.txt"
     },
     {
       "artist": "Ninho",
       "title": "Chino",
       "year": 2017,
-      "totalStreams": 6855703
+      "totalStreams": 6855703,
+      "lyricsId": 3196552,
+      "lyricsPath": "lyrics/3196552.txt"
     },
     {
       "artist": "Gazo",
       "title": "LETTRE À UN OPPS",
       "year": 2022,
-      "totalStreams": 6840190
+      "totalStreams": 6840190,
+      "lyricsId": 8146004,
+      "lyricsPath": "lyrics/8146004.txt"
     },
     {
       "artist": "Abou Debeing",
       "title": "C'est pas bon",
       "year": 2017,
-      "totalStreams": 6822958
+      "totalStreams": 6822958,
+      "lyricsId": 3304269,
+      "lyricsPath": "lyrics/3304269.txt"
     },
     {
       "artist": "Booba",
       "title": "Azerty",
       "year": 2021,
-      "totalStreams": 6816740
+      "totalStreams": 6816740,
+      "lyricsId": 6229602,
+      "lyricsPath": "lyrics/6229602.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Hors ligne",
       "year": 2020,
-      "totalStreams": 6812409
+      "totalStreams": 6812409,
+      "lyricsId": 5878658,
+      "lyricsPath": "lyrics/5878658.txt"
     },
     {
       "artist": "Lujipeka",
       "title": "Pas à ma place",
       "year": 2021,
-      "totalStreams": 6809696
+      "totalStreams": 6809696,
+      "lyricsId": 7076674,
+      "lyricsPath": "lyrics/7076674.txt"
     },
     {
       "artist": "Ninho",
       "title": "Kim Jong-il",
       "year": 2019,
-      "totalStreams": 6757398
+      "totalStreams": 6757398,
+      "lyricsId": 4407510,
+      "lyricsPath": "lyrics/4407510.txt"
     },
     {
       "artist": "Ziak",
       "title": "Rhum & machette",
       "year": 2021,
-      "totalStreams": 6748992
+      "totalStreams": 6748992,
+      "lyricsId": 7372184,
+      "lyricsPath": "lyrics/7372184.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Solo",
       "year": 2019,
-      "totalStreams": 6725737
+      "totalStreams": 6725737,
+      "lyricsId": 4202118,
+      "lyricsPath": "lyrics/4202118.txt"
     },
     {
       "artist": "Naps",
       "title": "La danse du roro",
       "year": 2023,
-      "totalStreams": 6725234
+      "totalStreams": 6725234,
+      "lyricsId": 9033633,
+      "lyricsPath": "lyrics/9033633.txt"
     },
     {
       "artist": "Freeze corleone",
       "title": "Ancelotti",
       "year": 2023,
-      "totalStreams": 6724937
+      "totalStreams": 6724937,
+      "lyricsId": 9386662,
+      "lyricsPath": "lyrics/9386662.txt"
     },
     {
       "artist": "Naza",
       "title": "MMM",
       "year": 2017,
-      "totalStreams": 6655488
+      "totalStreams": 6655488,
+      "lyricsId": 3148818,
+      "lyricsPath": "lyrics/3148818.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Pas de reine",
       "year": 2020,
-      "totalStreams": 6652606
+      "totalStreams": 6652606,
+      "lyricsId": 6042732,
+      "lyricsPath": "lyrics/6042732.txt"
     },
     {
       "artist": "Bolémvn",
       "title": "Prends ta monnaie",
       "year": 2020,
-      "totalStreams": 6626348
+      "totalStreams": 6626348,
+      "lyricsId": 5516916,
+      "lyricsPath": "lyrics/5516916.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Papel",
       "year": 2021,
-      "totalStreams": 6621152
+      "totalStreams": 6621152,
+      "lyricsId": 7130972,
+      "lyricsPath": "lyrics/7130972.txt"
     },
     {
       "artist": "Wejdene",
       "title": "Réfléchir",
       "year": 2020,
-      "totalStreams": 6614194
+      "totalStreams": 6614194,
+      "lyricsId": 6477956,
+      "lyricsPath": "lyrics/6477956.txt"
     },
     {
       "artist": "Ninho",
       "title": "C'était le rap",
       "year": 2020,
-      "totalStreams": 6609496
+      "totalStreams": 6609496,
+      "lyricsId": 5327376,
+      "lyricsPath": "lyrics/5327376.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Illimité",
       "year": 2020,
-      "totalStreams": 6596508
+      "totalStreams": 6596508,
+      "lyricsId": 5876526,
+      "lyricsPath": "lyrics/5876526.txt"
     },
     {
       "artist": "Werenoi",
       "title": "La famine",
       "year": 2024,
-      "totalStreams": 6591439
+      "totalStreams": 6591439,
+      "lyricsId": 10940213,
+      "lyricsPath": "lyrics/10940213.txt"
     },
     {
       "artist": "Vegedream",
       "title": "Marchand de sable Part. 4 (Du SAal)",
       "year": 2018,
-      "totalStreams": 6510026
+      "totalStreams": 6510026,
+      "lyricsId": 3474698,
+      "lyricsPath": "lyrics/3474698.txt"
     },
     {
       "artist": "Ziak",
       "title": "Shonen",
       "year": 2021,
-      "totalStreams": 6457600
+      "totalStreams": 6457600,
+      "lyricsId": 7372192,
+      "lyricsPath": "lyrics/7372192.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Oyé",
       "year": 2018,
-      "totalStreams": 6451228
+      "totalStreams": 6451228,
+      "lyricsId": 3929408,
+      "lyricsPath": "lyrics/3929408.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Ken Kaneki",
       "year": 2019,
-      "totalStreams": 6442441
+      "totalStreams": 6442441,
+      "lyricsId": 4647649,
+      "lyricsPath": "lyrics/4647649.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "No Stress",
       "year": 2025,
-      "totalStreams": 6415976
+      "totalStreams": 6415976,
+      "lyricsId": 12711115,
+      "lyricsPath": "lyrics/12711115.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Plus de larmes",
       "year": 2018,
-      "totalStreams": 6411644
+      "totalStreams": 6411644,
+      "lyricsId": 4143104,
+      "lyricsPath": "lyrics/4143104.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Chérie",
       "year": 2023,
-      "totalStreams": 6384651
+      "totalStreams": 6384651,
+      "lyricsId": 9430262,
+      "lyricsPath": "lyrics/9430262.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Débrouillard",
       "year": 2019,
-      "totalStreams": 6379494
+      "totalStreams": 6379494,
+      "lyricsId": 4153001,
+      "lyricsPath": "lyrics/4153001.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Ne me ramène pas",
       "year": 2018,
-      "totalStreams": 6375925
+      "totalStreams": 6375925,
+      "lyricsId": 4144113,
+      "lyricsPath": "lyrics/4144113.txt"
     },
     {
       "artist": "Ninho",
       "title": "Zéro paluche",
       "year": 2019,
-      "totalStreams": 6324469
+      "totalStreams": 6324469,
+      "lyricsId": 4343711,
+      "lyricsPath": "lyrics/4343711.txt"
     },
     {
       "artist": "PLK",
       "title": "Dans les clips",
       "year": 2020,
-      "totalStreams": 6282692
+      "totalStreams": 6282692,
+      "lyricsId": 5838745,
+      "lyricsPath": "lyrics/5838745.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Quand est-ce que ça s'arrête",
       "year": 2017,
-      "totalStreams": 6247255
+      "totalStreams": 6247255,
+      "lyricsId": 3267193,
+      "lyricsPath": "lyrics/3267193.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "Le dire",
       "year": 2020,
-      "totalStreams": 6240174
+      "totalStreams": 6240174,
+      "lyricsId": 5269745,
+      "lyricsPath": "lyrics/5269745.txt"
     },
     {
       "artist": "Ninho",
       "title": "Roro",
       "year": 2017,
-      "totalStreams": 6227669
+      "totalStreams": 6227669,
+      "lyricsId": 3061663,
+      "lyricsPath": "lyrics/3061663.txt"
     },
     {
       "artist": "Mister V",
       "title": "Space Jam",
       "year": 2017,
-      "totalStreams": 6196215
+      "totalStreams": 6196215,
+      "lyricsId": 3069488,
+      "lyricsPath": "lyrics/3069488.txt"
     },
     {
       "artist": "OBOY",
       "title": "Louis V",
       "year": 2021,
-      "totalStreams": 6182236
+      "totalStreams": 6182236,
+      "lyricsId": 7034369,
+      "lyricsPath": "lyrics/7034369.txt"
     },
     {
       "artist": "Booba",
       "title": "Kayna",
       "year": 2021,
-      "totalStreams": 6171140
+      "totalStreams": 6171140,
+      "lyricsId": 6783083,
+      "lyricsPath": "lyrics/6783083.txt"
     },
     {
       "artist": "PLK",
       "title": "Mignon tout plein",
       "year": 2024,
-      "totalStreams": 6145072
+      "totalStreams": 6145072,
+      "lyricsId": 9979561,
+      "lyricsPath": "lyrics/9979561.txt"
     },
     {
       "artist": "Ninho",
       "title": "NI",
       "year": 2026,
-      "totalStreams": 6144448
+      "totalStreams": 6144448,
+      "lyricsId": 4343704,
+      "lyricsPath": "lyrics/4343704.txt"
     },
     {
       "artist": "Franglish",
       "title": "Sans moi",
       "year": 2021,
-      "totalStreams": 6134214
+      "totalStreams": 6134214,
+      "lyricsId": 6895539,
+      "lyricsPath": "lyrics/6895539.txt"
     },
     {
       "artist": "Ninho",
       "title": "Gros vendeurs",
       "year": 2020,
-      "totalStreams": 6104523
+      "totalStreams": 6104523,
+      "lyricsId": 5327366,
+      "lyricsPath": "lyrics/5327366.txt"
     },
     {
       "artist": "Mister V",
       "title": "Top album",
       "year": 2017,
-      "totalStreams": 6098223
+      "totalStreams": 6098223,
+      "lyricsId": 3068433,
+      "lyricsPath": "lyrics/3068433.txt"
     },
     {
       "artist": "Booba",
       "title": "GP",
       "year": 2021,
-      "totalStreams": 6092442
+      "totalStreams": 6092442,
+      "lyricsId": 6499563,
+      "lyricsPath": "lyrics/6499563.txt"
     },
     {
       "artist": "Tiakola",
       "title": "Roro",
       "year": 2022,
-      "totalStreams": 6092210
+      "totalStreams": 6092210,
+      "lyricsId": 7971525,
+      "lyricsPath": "lyrics/7971525.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Turbo",
       "year": 2020,
-      "totalStreams": 6063678
+      "totalStreams": 6063678,
+      "lyricsId": 5081101,
+      "lyricsPath": "lyrics/5081101.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "De mon mieux",
       "year": 2019,
-      "totalStreams": 6051889
+      "totalStreams": 6051889,
+      "lyricsId": 4611131,
+      "lyricsPath": "lyrics/4611131.txt"
     },
     {
       "artist": "Tayc",
       "title": "Sans effet",
       "year": 2021,
-      "totalStreams": 6049164
+      "totalStreams": 6049164,
+      "lyricsId": 7877419,
+      "lyricsPath": "lyrics/7877419.txt"
     },
     {
       "artist": "Ninho",
       "title": "Freestyle LVL UP 3",
       "year": 2023,
-      "totalStreams": 6043737
+      "totalStreams": 6043737,
+      "lyricsId": 9111084,
+      "lyricsPath": "lyrics/9111084.txt"
     },
     {
       "artist": "Moha La Squale",
       "title": "Santa Monica",
       "year": 2019,
-      "totalStreams": 6036362
+      "totalStreams": 6036362,
+      "lyricsId": 4989471,
+      "lyricsPath": "lyrics/4989471.txt"
     },
     {
       "artist": "Jahyanai",
       "title": "Who Mad Again",
       "year": 2017,
-      "totalStreams": 6013077
+      "totalStreams": 6013077,
+      "lyricsId": 3697451,
+      "lyricsPath": "lyrics/3697451.txt"
     },
     {
       "artist": "Ninho",
       "title": "Centre commercial",
       "year": 2020,
-      "totalStreams": 6005683
+      "totalStreams": 6005683,
+      "lyricsId": 5327374,
+      "lyricsPath": "lyrics/5327374.txt"
     },
     {
       "artist": "Marwa Loud",
       "title": "Allez les gros",
       "year": 2020,
-      "totalStreams": 6003128
-    },
-    {
-      "artist": "Vegedream",
-      "title": "La fuite - Vegedream X Dj Leska / Edit MIx",
-      "year": 2018,
-      "totalStreams": 5972868
+      "totalStreams": 6003128,
+      "lyricsId": 5210812,
+      "lyricsPath": "lyrics/5210812.txt"
     },
     {
       "artist": "Naza",
       "title": "Souris verte",
       "year": 2020,
-      "totalStreams": 5958413
+      "totalStreams": 5958413,
+      "lyricsId": 5208597,
+      "lyricsPath": "lyrics/5208597.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Je suis gninnin, je suis bien",
       "year": 2017,
-      "totalStreams": 5942391
+      "totalStreams": 5942391,
+      "lyricsId": 3264942,
+      "lyricsPath": "lyrics/3264942.txt"
     },
     {
       "artist": "Benab",
       "title": "RS3",
       "year": 2021,
-      "totalStreams": 5908269
+      "totalStreams": 5908269,
+      "lyricsId": 5763123,
+      "lyricsPath": "lyrics/5763123.txt"
     },
     {
       "artist": "Werenoi",
       "title": "Dans un verre",
       "year": 2024,
-      "totalStreams": 5907182
+      "totalStreams": 5907182,
+      "lyricsId": 9982521,
+      "lyricsPath": "lyrics/9982521.txt"
     },
     {
       "artist": "Rim'K",
       "title": "Rose rouge",
       "year": 2020,
-      "totalStreams": 5886974
+      "totalStreams": 5886974,
+      "lyricsId": 5431986,
+      "lyricsPath": "lyrics/5431986.txt"
     },
     {
       "artist": "Vitaa",
       "title": "Viens on essaie",
       "year": 2025,
-      "totalStreams": 5868006
+      "totalStreams": 5868006,
+      "lyricsId": 12096504,
+      "lyricsPath": "lyrics/12096504.txt"
     },
     {
       "artist": "Hatik",
       "title": "éternel",
       "year": 2021,
-      "totalStreams": 5863066
+      "totalStreams": 5863066,
+      "lyricsId": 6479918,
+      "lyricsPath": "lyrics/6479918.txt"
     },
     {
       "artist": "Ninho",
       "title": "Toutes les couleurs",
       "year": 2020,
-      "totalStreams": 5862607
+      "totalStreams": 5862607,
+      "lyricsId": 6107429,
+      "lyricsPath": "lyrics/6107429.txt"
     },
     {
       "artist": "Hayce Lemsi",
       "title": "Havana",
       "year": 2017,
-      "totalStreams": 5844658
+      "totalStreams": 5844658,
+      "lyricsId": 3336951,
+      "lyricsPath": "lyrics/3336951.txt"
     },
     {
       "artist": "Ziak",
       "title": "Ca suffit",
       "year": 2021,
-      "totalStreams": 5834606
+      "totalStreams": 5834606,
+      "lyricsId": 7309086,
+      "lyricsPath": "lyrics/7309086.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "SMS",
       "year": 2023,
-      "totalStreams": 5770035
+      "totalStreams": 5770035,
+      "lyricsId": 8595972,
+      "lyricsPath": "lyrics/8595972.txt"
     },
     {
       "artist": "La Fouine",
       "title": "Seleção",
       "year": 2024,
-      "totalStreams": 5767637
+      "totalStreams": 5767637,
+      "lyricsId": 11107818,
+      "lyricsPath": "lyrics/11107818.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Bébéboa",
       "year": 2021,
-      "totalStreams": 5758134
+      "totalStreams": 5758134,
+      "lyricsId": 7325568,
+      "lyricsPath": "lyrics/7325568.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Encore",
       "year": 2020,
-      "totalStreams": 5753391
+      "totalStreams": 5753391,
+      "lyricsId": 6042738,
+      "lyricsPath": "lyrics/6042738.txt"
     },
     {
       "artist": "menace Santana",
       "title": "Vengeance !",
       "year": 2021,
-      "totalStreams": 5741662
+      "totalStreams": 5741662,
+      "lyricsId": 7397766,
+      "lyricsPath": "lyrics/7397766.txt"
     },
     {
       "artist": "Ziak",
       "title": "Pistol & Zamal",
       "year": 2023,
-      "totalStreams": 5700050
+      "totalStreams": 5700050,
+      "lyricsId": 8806469,
+      "lyricsPath": "lyrics/8806469.txt"
     },
     {
       "artist": "Ninho",
       "title": "La vie de Johnny",
       "year": 2023,
-      "totalStreams": 5659997
+      "totalStreams": 5659997,
+      "lyricsId": 9277715,
+      "lyricsPath": "lyrics/9277715.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Four",
       "year": 2019,
-      "totalStreams": 5659497
+      "totalStreams": 5659497,
+      "lyricsId": 4801263,
+      "lyricsPath": "lyrics/4801263.txt"
     },
     {
       "artist": "Guy2Bezbar",
       "title": "Full black",
       "year": 2021,
-      "totalStreams": 5643677
+      "totalStreams": 5643677,
+      "lyricsId": 7309616,
+      "lyricsPath": "lyrics/7309616.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Ensemble",
       "year": 2021,
-      "totalStreams": 5637102
+      "totalStreams": 5637102,
+      "lyricsId": 7325592,
+      "lyricsPath": "lyrics/7325592.txt"
     },
     {
       "artist": "Ninho",
       "title": "3 MAI 2025",
       "year": 2024,
-      "totalStreams": 5632197
+      "totalStreams": 5632197,
+      "lyricsId": 10005693,
+      "lyricsPath": "lyrics/10005693.txt"
     },
     {
       "artist": "Dadju",
       "title": "TPB",
       "year": 2020,
-      "totalStreams": 5624100
+      "totalStreams": 5624100,
+      "lyricsId": 5007903,
+      "lyricsPath": "lyrics/5007903.txt"
     },
     {
       "artist": "Bekar",
       "title": "Magenta",
       "year": 2022,
-      "totalStreams": 5617362
+      "totalStreams": 5617362,
+      "lyricsId": 7784064,
+      "lyricsPath": "lyrics/7784064.txt"
     },
     {
       "artist": "Aya Nakamura",
       "title": "Préféré",
       "year": 2020,
-      "totalStreams": 5604617
+      "totalStreams": 5604617,
+      "lyricsId": 6134127,
+      "lyricsPath": "lyrics/6134127.txt"
     },
     {
       "artist": "Lacrim",
       "title": "La dolce vita",
       "year": 2017,
-      "totalStreams": 5586701
+      "totalStreams": 5586701,
+      "lyricsId": 3036992,
+      "lyricsPath": "lyrics/3036992.txt"
     },
     {
       "artist": "4Keus",
       "title": "Mignon garçon",
       "year": 2018,
-      "totalStreams": 5586602
+      "totalStreams": 5586602,
+      "lyricsId": 3655870,
+      "lyricsPath": "lyrics/3655870.txt"
     },
     {
       "artist": "Nej",
       "title": "Ma muse",
       "year": 2023,
-      "totalStreams": 5578947
+      "totalStreams": 5578947,
+      "lyricsId": 9548474,
+      "lyricsPath": "lyrics/9548474.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "R44",
       "year": 2019,
-      "totalStreams": 5561811
+      "totalStreams": 5561811,
+      "lyricsId": 4372166,
+      "lyricsPath": "lyrics/4372166.txt"
     },
     {
       "artist": "Laeti",
       "title": "Rider toute la night",
       "year": 2021,
-      "totalStreams": 5531018
+      "totalStreams": 5531018,
+      "lyricsId": 7219739,
+      "lyricsPath": "lyrics/7219739.txt"
     },
     {
       "artist": "Sadek",
       "title": "En leuleu",
       "year": 2017,
-      "totalStreams": 5506348
+      "totalStreams": 5506348,
+      "lyricsId": 3144887,
+      "lyricsPath": "lyrics/3144887.txt"
     },
     {
       "artist": "Franglish",
       "title": "Bolingo",
       "year": 2023,
-      "totalStreams": 5506174
+      "totalStreams": 5506174,
+      "lyricsId": 9183457,
+      "lyricsPath": "lyrics/9183457.txt"
     },
     {
       "artist": "Lyna Mahyem",
       "title": "Mal de toi",
       "year": 2022,
-      "totalStreams": 5505681
+      "totalStreams": 5505681,
+      "lyricsId": 7761685,
+      "lyricsPath": "lyrics/7761685.txt"
     },
     {
       "artist": "L'Algérino",
       "title": "Les menottes (Tching Tchang Tchong)",
       "year": 2017,
-      "totalStreams": 5499493
+      "totalStreams": 5499493,
+      "lyricsId": 3075776,
+      "lyricsPath": "lyrics/3075776.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "Benda",
       "year": 2019,
-      "totalStreams": 5477762
+      "totalStreams": 5477762,
+      "lyricsId": 4174336,
+      "lyricsPath": "lyrics/4174336.txt"
     },
     {
       "artist": "Naps",
       "title": "Monica",
       "year": 2020,
-      "totalStreams": 5469688
+      "totalStreams": 5469688,
+      "lyricsId": 5233351,
+      "lyricsPath": "lyrics/5233351.txt"
     },
     {
       "artist": "Tayc",
       "title": "Carry Me",
       "year": 2023,
-      "totalStreams": 5443765
+      "totalStreams": 5443765,
+      "lyricsId": 8644676,
+      "lyricsPath": "lyrics/8644676.txt"
     },
     {
       "artist": "DA Uzi",
       "title": "Jeune d'en bas",
       "year": 2021,
-      "totalStreams": 5436706
+      "totalStreams": 5436706,
+      "lyricsId": 6981640,
+      "lyricsPath": "lyrics/6981640.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Bonne meuf",
       "year": 2017,
-      "totalStreams": 5420602
+      "totalStreams": 5420602,
+      "lyricsId": 3267192,
+      "lyricsPath": "lyrics/3267192.txt"
     },
     {
       "artist": "Kaaris",
       "title": "G.O.K.O.U",
       "year": 2018,
-      "totalStreams": 5411990
+      "totalStreams": 5411990,
+      "lyricsId": 3788737,
+      "lyricsPath": "lyrics/3788737.txt"
     },
     {
       "artist": "Dinor rdt",
       "title": "Massa",
       "year": 2019,
-      "totalStreams": 5402504
+      "totalStreams": 5402504,
+      "lyricsId": 4676601,
+      "lyricsPath": "lyrics/4676601.txt"
     },
     {
       "artist": "Nekfeu",
       "title": "Compte les hommes",
       "year": 2019,
-      "totalStreams": 5396979
+      "totalStreams": 5396979,
+      "lyricsId": 4611284,
+      "lyricsPath": "lyrics/4611284.txt"
     },
     {
       "artist": "Ninho",
       "title": "5 bleus",
       "year": 2025,
-      "totalStreams": 5394814
+      "totalStreams": 5394814,
+      "lyricsId": 12435822,
+      "lyricsPath": "lyrics/12435822.txt"
     },
     {
       "artist": "Naza",
       "title": "P*Tain de m*Rde",
       "year": 2018,
-      "totalStreams": 5373813
+      "totalStreams": 5373813,
+      "lyricsId": 3632272,
+      "lyricsPath": "lyrics/3632272.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Tue ça",
       "year": 2021,
-      "totalStreams": 5354991
+      "totalStreams": 5354991,
+      "lyricsId": 6870735,
+      "lyricsPath": "lyrics/6870735.txt"
     },
     {
       "artist": "Lomepal",
       "title": "Beau la folie",
       "year": 2018,
-      "totalStreams": 5345490
+      "totalStreams": 5345490,
+      "lyricsId": 4143519,
+      "lyricsPath": "lyrics/4143519.txt"
     },
     {
       "artist": "Koba LaD",
       "title": "Moments durs",
       "year": 2018,
-      "totalStreams": 5318655
+      "totalStreams": 5318655,
+      "lyricsId": 3929402,
+      "lyricsPath": "lyrics/3929402.txt"
     },
     {
       "artist": "Kekra",
       "title": "Vréalité",
       "year": 2019,
-      "totalStreams": 5317732
+      "totalStreams": 5317732,
+      "lyricsId": 4327870,
+      "lyricsPath": "lyrics/4327870.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Jon Snow",
       "year": 2019,
-      "totalStreams": 5302427
+      "totalStreams": 5302427,
+      "lyricsId": 4171709,
+      "lyricsPath": "lyrics/4171709.txt"
     },
     {
       "artist": "Ninho",
       "title": "Blue story",
       "year": 2023,
-      "totalStreams": 5284814
+      "totalStreams": 5284814,
+      "lyricsId": 9277701,
+      "lyricsPath": "lyrics/9277701.txt"
     },
     {
       "artist": "Kaaris",
       "title": "NRV",
       "year": 2020,
-      "totalStreams": 5267515
+      "totalStreams": 5267515,
+      "lyricsId": 5809807,
+      "lyricsPath": "lyrics/5809807.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Civilisation",
       "year": 2021,
-      "totalStreams": 5262326
+      "totalStreams": 5262326,
+      "lyricsId": 7325594,
+      "lyricsPath": "lyrics/7325594.txt"
     },
     {
       "artist": "Vald",
       "title": "Ce monde est cruel",
       "year": 2019,
-      "totalStreams": 5246629
+      "totalStreams": 5246629,
+      "lyricsId": 4921321,
+      "lyricsPath": "lyrics/4921321.txt"
     },
     {
       "artist": "L2B",
       "title": "Tendance",
       "year": 2025,
-      "totalStreams": 5246162
+      "totalStreams": 5246162,
+      "lyricsId": 11492601,
+      "lyricsPath": "lyrics/11492601.txt"
     },
     {
       "artist": "Kaaris",
       "title": "Apocalypse",
       "year": 2022,
-      "totalStreams": 5227656
+      "totalStreams": 5227656,
+      "lyricsId": 7614466,
+      "lyricsPath": "lyrics/7614466.txt"
     },
     {
       "artist": "Soso Maness",
       "title": "Les derniers marioles",
       "year": 2021,
-      "totalStreams": 5225874
+      "totalStreams": 5225874,
+      "lyricsId": 6800893,
+      "lyricsPath": "lyrics/6800893.txt"
     },
     {
       "artist": "MHD",
       "title": "Full",
       "year": 2024,
-      "totalStreams": 5225278
+      "totalStreams": 5225278,
+      "lyricsId": 10714222,
+      "lyricsPath": "lyrics/10714222.txt"
     },
     {
       "artist": "Vald",
       "title": "Gotaga",
       "year": 2020,
-      "totalStreams": 5187519
+      "totalStreams": 5187519,
+      "lyricsId": 6209301,
+      "lyricsPath": "lyrics/6209301.txt"
     },
     {
       "artist": "Vald",
       "title": "Gris",
       "year": 2018,
-      "totalStreams": 5184880
+      "totalStreams": 5184880,
+      "lyricsId": 3402244,
+      "lyricsPath": "lyrics/3402244.txt"
     },
     {
       "artist": "Orelsan",
       "title": "Manifeste",
       "year": 2021,
-      "totalStreams": 5179245
+      "totalStreams": 5179245,
+      "lyricsId": 7325572,
+      "lyricsPath": "lyrics/7325572.txt"
     },
     {
       "artist": "Vald",
       "title": "Dernier retrait",
       "year": 2019,
-      "totalStreams": 5157550
+      "totalStreams": 5157550,
+      "lyricsId": 4929864,
+      "lyricsPath": "lyrics/4929864.txt"
     },
     {
       "artist": "Hös Copperfield",
       "title": "Ma guapa",
       "year": 2019,
-      "totalStreams": 5149763
+      "totalStreams": 5149763,
+      "lyricsId": 4703745,
+      "lyricsPath": "lyrics/4703745.txt"
     },
     {
       "artist": "Booba",
       "title": "Ultra",
       "year": 2021,
-      "totalStreams": 5147618
+      "totalStreams": 5147618,
+      "lyricsId": 6524935,
+      "lyricsPath": "lyrics/6524935.txt"
     },
     {
       "artist": "Benab",
       "title": "RS4",
       "year": 2021,
-      "totalStreams": 5125022
+      "totalStreams": 5125022,
+      "lyricsId": 7045004,
+      "lyricsPath": "lyrics/7045004.txt"
     },
     {
       "artist": "M. Pokora",
       "title": "Si on disait",
       "year": 2021,
-      "totalStreams": 5122410
+      "totalStreams": 5122410,
+      "lyricsId": 5998031,
+      "lyricsPath": "lyrics/5998031.txt"
     },
     {
       "artist": "Ninho",
       "title": "Le jeu",
       "year": 2020,
-      "totalStreams": 5113776
+      "totalStreams": 5113776,
+      "lyricsId": 5327379,
+      "lyricsPath": "lyrics/5327379.txt"
     },
     {
       "artist": "Lacrim",
       "title": "Jacques Chirac",
       "year": 2020,
-      "totalStreams": 5086065
+      "totalStreams": 5086065,
+      "lyricsId": 5984223,
+      "lyricsPath": "lyrics/5984223.txt"
     },
     {
       "artist": "Booba",
       "title": "6G",
       "year": 2024,
-      "totalStreams": 5072839
+      "totalStreams": 5072839,
+      "lyricsId": 8852674,
+      "lyricsPath": "lyrics/8852674.txt"
     },
     {
       "artist": "Franglish",
       "title": "Sécu",
       "year": 2022,
-      "totalStreams": 5058793
+      "totalStreams": 5058793,
+      "lyricsId": 8481050,
+      "lyricsPath": "lyrics/8481050.txt"
     },
     {
       "artist": "Tayc",
       "title": "Moi, je prouve.",
       "year": 2019,
-      "totalStreams": 5041447
+      "totalStreams": 5041447,
+      "lyricsId": 4975075,
+      "lyricsPath": "lyrics/4975075.txt"
     },
     {
       "artist": "Ninho",
       "title": "En chien",
       "year": 2020,
-      "totalStreams": 5031181
+      "totalStreams": 5031181,
+      "lyricsId": 5327373,
+      "lyricsPath": "lyrics/5327373.txt"
     },
     {
       "artist": "Bolémvn",
       "title": "On y va",
       "year": 2024,
-      "totalStreams": 5027796
+      "totalStreams": 5027796,
+      "lyricsId": 10325334,
+      "lyricsPath": "lyrics/10325334.txt"
     },
     {
       "artist": "Heuss L'enfoiré",
       "title": "George moula",
       "year": 2019,
-      "totalStreams": 5017057
+      "totalStreams": 5017057,
+      "lyricsId": 4174352,
+      "lyricsPath": "lyrics/4174352.txt"
     }
-  ]
+  ],
+  "localLyricsOnly": true
 }
