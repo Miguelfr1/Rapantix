@@ -132,6 +132,21 @@ Notes :
 2. Lancez `npm run dev` dans la racine.
 3. (Optionnel) Si vous cachez les paroles, `GENIUS_TOKEN` n'est plus nécessaire en prod.
 
+## Docker (local)
+Lance tout (frontend + backend) avec Docker :
+```bash
+docker compose up --build
+```
+
+Par défaut :
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:8000`
+
+Si tu veux un modèle plus léger en local :
+```bash
+WORD2VEC_MODEL_REPO=rapminerz/Word2Bezbar-small docker compose up --build
+```
+
 ## À améliorer
 - Ajouter un loader/événement pour le backend de similarité lorsqu'il est hors ligne.
 - Remplacer `fetchWithProxyFallback` par un proxy durable si Genius devient plus strict.

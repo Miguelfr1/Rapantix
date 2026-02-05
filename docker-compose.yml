@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      WORD2VEC_MODEL_PATH: "/app/backend/models/word2vec.model"
+      WORD2VEC_MODEL_REPO: "rapminerz/Word2Bezbar-large"
+    volumes:
+      - .:/app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_SIMILARITY_URL: "http://localhost:8000"
+      VITE_MAX_LOAD_MS: "10000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - backend
