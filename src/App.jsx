@@ -244,7 +244,14 @@ export default function App() {
         if (!Array.isArray(data.proxyTemplates) || data.proxyTemplates.length === 0) {
           throw new Error("Config invalide: proxyTemplates manquant");
         }
-        setGameConfig(data);
+        let resolvedProxyTemplates = data.proxyTemplates;
+        if (SIMILARITY_API_BASE) {
+          const renderProxy = `${SIMILARITY_API_BASE}/proxy?url={url}`;
+          resolvedProxyTemplates = data.proxyTemplates.map((template) =>
+            template.includes("localhost:8000") ? renderProxy : template
+          );
+        }
+        setGameConfig({ ...data, proxyTemplates: resolvedProxyTemplates });
         setConfigError(null);
       } catch (err) {
         console.error("Config load failed:", err);
