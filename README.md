@@ -25,9 +25,10 @@ Une relecture du concept Rapantix / RapMinerz avec la même logique de découver
    Tu peux pointer vers un autre fichier via `VITE_GAME_CONFIG_URL`.
    Tu peux éditer librement `public/game-config.json` pour modifier les listes d'artistes, de secours et les proxys.
    Si `topTracks` est présent dans ce fichier, le jeu pioche les sons dans cette liste (sinon il retombe sur `topArtists`).
+   Si `lyricsPath` est présent sur un track, le frontend charge les paroles localement depuis `public/lyrics` (recommandé en prod).
 3. Démarrer le frontend : `npm run dev`.
 
-Le jeu se connecte à Genius pour récupérer les paroles, et ses appels de similarité pointent vers `VITE_SIMILARITY_URL` (par défaut `http://localhost:8000`).
+Le jeu se connecte à Genius pour récupérer les paroles (si elles ne sont pas déjà mises en cache), et ses appels de similarité pointent vers `VITE_SIMILARITY_URL` (par défaut `http://localhost:8000`).
 
 ## Backend Word2Vec (Word2Bezbar)
 1. Installer les dépendances Python : `pip install -r backend/requirements.txt`.
@@ -58,6 +59,27 @@ Pour Render, utilise ce start command :
 bash backend/render_start.sh
 ```
 Le script télécharge automatiquement Word2Bezbar-large si absent, puis démarre Uvicorn.
+
+## Mettre en cache les paroles (recommandé en prod)
+Genius bloque souvent les IP datacenter (Render/Vercel). Pour éviter les erreurs 403 en production, récupère les paroles **localement** et stocke-les dans le repo.
+
+Script :
+```bash
+GENIUS_TOKEN=ton_token \
+python3 backend/cache_lyrics.py \
+  --config public/game-config.json \
+  --out-dir public/lyrics \
+  --sleep 0.2
+```
+
+Le script :
+- Télécharge les paroles via `api.genius.com` + `embed.js` depuis ta machine.
+- Écrit `public/lyrics/<id>.txt`.
+- Ajoute `lyricsPath` (et `lyricsId`) dans `public/game-config.json`.
+
+Ensuite :
+- **Commite** `public/lyrics` et le `game-config.json` mis à jour.
+- En prod, le frontend charge directement `public/lyrics` et n'appelle plus Genius.
 
 ## Générer une liste “top tracks” (2017+, rap/hip-hop/R&B)
 Pour éviter une simple liste d’artistes en dur, tu peux générer automatiquement une liste de morceaux FR très streamés depuis 2017.
@@ -98,7 +120,7 @@ Notes :
 ## Lancement complet
 1. Assurez-vous que le backend FastAPI est en route (`uvicorn ...`).
 2. Lancez `npm run dev` dans la racine.
-3. Le bouton de settings (clé) vous permet de changer rapidement le token Genius.
+3. (Optionnel) Si vous cachez les paroles, `GENIUS_TOKEN` n'est plus nécessaire en prod.
 
 ## À améliorer
 - Ajouter un loader/événement pour le backend de similarité lorsqu'il est hors ligne.

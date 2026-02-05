@@ -197,6 +197,18 @@ const fetchWithProxyFallback = async (targetUrl, proxyTemplates = [], deadlineMs
   throw lastError || new Error("Proxys échoués");
 };
 
+const resolveLyricsPath = (track) => {
+  if (!track) return null;
+  if (track.lyricsPath) {
+    const trimmed = String(track.lyricsPath).replace(/^\/+/, "");
+    return `/${trimmed}`;
+  }
+  if (track.lyricsId) {
+    return `/lyrics/${track.lyricsId}.txt`;
+  }
+  return null;
+};
+
 const extractLyricsFromEmbedJs = (jsText) => {
   if (!jsText) return null;
   const match = jsText.match(/JSON\.parse\('([\s\S]*?)'\)\)/);
@@ -366,6 +378,28 @@ export default function App() {
         const randomTitle = useTracks ? randomTrack?.title : "";
         const query = useTracks ? `${randomArtist} ${randomTitle}` : randomArtist;
         console.log(`[Recherche] ${useTracks ? "Titre" : "Artiste"} aléatoire : ${query}`);
+
+        if (useTracks && randomTrack) {
+          const localLyricsPath = resolveLyricsPath(randomTrack);
+          if (localLyricsPath && remainingMs() > 0) {
+            try {
+              const response = await fetchWithTimeout(localLyricsPath, {}, remainingMs());
+              if (response.ok) {
+                const rawLyrics = await response.text();
+                if (rawLyrics && rawLyrics.trim()) {
+                  finalArtist = randomArtist || "";
+                  finalTitle = randomTitle || "";
+                  const cleanedLyrics = cleanLyricsText(rawLyrics, finalArtist, finalTitle);
+                  processSong({ artist: finalArtist, title: finalTitle, lyrics: cleanedLyrics });
+                  setLoading(false);
+                  return;
+                }
+              }
+            } catch (e) {
+              console.warn("Local lyrics fetch failed", e);
+            }
+          }
+        }
         // Recherche via Proxy (sans token)
         if (remainingMs() > 0) {
           try {
