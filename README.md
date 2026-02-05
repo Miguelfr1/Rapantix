@@ -26,6 +26,7 @@ Une relecture du concept Rapantix / RapMinerz avec la même logique de découver
    Tu peux éditer librement `public/game-config.json` pour modifier les listes d'artistes, de secours et les proxys.
    Si `topTracks` est présent dans ce fichier, le jeu pioche les sons dans cette liste (sinon il retombe sur `topArtists`).
    Si `lyricsPath` est présent sur un track, le frontend charge les paroles localement depuis `public/lyrics` (recommandé en prod).
+   Si `localLyricsOnly=true` est présent dans `game-config.json`, le frontend **n'appelle plus Genius** et choisit uniquement des tracks avec `lyricsPath`.
 3. Démarrer le frontend : `npm run dev`.
 
 Le jeu se connecte à Genius pour récupérer les paroles (si elles ne sont pas déjà mises en cache), et ses appels de similarité pointent vers `VITE_SIMILARITY_URL` (par défaut `http://localhost:8000`).
@@ -79,6 +80,7 @@ Le script :
 
 Ensuite :
 - **Commite** `public/lyrics` et le `game-config.json` mis à jour.
+- Pour forcer le mode local en prod, ajoute `localLyricsOnly: true` dans `public/game-config.json`.
 - En prod, le frontend charge directement `public/lyrics` et n'appelle plus Genius.
 
 ## Générer une liste “top tracks” (2017+, rap/hip-hop/R&B)

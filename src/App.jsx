@@ -362,16 +362,24 @@ export default function App() {
       let finalArtist = "";
       let finalTitle = "";
       const { topArtists, topTracks, proxyTemplates } = gameConfig;
+      const localLyricsOnly = Boolean(gameConfig?.localLyricsOnly);
       const deadlineMs = Date.now() + MAX_LOAD_MS;
       const remainingMs = () => deadlineMs - Date.now();
       
       const useTracks = Array.isArray(topTracks) && topTracks.length > 0;
       const maxAttempts = useTracks ? 5 : 3;
+      const localTracks = localLyricsOnly && useTracks
+        ? topTracks.filter((track) => resolveLyricsPath(track))
+        : null;
+
+      if (localLyricsOnly && (!useTracks || !localTracks || localTracks.length === 0)) {
+        throw new Error("Paroles locales indisponibles");
+      }
 
       // MODE DYNAMIQUE : On essaie de trouver un son aléatoire via l'API
       for (let attempt = 0; attempt < maxAttempts && !songUrl && remainingMs() > 0; attempt++) {
         const randomTrack = useTracks
-          ? topTracks[Math.floor(Math.random() * topTracks.length)]
+          ? (localTracks || topTracks)[Math.floor(Math.random() * (localTracks || topTracks).length)]
           : null;
         const randomArtist = useTracks
           ? randomTrack?.artist
@@ -400,9 +408,12 @@ export default function App() {
               console.warn("Local lyrics fetch failed", e);
             }
           }
+          if (localLyricsOnly) {
+            continue;
+          }
         }
         // Recherche via Proxy (sans token)
-        if (remainingMs() > 0) {
+        if (!localLyricsOnly && remainingMs() > 0) {
           try {
             const searchUrl = `https://api.genius.com/search?q=${encodeURIComponent(query)}`;
             const rawJson = await fetchWithProxyFallback(searchUrl, proxyTemplates, deadlineMs);
