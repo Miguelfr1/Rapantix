@@ -87,6 +87,74 @@ class EmbedLyricsParser(HTMLParser):
         return text.strip()
 
 
+class PageLyricsParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.in_lyrics = False
+        self.depth = 0
+        self.parts: list[str] = []
+        self.containers: list[str] = []
+        self.skip = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs_dict = dict(attrs)
+        if tag in {"script", "style"}:
+            self.skip = True
+        if tag == "div" and attrs_dict.get("data-lyrics-container") == "true":
+            self.in_lyrics = True
+            self.depth = 1
+            self.parts = []
+            return
+        if self.in_lyrics:
+            if tag == "div":
+                self.depth += 1
+            if tag == "br":
+                self.parts.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag in {"script", "style"}:
+            self.skip = False
+        if self.in_lyrics and tag == "div":
+            self.depth -= 1
+            if self.depth <= 0:
+                self.in_lyrics = False
+                text = "".join(self.parts)
+                if text.strip():
+                    self.containers.append(text)
+
+    def handle_data(self, data):
+        if self.skip:
+            return
+        if self.in_lyrics:
+            self.parts.append(data)
+
+    def get_text(self) -> str:
+        if not self.containers:
+            return ""
+        cleaned = []
+        for raw in self.containers:
+            text = re.sub(r"[ \t]+\n", "\n", raw)
+            text = re.sub(r"\n{3,}", "\n\n", text).strip()
+            if "[" in text:
+                text = text[text.find("["):].strip()
+            if text:
+                cleaned.append(text)
+        if not cleaned:
+            return ""
+        return "\n\n".join(cleaned)
+
+
+def fix_mojibake(value: str) -> str:
+    if not value:
+        return value
+    if "Ã" in value or "Â" in value:
+        try:
+            return value.encode("latin1").decode("utf-8")
+        except Exception:
+            return value
+    return value
+
+
 def extract_lyrics_from_embed(js_text: str) -> Optional[str]:
     match = re.search(r"JSON\.parse\('([\s\S]*?)'\)\)", js_text)
     if not match:
@@ -100,12 +168,16 @@ def extract_lyrics_from_embed(js_text: str) -> Optional[str]:
     parser = EmbedLyricsParser()
     parser.feed(html_fragment)
     lyrics = parser.get_text()
-    if lyrics and ("Ã" in lyrics or "Â" in lyrics):
-        try:
-            lyrics = lyrics.encode("latin1").decode("utf-8")
-        except Exception:
-            pass
-    return lyrics or None
+    return fix_mojibake(lyrics) or None
+
+
+def extract_lyrics_from_page(html_text: str) -> Optional[str]:
+    if not html_text:
+        return None
+    parser = PageLyricsParser()
+    parser.feed(html_text)
+    lyrics = parser.get_text()
+    return fix_mojibake(lyrics) or None
 
 
 def pick_hit(hits: list[dict], artist: str, title: str) -> Optional[dict]:
@@ -149,6 +221,12 @@ def fetch_embed_lyrics(client: httpx.Client, song_id: int) -> Optional[str]:
     resp = client.get(url, headers={"User-Agent": UA, "Referer": "https://genius.com/"})
     resp.raise_for_status()
     return extract_lyrics_from_embed(resp.text)
+
+
+def fetch_page_lyrics(client: httpx.Client, url: str) -> Optional[str]:
+    resp = client.get(url, headers={"User-Agent": UA, "Referer": "https://genius.com/"})
+    resp.raise_for_status()
+    return extract_lyrics_from_page(resp.text)
 
 
 def main() -> None:
@@ -202,7 +280,14 @@ def main() -> None:
                     print(f"[miss] {artist} - {title}: no id")
                     continue
 
-                lyrics = fetch_embed_lyrics(client, song_id)
+                lyrics = None
+                if hit.get("url"):
+                    try:
+                        lyrics = fetch_page_lyrics(client, hit["url"])
+                    except Exception as exc:
+                        print(f"[warn] {artist} - {title}: page fetch failed ({exc})")
+                if not lyrics:
+                    lyrics = fetch_embed_lyrics(client, song_id)
                 if not lyrics:
                     print(f"[miss] {artist} - {title}: no lyrics")
                     continue
