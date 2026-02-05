@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = os.environ.get("WORD2VEC_MODEL_PATH", str(BASE_DIR / "models" / "word2vec.model"))
 MAX_TOPN = 60
 PROXY_TIMEOUT = float(os.environ.get("PROXY_TIMEOUT", "8.0"))
+GENIUS_TOKEN = os.environ.get("GENIUS_TOKEN", "").strip()
 ALLOWED_PROXY_HOSTS = {
     "genius.com",
     "www.genius.com",
@@ -106,11 +107,20 @@ def proxy(url: str):
     if parsed.scheme not in {"http", "https"} or not _is_allowed_host(host):
         raise HTTPException(status_code=403, detail="Host not allowed")
 
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Rapantix Proxy)",
+        "Accept": "text/html,application/json;q=0.9,*/*;q=0.8",
+        "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Referer": "https://genius.com/",
+    }
+    if GENIUS_TOKEN and (host == "api.genius.com" or parsed.path.startswith("/api/")):
+        headers["Authorization"] = f"Bearer {GENIUS_TOKEN}"
+
     try:
         with httpx.Client(
             timeout=PROXY_TIMEOUT,
             follow_redirects=True,
-            headers={"User-Agent": "Mozilla/5.0 (Rapantix Proxy)"},
+            headers=headers,
         ) as client:
             resp = client.get(url)
     except httpx.RequestError as exc:
