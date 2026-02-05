@@ -146,6 +146,8 @@ const cleanLyricsText = (text, artist, title) => {
     .replace(/\[\s+/g, "[")
     .replace(/\s+\]/g, "]")
     .replace(/\[([^\]]+?)\s*[:—–-]\s*[^\]]+?\]/g, "[$1]") // Masque artistes feat
+    .replace(/\[(pré|pre)\]/gi, "[Pré-Refrain]")
+    .replace(/\[(pré\s*-?\s*refrain|pre\s*-?\s*refrain)\]/gi, "[Pré-Refrain]")
     .replace(/\(.*?\)/g, "")
     .trim();
 
