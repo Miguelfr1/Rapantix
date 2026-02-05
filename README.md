@@ -60,6 +60,14 @@ Pour Render, utilise ce start command :
 bash backend/render_start.sh
 ```
 Le script télécharge automatiquement Word2Bezbar-large si absent, puis démarre Uvicorn.
+Note : le plan gratuit Render (512 MB) peut être trop juste pour `Word2Bezbar-large`.  
+Tu peux choisir un modèle plus léger :
+```bash
+WORD2VEC_MODEL_REPO=rapminerz/Word2Bezbar-medium
+# ou
+WORD2VEC_MODEL_REPO=rapminerz/Word2Bezbar-small
+```
+Définis cette variable dans Render → Environment pour éviter les OOM.
 
 ## Mettre en cache les paroles (recommandé en prod)
 Genius bloque souvent les IP datacenter (Render/Vercel). Pour éviter les erreurs 403 en production, récupère les paroles **localement** et stocke-les dans le repo.
