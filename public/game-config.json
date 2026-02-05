@@ -1,0 +1,4113 @@
+{
+  "topArtists": [
+    "Ninho",
+    "Naps",
+    "Werenoi",
+    "Tiakola",
+    "Lomepal",
+    "Gazo",
+    "OBOY",
+    "Booba",
+    "Heuss L'enfoiré",
+    "PLK",
+    "KeBlack",
+    "VEN1",
+    "Gradur",
+    "disiz",
+    "Dadju",
+    "ZEG P",
+    "Nono La Grinta",
+    "Franglish",
+    "Soso Maness",
+    "Hatik",
+    "Guy2Bezbar",
+    "L2B",
+    "Josman",
+    "Rim'K",
+    "Koba LaD",
+    "Vegedream",
+    "Vacra",
+    "Nekfeu",
+    "Joé Dwèt Filé",
+    "Tayc",
+    "RnBoi",
+    "Yorssy",
+    "Orelsan",
+    "Naza",
+    "THEODORT",
+    "Beendo Z",
+    "Aya Nakamura",
+    "Lacrim",
+    "Ziak",
+    "47ter",
+    "Hornet La Frappe",
+    "Vald",
+    "Moha La Squale",
+    "Cheu-B",
+    "4Keus",
+    "Therapie TAXI",
+    "La Mano 1.9",
+    "Bramsito",
+    "Jok'air",
+    "Freeze corleone",
+    "Lefa",
+    "DJ Snake",
+    "Zokush",
+    "Vitaa",
+    "Laylow",
+    "DA Uzi",
+    "1PLIKÉ140",
+    "Kerchak",
+    "SEYSEY",
+    "Wejdene",
+    "Bolémvn",
+    "Dosseh",
+    "Mister V",
+    "Amel Bent",
+    "Siboy",
+    "MHD",
+    "Kaaris",
+    "S.Pri Noir",
+    "La Fouine",
+    "Sadek",
+    "Nahir",
+    "Mac Tyer",
+    "DJ Kawest",
+    "L'Algérino",
+    "Marwa Loud",
+    "Imen Es",
+    "menace Santana",
+    "JKSN",
+    "100 Blaze",
+    "Houari",
+    "Kendji Girac",
+    "M. Pokora",
+    "Lujipeka",
+    "Dabs",
+    "Vianney",
+    "Niaks",
+    "Luidji",
+    "Médine",
+    "Rsko",
+    "DJ Kayz",
+    "Tiitof",
+    "Naestro",
+    "JYEUHAIR",
+    "Ikaz Boi",
+    "La Fève",
+    "S-Crew",
+    "Zkr",
+    "Abou Debeing",
+    "Jahyanai",
+    "Benab",
+    "Hayce Lemsi",
+    "Bekar",
+    "Nej",
+    "Laeti",
+    "Lyna Mahyem",
+    "Dinor rdt",
+    "Kekra",
+    "Hös Copperfield"
+  ],
+  "proxyTemplates": [
+    "http://localhost:8000/proxy?url={url}"
+  ],
+  "topTracks": [
+    {
+      "artist": "Ninho",
+      "title": "La vie qu'on mène",
+      "year": 2019,
+      "totalStreams": 265180774
+    },
+    {
+      "artist": "Naps",
+      "title": "La kiffance",
+      "year": 2021,
+      "totalStreams": 173006138
+    },
+    {
+      "artist": "Ninho",
+      "title": "Lettre à une femme",
+      "year": 2020,
+      "totalStreams": 155870444
+    },
+    {
+      "artist": "Ninho",
+      "title": "Putana",
+      "year": 2019,
+      "totalStreams": 144123734
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Laboratoire",
+      "year": 2023,
+      "totalStreams": 143107042
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Meuda",
+      "year": 2022,
+      "totalStreams": 141923154
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Trop beau",
+      "year": 2018,
+      "totalStreams": 124949177
+    },
+    {
+      "artist": "Gazo",
+      "title": "DIE",
+      "year": 2022,
+      "totalStreams": 117574072
+    },
+    {
+      "artist": "OBOY",
+      "title": "Cabeza",
+      "year": 2020,
+      "totalStreams": 114911014
+    },
+    {
+      "artist": "Booba",
+      "title": "Dolce Camara",
+      "year": 2024,
+      "totalStreams": 114446918
+    },
+    {
+      "artist": "OBOY",
+      "title": "TDB",
+      "year": 2021,
+      "totalStreams": 114378720
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Chemin d'or",
+      "year": 2023,
+      "totalStreams": 113835997
+    },
+    {
+      "artist": "Ninho",
+      "title": "Jefe",
+      "year": 2021,
+      "totalStreams": 112313963
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Saiyan",
+      "year": 2023,
+      "totalStreams": 110566483
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Tu connais",
+      "year": 2023,
+      "totalStreams": 106855734
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Solitaire",
+      "year": 2022,
+      "totalStreams": 102593448
+    },
+    {
+      "artist": "OBOY",
+      "title": "Avec Toi",
+      "year": 2019,
+      "totalStreams": 102340060
+    },
+    {
+      "artist": "PLK",
+      "title": "Nouvelles",
+      "year": 2023,
+      "totalStreams": 99989090
+    },
+    {
+      "artist": "Ninho",
+      "title": "Maman ne le sait pas",
+      "year": 2019,
+      "totalStreams": 97833004
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Aucune attache",
+      "year": 2024,
+      "totalStreams": 92493026
+    },
+    {
+      "artist": "PLK",
+      "title": "Émotif (Booska 1H)",
+      "year": 2019,
+      "totalStreams": 91536165
+    },
+    {
+      "artist": "VEN1",
+      "title": "Hakayet",
+      "year": 2025,
+      "totalStreams": 89126307
+    },
+    {
+      "artist": "Gradur",
+      "title": "Ne reviens pas",
+      "year": 2019,
+      "totalStreams": 87290321
+    },
+    {
+      "artist": "Gazo",
+      "title": "MAMI WATA",
+      "year": 2023,
+      "totalStreams": 86827517
+    },
+    {
+      "artist": "KeBlack",
+      "title": "LAISSE MOI",
+      "year": 2023,
+      "totalStreams": 86310771
+    },
+    {
+      "artist": "disiz",
+      "title": "melodrama",
+      "year": 2025,
+      "totalStreams": 81629002
+    },
+    {
+      "artist": "Gazo",
+      "title": "NANANI NANANA",
+      "year": 2024,
+      "totalStreams": 81104325
+    },
+    {
+      "artist": "Naps",
+      "title": "Best life",
+      "year": 2021,
+      "totalStreams": 79918166
+    },
+    {
+      "artist": "Ninho",
+      "title": "Goutte d'eau",
+      "year": 2019,
+      "totalStreams": 79689175
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Boucan",
+      "year": 2024,
+      "totalStreams": 79390537
+    },
+    {
+      "artist": "Dadju",
+      "title": "I love you",
+      "year": 2024,
+      "totalStreams": 79138937
+    },
+    {
+      "artist": "Gazo",
+      "title": "FLEURS",
+      "year": 2022,
+      "totalStreams": 78049410
+    },
+    {
+      "artist": "Ninho",
+      "title": "VVS",
+      "year": 2021,
+      "totalStreams": 77787567
+    },
+    {
+      "artist": "ZEG P",
+      "title": "FADE UP",
+      "year": 2022,
+      "totalStreams": 76620043
+    },
+    {
+      "artist": "Tiakola",
+      "title": "MANON B",
+      "year": 2024,
+      "totalStreams": 75251350
+    },
+    {
+      "artist": "Nono La Grinta",
+      "title": "Paris",
+      "year": 2025,
+      "totalStreams": 74992979
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Pétunias",
+      "year": 2024,
+      "totalStreams": 74564298
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Melrose Place",
+      "year": 2025,
+      "totalStreams": 74404115
+    },
+    {
+      "artist": "Ninho",
+      "title": "Zipette",
+      "year": 2020,
+      "totalStreams": 73988434
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Pyramide",
+      "year": 2024,
+      "totalStreams": 73407860
+    },
+    {
+      "artist": "Franglish",
+      "title": "Position",
+      "year": 2024,
+      "totalStreams": 73353300
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Mood",
+      "year": 2024,
+      "totalStreams": 73281619
+    },
+    {
+      "artist": "Dadju",
+      "title": "Reine",
+      "year": 2017,
+      "totalStreams": 72654647
+    },
+    {
+      "artist": "Soso Maness",
+      "title": "Petrouchka",
+      "year": 2021,
+      "totalStreams": 72395069
+    },
+    {
+      "artist": "Hatik",
+      "title": "Angela",
+      "year": 2020,
+      "totalStreams": 72186847
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Moulaga",
+      "year": 2019,
+      "totalStreams": 72052896
+    },
+    {
+      "artist": "Gazo",
+      "title": "HAINE&SEX",
+      "year": 2021,
+      "totalStreams": 71578317
+    },
+    {
+      "artist": "Guy2Bezbar",
+      "title": "Monaco",
+      "year": 2024,
+      "totalStreams": 70933010
+    },
+    {
+      "artist": "Naps",
+      "title": "6.3",
+      "year": 2020,
+      "totalStreams": 70455979
+    },
+    {
+      "artist": "L2B",
+      "title": "Pélican",
+      "year": 2025,
+      "totalStreams": 69184636
+    },
+    {
+      "artist": "Josman",
+      "title": "Intro",
+      "year": 2022,
+      "totalStreams": 67704922
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Air Max",
+      "year": 2018,
+      "totalStreams": 67561480
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Gasolina",
+      "year": 2022,
+      "totalStreams": 67445594
+    },
+    {
+      "artist": "Dadju",
+      "title": "Grand bain",
+      "year": 2020,
+      "totalStreams": 66291699
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Daddy chocolat",
+      "year": 2021,
+      "totalStreams": 64994145
+    },
+    {
+      "artist": "Werenoi",
+      "title": "La League",
+      "year": 2022,
+      "totalStreams": 63036014
+    },
+    {
+      "artist": "PLK",
+      "title": "Attentat",
+      "year": 2021,
+      "totalStreams": 61679172
+    },
+    {
+      "artist": "Vegedream",
+      "title": "Elle est bonne sa mère",
+      "year": 2019,
+      "totalStreams": 61341563
+    },
+    {
+      "artist": "PLK",
+      "title": "Faut pas",
+      "year": 2024,
+      "totalStreams": 61306812
+    },
+    {
+      "artist": "Gazo",
+      "title": "RAPPEL",
+      "year": 2022,
+      "totalStreams": 60392400
+    },
+    {
+      "artist": "Vacra",
+      "title": "Tiki Taka",
+      "year": 2023,
+      "totalStreams": 60256010
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Elle pleut",
+      "year": 2019,
+      "totalStreams": 59104617
+    },
+    {
+      "artist": "Joé Dwèt Filé",
+      "title": "4 Kampé",
+      "year": 2024,
+      "totalStreams": 57343966
+    },
+    {
+      "artist": "Tayc",
+      "title": "Le temps",
+      "year": 2021,
+      "totalStreams": 57212208
+    },
+    {
+      "artist": "Naps",
+      "title": "C'est carré le S",
+      "year": 2023,
+      "totalStreams": 56900032
+    },
+    {
+      "artist": "RnBoi",
+      "title": "MON BÉBÉ",
+      "year": 2025,
+      "totalStreams": 56828432
+    },
+    {
+      "artist": "Ninho",
+      "title": "Un Poco",
+      "year": 2018,
+      "totalStreams": 56824258
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Run",
+      "year": 2025,
+      "totalStreams": 55537329
+    },
+    {
+      "artist": "Yorssy",
+      "title": "CRF - Nouvelle École",
+      "year": 2024,
+      "totalStreams": 55255894
+    },
+    {
+      "artist": "Werenoi",
+      "title": "All eyes on me",
+      "year": 2022,
+      "totalStreams": 54277696
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Maudit",
+      "year": 2024,
+      "totalStreams": 54146572
+    },
+    {
+      "artist": "Orelsan",
+      "title": "La Quête",
+      "year": 2021,
+      "totalStreams": 53991819
+    },
+    {
+      "artist": "PLK",
+      "title": "Demain",
+      "year": 2023,
+      "totalStreams": 53673450
+    },
+    {
+      "artist": "Naza",
+      "title": "Joli bébé",
+      "year": 2020,
+      "totalStreams": 53653678
+    },
+    {
+      "artist": "THEODORT",
+      "title": "Wayeh",
+      "year": 2024,
+      "totalStreams": 53138624
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Piano",
+      "year": 2025,
+      "totalStreams": 53022876
+    },
+    {
+      "artist": "Ninho",
+      "title": "Vrais",
+      "year": 2018,
+      "totalStreams": 52938121
+    },
+    {
+      "artist": "Beendo Z",
+      "title": "Pas bête",
+      "year": 2022,
+      "totalStreams": 52469938
+    },
+    {
+      "artist": "disiz",
+      "title": "RENCONTRE",
+      "year": 2022,
+      "totalStreams": 51852027
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Jour meilleur",
+      "year": 2021,
+      "totalStreams": 51166230
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Tricheur",
+      "year": 2019,
+      "totalStreams": 51039131
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Pookie",
+      "year": 2018,
+      "totalStreams": 51003153
+    },
+    {
+      "artist": "Lacrim",
+      "title": "No lo sé",
+      "year": 2024,
+      "totalStreams": 50638109
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Djadja",
+      "year": 2018,
+      "totalStreams": 50556721
+    },
+    {
+      "artist": "Ninho",
+      "title": "Tout en Gucci",
+      "year": 2020,
+      "totalStreams": 50543122
+    },
+    {
+      "artist": "Ninho",
+      "title": "Coco",
+      "year": 2024,
+      "totalStreams": 49918891
+    },
+    {
+      "artist": "Werenoi",
+      "title": "10.03.2023",
+      "year": 2023,
+      "totalStreams": 49568957
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Doudou",
+      "year": 2021,
+      "totalStreams": 49550521
+    },
+    {
+      "artist": "PLK",
+      "title": "Pilote",
+      "year": 2020,
+      "totalStreams": 49041611
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Mélanine",
+      "year": 2024,
+      "totalStreams": 48326013
+    },
+    {
+      "artist": "Dadju",
+      "title": "Compliqué",
+      "year": 2020,
+      "totalStreams": 48310438
+    },
+    {
+      "artist": "Ziak",
+      "title": "Fixette - Bonus",
+      "year": 2021,
+      "totalStreams": 47739491
+    },
+    {
+      "artist": "Lomepal",
+      "title": "1000°C",
+      "year": 2018,
+      "totalStreams": 47632597
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Dans l'univers",
+      "year": 2019,
+      "totalStreams": 47213607
+    },
+    {
+      "artist": "47ter",
+      "title": "Côte Ouest",
+      "year": 2019,
+      "totalStreams": 47053699
+    },
+    {
+      "artist": "PLK",
+      "title": "Un peu de haine",
+      "year": 2019,
+      "totalStreams": 46945427
+    },
+    {
+      "artist": "Vegedream",
+      "title": "Ramenez la coupe à la maison",
+      "year": 2018,
+      "totalStreams": 46732077
+    },
+    {
+      "artist": "Vacra",
+      "title": "Confidences",
+      "year": 2024,
+      "totalStreams": 46628183
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Gasolina",
+      "year": 2021,
+      "totalStreams": 46510027
+    },
+    {
+      "artist": "Tiakola",
+      "title": "M3lo",
+      "year": 2022,
+      "totalStreams": 46508120
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Khapta",
+      "year": 2019,
+      "totalStreams": 46210928
+    },
+    {
+      "artist": "Booba",
+      "title": "Mona Lisa",
+      "year": 2021,
+      "totalStreams": 46144635
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Mauvaise",
+      "year": 2023,
+      "totalStreams": 45557227
+    },
+    {
+      "artist": "Vald",
+      "title": "Désaccordé",
+      "year": 2018,
+      "totalStreams": 45144520
+    },
+    {
+      "artist": "Moha La Squale",
+      "title": "Ma belle",
+      "year": 2019,
+      "totalStreams": 44662851
+    },
+    {
+      "artist": "Josman",
+      "title": "J'aime Bien!",
+      "year": 2018,
+      "totalStreams": 44524323
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Decrescendo",
+      "year": 2022,
+      "totalStreams": 44251840
+    },
+    {
+      "artist": "Ninho",
+      "title": "Vérité",
+      "year": 2021,
+      "totalStreams": 42467687
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "RR 9.1",
+      "year": 2019,
+      "totalStreams": 42448321
+    },
+    {
+      "artist": "Nono La Grinta",
+      "title": "LOVE YOU",
+      "year": 2025,
+      "totalStreams": 41959011
+    },
+    {
+      "artist": "PLK",
+      "title": "Ça mène à rien",
+      "year": 2024,
+      "totalStreams": 41663537
+    },
+    {
+      "artist": "Tiakola",
+      "title": "PONA NINI",
+      "year": 2024,
+      "totalStreams": 41490252
+    },
+    {
+      "artist": "Cheu-B",
+      "title": "Catalina",
+      "year": 2025,
+      "totalStreams": 41295492
+    },
+    {
+      "artist": "Gazo",
+      "title": "CELINE 3X",
+      "year": 2022,
+      "totalStreams": 41140841
+    },
+    {
+      "artist": "4Keus",
+      "title": "MD",
+      "year": 2020,
+      "totalStreams": 41139470
+    },
+    {
+      "artist": "VEN1",
+      "title": "Vanilla",
+      "year": 2025,
+      "totalStreams": 40635371
+    },
+    {
+      "artist": "Hatik",
+      "title": "La meilleure",
+      "year": 2020,
+      "totalStreams": 40594821
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Poney",
+      "year": 2025,
+      "totalStreams": 40473767
+    },
+    {
+      "artist": "Therapie TAXI",
+      "title": "Hit Sale",
+      "year": 2018,
+      "totalStreams": 39732409
+    },
+    {
+      "artist": "PLK",
+      "title": "Problèmes",
+      "year": 2019,
+      "totalStreams": 39240712
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Coffre plein",
+      "year": 2020,
+      "totalStreams": 39222863
+    },
+    {
+      "artist": "Naps",
+      "title": "La danse des bandits",
+      "year": 2021,
+      "totalStreams": 38991702
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Ciao",
+      "year": 2023,
+      "totalStreams": 38813818
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Copines",
+      "year": 2018,
+      "totalStreams": 38528813
+    },
+    {
+      "artist": "L2B",
+      "title": "Movie",
+      "year": 2025,
+      "totalStreams": 38512898
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Aristocrate",
+      "year": 2019,
+      "totalStreams": 38231173
+    },
+    {
+      "artist": "Gazo",
+      "title": "MAUVAIS 2X",
+      "year": 2021,
+      "totalStreams": 38033039
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Jolie nana",
+      "year": 2020,
+      "totalStreams": 38014979
+    },
+    {
+      "artist": "La Mano 1.9",
+      "title": "I'M SORRY",
+      "year": 2025,
+      "totalStreams": 36897424
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "40%",
+      "year": 2019,
+      "totalStreams": 36817697
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Les méchants",
+      "year": 2019,
+      "totalStreams": 36803295
+    },
+    {
+      "artist": "Naza",
+      "title": "Loin de moi",
+      "year": 2020,
+      "totalStreams": 36726768
+    },
+    {
+      "artist": "L2B",
+      "title": "Tout Pour L'équipe",
+      "year": 2025,
+      "totalStreams": 35884039
+    },
+    {
+      "artist": "Bramsito",
+      "title": "Sale mood",
+      "year": 2019,
+      "totalStreams": 35533210
+    },
+    {
+      "artist": "Ninho",
+      "title": "Collabo",
+      "year": 2024,
+      "totalStreams": 35308549
+    },
+    {
+      "artist": "Booba",
+      "title": "Ridin'",
+      "year": 2017,
+      "totalStreams": 35207755
+    },
+    {
+      "artist": "Jok'air",
+      "title": "Las Vegas",
+      "year": 2019,
+      "totalStreams": 35104759
+    },
+    {
+      "artist": "La Mano 1.9",
+      "title": "Sexy Woman",
+      "year": 2025,
+      "totalStreams": 35100927
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Baby",
+      "year": 2025,
+      "totalStreams": 35086228
+    },
+    {
+      "artist": "Franglish",
+      "title": "My Salsa",
+      "year": 2020,
+      "totalStreams": 34974829
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Complètement sonné",
+      "year": 2018,
+      "totalStreams": 34910708
+    },
+    {
+      "artist": "Tiakola",
+      "title": "La clé",
+      "year": 2022,
+      "totalStreams": 34129185
+    },
+    {
+      "artist": "Franglish",
+      "title": "Génération impolie",
+      "year": 2025,
+      "totalStreams": 34075880
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Freeze Raël",
+      "year": 2020,
+      "totalStreams": 33731854
+    },
+    {
+      "artist": "Lefa",
+      "title": "Bitch",
+      "year": 2019,
+      "totalStreams": 33684226
+    },
+    {
+      "artist": "DJ Snake",
+      "title": "Taki Taki",
+      "year": 2019,
+      "totalStreams": 33541837
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Triple V",
+      "year": 2025,
+      "totalStreams": 33275152
+    },
+    {
+      "artist": "Booba",
+      "title": "JAUNÉ",
+      "year": 2020,
+      "totalStreams": 33167477
+    },
+    {
+      "artist": "Lomepal",
+      "title": "À peu près",
+      "year": 2022,
+      "totalStreams": 32998155
+    },
+    {
+      "artist": "Zokush",
+      "title": "1 2 3 4",
+      "year": 2023,
+      "totalStreams": 32502092
+    },
+    {
+      "artist": "Vitaa",
+      "title": "Avant toi",
+      "year": 2019,
+      "totalStreams": 32465604
+    },
+    {
+      "artist": "Ninho",
+      "title": "No love",
+      "year": 2023,
+      "totalStreams": 31948089
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Dégaine",
+      "year": 2022,
+      "totalStreams": 31367828
+    },
+    {
+      "artist": "Ziak",
+      "title": "Raspoutine",
+      "year": 2020,
+      "totalStreams": 31113691
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Mode AV",
+      "year": 2022,
+      "totalStreams": 30747522
+    },
+    {
+      "artist": "Ninho",
+      "title": "Eurostar",
+      "year": 2023,
+      "totalStreams": 30736066
+    },
+    {
+      "artist": "Dadju",
+      "title": "Bob Marley",
+      "year": 2017,
+      "totalStreams": 30498154
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Train de vie",
+      "year": 2018,
+      "totalStreams": 30338376
+    },
+    {
+      "artist": "Laylow",
+      "title": "SPECIAL",
+      "year": 2021,
+      "totalStreams": 30315221
+    },
+    {
+      "artist": "Gazo",
+      "title": "BECTE",
+      "year": 2022,
+      "totalStreams": 30019424
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "Michael Jordan",
+      "year": 2025,
+      "totalStreams": 30011299
+    },
+    {
+      "artist": "Ninho",
+      "title": "De l'autre côté",
+      "year": 2017,
+      "totalStreams": 29887145
+    },
+    {
+      "artist": "Tiakola",
+      "title": "1h55",
+      "year": 2024,
+      "totalStreams": 29874887
+    },
+    {
+      "artist": "1PLIKÉ140",
+      "title": "CANADA",
+      "year": 2022,
+      "totalStreams": 29862090
+    },
+    {
+      "artist": "Kerchak",
+      "title": "Saison 2",
+      "year": 2024,
+      "totalStreams": 29831235
+    },
+    {
+      "artist": "SEYSEY",
+      "title": "Mia",
+      "year": 2023,
+      "totalStreams": 29313397
+    },
+    {
+      "artist": "Kerchak",
+      "title": "Peur",
+      "year": 2022,
+      "totalStreams": 29294598
+    },
+    {
+      "artist": "Wejdene",
+      "title": "Anissa",
+      "year": 2020,
+      "totalStreams": 29257882
+    },
+    {
+      "artist": "Bolémvn",
+      "title": "10K",
+      "year": 2020,
+      "totalStreams": 29164494
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Yeux disent",
+      "year": 2017,
+      "totalStreams": 28847147
+    },
+    {
+      "artist": "Dadju",
+      "title": "Jaloux",
+      "year": 2019,
+      "totalStreams": 28577657
+    },
+    {
+      "artist": "Dadju",
+      "title": "Dieu merci",
+      "year": 2021,
+      "totalStreams": 28455455
+    },
+    {
+      "artist": "Dosseh",
+      "title": "Habitué",
+      "year": 2018,
+      "totalStreams": 28438734
+    },
+    {
+      "artist": "Gazo",
+      "title": "MOLLY - A COLORS SHOW",
+      "year": 2022,
+      "totalStreams": 28359443
+    },
+    {
+      "artist": "RnBoi",
+      "title": "BTRD",
+      "year": 2025,
+      "totalStreams": 28315459
+    },
+    {
+      "artist": "Gazo",
+      "title": "NO LÈCHE",
+      "year": 2023,
+      "totalStreams": 28043867
+    },
+    {
+      "artist": "PLK",
+      "title": "Il pleut à Paris",
+      "year": 2024,
+      "totalStreams": 27878143
+    },
+    {
+      "artist": "Mister V",
+      "title": "Jamais",
+      "year": 2020,
+      "totalStreams": 27604643
+    },
+    {
+      "artist": "Amel Bent",
+      "title": "1,2,3",
+      "year": 2021,
+      "totalStreams": 27334869
+    },
+    {
+      "artist": "Gazo",
+      "title": "NOTRE DAME",
+      "year": 2023,
+      "totalStreams": 27324059
+    },
+    {
+      "artist": "Siboy",
+      "title": "Mobali",
+      "year": 2017,
+      "totalStreams": 27238156
+    },
+    {
+      "artist": "Dadju",
+      "title": "Mon soleil",
+      "year": 2021,
+      "totalStreams": 26724686
+    },
+    {
+      "artist": "MHD",
+      "title": "Afro Trap Part. 11 (King Kong)",
+      "year": 2021,
+      "totalStreams": 26585641
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Tout seul",
+      "year": 2023,
+      "totalStreams": 26186430
+    },
+    {
+      "artist": "Gazo",
+      "title": "CARTIER",
+      "year": 2023,
+      "totalStreams": 26019140
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Shavkat",
+      "year": 2023,
+      "totalStreams": 25613954
+    },
+    {
+      "artist": "Naps",
+      "title": "Vamos",
+      "year": 2022,
+      "totalStreams": 25456421
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Rêves bizarres",
+      "year": 2018,
+      "totalStreams": 25263802
+    },
+    {
+      "artist": "Orelsan",
+      "title": "L'odeur de l'essence",
+      "year": 2021,
+      "totalStreams": 25253407
+    },
+    {
+      "artist": "Ninho",
+      "title": "Mamacita",
+      "year": 2017,
+      "totalStreams": 25138070
+    },
+    {
+      "artist": "Jok'air",
+      "title": "Bonbon à la menthe",
+      "year": 2019,
+      "totalStreams": 25006464
+    },
+    {
+      "artist": "Tayc",
+      "title": "N'y pense plus",
+      "year": 2020,
+      "totalStreams": 24988429
+    },
+    {
+      "artist": "OBOY",
+      "title": "Mélodie",
+      "year": 2020,
+      "totalStreams": 24826693
+    },
+    {
+      "artist": "MHD",
+      "title": "Bella",
+      "year": 2018,
+      "totalStreams": 24663010
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Joie de filles",
+      "year": 2024,
+      "totalStreams": 24373060
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "La dot",
+      "year": 2018,
+      "totalStreams": 24248040
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Panama",
+      "year": 2023,
+      "totalStreams": 24083862
+    },
+    {
+      "artist": "Tayc",
+      "title": "Room 69",
+      "year": 2023,
+      "totalStreams": 23716270
+    },
+    {
+      "artist": "Josman",
+      "title": "Ailleurs",
+      "year": 2023,
+      "totalStreams": 23539784
+    },
+    {
+      "artist": "Tayc",
+      "title": "D O D O",
+      "year": 2021,
+      "totalStreams": 23116615
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Du propre",
+      "year": 2021,
+      "totalStreams": 23105780
+    },
+    {
+      "artist": "Jok'air",
+      "title": "Nos souvenirs",
+      "year": 2019,
+      "totalStreams": 23064246
+    },
+    {
+      "artist": "Ninho",
+      "title": "M.I.L.S 2.0",
+      "year": 2018,
+      "totalStreams": 22717242
+    },
+    {
+      "artist": "Dosseh",
+      "title": "L'odeur du charbon",
+      "year": 2019,
+      "totalStreams": 22553660
+    },
+    {
+      "artist": "S.Pri Noir",
+      "title": "Juste pour voir",
+      "year": 2018,
+      "totalStreams": 22522163
+    },
+    {
+      "artist": "Werenoi",
+      "title": "3 singes",
+      "year": 2022,
+      "totalStreams": 22446263
+    },
+    {
+      "artist": "La Fouine",
+      "title": "Flying Blue",
+      "year": 2025,
+      "totalStreams": 22423744
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Tee",
+      "year": 2022,
+      "totalStreams": 22190591
+    },
+    {
+      "artist": "Dadju",
+      "title": "Django",
+      "year": 2017,
+      "totalStreams": 22092014
+    },
+    {
+      "artist": "Soso Maness",
+      "title": "So Maness",
+      "year": 2020,
+      "totalStreams": 21803369
+    },
+    {
+      "artist": "Jok'air",
+      "title": "Elles ont trop joué avec mon cœur",
+      "year": 2021,
+      "totalStreams": 21755789
+    },
+    {
+      "artist": "Kerchak",
+      "title": "Calme toi",
+      "year": 2022,
+      "totalStreams": 21639525
+    },
+    {
+      "artist": "Ninho",
+      "title": "Money",
+      "year": 2019,
+      "totalStreams": 21513109
+    },
+    {
+      "artist": "Gazo",
+      "title": "KASSAV",
+      "year": 2021,
+      "totalStreams": 21471920
+    },
+    {
+      "artist": "Gradur",
+      "title": "Trucs de choses",
+      "year": 2021,
+      "totalStreams": 21327781
+    },
+    {
+      "artist": "Ninho",
+      "title": "Aïcha",
+      "year": 2021,
+      "totalStreams": 21281650
+    },
+    {
+      "artist": "Sadek",
+      "title": "Madre mia",
+      "year": 2017,
+      "totalStreams": 21276847
+    },
+    {
+      "artist": "Gazo",
+      "title": "KAT",
+      "year": 2025,
+      "totalStreams": 21252100
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Dans un verre",
+      "year": 2024,
+      "totalStreams": 21247663
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Quotidien",
+      "year": 2019,
+      "totalStreams": 21185543
+    },
+    {
+      "artist": "Nahir",
+      "title": "Piranha",
+      "year": 2023,
+      "totalStreams": 21102292
+    },
+    {
+      "artist": "Ninho",
+      "title": "Fendi",
+      "year": 2018,
+      "totalStreams": 21074567
+    },
+    {
+      "artist": "Mac Tyer",
+      "title": "Moto",
+      "year": 2020,
+      "totalStreams": 21074126
+    },
+    {
+      "artist": "Joé Dwèt Filé",
+      "title": "Jolie madame",
+      "year": 2021,
+      "totalStreams": 21051877
+    },
+    {
+      "artist": "Dadju",
+      "title": "Par amour",
+      "year": 2017,
+      "totalStreams": 21045991
+    },
+    {
+      "artist": "Orelsan",
+      "title": "CP_009_ Évidemment",
+      "year": 2022,
+      "totalStreams": 20944808
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Scarface",
+      "year": 2021,
+      "totalStreams": 20795612
+    },
+    {
+      "artist": "DJ Kawest",
+      "title": "Mode avion",
+      "year": 2024,
+      "totalStreams": 20786035
+    },
+    {
+      "artist": "Bolémvn",
+      "title": "Ça canarde",
+      "year": 2021,
+      "totalStreams": 20706521
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Plus Jamais",
+      "year": 2020,
+      "totalStreams": 20533109
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Escorte",
+      "year": 2023,
+      "totalStreams": 20455343
+    },
+    {
+      "artist": "PLK",
+      "title": "On sait jamais",
+      "year": 2020,
+      "totalStreams": 20391743
+    },
+    {
+      "artist": "Dadju",
+      "title": "Ma vie",
+      "year": 2020,
+      "totalStreams": 20387616
+    },
+    {
+      "artist": "L'Algérino",
+      "title": "Va Bene - Extrait de la BOF de \"Taxi 5\"",
+      "year": 2018,
+      "totalStreams": 20135318
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Baddies",
+      "year": 2025,
+      "totalStreams": 20135033
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Cheum",
+      "year": 2019,
+      "totalStreams": 20129804
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Vulgaire",
+      "year": 2022,
+      "totalStreams": 20019383
+    },
+    {
+      "artist": "Ninho",
+      "title": "Rose",
+      "year": 2017,
+      "totalStreams": 19847206
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Comportement",
+      "year": 2017,
+      "totalStreams": 19802597
+    },
+    {
+      "artist": "Dadju",
+      "title": "Oublie-le",
+      "year": 2017,
+      "totalStreams": 19728495
+    },
+    {
+      "artist": "Booba",
+      "title": "Arc-en-ciel",
+      "year": 2019,
+      "totalStreams": 19609208
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "Crois-moi",
+      "year": 2020,
+      "totalStreams": 19431377
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Basique",
+      "year": 2017,
+      "totalStreams": 19362223
+    },
+    {
+      "artist": "Ninho",
+      "title": "Pirate",
+      "year": 2020,
+      "totalStreams": 19334716
+    },
+    {
+      "artist": "Naps",
+      "title": "En détente",
+      "year": 2019,
+      "totalStreams": 19194481
+    },
+    {
+      "artist": "Yorssy",
+      "title": "Racks - Booska Nouvelle École",
+      "year": 2024,
+      "totalStreams": 19119050
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Jamal",
+      "year": 2022,
+      "totalStreams": 19115814
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Marie",
+      "year": 2019,
+      "totalStreams": 19056451
+    },
+    {
+      "artist": "Laylow",
+      "title": "R9R-LINE",
+      "year": 2021,
+      "totalStreams": 19054905
+    },
+    {
+      "artist": "PLK",
+      "title": "Monégasque",
+      "year": 2019,
+      "totalStreams": 19014135
+    },
+    {
+      "artist": "Ninho",
+      "title": "Arme de poing",
+      "year": 2021,
+      "totalStreams": 18957226
+    },
+    {
+      "artist": "Dadju",
+      "title": "Amour toxic",
+      "year": 2020,
+      "totalStreams": 18812316
+    },
+    {
+      "artist": "Gradur",
+      "title": "Rari",
+      "year": 2019,
+      "totalStreams": 18728760
+    },
+    {
+      "artist": "Ninho",
+      "title": "Outro",
+      "year": 2021,
+      "totalStreams": 18683998
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Taga",
+      "year": 2018,
+      "totalStreams": 18675622
+    },
+    {
+      "artist": "PLK",
+      "title": "C'est mort",
+      "year": 2020,
+      "totalStreams": 18672416
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Fallait pas",
+      "year": 2018,
+      "totalStreams": 18651044
+    },
+    {
+      "artist": "Bramsito",
+      "title": "Criminel",
+      "year": 2020,
+      "totalStreams": 18648389
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Calumet",
+      "year": 2020,
+      "totalStreams": 18646197
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Bobo",
+      "year": 2021,
+      "totalStreams": 18587938
+    },
+    {
+      "artist": "Imen Es",
+      "title": "1ère fois",
+      "year": 2020,
+      "totalStreams": 18529369
+    },
+    {
+      "artist": "menace Santana",
+      "title": "MaDrug",
+      "year": 2022,
+      "totalStreams": 18158072
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "La C",
+      "year": 2018,
+      "totalStreams": 17851198
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Sheitana",
+      "year": 2018,
+      "totalStreams": 17839404
+    },
+    {
+      "artist": "Booba",
+      "title": "BB",
+      "year": 2018,
+      "totalStreams": 17748616
+    },
+    {
+      "artist": "JKSN",
+      "title": "Christian Dior",
+      "year": 2024,
+      "totalStreams": 17731092
+    },
+    {
+      "artist": "Ziak",
+      "title": "Akimbo",
+      "year": 2021,
+      "totalStreams": 17634929
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Bling Bling",
+      "year": 2017,
+      "totalStreams": 17507244
+    },
+    {
+      "artist": "Booba",
+      "title": "Friday",
+      "year": 2017,
+      "totalStreams": 17444560
+    },
+    {
+      "artist": "Ninho",
+      "title": "Promo",
+      "year": 2020,
+      "totalStreams": 17416036
+    },
+    {
+      "artist": "Nono La Grinta",
+      "title": "Terrain",
+      "year": 2025,
+      "totalStreams": 17354798
+    },
+    {
+      "artist": "Ninho",
+      "title": "Intro",
+      "year": 2026,
+      "totalStreams": 17335206
+    },
+    {
+      "artist": "Ninho",
+      "title": "Sky Priority",
+      "year": 2021,
+      "totalStreams": 17090708
+    },
+    {
+      "artist": "Dadju",
+      "title": "Toko Toko",
+      "year": 2023,
+      "totalStreams": 17057979
+    },
+    {
+      "artist": "Booba",
+      "title": "PGP",
+      "year": 2019,
+      "totalStreams": 17030815
+    },
+    {
+      "artist": "menace Santana",
+      "title": "Guapman",
+      "year": 2022,
+      "totalStreams": 16927135
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Atasanté",
+      "year": 2022,
+      "totalStreams": 16906676
+    },
+    {
+      "artist": "Ninho",
+      "title": "Jamais",
+      "year": 2019,
+      "totalStreams": 16900433
+    },
+    {
+      "artist": "Gazo",
+      "title": "BODIES",
+      "year": 2022,
+      "totalStreams": 16873405
+    },
+    {
+      "artist": "Orelsan",
+      "title": "La pluie",
+      "year": 2017,
+      "totalStreams": 16841377
+    },
+    {
+      "artist": "VEN1",
+      "title": "Menace fantôme",
+      "year": 2024,
+      "totalStreams": 16772305
+    },
+    {
+      "artist": "Wejdene",
+      "title": "Coco",
+      "year": 2020,
+      "totalStreams": 16725525
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Je pense à toi",
+      "year": 2017,
+      "totalStreams": 16725514
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Ce soir ne sors pas",
+      "year": 2017,
+      "totalStreams": 16663897
+    },
+    {
+      "artist": "Vitaa",
+      "title": "Ça va ça vient",
+      "year": 2019,
+      "totalStreams": 16596043
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Évidemment",
+      "year": 2018,
+      "totalStreams": 16400005
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Bad Boy",
+      "year": 2018,
+      "totalStreams": 16398152
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Bimbo",
+      "year": 2021,
+      "totalStreams": 16345776
+    },
+    {
+      "artist": "Ninho",
+      "title": "Elle m'a eu",
+      "year": 2017,
+      "totalStreams": 16306614
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Si j'savais",
+      "year": 2022,
+      "totalStreams": 16304862
+    },
+    {
+      "artist": "Tiakola",
+      "title": "X",
+      "year": 2024,
+      "totalStreams": 16244687
+    },
+    {
+      "artist": "100 Blaze",
+      "title": "Binks",
+      "year": 2019,
+      "totalStreams": 16239439
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Gun salute",
+      "year": 2019,
+      "totalStreams": 16198993
+    },
+    {
+      "artist": "Ninho",
+      "title": "À Kinshasa",
+      "year": 2019,
+      "totalStreams": 16092170
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Boston George",
+      "year": 2020,
+      "totalStreams": 15969885
+    },
+    {
+      "artist": "Booba",
+      "title": "Saga",
+      "year": 2024,
+      "totalStreams": 15895477
+    },
+    {
+      "artist": "Booba",
+      "title": "Petite fille",
+      "year": 2017,
+      "totalStreams": 15813829
+    },
+    {
+      "artist": "L2B",
+      "title": "Overbooking",
+      "year": 2025,
+      "totalStreams": 15691840
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "On se reverra plus",
+      "year": 2022,
+      "totalStreams": 15603387
+    },
+    {
+      "artist": "PLK",
+      "title": "Dingue",
+      "year": 2019,
+      "totalStreams": 15590650
+    },
+    {
+      "artist": "Wejdene",
+      "title": "Je t’aime de ouf",
+      "year": 2021,
+      "totalStreams": 15500595
+    },
+    {
+      "artist": "Tayc",
+      "title": "Salomé",
+      "year": 2021,
+      "totalStreams": 15476859
+    },
+    {
+      "artist": "Booba",
+      "title": "DKR",
+      "year": 2017,
+      "totalStreams": 15451926
+    },
+    {
+      "artist": "Gradur",
+      "title": "TI TI TI",
+      "year": 2024,
+      "totalStreams": 15405884
+    },
+    {
+      "artist": "Houari",
+      "title": "Vanillée",
+      "year": 2024,
+      "totalStreams": 15387823
+    },
+    {
+      "artist": "PLK",
+      "title": "Périph",
+      "year": 2024,
+      "totalStreams": 15370215
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Boulot",
+      "year": 2024,
+      "totalStreams": 15350885
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "La vie du binks",
+      "year": 2021,
+      "totalStreams": 15337840
+    },
+    {
+      "artist": "Gazo",
+      "title": "PROBATION",
+      "year": 2024,
+      "totalStreams": 15327026
+    },
+    {
+      "artist": "Hatik",
+      "title": "Prison pour mineurs",
+      "year": 2020,
+      "totalStreams": 15294857
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Défaite de famille",
+      "year": 2017,
+      "totalStreams": 15237540
+    },
+    {
+      "artist": "Ziak",
+      "title": "Galerie",
+      "year": 2021,
+      "totalStreams": 15098124
+    },
+    {
+      "artist": "Vald",
+      "title": "Anunnaki",
+      "year": 2022,
+      "totalStreams": 15091542
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Matin",
+      "year": 2019,
+      "totalStreams": 15066750
+    },
+    {
+      "artist": "Booba",
+      "title": "RATPI WORLD",
+      "year": 2021,
+      "totalStreams": 15043543
+    },
+    {
+      "artist": "Moha La Squale",
+      "title": "Bandolero",
+      "year": 2018,
+      "totalStreams": 15011420
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Hypé",
+      "year": 2024,
+      "totalStreams": 14874904
+    },
+    {
+      "artist": "Jok'air",
+      "title": "Big Daddy Jok",
+      "year": 2017,
+      "totalStreams": 14867233
+    },
+    {
+      "artist": "1PLIKÉ140",
+      "title": "LOPSA STORY",
+      "year": 2020,
+      "totalStreams": 14864190
+    },
+    {
+      "artist": "Lefa",
+      "title": "Paradise",
+      "year": 2018,
+      "totalStreams": 14812145
+    },
+    {
+      "artist": "Ninho",
+      "title": "Paris c'est magique",
+      "year": 2019,
+      "totalStreams": 14750083
+    },
+    {
+      "artist": "Moha La Squale",
+      "title": "Luna",
+      "year": 2018,
+      "totalStreams": 14744698
+    },
+    {
+      "artist": "Ziak",
+      "title": "Même pas un grincement",
+      "year": 2023,
+      "totalStreams": 14650486
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Gramme 2 peuf",
+      "year": 2017,
+      "totalStreams": 14544957
+    },
+    {
+      "artist": "Ninho",
+      "title": "Sans peine",
+      "year": 2019,
+      "totalStreams": 14520952
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Tourner la tête",
+      "year": 2020,
+      "totalStreams": 14458243
+    },
+    {
+      "artist": "Dosseh",
+      "title": "A chaque jour...",
+      "year": 2018,
+      "totalStreams": 14367800
+    },
+    {
+      "artist": "OBOY",
+      "title": "Cruel",
+      "year": 2021,
+      "totalStreams": 14367703
+    },
+    {
+      "artist": "Vald",
+      "title": "Journal perso II",
+      "year": 2019,
+      "totalStreams": 14337997
+    },
+    {
+      "artist": "Kendji Girac",
+      "title": "Bebeto",
+      "year": 2021,
+      "totalStreams": 14315424
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Tout va bien",
+      "year": 2017,
+      "totalStreams": 14112452
+    },
+    {
+      "artist": "M. Pokora",
+      "title": "Tombé",
+      "year": 2019,
+      "totalStreams": 13976501
+    },
+    {
+      "artist": "Guy2Bezbar",
+      "title": "Jerrican",
+      "year": 2025,
+      "totalStreams": 13968532
+    },
+    {
+      "artist": "Laylow",
+      "title": "UNE HISTOIRE ÉTRANGE",
+      "year": 2021,
+      "totalStreams": 13860253
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Rolls",
+      "year": 2018,
+      "totalStreams": 13719498
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "42",
+      "year": 2024,
+      "totalStreams": 13640113
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Sucette",
+      "year": 2018,
+      "totalStreams": 13633661
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Cadeau",
+      "year": 2023,
+      "totalStreams": 13612918
+    },
+    {
+      "artist": "Ninho",
+      "title": "Jeune Lossa",
+      "year": 2019,
+      "totalStreams": 13509016
+    },
+    {
+      "artist": "Ninho",
+      "title": "Filon",
+      "year": 2020,
+      "totalStreams": 13365095
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Diarabi",
+      "year": 2017,
+      "totalStreams": 13308220
+    },
+    {
+      "artist": "Dadju",
+      "title": "Bobo au cœur",
+      "year": 2020,
+      "totalStreams": 13259109
+    },
+    {
+      "artist": "Tiakola",
+      "title": "T.I.A - A COLORS SHOW",
+      "year": 2024,
+      "totalStreams": 13222903
+    },
+    {
+      "artist": "Franglish",
+      "title": "La Pluie",
+      "year": 2025,
+      "totalStreams": 13075740
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "La Marseillaise",
+      "year": 2023,
+      "totalStreams": 13050611
+    },
+    {
+      "artist": "PLK",
+      "title": "Pelo",
+      "year": 2023,
+      "totalStreams": 13017244
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Noche",
+      "year": 2017,
+      "totalStreams": 12991351
+    },
+    {
+      "artist": "PLK",
+      "title": "A la base",
+      "year": 2021,
+      "totalStreams": 12946216
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Mauvais ordre",
+      "year": 2022,
+      "totalStreams": 12828578
+    },
+    {
+      "artist": "Naps",
+      "title": "Rappelle-toi",
+      "year": 2019,
+      "totalStreams": 12625245
+    },
+    {
+      "artist": "Tiakola",
+      "title": "RESTE-LÀ",
+      "year": 2024,
+      "totalStreams": 12574321
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Goulag",
+      "year": 2020,
+      "totalStreams": 12557335
+    },
+    {
+      "artist": "Vitaa",
+      "title": "Je te le donne (en duo avec Slimane)",
+      "year": 2023,
+      "totalStreams": 12377573
+    },
+    {
+      "artist": "Amel Bent",
+      "title": "Jusqu'au bout",
+      "year": 2021,
+      "totalStreams": 12363389
+    },
+    {
+      "artist": "Kendji Girac",
+      "title": "Dans mes bras",
+      "year": 2021,
+      "totalStreams": 12312533
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Mômes",
+      "year": 2018,
+      "totalStreams": 12308416
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Shonen",
+      "year": 2021,
+      "totalStreams": 12267541
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Selfie",
+      "year": 2022,
+      "totalStreams": 12231373
+    },
+    {
+      "artist": "Mister V",
+      "title": "Gang",
+      "year": 2020,
+      "totalStreams": 12203309
+    },
+    {
+      "artist": "Hatik",
+      "title": "ma p'tite étoile",
+      "year": 2021,
+      "totalStreams": 12162814
+    },
+    {
+      "artist": "La Fouine",
+      "title": "Etat des lieux - Part 1",
+      "year": 2025,
+      "totalStreams": 12154500
+    },
+    {
+      "artist": "Werenoi",
+      "title": "16.02.2024",
+      "year": 2024,
+      "totalStreams": 12125081
+    },
+    {
+      "artist": "Ninho",
+      "title": "Freestyle LVL UP 1",
+      "year": 2023,
+      "totalStreams": 11994359
+    },
+    {
+      "artist": "Mister V",
+      "title": "Pirelli",
+      "year": 2020,
+      "totalStreams": 11978824
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Jour de plus",
+      "year": 2023,
+      "totalStreams": 11948213
+    },
+    {
+      "artist": "Bolémvn",
+      "title": "Sankhara #4 (Chic)",
+      "year": 2019,
+      "totalStreams": 11920139
+    },
+    {
+      "artist": "Ninho",
+      "title": "OG",
+      "year": 2021,
+      "totalStreams": 11915457
+    },
+    {
+      "artist": "La Mano 1.9",
+      "title": "Businessman",
+      "year": 2025,
+      "totalStreams": 11853891
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Oh la folle",
+      "year": 2019,
+      "totalStreams": 11851958
+    },
+    {
+      "artist": "Ninho",
+      "title": "No Life",
+      "year": 2021,
+      "totalStreams": 11802290
+    },
+    {
+      "artist": "Tiakola",
+      "title": "PLAISIR NOCIF",
+      "year": 2024,
+      "totalStreams": 11740497
+    },
+    {
+      "artist": "Ninho",
+      "title": "M.I.L.S 3",
+      "year": 2020,
+      "totalStreams": 11675057
+    },
+    {
+      "artist": "Sadek",
+      "title": "Kimono",
+      "year": 2018,
+      "totalStreams": 11661409
+    },
+    {
+      "artist": "THEODORT",
+      "title": "Toko dombi",
+      "year": 2024,
+      "totalStreams": 11598872
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Les étoiles vagabondes",
+      "year": 2019,
+      "totalStreams": 11590878
+    },
+    {
+      "artist": "Ninho",
+      "title": "Goutte d’eau",
+      "year": 2019,
+      "totalStreams": 11547991
+    },
+    {
+      "artist": "1PLIKÉ140",
+      "title": "ONGBAK 2",
+      "year": 2021,
+      "totalStreams": 11491775
+    },
+    {
+      "artist": "47ter",
+      "title": "L'adresse",
+      "year": 2019,
+      "totalStreams": 11399488
+    },
+    {
+      "artist": "Naps",
+      "title": "Carré VIP",
+      "year": 2020,
+      "totalStreams": 11337483
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Doudou",
+      "year": 2020,
+      "totalStreams": 11293188
+    },
+    {
+      "artist": "Dadju",
+      "title": "Sous contrôle",
+      "year": 2017,
+      "totalStreams": 11248762
+    },
+    {
+      "artist": "MHD",
+      "title": "Pololo",
+      "year": 2021,
+      "totalStreams": 11127797
+    },
+    {
+      "artist": "PLK",
+      "title": "Bénef",
+      "year": 2020,
+      "totalStreams": 11113531
+    },
+    {
+      "artist": "Gazo",
+      "title": "100K",
+      "year": 2023,
+      "totalStreams": 11020958
+    },
+    {
+      "artist": "OBOY",
+      "title": "Cosmos",
+      "year": 2021,
+      "totalStreams": 10978699
+    },
+    {
+      "artist": "Ninho",
+      "title": "Freestyle LVL UP 2",
+      "year": 2023,
+      "totalStreams": 10978129
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Notes pour trop tard",
+      "year": 2017,
+      "totalStreams": 10945645
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Magot",
+      "year": 2023,
+      "totalStreams": 10934775
+    },
+    {
+      "artist": "Booba",
+      "title": "Dolce Vita",
+      "year": 2020,
+      "totalStreams": 10890681
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Alunissons",
+      "year": 2019,
+      "totalStreams": 10848643
+    },
+    {
+      "artist": "Booba",
+      "title": "113",
+      "year": 2017,
+      "totalStreams": 10784672
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Ténébreux #1",
+      "year": 2018,
+      "totalStreams": 10756345
+    },
+    {
+      "artist": "Ninho",
+      "title": "La vivance",
+      "year": 2019,
+      "totalStreams": 10668237
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Allo",
+      "year": 2021,
+      "totalStreams": 10641630
+    },
+    {
+      "artist": "KeBlack",
+      "title": "Bazardée",
+      "year": 2017,
+      "totalStreams": 10528285
+    },
+    {
+      "artist": "Lujipeka",
+      "title": "Poupée Russe",
+      "year": 2021,
+      "totalStreams": 10525110
+    },
+    {
+      "artist": "Orelsan",
+      "title": "San",
+      "year": 2017,
+      "totalStreams": 10483359
+    },
+    {
+      "artist": "Dabs",
+      "title": "Ouloulou",
+      "year": 2019,
+      "totalStreams": 10442997
+    },
+    {
+      "artist": "Ninho",
+      "title": "La maison que je voulais",
+      "year": 2021,
+      "totalStreams": 10407734
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Cellophané",
+      "year": 2019,
+      "totalStreams": 10373389
+    },
+    {
+      "artist": "Vianney",
+      "title": "Je suis fou",
+      "year": 2023,
+      "totalStreams": 10275953
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Location",
+      "year": 2024,
+      "totalStreams": 10274015
+    },
+    {
+      "artist": "Naps",
+      "title": "Favela",
+      "year": 2018,
+      "totalStreams": 10217060
+    },
+    {
+      "artist": "Laylow",
+      "title": "Vent de l'est",
+      "year": 2018,
+      "totalStreams": 10192210
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Doggy",
+      "year": 2024,
+      "totalStreams": 10166794
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "7 sur 7",
+      "year": 2020,
+      "totalStreams": 10163052
+    },
+    {
+      "artist": "Ninho",
+      "title": "Jusqu'à minuit",
+      "year": 2019,
+      "totalStreams": 10038675
+    },
+    {
+      "artist": "47ter",
+      "title": "On avait dit",
+      "year": 2019,
+      "totalStreams": 10016880
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "L'enfoiré",
+      "year": 2019,
+      "totalStreams": 10004537
+    },
+    {
+      "artist": "Naza",
+      "title": "Tout donner",
+      "year": 2025,
+      "totalStreams": 10002646
+    },
+    {
+      "artist": "Naza",
+      "title": "Connectés",
+      "year": 2025,
+      "totalStreams": 9950223
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Valise",
+      "year": 2020,
+      "totalStreams": 9916998
+    },
+    {
+      "artist": "Niaks",
+      "title": "Mahmouma",
+      "year": 2023,
+      "totalStreams": 9839348
+    },
+    {
+      "artist": "Luidji",
+      "title": "Pour deux âmes solitaires (Part.1)",
+      "year": 2017,
+      "totalStreams": 9778376
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Chambre 122",
+      "year": 2018,
+      "totalStreams": 9776567
+    },
+    {
+      "artist": "MHD",
+      "title": "Bébé",
+      "year": 2018,
+      "totalStreams": 9728690
+    },
+    {
+      "artist": "Lomepal",
+      "title": "X-men",
+      "year": 2018,
+      "totalStreams": 9666184
+    },
+    {
+      "artist": "Lomepal",
+      "title": "La vérité",
+      "year": 2018,
+      "totalStreams": 9661439
+    },
+    {
+      "artist": "Ninho",
+      "title": "25 G",
+      "year": 2023,
+      "totalStreams": 9641221
+    },
+    {
+      "artist": "Ninho",
+      "title": "Mood",
+      "year": 2021,
+      "totalStreams": 9625334
+    },
+    {
+      "artist": "Sadek",
+      "title": "Bep Bep",
+      "year": 2018,
+      "totalStreams": 9620475
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Voyage léger",
+      "year": 2019,
+      "totalStreams": 9609562
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Oh bah oui",
+      "year": 2017,
+      "totalStreams": 9548237
+    },
+    {
+      "artist": "Médine",
+      "title": "KYLL",
+      "year": 2018,
+      "totalStreams": 9519256
+    },
+    {
+      "artist": "Sadek",
+      "title": "TP",
+      "year": 2023,
+      "totalStreams": 9509194
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Jalouse",
+      "year": 2025,
+      "totalStreams": 9493284
+    },
+    {
+      "artist": "Rsko",
+      "title": "BOOM BOOM",
+      "year": 2023,
+      "totalStreams": 9439997
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Ailleurs",
+      "year": 2025,
+      "totalStreams": 9424807
+    },
+    {
+      "artist": "DJ Kayz",
+      "title": "Monte le son",
+      "year": 2021,
+      "totalStreams": 9408033
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Cosmos",
+      "year": 2021,
+      "totalStreams": 9403114
+    },
+    {
+      "artist": "S.Pri Noir",
+      "title": "Maman dort",
+      "year": 2020,
+      "totalStreams": 9360400
+    },
+    {
+      "artist": "Ninho",
+      "title": "Binks to Binks 6",
+      "year": 2019,
+      "totalStreams": 9332951
+    },
+    {
+      "artist": "OBOY",
+      "title": "Je M'en Tape",
+      "year": 2019,
+      "totalStreams": 9317997
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Mortel",
+      "year": 2019,
+      "totalStreams": 9311406
+    },
+    {
+      "artist": "VEN1",
+      "title": "SD Night",
+      "year": 2024,
+      "totalStreams": 9306261
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Cellophané",
+      "year": 2017,
+      "totalStreams": 9263914
+    },
+    {
+      "artist": "Booba",
+      "title": "Drapeau noir",
+      "year": 2017,
+      "totalStreams": 9257230
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "La machine",
+      "year": 2020,
+      "totalStreams": 9250115
+    },
+    {
+      "artist": "Kerchak",
+      "title": "T'aimerais",
+      "year": 2024,
+      "totalStreams": 9186537
+    },
+    {
+      "artist": "Booba",
+      "title": "GLAIVE",
+      "year": 2019,
+      "totalStreams": 9134695
+    },
+    {
+      "artist": "Tiitof",
+      "title": "Mwen An Sa",
+      "year": 2025,
+      "totalStreams": 9105663
+    },
+    {
+      "artist": "Ninho",
+      "title": "Big Pac",
+      "year": 2019,
+      "totalStreams": 9101022
+    },
+    {
+      "artist": "Orelsan",
+      "title": "La fête est finie",
+      "year": 2017,
+      "totalStreams": 9056883
+    },
+    {
+      "artist": "Ninho",
+      "title": "La puerta",
+      "year": 2020,
+      "totalStreams": 9054566
+    },
+    {
+      "artist": "PLK",
+      "title": "Toute l'année",
+      "year": 2019,
+      "totalStreams": 8996967
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Casseurs Flowters Infinity",
+      "year": 2021,
+      "totalStreams": 8934999
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Allez nique ta mère",
+      "year": 2020,
+      "totalStreams": 8928346
+    },
+    {
+      "artist": "Gazo",
+      "title": "TCHIN 2X",
+      "year": 2021,
+      "totalStreams": 8916015
+    },
+    {
+      "artist": "Vald",
+      "title": "Peon",
+      "year": 2022,
+      "totalStreams": 8899942
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Menteur menteur",
+      "year": 2019,
+      "totalStreams": 8892032
+    },
+    {
+      "artist": "Ninho",
+      "title": "Problèmes du matin",
+      "year": 2020,
+      "totalStreams": 8823563
+    },
+    {
+      "artist": "Ninho",
+      "title": "Tokarev",
+      "year": 2019,
+      "totalStreams": 8797201
+    },
+    {
+      "artist": "Booba",
+      "title": "Scarface",
+      "year": 2017,
+      "totalStreams": 8796735
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Athéna",
+      "year": 2021,
+      "totalStreams": 8771662
+    },
+    {
+      "artist": "MHD",
+      "title": "Afro Trap Pt. 8 (Never)",
+      "year": 2017,
+      "totalStreams": 8751645
+    },
+    {
+      "artist": "L'Algérino",
+      "title": "Sapapaya",
+      "year": 2021,
+      "totalStreams": 8749356
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Seul avec du monde autour",
+      "year": 2021,
+      "totalStreams": 8740017
+    },
+    {
+      "artist": "PLK",
+      "title": "Décembre",
+      "year": 2023,
+      "totalStreams": 8715293
+    },
+    {
+      "artist": "Hornet La Frappe",
+      "title": "Maghrébin",
+      "year": 2017,
+      "totalStreams": 8692044
+    },
+    {
+      "artist": "Booba",
+      "title": "Nougat",
+      "year": 2017,
+      "totalStreams": 8679883
+    },
+    {
+      "artist": "Lefa",
+      "title": "Smile",
+      "year": 2020,
+      "totalStreams": 8657791
+    },
+    {
+      "artist": "Ninho",
+      "title": "Coffrer",
+      "year": 2018,
+      "totalStreams": 8648017
+    },
+    {
+      "artist": "La Mano 1.9",
+      "title": "Crime ensoleillé",
+      "year": 2025,
+      "totalStreams": 8647104
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Téléphone - Extrait de CRCLR MVT SAISON II",
+      "year": 2021,
+      "totalStreams": 8606100
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Premier pas",
+      "year": 2019,
+      "totalStreams": 8560941
+    },
+    {
+      "artist": "Luidji",
+      "title": "Reste en Vie",
+      "year": 2023,
+      "totalStreams": 8547191
+    },
+    {
+      "artist": "Dadju",
+      "title": "Lionne",
+      "year": 2017,
+      "totalStreams": 8544354
+    },
+    {
+      "artist": "Ninho",
+      "title": "Athéna",
+      "year": 2021,
+      "totalStreams": 8541371
+    },
+    {
+      "artist": "Booba",
+      "title": "5G",
+      "year": 2021,
+      "totalStreams": 8532146
+    },
+    {
+      "artist": "47ter",
+      "title": "Vivre",
+      "year": 2021,
+      "totalStreams": 8512925
+    },
+    {
+      "artist": "Vegedream",
+      "title": "La fuite - Vegedream X Dj Leska / Edit MIx",
+      "year": 2018,
+      "totalStreams": 8465593
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "Entre les murs",
+      "year": 2019,
+      "totalStreams": 8428524
+    },
+    {
+      "artist": "Vald",
+      "title": "Dragon",
+      "year": 2018,
+      "totalStreams": 8416087
+    },
+    {
+      "artist": "Naestro",
+      "title": "Bella ciao",
+      "year": 2020,
+      "totalStreams": 8355317
+    },
+    {
+      "artist": "DJ Snake",
+      "title": "SG",
+      "year": 2021,
+      "totalStreams": 8299735
+    },
+    {
+      "artist": "Naps",
+      "title": "Recherché",
+      "year": 2018,
+      "totalStreams": 8288917
+    },
+    {
+      "artist": "JYEUHAIR",
+      "title": "Peace - Nouvelle École",
+      "year": 2024,
+      "totalStreams": 8274436
+    },
+    {
+      "artist": "menace Santana",
+      "title": "Skiboy",
+      "year": 2021,
+      "totalStreams": 8246408
+    },
+    {
+      "artist": "Ikaz Boi",
+      "title": "BALLE DANS LE COEUR",
+      "year": 2023,
+      "totalStreams": 8239882
+    },
+    {
+      "artist": "Ninho",
+      "title": "Laisse pas traîner ton fils",
+      "year": 2017,
+      "totalStreams": 8238837
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Grande armée",
+      "year": 2017,
+      "totalStreams": 8237569
+    },
+    {
+      "artist": "Imen Es",
+      "title": "Essaie encore",
+      "year": 2021,
+      "totalStreams": 8184293
+    },
+    {
+      "artist": "Laylow",
+      "title": "IVERSON",
+      "year": 2021,
+      "totalStreams": 8175724
+    },
+    {
+      "artist": "Booba",
+      "title": "Gotham",
+      "year": 2018,
+      "totalStreams": 8166744
+    },
+    {
+      "artist": "La Fouine",
+      "title": "Broken",
+      "year": 2025,
+      "totalStreams": 8099977
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Grisaille",
+      "year": 2023,
+      "totalStreams": 8051289
+    },
+    {
+      "artist": "PLK",
+      "title": "Chandon et Moët",
+      "year": 2020,
+      "totalStreams": 7951965
+    },
+    {
+      "artist": "4Keus",
+      "title": "En bas",
+      "year": 2020,
+      "totalStreams": 7921407
+    },
+    {
+      "artist": "JKSN",
+      "title": "Seine-Saint-Denis",
+      "year": 2024,
+      "totalStreams": 7918551
+    },
+    {
+      "artist": "Tayc",
+      "title": "P A S C O M M E Ç A",
+      "year": 2021,
+      "totalStreams": 7891257
+    },
+    {
+      "artist": "Tayc",
+      "title": "Dis moi comment.",
+      "year": 2021,
+      "totalStreams": 7877597
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Billet",
+      "year": 2018,
+      "totalStreams": 7832462
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Christophe",
+      "year": 2017,
+      "totalStreams": 7821986
+    },
+    {
+      "artist": "Moha La Squale",
+      "title": "Bienvenue à La Banane",
+      "year": 2018,
+      "totalStreams": 7732571
+    },
+    {
+      "artist": "Ninho",
+      "title": "Every day",
+      "year": 2020,
+      "totalStreams": 7725296
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Zone",
+      "year": 2017,
+      "totalStreams": 7686199
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Takotsubo",
+      "year": 2019,
+      "totalStreams": 7673789
+    },
+    {
+      "artist": "Booba",
+      "title": "VVV",
+      "year": 2021,
+      "totalStreams": 7654580
+    },
+    {
+      "artist": "Ninho",
+      "title": "LES DIAMANTS DE BOKASSA",
+      "year": 2026,
+      "totalStreams": 7645377
+    },
+    {
+      "artist": "Tayc",
+      "title": "Comme toi",
+      "year": 2020,
+      "totalStreams": 7643636
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Soldat",
+      "year": 2019,
+      "totalStreams": 7612413
+    },
+    {
+      "artist": "Ziak",
+      "title": "Fixette",
+      "year": 2021,
+      "totalStreams": 7592119
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "MW2",
+      "year": 2023,
+      "totalStreams": 7575985
+    },
+    {
+      "artist": "La Fève",
+      "title": "MAUVAIS PAYEUR",
+      "year": 2021,
+      "totalStreams": 7568892
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Aventador",
+      "year": 2019,
+      "totalStreams": 7566301
+    },
+    {
+      "artist": "Booba",
+      "title": "Trône",
+      "year": 2017,
+      "totalStreams": 7552574
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Paradis",
+      "year": 2017,
+      "totalStreams": 7552373
+    },
+    {
+      "artist": "La Mano 1.9",
+      "title": "Canon",
+      "year": 2024,
+      "totalStreams": 7529270
+    },
+    {
+      "artist": "Ninho",
+      "title": "911",
+      "year": 2024,
+      "totalStreams": 7505708
+    },
+    {
+      "artist": "Tiakola",
+      "title": "G.A.N.G",
+      "year": 2024,
+      "totalStreams": 7457802
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Rap catéchisme",
+      "year": 2020,
+      "totalStreams": 7400581
+    },
+    {
+      "artist": "Vald",
+      "title": "Vitrine",
+      "year": 2017,
+      "totalStreams": 7400172
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Traîtres",
+      "year": 2017,
+      "totalStreams": 7373929
+    },
+    {
+      "artist": "Ninho",
+      "title": "YSL",
+      "year": 2021,
+      "totalStreams": 7363638
+    },
+    {
+      "artist": "RnBoi",
+      "title": "AVEC MOI",
+      "year": 2026,
+      "totalStreams": 7304264
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Le bruit qui court",
+      "year": 2019,
+      "totalStreams": 7297276
+    },
+    {
+      "artist": "Ninho",
+      "title": "L'ancien",
+      "year": 2019,
+      "totalStreams": 7250582
+    },
+    {
+      "artist": "S-Crew",
+      "title": "22",
+      "year": 2022,
+      "totalStreams": 7242086
+    },
+    {
+      "artist": "Naps",
+      "title": "Georgina",
+      "year": 2025,
+      "totalStreams": 7238914
+    },
+    {
+      "artist": "Gazo",
+      "title": "Drill FR 4",
+      "year": 2020,
+      "totalStreams": 7202437
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Hasarder",
+      "year": 2022,
+      "totalStreams": 7169906
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "L'addition",
+      "year": 2019,
+      "totalStreams": 7143257
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Oula",
+      "year": 2018,
+      "totalStreams": 7130363
+    },
+    {
+      "artist": "L2B",
+      "title": "C'est Quoi Ton Délire",
+      "year": 2025,
+      "totalStreams": 7120198
+    },
+    {
+      "artist": "Sadek",
+      "title": "La Vache",
+      "year": 2017,
+      "totalStreams": 7099408
+    },
+    {
+      "artist": "Naza",
+      "title": "Une histoire",
+      "year": 2024,
+      "totalStreams": 7093627
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Baise le monde",
+      "year": 2021,
+      "totalStreams": 7092627
+    },
+    {
+      "artist": "Zkr",
+      "title": "Tu vois comment ?",
+      "year": 2021,
+      "totalStreams": 7086118
+    },
+    {
+      "artist": "Ninho",
+      "title": "RER D",
+      "year": 2021,
+      "totalStreams": 7082650
+    },
+    {
+      "artist": "Sadek",
+      "title": "Dans la lune",
+      "year": 2017,
+      "totalStreams": 7052665
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "FeFe",
+      "year": 2019,
+      "totalStreams": 6946560
+    },
+    {
+      "artist": "KeBlack",
+      "title": "J'ai déconné",
+      "year": 2017,
+      "totalStreams": 6932306
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Rêve mieux",
+      "year": 2021,
+      "totalStreams": 6927261
+    },
+    {
+      "artist": "Ninho",
+      "title": "+971",
+      "year": 2026,
+      "totalStreams": 6906094
+    },
+    {
+      "artist": "Josman",
+      "title": "Brûle",
+      "year": 2022,
+      "totalStreams": 6899436
+    },
+    {
+      "artist": "Ninho",
+      "title": "Privilège",
+      "year": 2020,
+      "totalStreams": 6897999
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Ciel noir",
+      "year": 2019,
+      "totalStreams": 6897270
+    },
+    {
+      "artist": "Ninho",
+      "title": "Caramelo",
+      "year": 2017,
+      "totalStreams": 6896017
+    },
+    {
+      "artist": "Tiakola",
+      "title": "MBIFE",
+      "year": 2025,
+      "totalStreams": 6884079
+    },
+    {
+      "artist": "Booba",
+      "title": "E.L.E.P.H.A.N.T",
+      "year": 2017,
+      "totalStreams": 6880132
+    },
+    {
+      "artist": "L2B",
+      "title": "Jump",
+      "year": 2025,
+      "totalStreams": 6876896
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Pousse toi",
+      "year": 2021,
+      "totalStreams": 6865529
+    },
+    {
+      "artist": "Ninho",
+      "title": "Chino",
+      "year": 2017,
+      "totalStreams": 6855703
+    },
+    {
+      "artist": "Gazo",
+      "title": "LETTRE À UN OPPS",
+      "year": 2022,
+      "totalStreams": 6840190
+    },
+    {
+      "artist": "Abou Debeing",
+      "title": "C'est pas bon",
+      "year": 2017,
+      "totalStreams": 6822958
+    },
+    {
+      "artist": "Booba",
+      "title": "Azerty",
+      "year": 2021,
+      "totalStreams": 6816740
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Hors ligne",
+      "year": 2020,
+      "totalStreams": 6812409
+    },
+    {
+      "artist": "Lujipeka",
+      "title": "Pas à ma place",
+      "year": 2021,
+      "totalStreams": 6809696
+    },
+    {
+      "artist": "Ninho",
+      "title": "Kim Jong-il",
+      "year": 2019,
+      "totalStreams": 6757398
+    },
+    {
+      "artist": "Ziak",
+      "title": "Rhum & machette",
+      "year": 2021,
+      "totalStreams": 6748992
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Solo",
+      "year": 2019,
+      "totalStreams": 6725737
+    },
+    {
+      "artist": "Naps",
+      "title": "La danse du roro",
+      "year": 2023,
+      "totalStreams": 6725234
+    },
+    {
+      "artist": "Freeze corleone",
+      "title": "Ancelotti",
+      "year": 2023,
+      "totalStreams": 6724937
+    },
+    {
+      "artist": "Naza",
+      "title": "MMM",
+      "year": 2017,
+      "totalStreams": 6655488
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Pas de reine",
+      "year": 2020,
+      "totalStreams": 6652606
+    },
+    {
+      "artist": "Bolémvn",
+      "title": "Prends ta monnaie",
+      "year": 2020,
+      "totalStreams": 6626348
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Papel",
+      "year": 2021,
+      "totalStreams": 6621152
+    },
+    {
+      "artist": "Wejdene",
+      "title": "Réfléchir",
+      "year": 2020,
+      "totalStreams": 6614194
+    },
+    {
+      "artist": "Ninho",
+      "title": "C'était le rap",
+      "year": 2020,
+      "totalStreams": 6609496
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Illimité",
+      "year": 2020,
+      "totalStreams": 6596508
+    },
+    {
+      "artist": "Werenoi",
+      "title": "La famine",
+      "year": 2024,
+      "totalStreams": 6591439
+    },
+    {
+      "artist": "Vegedream",
+      "title": "Marchand de sable Part. 4 (Du SAal)",
+      "year": 2018,
+      "totalStreams": 6510026
+    },
+    {
+      "artist": "Ziak",
+      "title": "Shonen",
+      "year": 2021,
+      "totalStreams": 6457600
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Oyé",
+      "year": 2018,
+      "totalStreams": 6451228
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Ken Kaneki",
+      "year": 2019,
+      "totalStreams": 6442441
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "No Stress",
+      "year": 2025,
+      "totalStreams": 6415976
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Plus de larmes",
+      "year": 2018,
+      "totalStreams": 6411644
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Chérie",
+      "year": 2023,
+      "totalStreams": 6384651
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Débrouillard",
+      "year": 2019,
+      "totalStreams": 6379494
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Ne me ramène pas",
+      "year": 2018,
+      "totalStreams": 6375925
+    },
+    {
+      "artist": "Ninho",
+      "title": "Zéro paluche",
+      "year": 2019,
+      "totalStreams": 6324469
+    },
+    {
+      "artist": "PLK",
+      "title": "Dans les clips",
+      "year": 2020,
+      "totalStreams": 6282692
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Quand est-ce que ça s'arrête",
+      "year": 2017,
+      "totalStreams": 6247255
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "Le dire",
+      "year": 2020,
+      "totalStreams": 6240174
+    },
+    {
+      "artist": "Ninho",
+      "title": "Roro",
+      "year": 2017,
+      "totalStreams": 6227669
+    },
+    {
+      "artist": "Mister V",
+      "title": "Space Jam",
+      "year": 2017,
+      "totalStreams": 6196215
+    },
+    {
+      "artist": "OBOY",
+      "title": "Louis V",
+      "year": 2021,
+      "totalStreams": 6182236
+    },
+    {
+      "artist": "Booba",
+      "title": "Kayna",
+      "year": 2021,
+      "totalStreams": 6171140
+    },
+    {
+      "artist": "PLK",
+      "title": "Mignon tout plein",
+      "year": 2024,
+      "totalStreams": 6145072
+    },
+    {
+      "artist": "Ninho",
+      "title": "NI",
+      "year": 2026,
+      "totalStreams": 6144448
+    },
+    {
+      "artist": "Franglish",
+      "title": "Sans moi",
+      "year": 2021,
+      "totalStreams": 6134214
+    },
+    {
+      "artist": "Ninho",
+      "title": "Gros vendeurs",
+      "year": 2020,
+      "totalStreams": 6104523
+    },
+    {
+      "artist": "Mister V",
+      "title": "Top album",
+      "year": 2017,
+      "totalStreams": 6098223
+    },
+    {
+      "artist": "Booba",
+      "title": "GP",
+      "year": 2021,
+      "totalStreams": 6092442
+    },
+    {
+      "artist": "Tiakola",
+      "title": "Roro",
+      "year": 2022,
+      "totalStreams": 6092210
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Turbo",
+      "year": 2020,
+      "totalStreams": 6063678
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "De mon mieux",
+      "year": 2019,
+      "totalStreams": 6051889
+    },
+    {
+      "artist": "Tayc",
+      "title": "Sans effet",
+      "year": 2021,
+      "totalStreams": 6049164
+    },
+    {
+      "artist": "Ninho",
+      "title": "Freestyle LVL UP 3",
+      "year": 2023,
+      "totalStreams": 6043737
+    },
+    {
+      "artist": "Moha La Squale",
+      "title": "Santa Monica",
+      "year": 2019,
+      "totalStreams": 6036362
+    },
+    {
+      "artist": "Jahyanai",
+      "title": "Who Mad Again",
+      "year": 2017,
+      "totalStreams": 6013077
+    },
+    {
+      "artist": "Ninho",
+      "title": "Centre commercial",
+      "year": 2020,
+      "totalStreams": 6005683
+    },
+    {
+      "artist": "Marwa Loud",
+      "title": "Allez les gros",
+      "year": 2020,
+      "totalStreams": 6003128
+    },
+    {
+      "artist": "Vegedream",
+      "title": "La fuite - Vegedream X Dj Leska / Edit MIx",
+      "year": 2018,
+      "totalStreams": 5972868
+    },
+    {
+      "artist": "Naza",
+      "title": "Souris verte",
+      "year": 2020,
+      "totalStreams": 5958413
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Je suis gninnin, je suis bien",
+      "year": 2017,
+      "totalStreams": 5942391
+    },
+    {
+      "artist": "Benab",
+      "title": "RS3",
+      "year": 2021,
+      "totalStreams": 5908269
+    },
+    {
+      "artist": "Werenoi",
+      "title": "Dans un verre",
+      "year": 2024,
+      "totalStreams": 5907182
+    },
+    {
+      "artist": "Rim'K",
+      "title": "Rose rouge",
+      "year": 2020,
+      "totalStreams": 5886974
+    },
+    {
+      "artist": "Vitaa",
+      "title": "Viens on essaie",
+      "year": 2025,
+      "totalStreams": 5868006
+    },
+    {
+      "artist": "Hatik",
+      "title": "éternel",
+      "year": 2021,
+      "totalStreams": 5863066
+    },
+    {
+      "artist": "Ninho",
+      "title": "Toutes les couleurs",
+      "year": 2020,
+      "totalStreams": 5862607
+    },
+    {
+      "artist": "Hayce Lemsi",
+      "title": "Havana",
+      "year": 2017,
+      "totalStreams": 5844658
+    },
+    {
+      "artist": "Ziak",
+      "title": "Ca suffit",
+      "year": 2021,
+      "totalStreams": 5834606
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "SMS",
+      "year": 2023,
+      "totalStreams": 5770035
+    },
+    {
+      "artist": "La Fouine",
+      "title": "Seleção",
+      "year": 2024,
+      "totalStreams": 5767637
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Bébéboa",
+      "year": 2021,
+      "totalStreams": 5758134
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Encore",
+      "year": 2020,
+      "totalStreams": 5753391
+    },
+    {
+      "artist": "menace Santana",
+      "title": "Vengeance !",
+      "year": 2021,
+      "totalStreams": 5741662
+    },
+    {
+      "artist": "Ziak",
+      "title": "Pistol & Zamal",
+      "year": 2023,
+      "totalStreams": 5700050
+    },
+    {
+      "artist": "Ninho",
+      "title": "La vie de Johnny",
+      "year": 2023,
+      "totalStreams": 5659997
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Four",
+      "year": 2019,
+      "totalStreams": 5659497
+    },
+    {
+      "artist": "Guy2Bezbar",
+      "title": "Full black",
+      "year": 2021,
+      "totalStreams": 5643677
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Ensemble",
+      "year": 2021,
+      "totalStreams": 5637102
+    },
+    {
+      "artist": "Ninho",
+      "title": "3 MAI 2025",
+      "year": 2024,
+      "totalStreams": 5632197
+    },
+    {
+      "artist": "Dadju",
+      "title": "TPB",
+      "year": 2020,
+      "totalStreams": 5624100
+    },
+    {
+      "artist": "Bekar",
+      "title": "Magenta",
+      "year": 2022,
+      "totalStreams": 5617362
+    },
+    {
+      "artist": "Aya Nakamura",
+      "title": "Préféré",
+      "year": 2020,
+      "totalStreams": 5604617
+    },
+    {
+      "artist": "Lacrim",
+      "title": "La dolce vita",
+      "year": 2017,
+      "totalStreams": 5586701
+    },
+    {
+      "artist": "4Keus",
+      "title": "Mignon garçon",
+      "year": 2018,
+      "totalStreams": 5586602
+    },
+    {
+      "artist": "Nej",
+      "title": "Ma muse",
+      "year": 2023,
+      "totalStreams": 5578947
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "R44",
+      "year": 2019,
+      "totalStreams": 5561811
+    },
+    {
+      "artist": "Laeti",
+      "title": "Rider toute la night",
+      "year": 2021,
+      "totalStreams": 5531018
+    },
+    {
+      "artist": "Sadek",
+      "title": "En leuleu",
+      "year": 2017,
+      "totalStreams": 5506348
+    },
+    {
+      "artist": "Franglish",
+      "title": "Bolingo",
+      "year": 2023,
+      "totalStreams": 5506174
+    },
+    {
+      "artist": "Lyna Mahyem",
+      "title": "Mal de toi",
+      "year": 2022,
+      "totalStreams": 5505681
+    },
+    {
+      "artist": "L'Algérino",
+      "title": "Les menottes (Tching Tchang Tchong)",
+      "year": 2017,
+      "totalStreams": 5499493
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "Benda",
+      "year": 2019,
+      "totalStreams": 5477762
+    },
+    {
+      "artist": "Naps",
+      "title": "Monica",
+      "year": 2020,
+      "totalStreams": 5469688
+    },
+    {
+      "artist": "Tayc",
+      "title": "Carry Me",
+      "year": 2023,
+      "totalStreams": 5443765
+    },
+    {
+      "artist": "DA Uzi",
+      "title": "Jeune d'en bas",
+      "year": 2021,
+      "totalStreams": 5436706
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Bonne meuf",
+      "year": 2017,
+      "totalStreams": 5420602
+    },
+    {
+      "artist": "Kaaris",
+      "title": "G.O.K.O.U",
+      "year": 2018,
+      "totalStreams": 5411990
+    },
+    {
+      "artist": "Dinor rdt",
+      "title": "Massa",
+      "year": 2019,
+      "totalStreams": 5402504
+    },
+    {
+      "artist": "Nekfeu",
+      "title": "Compte les hommes",
+      "year": 2019,
+      "totalStreams": 5396979
+    },
+    {
+      "artist": "Ninho",
+      "title": "5 bleus",
+      "year": 2025,
+      "totalStreams": 5394814
+    },
+    {
+      "artist": "Naza",
+      "title": "P*Tain de m*Rde",
+      "year": 2018,
+      "totalStreams": 5373813
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Tue ça",
+      "year": 2021,
+      "totalStreams": 5354991
+    },
+    {
+      "artist": "Lomepal",
+      "title": "Beau la folie",
+      "year": 2018,
+      "totalStreams": 5345490
+    },
+    {
+      "artist": "Koba LaD",
+      "title": "Moments durs",
+      "year": 2018,
+      "totalStreams": 5318655
+    },
+    {
+      "artist": "Kekra",
+      "title": "Vréalité",
+      "year": 2019,
+      "totalStreams": 5317732
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Jon Snow",
+      "year": 2019,
+      "totalStreams": 5302427
+    },
+    {
+      "artist": "Ninho",
+      "title": "Blue story",
+      "year": 2023,
+      "totalStreams": 5284814
+    },
+    {
+      "artist": "Kaaris",
+      "title": "NRV",
+      "year": 2020,
+      "totalStreams": 5267515
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Civilisation",
+      "year": 2021,
+      "totalStreams": 5262326
+    },
+    {
+      "artist": "Vald",
+      "title": "Ce monde est cruel",
+      "year": 2019,
+      "totalStreams": 5246629
+    },
+    {
+      "artist": "L2B",
+      "title": "Tendance",
+      "year": 2025,
+      "totalStreams": 5246162
+    },
+    {
+      "artist": "Kaaris",
+      "title": "Apocalypse",
+      "year": 2022,
+      "totalStreams": 5227656
+    },
+    {
+      "artist": "Soso Maness",
+      "title": "Les derniers marioles",
+      "year": 2021,
+      "totalStreams": 5225874
+    },
+    {
+      "artist": "MHD",
+      "title": "Full",
+      "year": 2024,
+      "totalStreams": 5225278
+    },
+    {
+      "artist": "Vald",
+      "title": "Gotaga",
+      "year": 2020,
+      "totalStreams": 5187519
+    },
+    {
+      "artist": "Vald",
+      "title": "Gris",
+      "year": 2018,
+      "totalStreams": 5184880
+    },
+    {
+      "artist": "Orelsan",
+      "title": "Manifeste",
+      "year": 2021,
+      "totalStreams": 5179245
+    },
+    {
+      "artist": "Vald",
+      "title": "Dernier retrait",
+      "year": 2019,
+      "totalStreams": 5157550
+    },
+    {
+      "artist": "Hös Copperfield",
+      "title": "Ma guapa",
+      "year": 2019,
+      "totalStreams": 5149763
+    },
+    {
+      "artist": "Booba",
+      "title": "Ultra",
+      "year": 2021,
+      "totalStreams": 5147618
+    },
+    {
+      "artist": "Benab",
+      "title": "RS4",
+      "year": 2021,
+      "totalStreams": 5125022
+    },
+    {
+      "artist": "M. Pokora",
+      "title": "Si on disait",
+      "year": 2021,
+      "totalStreams": 5122410
+    },
+    {
+      "artist": "Ninho",
+      "title": "Le jeu",
+      "year": 2020,
+      "totalStreams": 5113776
+    },
+    {
+      "artist": "Lacrim",
+      "title": "Jacques Chirac",
+      "year": 2020,
+      "totalStreams": 5086065
+    },
+    {
+      "artist": "Booba",
+      "title": "6G",
+      "year": 2024,
+      "totalStreams": 5072839
+    },
+    {
+      "artist": "Franglish",
+      "title": "Sécu",
+      "year": 2022,
+      "totalStreams": 5058793
+    },
+    {
+      "artist": "Tayc",
+      "title": "Moi, je prouve.",
+      "year": 2019,
+      "totalStreams": 5041447
+    },
+    {
+      "artist": "Ninho",
+      "title": "En chien",
+      "year": 2020,
+      "totalStreams": 5031181
+    },
+    {
+      "artist": "Bolémvn",
+      "title": "On y va",
+      "year": 2024,
+      "totalStreams": 5027796
+    },
+    {
+      "artist": "Heuss L'enfoiré",
+      "title": "George moula",
+      "year": 2019,
+      "totalStreams": 5017057
+    }
+  ]
+}
