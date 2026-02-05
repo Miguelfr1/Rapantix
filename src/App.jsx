@@ -350,19 +350,32 @@ export default function App() {
         // Recherche via Proxy (sans token)
         if (remainingMs() > 0) {
           try {
-            const searchUrl = `https://genius.com/api/search/multi?per_page=5&q=${encodeURIComponent(query)}`;
+            const searchUrl = `https://api.genius.com/search?q=${encodeURIComponent(query)}`;
             const rawJson = await fetchWithProxyFallback(searchUrl, proxyTemplates, deadlineMs);
             const json = JSON.parse(rawJson);
-            const songSection = json.response?.sections?.find(s => s.type === 'song');
-            const hits = songSection?.hits || [];
-            const validHits = hits.filter(h => {
-              const artistOk = artistMatches(h.result?.primary_artist?.name, randomArtist);
-              if (!artistOk) return false;
-              if (!useTracks) return true;
-              return titleMatches(h.result?.title, randomTitle);
-            });
-            if (validHits.length > 0) {
-              const randomHit = validHits[Math.floor(Math.random() * validHits.length)].result;
+            const hits = Array.isArray(json.response?.hits)
+              ? json.response.hits
+              : (json.response?.sections?.find(s => s.type === 'song')?.hits || []);
+            const artistHits = hits.filter(h =>
+              artistMatches(h.result?.primary_artist?.name, randomArtist)
+            );
+            const titleHits = hits.filter(h =>
+              titleMatches(h.result?.title, randomTitle)
+            );
+            const bothHits = hits.filter(h =>
+              artistMatches(h.result?.primary_artist?.name, randomArtist) &&
+              titleMatches(h.result?.title, randomTitle)
+            );
+            const pool =
+              bothHits.length > 0
+                ? bothHits
+                : artistHits.length > 0
+                  ? artistHits
+                  : titleHits.length > 0
+                    ? titleHits
+                    : hits;
+            if (pool.length > 0) {
+              const randomHit = pool[Math.floor(Math.random() * pool.length)].result;
               songUrl = randomHit.url;
               finalArtist = randomHit.primary_artist.name;
               finalTitle = randomHit.title;
