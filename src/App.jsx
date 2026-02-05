@@ -197,6 +197,24 @@ const fetchWithProxyFallback = async (targetUrl, proxyTemplates = [], deadlineMs
   throw lastError || new Error("Proxys échoués");
 };
 
+const extractLyricsFromEmbedJs = (jsText) => {
+  if (!jsText) return null;
+  const match = jsText.match(/JSON\.parse\('([\s\S]*?)'\)\)/);
+  if (!match) return null;
+  try {
+    const html = JSON.parse(match[1]);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const body = doc.querySelector('.rg_embed_body');
+    if (!body) return null;
+    body.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+    return body.innerText || null;
+  } catch (err) {
+    console.warn("Embed parse failed:", err);
+    return null;
+  }
+};
+
 export default function App() {
   const [song, setSong] = useState(null);
   const [tokens, setTokens] = useState([]);
@@ -327,6 +345,7 @@ export default function App() {
       setError(null);
       
       let songUrl = null;
+      let songId = null;
       let finalArtist = "";
       let finalTitle = "";
       const { topArtists, topTracks, proxyTemplates } = gameConfig;
@@ -377,6 +396,7 @@ export default function App() {
             if (pool.length > 0) {
               const randomHit = pool[Math.floor(Math.random() * pool.length)].result;
               songUrl = randomHit.url;
+              songId = randomHit.id || null;
               finalArtist = randomHit.primary_artist.name;
               finalTitle = randomHit.title;
               break;
@@ -387,24 +407,36 @@ export default function App() {
 
       if (!songUrl) throw new Error("URL non trouvée");
 
-      // SCRAPING
-      const htmlContent = await fetchWithProxyFallback(songUrl, proxyTemplates, deadlineMs);
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlContent, 'text/html');
-      
-      // Extraction spécifique Genius
+      // SCRAPING / EMBED
       let fullLyrics = "";
-      // Selecteur moderne
-      const containers = doc.querySelectorAll('[data-lyrics-container="true"]');
-      if (containers.length > 0) {
-          containers.forEach(c => {
-              const clone = c.cloneNode(true);
-              clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
-              fullLyrics += clone.innerText + "\n";
-          });
-      } else {
-          // Selecteur legacy
-          fullLyrics = doc.querySelector('.lyrics')?.innerText || "";
+      if (songId) {
+        try {
+          const embedUrl = `https://genius.com/songs/${songId}/embed.js`;
+          const embedJs = await fetchWithProxyFallback(embedUrl, proxyTemplates, deadlineMs);
+          fullLyrics = extractLyricsFromEmbedJs(embedJs) || "";
+        } catch (e) {
+          console.warn("Embed fetch failed", e);
+        }
+      }
+
+      if (!fullLyrics) {
+        const htmlContent = await fetchWithProxyFallback(songUrl, proxyTemplates, deadlineMs);
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlContent, 'text/html');
+        
+        // Extraction spécifique Genius
+        // Selecteur moderne
+        const containers = doc.querySelectorAll('[data-lyrics-container="true"]');
+        if (containers.length > 0) {
+            containers.forEach(c => {
+                const clone = c.cloneNode(true);
+                clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+                fullLyrics += clone.innerText + "\n";
+            });
+        } else {
+            // Selecteur legacy
+            fullLyrics = doc.querySelector('.lyrics')?.innerText || "";
+        }
       }
 
       if (!fullLyrics) throw new Error("Pas de paroles trouvées");
