@@ -92,12 +92,19 @@ def extract_lyrics_from_embed(js_text: str) -> Optional[str]:
     if not match:
         return None
     try:
-        html_fragment = json.loads(match.group(1))
+        raw = match.group(1)
+        unescaped = bytes(raw, "utf-8").decode("unicode_escape")
+        html_fragment = json.loads(unescaped)
     except Exception:
         return None
     parser = EmbedLyricsParser()
     parser.feed(html_fragment)
     lyrics = parser.get_text()
+    if lyrics and ("Ã" in lyrics or "Â" in lyrics):
+        try:
+            lyrics = lyrics.encode("latin1").decode("utf-8")
+        except Exception:
+            pass
     return lyrics or None
 
 

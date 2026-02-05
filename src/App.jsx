@@ -214,7 +214,8 @@ const extractLyricsFromEmbedJs = (jsText) => {
   const match = jsText.match(/JSON\.parse\('([\s\S]*?)'\)\)/);
   if (!match) return null;
   try {
-    const html = JSON.parse(match[1]);
+    const wrapped = `"${match[1]}"`;
+    const html = JSON.parse(wrapped);
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const body = doc.querySelector('.rg_embed_body');
