@@ -27,7 +27,10 @@ ALLOWED_PROXY_HOSTS = {
     "api.genius.com",
 }
 YOUTUBE_SEARCH_URL = os.environ.get("YOUTUBE_SEARCH_URL", "https://www.youtube.com/results")
-YOUTUBE_FALLBACK_URL = os.environ.get("YOUTUBE_FALLBACK_URL", "").strip()
+YOUTUBE_FALLBACK_URL = os.environ.get(
+    "YOUTUBE_FALLBACK_URL",
+    "https://r.jina.ai/http://www.youtube.com/results",
+).strip()
 
 app = FastAPI(
     title="Rapantix Similarity API",
