@@ -183,6 +183,8 @@ def youtube_search(q: str):
             continue
 
         matches = re.findall(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', resp.text)
+        if not matches:
+            matches = re.findall(r'watch\\?v=([a-zA-Z0-9_-]{11})', resp.text)
         if matches:
             break
 
