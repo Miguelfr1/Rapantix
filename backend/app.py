@@ -26,7 +26,8 @@ ALLOWED_PROXY_HOSTS = {
     "www.genius.com",
     "api.genius.com",
 }
-YOUTUBE_SEARCH_URL = "https://www.youtube.com/results"
+YOUTUBE_SEARCH_URL = os.environ.get("YOUTUBE_SEARCH_URL", "https://www.youtube.com/results")
+YOUTUBE_FALLBACK_URL = os.environ.get("YOUTUBE_FALLBACK_URL", "").strip()
 
 app = FastAPI(
     title="Rapantix Similarity API",
@@ -157,24 +158,36 @@ def youtube_search(q: str):
         raise HTTPException(status_code=400, detail="Missing query")
 
     query = quote_plus(q)
-    url = f"{YOUTUBE_SEARCH_URL}?search_query={query}"
+    urls = [YOUTUBE_SEARCH_URL]
+    if YOUTUBE_FALLBACK_URL:
+        urls.append(YOUTUBE_FALLBACK_URL)
 
-    try:
-        with httpx.Client(
-            timeout=PROXY_TIMEOUT,
-            follow_redirects=True,
-            headers={"User-Agent": "Mozilla/5.0 (Rapantix YouTube Lookup)"},
-        ) as client:
-            resp = client.get(url)
-    except httpx.RequestError as exc:
-        raise HTTPException(status_code=502, detail=f"YouTube lookup error: {exc}") from exc
+    matches = []
+    last_error: str | None = None
 
-    if resp.status_code >= 400:
-        raise HTTPException(status_code=resp.status_code, detail="YouTube upstream error")
+    for base_url in urls:
+        url = f"{base_url}?search_query={query}"
+        try:
+            with httpx.Client(
+                timeout=PROXY_TIMEOUT,
+                follow_redirects=True,
+                headers={"User-Agent": "Mozilla/5.0 (Rapantix YouTube Lookup)"},
+            ) as client:
+                resp = client.get(url)
+        except httpx.RequestError as exc:
+            last_error = f"YouTube lookup error: {exc}"
+            continue
 
-    matches = re.findall(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', resp.text)
+        if resp.status_code >= 400:
+            last_error = "YouTube upstream error"
+            continue
+
+        matches = re.findall(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', resp.text)
+        if matches:
+            break
+
     if not matches:
-        raise HTTPException(status_code=404, detail="No video found")
+        raise HTTPException(status_code=404, detail=last_error or "No video found")
 
     seen = set()
     video_id = None
