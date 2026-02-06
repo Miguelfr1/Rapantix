@@ -31,6 +31,7 @@ YOUTUBE_FALLBACK_URL = os.environ.get(
     "YOUTUBE_FALLBACK_URL",
     "https://r.jina.ai/http://www.youtube.com/results",
 ).strip()
+YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "").strip()
 
 app = FastAPI(
     title="Rapantix Similarity API",
@@ -161,6 +162,32 @@ def youtube_search(q: str):
         raise HTTPException(status_code=400, detail="Missing query")
 
     query = quote_plus(q)
+    if YOUTUBE_API_KEY:
+        api_url = (
+            "https://www.googleapis.com/youtube/v3/search"
+            f"?part=snippet&type=video&maxResults=1&q={query}&key={YOUTUBE_API_KEY}"
+        )
+        try:
+            with httpx.Client(timeout=PROXY_TIMEOUT, follow_redirects=True) as client:
+                resp = client.get(api_url)
+        except httpx.RequestError as exc:
+            raise HTTPException(status_code=502, detail=f"YouTube API error: {exc}") from exc
+
+        if resp.status_code >= 400:
+            raise HTTPException(status_code=resp.status_code, detail="YouTube API upstream error")
+
+        data = resp.json()
+        items = data.get("items") or []
+        if items:
+            video_id = items[0].get("id", {}).get("videoId")
+            if video_id:
+                return {
+                    "video_id": video_id,
+                    "thumbnail_url": f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
+                    "embed_url": f"https://www.youtube.com/embed/{video_id}",
+                    "watch_url": f"https://www.youtube.com/watch?v={video_id}",
+                }
+
     urls = [YOUTUBE_SEARCH_URL]
     if YOUTUBE_FALLBACK_URL:
         urls.append(YOUTUBE_FALLBACK_URL)
