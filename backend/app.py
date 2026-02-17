@@ -1,9 +1,13 @@
 import os
 import re
+import time
+import random
+import string
+from threading import Lock
 import unicodedata
 from pathlib import Path
 from functools import lru_cache
-from typing import List
+from typing import List, Any
 from urllib.parse import urlparse, quote_plus
 
 import httpx
@@ -32,6 +36,12 @@ YOUTUBE_FALLBACK_URL = os.environ.get(
     "https://r.jina.ai/http://www.youtube.com/results",
 ).strip()
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "").strip()
+TEAM_SESSION_TTL_SECONDS = int(os.environ.get("TEAM_SESSION_TTL_SECONDS", "43200"))
+TEAM_MAX_PLAYERS = 2
+TEAM_CODE_LENGTH = 6
+
+TEAM_SESSIONS: dict[str, dict[str, Any]] = {}
+TEAM_LOCK = Lock()
 
 app = FastAPI(
     title="Rapantix Similarity API",
@@ -62,6 +72,29 @@ class SimilarResponse(BaseModel):
     origin: str
     normalized: str
     results: List[SimilarWord]
+
+
+class TeamSong(BaseModel):
+    artist: str
+    title: str
+    lyrics: str
+
+
+class TeamCreateRequest(BaseModel):
+    client_id: str
+    min_streams: int = 0
+    song: TeamSong
+
+
+class TeamJoinRequest(BaseModel):
+    code: str
+    client_id: str
+
+
+class TeamGuessRequest(BaseModel):
+    code: str
+    client_id: str
+    word: str
 
 
 @lru_cache(maxsize=1)
@@ -97,9 +130,170 @@ def _is_allowed_host(host: str) -> bool:
     return any(host == allowed or host.endswith(f".{allowed}") for allowed in ALLOWED_PROXY_HOSTS)
 
 
+def _cleanup_team_sessions() -> None:
+    if TEAM_SESSION_TTL_SECONDS <= 0:
+        return
+    now = time.time()
+    expired_codes = [
+        code
+        for code, session in TEAM_SESSIONS.items()
+        if now - session.get("updated_at", session.get("created_at", now)) > TEAM_SESSION_TTL_SECONDS
+    ]
+    for code in expired_codes:
+        TEAM_SESSIONS.pop(code, None)
+
+
+def _generate_team_code() -> str:
+    alphabet = string.ascii_uppercase + string.digits
+    for _ in range(50):
+        code = "".join(random.choice(alphabet) for _ in range(TEAM_CODE_LENGTH))
+        if code not in TEAM_SESSIONS:
+            return code
+    raise RuntimeError("Unable to generate unique session code")
+
+
+def _normalize_guess_value(word: str) -> str:
+    normalized = normalize_word(word or "")
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
+def _build_team_state(session: dict[str, Any], client_id: str) -> dict[str, Any]:
+    return {
+        "code": session["code"],
+        "role": "host" if session.get("host_id") == client_id else "guest",
+        "player_count": len(session.get("players", {})),
+        "is_full": len(session.get("players", {})) >= TEAM_MAX_PLAYERS,
+        "min_streams": session.get("min_streams", 0),
+        "song": session.get("song", {}),
+        "guesses": session.get("guesses", []),
+    }
+
+
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok", "model_path": MODEL_PATH}
+
+
+@app.post("/team/session/create")
+def create_team_session(request: TeamCreateRequest):
+    client_id = (request.client_id or "").strip()
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not request.song.artist.strip() or not request.song.title.strip() or not request.song.lyrics.strip():
+        raise HTTPException(status_code=400, detail="Incomplete song payload")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        code = _generate_team_code()
+        now = time.time()
+        session = {
+            "code": code,
+            "host_id": client_id,
+            "created_at": now,
+            "updated_at": now,
+            "min_streams": max(0, int(request.min_streams or 0)),
+            "song": request.song.model_dump(),
+            "players": {client_id: {"joined_at": now}},
+            "guesses": [],
+            "guess_index": {},
+            "next_seq": 1,
+        }
+        TEAM_SESSIONS[code] = session
+        state = _build_team_state(session, client_id)
+
+    return state
+
+
+@app.post("/team/session/join")
+def join_team_session(request: TeamJoinRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+
+        players = session.setdefault("players", {})
+        if client_id not in players and len(players) >= TEAM_MAX_PLAYERS:
+            raise HTTPException(status_code=409, detail="Session is full")
+
+        if client_id not in players:
+            players[client_id] = {"joined_at": time.time()}
+        session["updated_at"] = time.time()
+        state = _build_team_state(session, client_id)
+
+    return state
+
+
+@app.get("/team/session/{code}/state")
+def get_team_session_state(code: str, client_id: str):
+    normalized_code = (code or "").strip().upper()
+    normalized_client = (client_id or "").strip()
+    if not normalized_code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not normalized_client:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(normalized_code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if normalized_client not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+        session["updated_at"] = time.time()
+        state = _build_team_state(session, normalized_client)
+
+    return state
+
+
+@app.post("/team/session/guess")
+def add_team_guess(request: TeamGuessRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    word = (request.word or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not word:
+        raise HTTPException(status_code=400, detail="Missing word")
+
+    normalized_word = _normalize_guess_value(word)
+    if not normalized_word:
+        raise HTTPException(status_code=400, detail="Invalid word")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+
+        guess_index = session.setdefault("guess_index", {})
+        if normalized_word in guess_index:
+            existing_event = guess_index[normalized_word]
+            return {"accepted": False, "event": existing_event}
+
+        event = {
+            "seq": session["next_seq"],
+            "word": word,
+            "client_id": client_id,
+            "created_at": time.time(),
+        }
+        session["next_seq"] += 1
+        session.setdefault("guesses", []).append(event)
+        guess_index[normalized_word] = event
+        session["updated_at"] = time.time()
+        return {"accepted": True, "event": event}
 
 
 @app.get("/proxy")

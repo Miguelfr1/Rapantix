@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, Music, Trophy, RefreshCw, AlertCircle, Loader2, Disc } from 'lucide-react';
+import { Search, Music, Trophy, RefreshCw, AlertCircle, Loader2, Disc, Gamepad2, ChevronLeft, Users, Swords } from 'lucide-react';
 
 const SIMILARITY_API_BASE = (import.meta.env.VITE_SIMILARITY_URL || '').replace(/\/+$/, '');
 const GAME_CONFIG_URL = import.meta.env.VITE_GAME_CONFIG_URL || '/game-config.json';
@@ -7,6 +7,7 @@ const MAX_LOAD_MS = (() => {
   const value = Number(import.meta.env.VITE_MAX_LOAD_MS);
   return Number.isFinite(value) && value > 0 ? value : 10000;
 })();
+const STREAM_NUMBER_FORMATTER = new Intl.NumberFormat("fr-FR");
 
 // --- UTILITAIRES DE TEXTE ---
 
@@ -211,6 +212,56 @@ const resolveLyricsPath = (track) => {
   return null;
 };
 
+const getTrackTotalStreams = (track) => {
+  const value = Number(track?.totalStreams);
+  return Number.isFinite(value) && value > 0 ? Math.floor(value) : 0;
+};
+
+const formatStreamCount = (value) => {
+  const safeValue = Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
+  return STREAM_NUMBER_FORMATTER.format(safeValue);
+};
+
+const clampNumber = (value, min, max) => Math.min(max, Math.max(min, value));
+const TEAM_CLIENT_STORAGE_KEY = "rapgenius_team_client_id";
+
+const createTeamClientId = () => {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `client-${Math.random().toString(36).slice(2)}-${Date.now()}`;
+};
+
+const getOrCreateTeamClientId = () => {
+  if (typeof window === "undefined") return "";
+  const existing = window.localStorage.getItem(TEAM_CLIENT_STORAGE_KEY);
+  if (existing) return existing;
+  const next = createTeamClientId();
+  window.localStorage.setItem(TEAM_CLIENT_STORAGE_KEY, next);
+  return next;
+};
+
+const mergeTeamGuessEvents = (currentEvents = [], nextEvents = []) => {
+  const bySeq = new Map();
+  [...currentEvents, ...nextEvents].forEach((event) => {
+    if (!event || typeof event.seq !== "number") return;
+    bySeq.set(event.seq, event);
+  });
+  return Array.from(bySeq.values()).sort((a, b) => a.seq - b.seq);
+};
+
+const readApiErrorDetail = async (response) => {
+  try {
+    const data = await response.json();
+    if (typeof data?.detail === "string" && data.detail.trim()) {
+      return data.detail;
+    }
+  } catch {
+    // no-op
+  }
+  return `Status ${response.status}`;
+};
+
 const extractLyricsFromEmbedJs = (jsText) => {
   if (!jsText) return null;
   const match = jsText.match(/JSON\.parse\('([\s\S]*?)'\)\)/);
@@ -238,12 +289,25 @@ export default function App() {
   const [history, setHistory] = useState([]);
   const [revealedIndices, setRevealedIndices] = useState(new Set());
   const [similarIndices, setSimilarIndices] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [isConfigLoading, setIsConfigLoading] = useState(true);
+  const [setupStep, setSetupStep] = useState("mode");
+  const [activeMode, setActiveMode] = useState(null);
   const [isProcessingGuess, setIsProcessingGuess] = useState(false);
   const [error, setError] = useState(null);
   const [configError, setConfigError] = useState(null);
   const [gameConfig, setGameConfig] = useState(null);
+  const [minStreamsThreshold, setMinStreamsThreshold] = useState(0);
+  const [soloMinStreams, setSoloMinStreams] = useState(0);
+  const [teamMinStreams, setTeamMinStreams] = useState(0);
+  const [teamJoinCode, setTeamJoinCode] = useState("");
+  const [teamSessionCode, setTeamSessionCode] = useState("");
+  const [teamPlayerCount, setTeamPlayerCount] = useState(0);
+  const [teamGuesses, setTeamGuesses] = useState([]);
+  const [teamBusy, setTeamBusy] = useState(false);
+  const [teamError, setTeamError] = useState(null);
   const [win, setWin] = useState(false);
+  const [showWinOverlay, setShowWinOverlay] = useState(false);
   const [stats, setStats] = useState({ found: 0, total: 0 });
   const [toastMessage, setToastMessage] = useState(null);
   const [youtubeData, setYoutubeData] = useState(null);
@@ -252,6 +316,22 @@ export default function App() {
   const [similarityServiceHealthy, setSimilarityServiceHealthy] = useState(true);
   const scrollRef = useRef(null);
   const guessInputRef = useRef(null);
+
+  const hasTrackPool = Array.isArray(gameConfig?.topTracks) && gameConfig.topTracks.length > 0;
+  const minTrackStreams = hasTrackPool
+    ? gameConfig.topTracks.reduce((min, track) => Math.min(min, getTrackTotalStreams(track)), Infinity)
+    : 0;
+  const maxTrackStreams = hasTrackPool
+    ? gameConfig.topTracks.reduce((max, track) => Math.max(max, getTrackTotalStreams(track)), 0)
+    : 0;
+  const sliderMinStreams = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+  const sliderMaxStreams = maxTrackStreams || Math.max(sliderMinStreams, 1);
+  const sliderProgress = sliderMaxStreams > sliderMinStreams
+    ? ((soloMinStreams - sliderMinStreams) / (sliderMaxStreams - sliderMinStreams)) * 100
+    : 0;
+  const soloEligibleTrackCount = hasTrackPool
+    ? gameConfig.topTracks.filter((track) => getTrackTotalStreams(track) >= soloMinStreams).length
+    : 0;
 
   const focusGuessInput = useCallback(() => {
     if (win || loading || error || isProcessingGuess) return;
@@ -265,6 +345,7 @@ export default function App() {
 
   useEffect(() => {
     const loadConfig = async () => {
+      setIsConfigLoading(true);
       try {
         const res = await fetch(GAME_CONFIG_URL, { cache: "no-store" });
         if (!res.ok) throw new Error(`Config introuvable (${res.status})`);
@@ -284,12 +365,38 @@ export default function App() {
             template.includes("localhost:8000") ? renderProxy : template
           );
         }
-        setGameConfig({ ...data, proxyTemplates: resolvedProxyTemplates });
+        const resolvedConfig = { ...data, proxyTemplates: resolvedProxyTemplates };
+        setGameConfig(resolvedConfig);
+
+        if (hasTracks) {
+          const trackMin = resolvedConfig.topTracks.reduce(
+            (min, track) => Math.min(min, getTrackTotalStreams(track)),
+            Infinity
+          );
+          const trackMax = resolvedConfig.topTracks.reduce(
+            (max, track) => Math.max(max, getTrackTotalStreams(track)),
+            0
+          );
+          const safeTrackMin = Number.isFinite(trackMin) ? trackMin : 0;
+          const safeTrackMax = trackMax > 0 ? trackMax : safeTrackMin;
+          const defaultThreshold = clampNumber(20_000_000, safeTrackMin, safeTrackMax);
+          setSoloMinStreams(defaultThreshold);
+          setTeamMinStreams(defaultThreshold);
+          setMinStreamsThreshold(defaultThreshold);
+        } else {
+          setSoloMinStreams(0);
+          setTeamMinStreams(0);
+          setMinStreamsThreshold(0);
+        }
+
+        setError(null);
         setConfigError(null);
       } catch (err) {
         console.error("Config load failed:", err);
         setConfigError("Configuration du jeu introuvable. Vérifiez game-config.json.");
         setError("Configuration du jeu introuvable. Vérifiez game-config.json.");
+      } finally {
+        setIsConfigLoading(false);
         setLoading(false);
       }
     };
@@ -353,150 +460,163 @@ export default function App() {
 
   // --- LOGIQUE GENIUS (DYNAMIQUE SEULEMENT) ---
 
-  const fetchGeniusData = async () => {
+  const fetchSongData = async (selectedMinStreams = minStreamsThreshold) => {
+    if (!gameConfig) throw new Error("Config manquante");
+
+    let songUrl = null;
+    let songId = null;
+    let finalArtist = "";
+    let finalTitle = "";
+    const { topArtists, topTracks, proxyTemplates } = gameConfig;
+    const localLyricsOnly = Boolean(gameConfig?.localLyricsOnly);
+    const minStreams = Number.isFinite(selectedMinStreams)
+      ? Math.max(0, Math.floor(selectedMinStreams))
+      : 0;
+    const deadlineMs = Date.now() + MAX_LOAD_MS;
+    const remainingMs = () => deadlineMs - Date.now();
+
+    const hasTracks = Array.isArray(topTracks) && topTracks.length > 0;
+    const filteredTracks = hasTracks
+      ? topTracks.filter((track) => getTrackTotalStreams(track) >= minStreams)
+      : [];
+    if (hasTracks && filteredTracks.length === 0) {
+      throw new Error(`Aucun morceau disponible avec au moins ${formatStreamCount(minStreams)} streams`);
+    }
+    const useTracks = filteredTracks.length > 0;
+    const maxAttempts = useTracks ? 5 : 3;
+    const localTracks = localLyricsOnly && useTracks
+      ? filteredTracks.filter((track) => resolveLyricsPath(track))
+      : null;
+
+    if (localLyricsOnly && (!useTracks || !localTracks || localTracks.length === 0)) {
+      throw new Error("Paroles locales indisponibles");
+    }
+
+    for (let attempt = 0; attempt < maxAttempts && !songUrl && remainingMs() > 0; attempt++) {
+      const randomTrack = useTracks
+        ? (localTracks || filteredTracks)[Math.floor(Math.random() * (localTracks || filteredTracks).length)]
+        : null;
+      const randomArtist = useTracks
+        ? randomTrack?.artist
+        : topArtists[Math.floor(Math.random() * topArtists.length)];
+      const randomTitle = useTracks ? randomTrack?.title : "";
+      const query = useTracks ? `${randomArtist} ${randomTitle}` : randomArtist;
+      console.log(`[Recherche] ${useTracks ? "Titre" : "Artiste"} aléatoire : ${query}`);
+
+      if (useTracks && randomTrack) {
+        const localLyricsPath = resolveLyricsPath(randomTrack);
+        if (localLyricsPath && remainingMs() > 0) {
+          try {
+            const response = await fetchWithTimeout(localLyricsPath, {}, remainingMs());
+            if (response.ok) {
+              const rawLyrics = await response.text();
+              if (rawLyrics && rawLyrics.trim()) {
+                finalArtist = randomArtist || "";
+                finalTitle = randomTitle || "";
+                const cleanedLyrics = cleanLyricsText(rawLyrics, finalArtist, finalTitle);
+                return { artist: finalArtist, title: finalTitle, lyrics: cleanedLyrics };
+              }
+            }
+          } catch (e) {
+            console.warn("Local lyrics fetch failed", e);
+          }
+        }
+        if (localLyricsOnly) {
+          continue;
+        }
+      }
+
+      if (!localLyricsOnly && remainingMs() > 0) {
+        try {
+          const searchUrl = `https://api.genius.com/search?q=${encodeURIComponent(query)}`;
+          const rawJson = await fetchWithProxyFallback(searchUrl, proxyTemplates, deadlineMs);
+          const json = JSON.parse(rawJson);
+          const hits = Array.isArray(json.response?.hits)
+            ? json.response.hits
+            : (json.response?.sections?.find(s => s.type === 'song')?.hits || []);
+          const artistHits = hits.filter(h =>
+            artistMatches(h.result?.primary_artist?.name, randomArtist)
+          );
+          const titleHits = hits.filter(h =>
+            titleMatches(h.result?.title, randomTitle)
+          );
+          const bothHits = hits.filter(h =>
+            artistMatches(h.result?.primary_artist?.name, randomArtist) &&
+            titleMatches(h.result?.title, randomTitle)
+          );
+          const pool =
+            bothHits.length > 0
+              ? bothHits
+              : artistHits.length > 0
+                ? artistHits
+                : titleHits.length > 0
+                  ? titleHits
+                  : hits;
+          if (pool.length > 0) {
+            const randomHit = pool[Math.floor(Math.random() * pool.length)].result;
+            songUrl = randomHit.url;
+            songId = randomHit.id || null;
+            finalArtist = randomHit.primary_artist.name;
+            finalTitle = randomHit.title;
+            break;
+          }
+        } catch (e) {
+          console.warn("Proxy Error", e);
+        }
+      }
+    }
+
+    if (!songUrl) throw new Error("URL non trouvée");
+
+    let fullLyrics = "";
+    if (songId) {
+      try {
+        const embedUrl = `https://genius.com/songs/${songId}/embed.js`;
+        const embedJs = await fetchWithProxyFallback(embedUrl, proxyTemplates, deadlineMs);
+        fullLyrics = extractLyricsFromEmbedJs(embedJs) || "";
+      } catch (e) {
+        console.warn("Embed fetch failed", e);
+      }
+    }
+
+    if (!fullLyrics) {
+      const htmlContent = await fetchWithProxyFallback(songUrl, proxyTemplates, deadlineMs);
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlContent, 'text/html');
+
+      const containers = doc.querySelectorAll('[data-lyrics-container="true"]');
+      if (containers.length > 0) {
+        containers.forEach(c => {
+          const clone = c.cloneNode(true);
+          clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+          fullLyrics += clone.innerText + "\n";
+        });
+      } else {
+        fullLyrics = doc.querySelector('.lyrics')?.innerText || "";
+      }
+    }
+
+    if (!fullLyrics) throw new Error("Pas de paroles trouvées");
+
+    const cleanedLyrics = cleanLyricsText(fullLyrics, finalArtist, finalTitle);
+    return { artist: finalArtist, title: finalTitle, lyrics: cleanedLyrics };
+  };
+
+  const fetchGeniusData = async (selectedMinStreams = minStreamsThreshold) => {
     try {
-      if (!gameConfig) throw new Error("Config manquante");
       setLoading(true);
       setError(null);
-      
-      let songUrl = null;
-      let songId = null;
-      let finalArtist = "";
-      let finalTitle = "";
-      const { topArtists, topTracks, proxyTemplates } = gameConfig;
-      const localLyricsOnly = Boolean(gameConfig?.localLyricsOnly);
-      const deadlineMs = Date.now() + MAX_LOAD_MS;
-      const remainingMs = () => deadlineMs - Date.now();
-      
-      const useTracks = Array.isArray(topTracks) && topTracks.length > 0;
-      const maxAttempts = useTracks ? 5 : 3;
-      const localTracks = localLyricsOnly && useTracks
-        ? topTracks.filter((track) => resolveLyricsPath(track))
-        : null;
-
-      if (localLyricsOnly && (!useTracks || !localTracks || localTracks.length === 0)) {
-        throw new Error("Paroles locales indisponibles");
-      }
-
-      // MODE DYNAMIQUE : On essaie de trouver un son aléatoire via l'API
-      for (let attempt = 0; attempt < maxAttempts && !songUrl && remainingMs() > 0; attempt++) {
-        const randomTrack = useTracks
-          ? (localTracks || topTracks)[Math.floor(Math.random() * (localTracks || topTracks).length)]
-          : null;
-        const randomArtist = useTracks
-          ? randomTrack?.artist
-          : topArtists[Math.floor(Math.random() * topArtists.length)];
-        const randomTitle = useTracks ? randomTrack?.title : "";
-        const query = useTracks ? `${randomArtist} ${randomTitle}` : randomArtist;
-        console.log(`[Recherche] ${useTracks ? "Titre" : "Artiste"} aléatoire : ${query}`);
-
-        if (useTracks && randomTrack) {
-          const localLyricsPath = resolveLyricsPath(randomTrack);
-          if (localLyricsPath && remainingMs() > 0) {
-            try {
-              const response = await fetchWithTimeout(localLyricsPath, {}, remainingMs());
-              if (response.ok) {
-                const rawLyrics = await response.text();
-                if (rawLyrics && rawLyrics.trim()) {
-                  finalArtist = randomArtist || "";
-                  finalTitle = randomTitle || "";
-                  const cleanedLyrics = cleanLyricsText(rawLyrics, finalArtist, finalTitle);
-                  processSong({ artist: finalArtist, title: finalTitle, lyrics: cleanedLyrics });
-                  setLoading(false);
-                  return;
-                }
-              }
-            } catch (e) {
-              console.warn("Local lyrics fetch failed", e);
-            }
-          }
-          if (localLyricsOnly) {
-            continue;
-          }
-        }
-        // Recherche via Proxy (sans token)
-        if (!localLyricsOnly && remainingMs() > 0) {
-          try {
-            const searchUrl = `https://api.genius.com/search?q=${encodeURIComponent(query)}`;
-            const rawJson = await fetchWithProxyFallback(searchUrl, proxyTemplates, deadlineMs);
-            const json = JSON.parse(rawJson);
-            const hits = Array.isArray(json.response?.hits)
-              ? json.response.hits
-              : (json.response?.sections?.find(s => s.type === 'song')?.hits || []);
-            const artistHits = hits.filter(h =>
-              artistMatches(h.result?.primary_artist?.name, randomArtist)
-            );
-            const titleHits = hits.filter(h =>
-              titleMatches(h.result?.title, randomTitle)
-            );
-            const bothHits = hits.filter(h =>
-              artistMatches(h.result?.primary_artist?.name, randomArtist) &&
-              titleMatches(h.result?.title, randomTitle)
-            );
-            const pool =
-              bothHits.length > 0
-                ? bothHits
-                : artistHits.length > 0
-                  ? artistHits
-                  : titleHits.length > 0
-                    ? titleHits
-                    : hits;
-            if (pool.length > 0) {
-              const randomHit = pool[Math.floor(Math.random() * pool.length)].result;
-              songUrl = randomHit.url;
-              songId = randomHit.id || null;
-              finalArtist = randomHit.primary_artist.name;
-              finalTitle = randomHit.title;
-              break;
-            }
-          } catch (e) { console.warn("Proxy Error", e); }
-        }
-      }
-
-      if (!songUrl) throw new Error("URL non trouvée");
-
-      // SCRAPING / EMBED
-      let fullLyrics = "";
-      if (songId) {
-        try {
-          const embedUrl = `https://genius.com/songs/${songId}/embed.js`;
-          const embedJs = await fetchWithProxyFallback(embedUrl, proxyTemplates, deadlineMs);
-          fullLyrics = extractLyricsFromEmbedJs(embedJs) || "";
-        } catch (e) {
-          console.warn("Embed fetch failed", e);
-        }
-      }
-
-      if (!fullLyrics) {
-        const htmlContent = await fetchWithProxyFallback(songUrl, proxyTemplates, deadlineMs);
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlContent, 'text/html');
-        
-        // Extraction spécifique Genius
-        // Selecteur moderne
-        const containers = doc.querySelectorAll('[data-lyrics-container="true"]');
-        if (containers.length > 0) {
-            containers.forEach(c => {
-                const clone = c.cloneNode(true);
-                clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
-                fullLyrics += clone.innerText + "\n";
-            });
-        } else {
-            // Selecteur legacy
-            fullLyrics = doc.querySelector('.lyrics')?.innerText || "";
-        }
-      }
-
-      if (!fullLyrics) throw new Error("Pas de paroles trouvées");
-
-      const cleanedLyrics = cleanLyricsText(fullLyrics, finalArtist, finalTitle);
-      
-      processSong({ artist: finalArtist, title: finalTitle, lyrics: cleanedLyrics });
+      const songData = await fetchSongData(selectedMinStreams);
+      processSong(songData);
       setLoading(false);
-
     } catch (err) {
       console.error("Erreur cycle:", err);
-      setError("Erreur de connexion ou délai dépassé. Réessayez.");
+      const message = err instanceof Error ? err.message : "";
+      if (message.includes("Aucun morceau disponible avec au moins")) {
+        setError(message);
+      } else {
+        setError("Erreur de connexion ou délai dépassé. Réessayez.");
+      }
       setLoading(false);
     }
   };
@@ -522,27 +642,27 @@ export default function App() {
     setStats({ found: 0, total: wordCount });
   };
 
-  const loadGame = () => {
-    if (!gameConfig) {
-      setError("Configuration du jeu introuvable. Vérifiez game-config.json.");
-      setLoading(false);
-      return;
-    }
+  const resetRoundState = () => {
     setWin(false);
+    setShowWinOverlay(false);
     setHistory([]);
     setRevealedIndices(new Set());
     setSimilarIndices({});
     setInputValue("");
     setTitleGuessValue("");
     setToastMessage(null);
-    fetchGeniusData();
   };
 
-  useEffect(() => {
-    if (gameConfig && !configError) {
-      loadGame();
+  const loadGame = (selectedMinStreams = minStreamsThreshold) => {
+    if (!gameConfig) {
+      setError("Configuration du jeu introuvable. Vérifiez game-config.json.");
+      setLoading(false);
+      return;
     }
-  }, [gameConfig, configError]);
+    setActiveMode("solo");
+    resetRoundState();
+    fetchGeniusData(selectedMinStreams);
+  };
 
   useEffect(() => {
     focusGuessInput();
@@ -573,6 +693,94 @@ export default function App() {
     };
   }, [song]);
 
+  useEffect(() => {
+    if (activeMode !== "team") return;
+    if (setupStep !== "playing") return;
+    if (!teamSessionCode) return;
+    if (!SIMILARITY_API_BASE) return;
+
+    let cancelled = false;
+    const clientId = getOrCreateTeamClientId();
+    if (!clientId) return;
+
+    const pollState = async () => {
+      try {
+        const params = new URLSearchParams({ client_id: clientId });
+        const response = await fetch(`${SIMILARITY_API_BASE}/team/session/${encodeURIComponent(teamSessionCode)}/state?${params.toString()}`);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        const data = await response.json();
+        if (cancelled) return;
+        setTeamPlayerCount(Number(data.player_count) || 0);
+        setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
+      } catch (err) {
+        if (cancelled) return;
+        console.warn("Team state polling failed:", err);
+      }
+    };
+
+    pollState();
+    const intervalId = window.setInterval(pollState, 1500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+    };
+  }, [activeMode, setupStep, teamSessionCode]);
+
+  useEffect(() => {
+    if (activeMode !== "team") return;
+    if (setupStep !== "playing") return;
+    if (!song) return;
+
+    const orderedEvents = mergeTeamGuessEvents([], teamGuesses);
+    const nextRevealed = new Set();
+    const nextHistory = [];
+
+    orderedEvents.forEach((event) => {
+      const guess = String(event.word || "").trim();
+      if (!guess) return;
+      const normGuess = normalize(guess);
+      const guessVariations = new Set([normGuess, normGuess + "s", normGuess + "x"]);
+      if (normGuess.length > 3 && normGuess.endsWith("s")) {
+        guessVariations.add(normGuess.slice(0, -1));
+      }
+
+      let hitCount = 0;
+      tokens.forEach((token) => {
+        if (token.type !== "word") return;
+        if (guessVariations.has(normalize(token.value))) {
+          if (!nextRevealed.has(token.id)) {
+            nextRevealed.add(token.id);
+            hitCount += 1;
+          }
+        }
+      });
+
+      nextHistory.unshift({
+        word: guess,
+        hits: hitCount,
+        sim: 0,
+        buckets: { strong: 0, mid: 0, low: 0, spelling: 0 },
+      });
+    });
+
+    const totalWords = tokens.reduce((count, token) => (
+      token.type === "word" ? count + 1 : count
+    ), 0);
+
+    setRevealedIndices(nextRevealed);
+    setSimilarIndices({});
+    setHistory(nextHistory);
+    setStats({ found: nextRevealed.size, total: totalWords });
+  }, [activeMode, setupStep, song, tokens, teamGuesses]);
+
+  useEffect(() => {
+    if (activeMode !== "team") return;
+    if (setupStep !== "playing") return;
+    if (!stats.total || stats.found < stats.total) return;
+    setWin(true);
+    setShowWinOverlay(true);
+  }, [activeMode, setupStep, stats]);
+
   // --- LOGIQUE DE JEU ---
 
   const handleGuess = async (e) => {
@@ -580,6 +788,42 @@ export default function App() {
     if (!inputValue.trim() || win || isProcessingGuess) return;
 
     const guess = inputValue.trim();
+
+    if (activeMode === "team") {
+      if (!SIMILARITY_API_BASE || !teamSessionCode) {
+        setToastMessage("Session équipe indisponible.");
+        setTimeout(() => setToastMessage(null), 2000);
+        return;
+      }
+      setIsProcessingGuess(true);
+      try {
+        const response = await fetch(`${SIMILARITY_API_BASE}/team/session/guess`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            code: teamSessionCode,
+            client_id: getOrCreateTeamClientId(),
+            word: guess,
+          }),
+        });
+        if (!response.ok) throw new Error(await readApiErrorDetail(response));
+        const data = await response.json();
+        if (data?.event) {
+          setTeamGuesses((prev) => mergeTeamGuessEvents(prev, [data.event]));
+        }
+      } catch (err) {
+        console.warn("Team guess submit failed:", err);
+        const message = err instanceof Error ? err.message : "Impossible d'envoyer le mot à la session.";
+        setToastMessage(message);
+        setTimeout(() => setToastMessage(null), 2000);
+      } finally {
+        setInputValue("");
+        setIsProcessingGuess(false);
+        setTimeout(focusGuessInput, 0);
+      }
+      return;
+    }
+
     const normGuess = normalize(guess);
     
     if (history.some(h => normalize(h.word) === normGuess)) {
@@ -640,10 +884,12 @@ export default function App() {
 
   const handleTitleGuess = (e) => {
     e.preventDefault();
+    if (activeMode === "team") return;
     if (!titleGuessValue.trim() || win || !song) return;
     const guess = titleGuessValue.trim();
     if (normalize(guess) === normalize(song.title)) {
         setWin(true);
+        setShowWinOverlay(true);
         const allIndices = new Set();
         tokens.forEach(t => { if(t.type === 'word') allIndices.add(t.id) });
         setRevealedIndices(allIndices);
@@ -653,6 +899,438 @@ export default function App() {
     }
     setTitleGuessValue("");
   };
+
+  const openModeSelection = () => {
+    setSetupStep("mode");
+    setActiveMode(null);
+    setSong(null);
+    setTokens([]);
+    setWin(false);
+    setShowWinOverlay(false);
+    setLoading(false);
+    setError(null);
+    setStats({ found: 0, total: 0 });
+    setYoutubeData(null);
+    setYoutubeLoading(false);
+    setHistory([]);
+    setRevealedIndices(new Set());
+    setSimilarIndices({});
+    setInputValue("");
+    setTitleGuessValue("");
+    setToastMessage(null);
+    setTeamSessionCode("");
+    setTeamJoinCode("");
+    setTeamPlayerCount(0);
+    setTeamGuesses([]);
+    setTeamError(null);
+    setTeamBusy(false);
+  };
+
+  const openSoloSetup = () => {
+    setSetupStep("solo");
+    setError(null);
+    setTeamError(null);
+  };
+
+  const openTeamSetup = () => {
+    setSetupStep("team");
+    setError(null);
+    setTeamError(null);
+  };
+
+  const handleSoloMinStreamsChange = (e) => {
+    const parsed = Number(e.target.value);
+    if (!Number.isFinite(parsed)) return;
+    const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+    const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+    setSoloMinStreams(clampNumber(Math.floor(parsed), safeMin, safeMax));
+  };
+
+  const handleTeamMinStreamsChange = (e) => {
+    const parsed = Number(e.target.value);
+    if (!Number.isFinite(parsed)) return;
+    const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+    const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+    setTeamMinStreams(clampNumber(Math.floor(parsed), safeMin, safeMax));
+  };
+
+  const startSoloGame = () => {
+    const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+    const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+    const appliedThreshold = clampNumber(Math.floor(soloMinStreams), safeMin, safeMax);
+    setActiveMode("solo");
+    setMinStreamsThreshold(appliedThreshold);
+    setSetupStep("playing");
+    loadGame(appliedThreshold);
+  };
+
+  const createTeamSession = async () => {
+    if (!SIMILARITY_API_BASE) {
+      setTeamError("Mode équipe indisponible: backend non configuré.");
+      return;
+    }
+    if (!gameConfig) {
+      setTeamError("Configuration du jeu introuvable.");
+      return;
+    }
+
+    try {
+      setTeamBusy(true);
+      setTeamError(null);
+      setLoading(true);
+      const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+      const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+      const appliedThreshold = clampNumber(Math.floor(teamMinStreams), safeMin, safeMax);
+      const songData = await fetchSongData(appliedThreshold);
+
+      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: getOrCreateTeamClientId(),
+          min_streams: appliedThreshold,
+          song: songData,
+        }),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+
+      resetRoundState();
+      setActiveMode("team");
+      setSetupStep("playing");
+      setMinStreamsThreshold(Number(data.min_streams) || appliedThreshold);
+      setTeamSessionCode(data.code || "");
+      setTeamJoinCode(data.code || "");
+      setTeamPlayerCount(Number(data.player_count) || 1);
+      setTeamGuesses(Array.isArray(data.guesses) ? data.guesses : []);
+      setError(null);
+      processSong(data.song || songData);
+      setLoading(false);
+    } catch (err) {
+      console.warn("Team create failed:", err);
+      setLoading(false);
+      const message = err instanceof Error ? err.message : "Impossible de créer la session équipe.";
+      setTeamError(message);
+    } finally {
+      setTeamBusy(false);
+    }
+  };
+
+  const joinTeamSession = async () => {
+    if (!SIMILARITY_API_BASE) {
+      setTeamError("Mode équipe indisponible: backend non configuré.");
+      return;
+    }
+
+    const code = teamJoinCode.trim().toUpperCase();
+    if (!code) {
+      setTeamError("Entre un code de session.");
+      return;
+    }
+
+    try {
+      setTeamBusy(true);
+      setTeamError(null);
+      setLoading(true);
+      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/join`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code,
+          client_id: getOrCreateTeamClientId(),
+        }),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      const sharedSong = data.song;
+      if (!sharedSong?.lyrics) throw new Error("Session sans morceau");
+
+      resetRoundState();
+      setActiveMode("team");
+      setSetupStep("playing");
+      setMinStreamsThreshold(Number(data.min_streams) || 0);
+      setTeamSessionCode(data.code || code);
+      setTeamJoinCode(data.code || code);
+      setTeamPlayerCount(Number(data.player_count) || 1);
+      setTeamGuesses(Array.isArray(data.guesses) ? data.guesses : []);
+      setError(null);
+      processSong(sharedSong);
+      setLoading(false);
+    } catch (err) {
+      console.warn("Team join failed:", err);
+      setLoading(false);
+      const message = err instanceof Error ? err.message : "Impossible de rejoindre la session.";
+      setTeamError(message);
+    } finally {
+      setTeamBusy(false);
+    }
+  };
+
+  const refreshTeamState = async () => {
+    if (!SIMILARITY_API_BASE || !teamSessionCode) return;
+    try {
+      const params = new URLSearchParams({ client_id: getOrCreateTeamClientId() });
+      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/${encodeURIComponent(teamSessionCode)}/state?${params.toString()}`);
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      setTeamPlayerCount(Number(data.player_count) || 0);
+      setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
+    } catch (err) {
+      console.warn("Team refresh failed:", err);
+    }
+  };
+
+  const handleRefreshGame = () => {
+    if (activeMode === "team") {
+      refreshTeamState();
+      return;
+    }
+    loadGame();
+  };
+
+  const handleBackToLyrics = () => {
+    setShowWinOverlay(false);
+    scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (isConfigLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-gray-100 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 size={44} className="animate-spin text-yellow-400" />
+          <p className="text-sm text-gray-400">Chargement de la configuration...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (configError) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-gray-100 flex items-center justify-center px-4">
+        <div className="max-w-md w-full text-center border border-red-500/40 bg-red-950/30 rounded-xl p-6">
+          <AlertCircle size={40} className="mx-auto text-red-400 mb-3" />
+          <p className="text-red-300 mb-4">{configError}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 rounded-lg border border-red-400/60 text-red-100 hover:bg-red-900/40"
+          >
+            Recharger
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (setupStep !== "playing") {
+    return (
+      <div className="min-h-screen bg-gray-900 text-gray-100 flex items-center justify-center p-4">
+        <div className="w-full max-w-3xl border border-gray-700 rounded-2xl bg-gray-800/70 shadow-xl p-6 sm:p-8">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="bg-yellow-500 p-2 rounded-lg text-black">
+              <Music size={24} />
+            </div>
+            <h1 className="text-2xl font-bold text-white">
+              Rap<span className="text-yellow-400">Genius</span>
+            </h1>
+          </div>
+
+          {setupStep === "mode" && (
+            <>
+              <p className="text-center text-gray-300 mb-5">Choisis ton mode de jeu</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
+                <button
+                  onClick={openSoloSetup}
+                  className="h-full border border-yellow-500/60 bg-yellow-500/10 hover:bg-yellow-500/20 rounded-xl p-5 text-left transition-colors"
+                >
+                  <div className="flex items-center justify-between min-h-6 mb-2">
+                    <div className="flex items-center gap-2 text-yellow-300 font-semibold">
+                      <Gamepad2 size={18} />
+                      <span>Solo</span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-transparent select-none">Bientôt</span>
+                  </div>
+                  <p className="text-sm text-gray-300 min-h-[78px]">Partie classique, morceau aléatoire avec filtre sur les streams.</p>
+                </button>
+
+                <button
+                  onClick={openTeamSetup}
+                  className="h-full border border-cyan-500/40 bg-cyan-500/10 hover:bg-cyan-500/20 rounded-xl p-5 text-left transition-colors"
+                >
+                  <div className="flex items-center justify-between min-h-6 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Users size={18} className="text-cyan-300" />
+                      <span className="text-cyan-200 font-semibold">En équipe</span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-cyan-300/80">Nouveau</span>
+                  </div>
+                  <p className="text-sm text-gray-300 min-h-[78px]">Coopérez à 2 sur le même morceau avec un code de session.</p>
+                </button>
+
+                <button
+                  disabled
+                  className="h-full border border-gray-700 bg-gray-900/40 rounded-xl p-5 text-left opacity-70 cursor-not-allowed"
+                >
+                  <div className="flex items-center justify-between min-h-6 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Swords size={18} className="text-gray-400" />
+                      <span className="text-gray-300 font-semibold">Versus</span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-gray-500">Bientôt</span>
+                  </div>
+                  <p className="text-sm text-gray-500 min-h-[78px]">Affrontez un autre joueur en duel sur le même son.</p>
+                </button>
+              </div>
+            </>
+          )}
+
+          {setupStep === "solo" && (
+            <>
+              <button
+                onClick={openModeSelection}
+                className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-200 mb-5"
+              >
+                <ChevronLeft size={16} />
+                Retour aux modes
+              </button>
+
+              <div className="space-y-5">
+                <div>
+                  <p className="text-gray-300 text-sm uppercase tracking-wider mb-2">Mode Solo</p>
+                  <p className="text-white text-lg font-semibold mb-1">Seuil minimum de streams</p>
+                  <p className="text-gray-400 text-sm">Les morceaux proposés auront au moins cette popularité.</p>
+                </div>
+
+                {hasTrackPool ? (
+                  <>
+                    <div className="rounded-xl border border-gray-700 bg-gray-900/60 p-4">
+                      <div className="flex justify-between items-center mb-3 text-sm">
+                        <span className="text-gray-400">Valeur choisie</span>
+                        <span className="text-yellow-300 font-semibold">{formatStreamCount(soloMinStreams)} streams</span>
+                      </div>
+                      <input
+                        type="range"
+                        min={sliderMinStreams}
+                        max={sliderMaxStreams}
+                        step="1000000"
+                        value={soloMinStreams}
+                        onChange={handleSoloMinStreamsChange}
+                        className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-400"
+                        style={{
+                          background: `linear-gradient(to right, rgb(250 204 21) 0%, rgb(250 204 21) ${sliderProgress}%, rgb(55 65 81) ${sliderProgress}%, rgb(55 65 81) 100%)`,
+                        }}
+                      />
+                      <div className="flex justify-between text-xs text-gray-500 mt-2">
+                        <span>{formatStreamCount(sliderMinStreams)}</span>
+                        <span>{formatStreamCount(sliderMaxStreams)}</span>
+                      </div>
+                    </div>
+
+                    <div className="text-sm text-gray-400">
+                      {soloEligibleTrackCount} morceau{soloEligibleTrackCount > 1 ? "x" : ""} disponible{soloEligibleTrackCount > 1 ? "s" : ""} avec ce seuil.
+                    </div>
+                  </>
+                ) : (
+                  <div className="rounded-xl border border-red-500/40 bg-red-950/20 p-4 text-sm text-red-200">
+                    Ce mode Solo nécessite une liste `topTracks` dans la configuration.
+                  </div>
+                )}
+
+                <button
+                  onClick={startSoloGame}
+                  disabled={!hasTrackPool || soloEligibleTrackCount === 0}
+                  className="w-full py-3 rounded-lg bg-yellow-500 text-gray-900 font-bold hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Lancer la partie
+                </button>
+              </div>
+            </>
+          )}
+
+          {setupStep === "team" && (
+            <>
+              <button
+                onClick={openModeSelection}
+                className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-200 mb-5"
+              >
+                <ChevronLeft size={16} />
+                Retour aux modes
+              </button>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-xl border border-cyan-600/40 bg-cyan-900/10 p-4 space-y-4">
+                  <div>
+                    <p className="text-cyan-300 text-xs uppercase tracking-wider mb-2">Créer une session</p>
+                    <p className="text-white font-semibold mb-1">En équipe (2 joueurs)</p>
+                    <p className="text-sm text-gray-400">Crée un code puis partage-le à ton coéquipier.</p>
+                  </div>
+
+                  {hasTrackPool ? (
+                    <div>
+                      <div className="flex justify-between text-xs text-gray-400 mb-2">
+                        <span>Seuil minimum</span>
+                        <span>{formatStreamCount(teamMinStreams)} streams</span>
+                      </div>
+                      <input
+                        type="range"
+                        min={sliderMinStreams}
+                        max={sliderMaxStreams}
+                        step="1000000"
+                        value={teamMinStreams}
+                        onChange={handleTeamMinStreamsChange}
+                        className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+                      />
+                    </div>
+                  ) : (
+                    <div className="rounded-lg border border-red-500/40 bg-red-950/20 p-3 text-sm text-red-200">
+                      `topTracks` requis pour ce mode.
+                    </div>
+                  )}
+
+                  <button
+                    onClick={createTeamSession}
+                    disabled={teamBusy || !hasTrackPool}
+                    className="w-full py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-semibold hover:bg-cyan-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {teamBusy ? "Création..." : "Créer et lancer"}
+                  </button>
+                </div>
+
+                <div className="rounded-xl border border-gray-700 bg-gray-900/40 p-4 space-y-4">
+                  <div>
+                    <p className="text-gray-300 text-xs uppercase tracking-wider mb-2">Rejoindre une session</p>
+                    <p className="text-white font-semibold mb-1">Entre le code de ton coéquipier</p>
+                    <p className="text-sm text-gray-400">Tu rejoins la partie en cours avec les mêmes paroles.</p>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={teamJoinCode}
+                    onChange={(e) => setTeamJoinCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10))}
+                    placeholder="Code session"
+                    className="w-full bg-gray-950 border border-gray-600 text-white px-3 py-2 rounded-lg focus:outline-none focus:border-cyan-400 tracking-widest uppercase"
+                  />
+
+                  <button
+                    onClick={joinTeamSession}
+                    disabled={teamBusy || !teamJoinCode.trim()}
+                    className="w-full py-2.5 rounded-lg bg-white text-slate-900 font-semibold hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {teamBusy ? "Connexion..." : "Rejoindre"}
+                  </button>
+                </div>
+              </div>
+
+              {teamError && (
+                <div className="mt-4 rounded-lg border border-red-500/40 bg-red-950/20 px-4 py-3 text-sm text-red-200">
+                  {teamError}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-screen bg-gray-900 text-gray-100 font-sans overflow-hidden relative">
@@ -678,8 +1356,15 @@ export default function App() {
           <div className="flex flex-col items-end">
             <span className="text-gray-400 text-xs uppercase">Progression</span>
             <span className="text-yellow-400">{stats.found} / {stats.total} mots</span>
+            {hasTrackPool && (
+              <span className="text-[11px] text-gray-500">Seuil: {formatStreamCount(minStreamsThreshold)} streams</span>
+            )}
+            {activeMode === "team" && teamSessionCode && (
+              <span className="text-[11px] text-cyan-300">Session {teamSessionCode} · {teamPlayerCount}/2</span>
+            )}
           </div>
-          <button onClick={loadGame} className="p-2 hover:bg-gray-700 rounded-full transition-colors"><RefreshCw size={20} /></button>
+          <button onClick={openModeSelection} className="px-3 py-1.5 text-xs border border-gray-600 hover:bg-gray-700 rounded-lg transition-colors">Modes</button>
+          <button onClick={handleRefreshGame} className="p-2 hover:bg-gray-700 rounded-full transition-colors"><RefreshCw size={20} /></button>
         </div>
       </header>
 
@@ -706,7 +1391,7 @@ export default function App() {
               </div>
             ) : error ? (
               <div className="flex flex-col items-center justify-center h-full text-red-400 space-y-4 px-4 text-center">
-                <AlertCircle size={48} /><p>{error}</p><button onClick={loadGame} className="px-4 py-2 bg-red-900/50 border border-red-500 rounded">Réessayer</button>
+                <AlertCircle size={48} /><p>{error}</p><button onClick={handleRefreshGame} className="px-4 py-2 bg-red-900/50 border border-red-500 rounded">Réessayer</button>
               </div>
             ) : (
               <div className="max-w-3xl mx-auto font-mono text-base sm:text-lg">
@@ -778,13 +1463,18 @@ export default function App() {
               </form>
 
               <form onSubmit={handleTitleGuess} className="md:w-1/3 relative flex items-center">
-                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder="Titre exact ?" disabled={win || loading || error} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
-                <button type="submit" disabled={win || loading || error} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
+                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder={activeMode === "team" ? "Titre désactivé en équipe" : "Titre exact ?"} disabled={win || loading || error || activeMode === "team"} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
+                <button type="submit" disabled={win || loading || error || activeMode === "team"} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
               </form>
             </div>
             <div className="mt-2 text-center text-xs text-gray-500">
                 Source : <span className="text-yellow-400">Genius.com</span> + <span className="text-cyan-400">Word2Bezbar (RapMinerz)</span>
             </div>
+            {activeMode === "team" && teamSessionCode && (
+              <div className="text-center text-xs text-cyan-300 mt-1">
+                Session partagée: {teamSessionCode} ({teamPlayerCount}/2 joueurs)
+              </div>
+            )}
             {!similarityServiceHealthy && (
               <div className="text-center text-xs text-red-500 mt-1">
                 Service de similarité RapMinerz injoignable (backend). Vérifie que le serveur Python tourne.
@@ -858,19 +1548,22 @@ export default function App() {
         </aside>
       </div>
 
-      {win && song && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-gray-800 border border-gray-600 rounded-xl shadow-2xl max-w-2xl w-full p-6 text-center animate-bounce-in">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-yellow-500/20"><Trophy size={32} className="text-black" /></div>
-            <h2 className="text-2xl font-bold text-white mb-1">Félicitations !</h2>
-            <p className="text-gray-400 mb-6">Vous avez trouvé le morceau.</p>
-            <div className="bg-gray-900 p-4 rounded-lg mb-6 border border-gray-700">
-              <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Artiste</p><p className="text-xl font-bold text-yellow-400 mb-3">{song.artist}</p>
-              <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Titre</p><p className="text-xl font-bold text-white">{song.title}</p>
+      {win && song && showWinOverlay && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-4">
+          <div className="bg-gray-800 border border-gray-600 rounded-xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-4 sm:p-6 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-yellow-500/20">
+              <Trophy size={28} className="text-black sm:w-8 sm:h-8" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">Félicitations !</h2>
+            <p className="text-sm sm:text-base text-gray-400 mb-5 sm:mb-6">Vous avez trouvé le morceau.</p>
+            <div className="bg-gray-900 p-3 sm:p-4 rounded-lg mb-5 sm:mb-6 border border-gray-700">
+              <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-1">Artiste</p>
+              <p className="text-lg sm:text-xl font-bold text-yellow-400 mb-3">{song.artist}</p>
+              <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-1">Titre</p>
+              <p className="text-lg sm:text-xl font-bold text-white">{song.title}</p>
             </div>
             <div className="mb-5">
-              <div className="text-xs uppercase tracking-wider text-gray-400 mb-2">Miniature YouTube</div>
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-700 bg-gray-900">
+              <div className="relative w-full max-w-lg mx-auto aspect-video rounded-lg overflow-hidden border border-gray-700 bg-gray-900">
                 {youtubeLoading && (
                   <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
                     Recherche de la vidéo...
@@ -893,7 +1586,18 @@ export default function App() {
               </div>
             </div>
             <div className="flex gap-3 justify-center">
-              <button onClick={loadGame} className="bg-white text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition-colors">Rejouer</button>
+              <button
+                onClick={handleBackToLyrics}
+                className="w-full sm:w-auto bg-gray-700 text-gray-100 px-5 py-2 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+              >
+                Retour aux paroles
+              </button>
+              <button
+                onClick={activeMode === "team" ? openModeSelection : loadGame}
+                className="w-full sm:w-auto bg-white text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition-colors"
+              >
+                {activeMode === "team" ? "Quitter la session" : "Rejouer"}
+              </button>
             </div>
           </div>
         </div>
