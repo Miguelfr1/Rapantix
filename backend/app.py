@@ -7,7 +7,7 @@ from threading import Lock
 import unicodedata
 from pathlib import Path
 from functools import lru_cache
-from typing import List, Any
+from typing import List, Any, Optional
 from urllib.parse import urlparse, quote_plus
 
 import httpx
@@ -128,6 +128,18 @@ class VersusTitleGuessRequest(BaseModel):
     title: str
 
 
+class SessionRefreshRequest(BaseModel):
+    code: str
+    client_id: str
+
+
+class SessionRefreshRespondRequest(BaseModel):
+    code: str
+    client_id: str
+    approve: bool
+    song: Optional[TeamSong] = None
+
+
 @lru_cache(maxsize=1)
 def load_model() -> KeyedVectors:
     if not os.path.exists(MODEL_PATH):
@@ -217,18 +229,21 @@ def _build_team_state(session: dict[str, Any], client_id: str) -> dict[str, Any]
     title_found_by = session.get("title_found_by", [])
     you_found_title = client_id in title_found_by
     teammate_found_title = any(pid != client_id for pid in title_found_by)
+    refresh_state = _build_refresh_state(session, client_id)
     return {
         "code": session["code"],
         "role": "host" if session.get("host_id") == client_id else "guest",
         "player_count": len(players),
         "is_full": len(players) >= TEAM_MAX_PLAYERS,
         "min_streams": session.get("min_streams", 0),
+        "round_id": int(session.get("round_id", 1)),
         "song": session.get("song", {}),
         "guesses": session.get("guesses", []),
         "title_found": len(title_found_by) > 0,
         "title_found_by_count": len(title_found_by),
         "you_found_title": you_found_title,
         "teammate_found_title": teammate_found_title,
+        **refresh_state,
     }
 
 
@@ -237,6 +252,7 @@ def _build_versus_state(session: dict[str, Any], client_id: str) -> dict[str, An
     opponent_id = next((pid for pid in players if pid != client_id), "")
     guesses_by_player = session.get("guesses_by_player", {})
     winner_id = session.get("winner_id") or ""
+    refresh_state = _build_refresh_state(session, client_id)
 
     return {
         "code": session["code"],
@@ -244,6 +260,7 @@ def _build_versus_state(session: dict[str, Any], client_id: str) -> dict[str, An
         "player_count": len(players),
         "is_full": len(players) >= TEAM_MAX_PLAYERS,
         "min_streams": session.get("min_streams", 0),
+        "round_id": int(session.get("round_id", 1)),
         "song": session.get("song", {}),
         "your_guesses": guesses_by_player.get(client_id, []),
         "opponent_guesses": guesses_by_player.get(opponent_id, []),
@@ -252,7 +269,50 @@ def _build_versus_state(session: dict[str, Any], client_id: str) -> dict[str, An
         "finished": bool(winner_id),
         "you_won": bool(winner_id) and winner_id == client_id,
         "opponent_won": bool(winner_id) and winner_id != client_id,
+        **refresh_state,
     }
+
+
+def _build_refresh_state(session: dict[str, Any], client_id: str) -> dict[str, Any]:
+    refresh = session.get("refresh")
+    requester_id = ""
+    status = ""
+    if isinstance(refresh, dict):
+        requester_id = str(refresh.get("requester_id") or "")
+        status = str(refresh.get("status") or "")
+        if status not in {"pending", "rejected"}:
+            status = ""
+
+    return {
+        "refresh_status": status,
+        "refresh_requester_id": requester_id,
+        "refresh_pending_for_you": bool(status == "pending" and requester_id and requester_id != client_id),
+        "refresh_pending_by_you": bool(status == "pending" and requester_id == client_id),
+        "refresh_rejected_for_you": bool(status == "rejected" and requester_id == client_id),
+    }
+
+
+def _reset_team_round(session: dict[str, Any], song_payload: dict[str, Any]) -> None:
+    session["song"] = song_payload
+    session["guesses"] = []
+    session["guess_index"] = {}
+    session["title_found_by"] = []
+    session["next_seq"] = 1
+    session["round_id"] = int(session.get("round_id", 1)) + 1
+    session["refresh"] = None
+    session["updated_at"] = time.time()
+
+
+def _reset_versus_round(session: dict[str, Any], song_payload: dict[str, Any]) -> None:
+    players = list(session.get("players", {}).keys())
+    session["song"] = song_payload
+    session["guesses_by_player"] = {player_id: [] for player_id in players}
+    session["guess_index_by_player"] = {player_id: {} for player_id in players}
+    session["winner_id"] = ""
+    session["next_seq"] = 1
+    session["round_id"] = int(session.get("round_id", 1)) + 1
+    session["refresh"] = None
+    session["updated_at"] = time.time()
 
 
 @app.get("/health")
@@ -278,11 +338,13 @@ def create_team_session(request: TeamCreateRequest):
             "created_at": now,
             "updated_at": now,
             "min_streams": max(0, int(request.min_streams or 0)),
+            "round_id": 1,
             "song": request.song.model_dump(),
             "players": {client_id: {"joined_at": now}},
             "guesses": [],
             "guess_index": {},
             "title_found_by": [],
+            "refresh": None,
             "next_seq": 1,
         }
         TEAM_SESSIONS[code] = session
@@ -425,6 +487,84 @@ def add_team_title_guess(request: TeamTitleGuessRequest):
         }
 
 
+@app.post("/team/session/refresh/request")
+def request_team_refresh(request: SessionRefreshRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        players = session.get("players", {})
+        if client_id not in players:
+            raise HTTPException(status_code=403, detail="Join session first")
+        if len(players) < TEAM_MAX_PLAYERS:
+            raise HTTPException(status_code=409, detail="Attends le second joueur")
+
+        refresh = session.get("refresh")
+        if isinstance(refresh, dict) and refresh.get("status") == "pending":
+            existing_requester = str(refresh.get("requester_id") or "")
+            if existing_requester and existing_requester != client_id:
+                raise HTTPException(status_code=409, detail="Une demande est déjà en attente")
+
+        session["refresh"] = {
+            "requester_id": client_id,
+            "status": "pending",
+            "updated_at": time.time(),
+        }
+        session["updated_at"] = time.time()
+        return _build_team_state(session, client_id)
+
+
+@app.post("/team/session/refresh/respond")
+def respond_team_refresh(request: SessionRefreshRespondRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+
+        refresh = session.get("refresh")
+        if not isinstance(refresh, dict) or refresh.get("status") != "pending":
+            raise HTTPException(status_code=409, detail="Aucune demande en attente")
+
+        requester_id = str(refresh.get("requester_id") or "")
+        if not requester_id or requester_id == client_id:
+            raise HTTPException(status_code=409, detail="Seul l'autre joueur peut répondre")
+
+        if not request.approve:
+            session["refresh"] = {
+                "requester_id": requester_id,
+                "status": "rejected",
+                "updated_at": time.time(),
+            }
+            session["updated_at"] = time.time()
+            return _build_team_state(session, client_id)
+
+        if request.song is None:
+            raise HTTPException(status_code=400, detail="Missing song payload")
+        if not request.song.artist.strip() or not request.song.title.strip() or not request.song.lyrics.strip():
+            raise HTTPException(status_code=400, detail="Incomplete song payload")
+
+        _reset_team_round(session, request.song.model_dump())
+        return _build_team_state(session, client_id)
+
+
 @app.post("/versus/session/create")
 def create_versus_session(request: VersusCreateRequest):
     client_id = (request.client_id or "").strip()
@@ -443,10 +583,12 @@ def create_versus_session(request: VersusCreateRequest):
             "created_at": now,
             "updated_at": now,
             "min_streams": max(0, int(request.min_streams or 0)),
+            "round_id": 1,
             "song": request.song.model_dump(),
             "players": {client_id: {"joined_at": now}},
             "guesses_by_player": {client_id: []},
             "guess_index_by_player": {client_id: {}},
+            "refresh": None,
             "next_seq": 1,
             "winner_id": "",
         }
@@ -594,6 +736,84 @@ def add_versus_title_guess(request: VersusTitleGuessRequest):
             "title": target_title if correct else None,
             **state,
         }
+
+
+@app.post("/versus/session/refresh/request")
+def request_versus_refresh(request: SessionRefreshRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        players = session.get("players", {})
+        if client_id not in players:
+            raise HTTPException(status_code=403, detail="Join session first")
+        if len(players) < TEAM_MAX_PLAYERS:
+            raise HTTPException(status_code=409, detail="Attends le second joueur")
+
+        refresh = session.get("refresh")
+        if isinstance(refresh, dict) and refresh.get("status") == "pending":
+            existing_requester = str(refresh.get("requester_id") or "")
+            if existing_requester and existing_requester != client_id:
+                raise HTTPException(status_code=409, detail="Une demande est déjà en attente")
+
+        session["refresh"] = {
+            "requester_id": client_id,
+            "status": "pending",
+            "updated_at": time.time(),
+        }
+        session["updated_at"] = time.time()
+        return _build_versus_state(session, client_id)
+
+
+@app.post("/versus/session/refresh/respond")
+def respond_versus_refresh(request: SessionRefreshRespondRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+
+        refresh = session.get("refresh")
+        if not isinstance(refresh, dict) or refresh.get("status") != "pending":
+            raise HTTPException(status_code=409, detail="Aucune demande en attente")
+
+        requester_id = str(refresh.get("requester_id") or "")
+        if not requester_id or requester_id == client_id:
+            raise HTTPException(status_code=409, detail="Seul l'autre joueur peut répondre")
+
+        if not request.approve:
+            session["refresh"] = {
+                "requester_id": requester_id,
+                "status": "rejected",
+                "updated_at": time.time(),
+            }
+            session["updated_at"] = time.time()
+            return _build_versus_state(session, client_id)
+
+        if request.song is None:
+            raise HTTPException(status_code=400, detail="Missing song payload")
+        if not request.song.artist.strip() or not request.song.title.strip() or not request.song.lyrics.strip():
+            raise HTTPException(status_code=400, detail="Incomplete song payload")
+
+        _reset_versus_round(session, request.song.model_dump())
+        return _build_versus_state(session, client_id)
 
 
 @app.get("/proxy")

@@ -260,9 +260,36 @@ const mergeTeamGuessEvents = (currentEvents = [], nextEvents = []) => {
   return currentEvents;
 };
 
-const computeRevealedFromEvents = (guessEvents = [], tokenList = []) => {
+const markModelSimilaritiesOnTokens = (candidateWords, tokenList, newRevealed, newSimilar, guess, bucketCounts) => {
+  const scoreMap = new Map(
+    (candidateWords || []).map((item) => [normalize(item.term), item.score])
+  );
+  let similarityCount = 0;
+  tokenList.forEach((token) => {
+    if (token.type !== "word" || newRevealed.has(token.id)) return;
+    const normToken = normalize(token.value);
+    if (!scoreMap.has(normToken)) return;
+    if (newSimilar[token.id]) return;
+    newSimilar[token.id] = {
+      guess,
+      score: scoreMap.get(normToken),
+      kind: "model",
+    };
+    const bucket = classifySimilarity(newSimilar[token.id]);
+    if (bucketCounts[bucket] != null) bucketCounts[bucket] += 1;
+    similarityCount += 1;
+  });
+  return similarityCount;
+};
+
+const computeProgressFromEvents = (
+  guessEvents = [],
+  tokenList = [],
+  modelMatchesByGuess = {}
+) => {
   const orderedEvents = mergeTeamGuessEvents([], guessEvents);
   const nextRevealed = new Set();
+  const nextSimilar = {};
   const nextHistory = [];
 
   orderedEvents.forEach((event) => {
@@ -275,23 +302,51 @@ const computeRevealedFromEvents = (guessEvents = [], tokenList = []) => {
     }
 
     let hitCount = 0;
+    let similarityCount = 0;
+    const bucketCounts = { strong: 0, mid: 0, low: 0, spelling: 0 };
+
     tokenList.forEach((token) => {
       if (token.type !== "word") return;
-      if (!guessVariations.has(normalize(token.value))) return;
+      const normToken = normalize(token.value);
+      if (guessVariations.has(normToken)) {
+        if (!nextRevealed.has(token.id)) {
+          nextRevealed.add(token.id);
+          hitCount += 1;
+          if (nextSimilar[token.id]) delete nextSimilar[token.id];
+        }
+        return;
+      }
       if (nextRevealed.has(token.id)) return;
-      nextRevealed.add(token.id);
-      hitCount += 1;
+      if (nextSimilar[token.id]) return;
+      if (!checkSpellingSimilarity(token.value, guess)) return;
+      nextSimilar[token.id] = { guess, score: null, kind: "spelling" };
+      bucketCounts.spelling += 1;
+      similarityCount += 1;
     });
+
+    if (guess.length >= 2) {
+      const modelMatches = modelMatchesByGuess?.[normGuess] || [];
+      if (modelMatches.length > 0) {
+        similarityCount += markModelSimilaritiesOnTokens(
+          modelMatches,
+          tokenList,
+          nextRevealed,
+          nextSimilar,
+          guess,
+          bucketCounts
+        );
+      }
+    }
 
     nextHistory.unshift({
       word: guess,
       hits: hitCount,
-      sim: 0,
-      buckets: { strong: 0, mid: 0, low: 0, spelling: 0 },
+      sim: similarityCount,
+      buckets: bucketCounts,
     });
   });
 
-  return { nextRevealed, nextHistory };
+  return { nextRevealed, nextSimilar, nextHistory };
 };
 
 const readApiErrorDetail = async (response) => {
@@ -348,24 +403,34 @@ export default function App() {
   const [teamJoinCode, setTeamJoinCode] = useState("");
   const [teamSessionCode, setTeamSessionCode] = useState("");
   const [teamPlayerCount, setTeamPlayerCount] = useState(0);
+  const [teamRoundId, setTeamRoundId] = useState(0);
   const [teamGuesses, setTeamGuesses] = useState([]);
   const [teamYouFoundTitle, setTeamYouFoundTitle] = useState(false);
   const [teamTeammateFoundTitle, setTeamTeammateFoundTitle] = useState(false);
   const [teamTitleRevealed, setTeamTitleRevealed] = useState(false);
+  const [teamRefreshPendingForYou, setTeamRefreshPendingForYou] = useState(false);
+  const [teamRefreshPendingByYou, setTeamRefreshPendingByYou] = useState(false);
+  const [teamRefreshRejectedForYou, setTeamRefreshRejectedForYou] = useState(false);
   const [teamBusy, setTeamBusy] = useState(false);
   const [teamError, setTeamError] = useState(null);
   const [versusJoinCode, setVersusJoinCode] = useState("");
   const [versusSessionCode, setVersusSessionCode] = useState("");
   const [versusPlayerCount, setVersusPlayerCount] = useState(0);
+  const [versusRoundId, setVersusRoundId] = useState(0);
   const [versusYourGuesses, setVersusYourGuesses] = useState([]);
   const [versusOpponentGuesses, setVersusOpponentGuesses] = useState([]);
   const [versusWinnerId, setVersusWinnerId] = useState("");
   const [versusYouWon, setVersusYouWon] = useState(false);
   const [versusOpponentWon, setVersusOpponentWon] = useState(false);
   const [versusTitleRevealed, setVersusTitleRevealed] = useState(false);
+  const [versusRefreshPendingForYou, setVersusRefreshPendingForYou] = useState(false);
+  const [versusRefreshPendingByYou, setVersusRefreshPendingByYou] = useState(false);
+  const [versusRefreshRejectedForYou, setVersusRefreshRejectedForYou] = useState(false);
   const [versusOpponentFoundCount, setVersusOpponentFoundCount] = useState(0);
   const [versusBusy, setVersusBusy] = useState(false);
   const [versusError, setVersusError] = useState(null);
+  const [onlineRefreshBusy, setOnlineRefreshBusy] = useState(false);
+  const [onlineModelMatchesByGuess, setOnlineModelMatchesByGuess] = useState({});
   const [win, setWin] = useState(false);
   const [showWinOverlay, setShowWinOverlay] = useState(false);
   const [stats, setStats] = useState({ found: 0, total: 0 });
@@ -376,6 +441,7 @@ export default function App() {
   const [similarityServiceHealthy, setSimilarityServiceHealthy] = useState(true);
   const scrollRef = useRef(null);
   const guessInputRef = useRef(null);
+  const onlineModelFetchInFlightRef = useRef(new Set());
 
   const hasTrackPool = Array.isArray(gameConfig?.topTracks) && gameConfig.topTracks.length > 0;
   const minTrackStreams = hasTrackPool
@@ -499,30 +565,47 @@ export default function App() {
     }
   };
 
-  const markModelSimilarities = (candidateWords, newRevealed, newSimilar, guess, bucketCounts) => {
-    const scoreMap = new Map(
-      candidateWords.map((item) => [normalize(item.term), item.score])
-    );
-    let similarityCount = 0;
-    tokens.forEach((token) => {
-      if (token.type !== "word" || newRevealed.has(token.id)) return;
-      const normToken = normalize(token.value);
-      if (scoreMap.has(normToken)) {
-        if (!newSimilar[token.id]) {
-          newSimilar[token.id] = {
-            guess,
-            score: scoreMap.get(normToken),
-            kind: "model",
-          };
-          const bucket = classifySimilarity(newSimilar[token.id]);
-          if (bucketCounts[bucket] != null) bucketCounts[bucket] += 1;
-          similarityCount++;
-        }
-      }
-    });
-    return similarityCount;
-  };
+  useEffect(() => {
+    if (setupStep !== "playing") return;
+    if (activeMode !== "team" && activeMode !== "versus") return;
 
+    const sourceEvents = activeMode === "team" ? teamGuesses : versusYourGuesses;
+    const missingGuesses = [];
+    sourceEvents.forEach((event) => {
+      const guess = String(event?.word || "").trim();
+      if (guess.length < 2) return;
+      const cacheKey = normalize(guess);
+      if (!cacheKey) return;
+      if (Object.prototype.hasOwnProperty.call(onlineModelMatchesByGuess, cacheKey)) return;
+      if (onlineModelFetchInFlightRef.current.has(cacheKey)) return;
+      onlineModelFetchInFlightRef.current.add(cacheKey);
+      missingGuesses.push({ cacheKey, guess });
+    });
+
+    if (missingGuesses.length === 0) return;
+
+    let cancelled = false;
+    Promise.all(
+      missingGuesses.map(async ({ cacheKey, guess }) => {
+        try {
+          const results = await fetchWord2VecSimilarWords(guess);
+          if (cancelled) return;
+          setOnlineModelMatchesByGuess((prev) => {
+            if (Object.prototype.hasOwnProperty.call(prev, cacheKey)) return prev;
+            return { ...prev, [cacheKey]: results };
+          });
+        } finally {
+          onlineModelFetchInFlightRef.current.delete(cacheKey);
+        }
+      })
+    ).catch(() => {
+      // fetchWord2VecSimilarWords already handles toasts/logging
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [setupStep, activeMode, teamGuesses, versusYourGuesses, onlineModelMatchesByGuess]);
 
   // --- LOGIQUE GENIUS (DYNAMIQUE SEULEMENT) ---
 
@@ -687,7 +770,7 @@ export default function App() {
     }
   };
 
-  const processSong = (songData) => {
+  const processSong = useCallback((songData) => {
     setSong(songData);
     const rawTokens = songData.lyrics.split(/(\n)|([a-zA-Zà-üÀ-Ü0-9œŒ]+)|([^a-zA-Zà-üÀ-Ü0-9œŒ\n]+)/g).filter(t => t);
     let processedTokens = [];
@@ -706,9 +789,9 @@ export default function App() {
     });
     setTokens(processedTokens);
     setStats({ found: 0, total: wordCount });
-  };
+  }, []);
 
-  const resetRoundState = () => {
+  const resetRoundState = useCallback(() => {
     setWin(false);
     setShowWinOverlay(false);
     setHistory([]);
@@ -717,7 +800,7 @@ export default function App() {
     setInputValue("");
     setTitleGuessValue("");
     setToastMessage(null);
-  };
+  }, []);
 
   const loadGame = (selectedMinStreams = minStreamsThreshold) => {
     if (!gameConfig) {
@@ -730,8 +813,16 @@ export default function App() {
     fetchGeniusData(selectedMinStreams);
   };
 
-  const applyTeamSessionState = (data) => {
+  const applyTeamSessionState = useCallback((data) => {
     if (!data || typeof data !== "object") return;
+    const incomingRoundId = Number(data.round_id) || 1;
+    const roundChanged = teamRoundId > 0 && incomingRoundId !== teamRoundId;
+
+    setTeamRoundId(incomingRoundId);
+    if (Number.isFinite(Number(data.min_streams))) {
+      setMinStreamsThreshold(Number(data.min_streams) || 0);
+    }
+
     setTeamPlayerCount(Number(data.player_count) || 0);
     setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
 
@@ -740,16 +831,38 @@ export default function App() {
     const teammateFound = Boolean(data.teammate_found_title);
     setTeamYouFoundTitle(youFound);
     setTeamTeammateFoundTitle(teammateFound);
+    setTeamRefreshPendingForYou(Boolean(data.refresh_pending_for_you));
+    setTeamRefreshPendingByYou(Boolean(data.refresh_pending_by_you));
+    setTeamRefreshRejectedForYou(Boolean(data.refresh_rejected_for_you));
 
     if (!titleFound) {
       setTeamTitleRevealed(false);
     } else if (youFound) {
       setTeamTitleRevealed(true);
     }
-  };
 
-  const applyVersusSessionState = (data) => {
+    if (roundChanged && data.song?.lyrics) {
+      resetRoundState();
+      setOnlineModelMatchesByGuess({});
+      onlineModelFetchInFlightRef.current.clear();
+      setError(null);
+      setLoading(false);
+      processSong(data.song);
+      setToastMessage("Nouveau morceau chargé.");
+      setTimeout(() => setToastMessage(null), 1800);
+    }
+  }, [teamRoundId, processSong, resetRoundState]);
+
+  const applyVersusSessionState = useCallback((data) => {
     if (!data || typeof data !== "object") return;
+    const incomingRoundId = Number(data.round_id) || 1;
+    const roundChanged = versusRoundId > 0 && incomingRoundId !== versusRoundId;
+
+    setVersusRoundId(incomingRoundId);
+    if (Number.isFinite(Number(data.min_streams))) {
+      setMinStreamsThreshold(Number(data.min_streams) || 0);
+    }
+
     setVersusPlayerCount(Number(data.player_count) || 0);
     setVersusYourGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.your_guesses) ? data.your_guesses : []));
     setVersusOpponentGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.opponent_guesses) ? data.opponent_guesses : []));
@@ -760,13 +873,27 @@ export default function App() {
     setVersusWinnerId(winnerId);
     setVersusYouWon(youWon);
     setVersusOpponentWon(opponentWon);
+    setVersusRefreshPendingForYou(Boolean(data.refresh_pending_for_you));
+    setVersusRefreshPendingByYou(Boolean(data.refresh_pending_by_you));
+    setVersusRefreshRejectedForYou(Boolean(data.refresh_rejected_for_you));
 
     if (!winnerId) {
       setVersusTitleRevealed(false);
     } else if (youWon) {
       setVersusTitleRevealed(true);
     }
-  };
+
+    if (roundChanged && data.song?.lyrics) {
+      resetRoundState();
+      setOnlineModelMatchesByGuess({});
+      onlineModelFetchInFlightRef.current.clear();
+      setError(null);
+      setLoading(false);
+      processSong(data.song);
+      setToastMessage("Nouveau morceau chargé.");
+      setTimeout(() => setToastMessage(null), 1800);
+    }
+  }, [versusRoundId, processSong, resetRoundState]);
 
   useEffect(() => {
     focusGuessInput();
@@ -827,14 +954,18 @@ export default function App() {
       cancelled = true;
       window.clearInterval(intervalId);
     };
-  }, [activeMode, setupStep, teamSessionCode]);
+  }, [activeMode, setupStep, teamSessionCode, applyTeamSessionState]);
 
   useEffect(() => {
     if (activeMode !== "team") return;
     if (setupStep !== "playing") return;
     if (!song) return;
 
-    const { nextRevealed, nextHistory } = computeRevealedFromEvents(teamGuesses, tokens);
+    const { nextRevealed, nextSimilar, nextHistory } = computeProgressFromEvents(
+      teamGuesses,
+      tokens,
+      onlineModelMatchesByGuess
+    );
 
     const totalWords = tokens.reduce((count, token) => (
       token.type === "word" ? count + 1 : count
@@ -853,10 +984,10 @@ export default function App() {
     }
 
     setRevealedIndices(nextRevealed);
-    setSimilarIndices({});
+    setSimilarIndices(nextSimilar);
     setHistory(nextHistory);
     setStats({ found: nextRevealed.size, total: totalWords });
-  }, [activeMode, setupStep, song, tokens, teamGuesses, teamYouFoundTitle]);
+  }, [activeMode, setupStep, song, tokens, teamGuesses, teamYouFoundTitle, onlineModelMatchesByGuess]);
 
   useEffect(() => {
     if (activeMode !== "team") return;
@@ -896,15 +1027,23 @@ export default function App() {
       cancelled = true;
       window.clearInterval(intervalId);
     };
-  }, [activeMode, setupStep, versusSessionCode]);
+  }, [activeMode, setupStep, versusSessionCode, applyVersusSessionState]);
 
   useEffect(() => {
     if (activeMode !== "versus") return;
     if (setupStep !== "playing") return;
     if (!song) return;
 
-    const { nextRevealed, nextHistory } = computeRevealedFromEvents(versusYourGuesses, tokens);
-    const { nextRevealed: nextOpponentRevealed } = computeRevealedFromEvents(versusOpponentGuesses, tokens);
+    const { nextRevealed, nextSimilar, nextHistory } = computeProgressFromEvents(
+      versusYourGuesses,
+      tokens,
+      onlineModelMatchesByGuess
+    );
+    const { nextRevealed: nextOpponentRevealed } = computeProgressFromEvents(
+      versusOpponentGuesses,
+      tokens,
+      {}
+    );
 
     const totalWords = tokens.reduce((count, token) => (
       token.type === "word" ? count + 1 : count
@@ -925,10 +1064,10 @@ export default function App() {
     }
 
     setRevealedIndices(nextRevealed);
-    setSimilarIndices({});
+    setSimilarIndices(nextSimilar);
     setHistory(nextHistory);
     setStats({ found: nextRevealed.size, total: totalWords });
-  }, [activeMode, setupStep, song, tokens, versusYourGuesses, versusOpponentGuesses, versusYouWon]);
+  }, [activeMode, setupStep, song, tokens, versusYourGuesses, versusOpponentGuesses, versusYouWon, onlineModelMatchesByGuess]);
 
   useEffect(() => {
     if (activeMode !== "versus") return;
@@ -1061,7 +1200,14 @@ export default function App() {
     if (guess.length >= 2) {
        const modelMatches = await fetchWord2VecSimilarWords(guess);
        if (modelMatches.length > 0) {
-           similarityCount += markModelSimilarities(modelMatches, newRevealed, newSimilar, guess, bucketCounts);
+           similarityCount += markModelSimilaritiesOnTokens(
+             modelMatches,
+             tokens,
+             newRevealed,
+             newSimilar,
+             guess,
+             bucketCounts
+           );
        }
     }
 
@@ -1213,24 +1359,35 @@ export default function App() {
     setTeamSessionCode("");
     setTeamJoinCode("");
     setTeamPlayerCount(0);
+    setTeamRoundId(0);
     setTeamGuesses([]);
     setTeamYouFoundTitle(false);
     setTeamTeammateFoundTitle(false);
     setTeamTitleRevealed(false);
+    setTeamRefreshPendingForYou(false);
+    setTeamRefreshPendingByYou(false);
+    setTeamRefreshRejectedForYou(false);
     setTeamError(null);
     setTeamBusy(false);
     setVersusSessionCode("");
     setVersusJoinCode("");
     setVersusPlayerCount(0);
+    setVersusRoundId(0);
     setVersusYourGuesses([]);
     setVersusOpponentGuesses([]);
     setVersusWinnerId("");
     setVersusYouWon(false);
     setVersusOpponentWon(false);
     setVersusTitleRevealed(false);
+    setVersusRefreshPendingForYou(false);
+    setVersusRefreshPendingByYou(false);
+    setVersusRefreshRejectedForYou(false);
     setVersusOpponentFoundCount(0);
     setVersusError(null);
     setVersusBusy(false);
+    setOnlineRefreshBusy(false);
+    setOnlineModelMatchesByGuess({});
+    onlineModelFetchInFlightRef.current.clear();
   };
 
   const openSoloSetup = () => {
@@ -1505,39 +1662,161 @@ export default function App() {
     }
   };
 
-  const refreshTeamState = async () => {
+  const requestTeamSongRefresh = async () => {
     if (!SIMILARITY_API_BASE || !teamSessionCode) return;
     try {
-      const params = new URLSearchParams({ client_id: getOrCreateTeamClientId() });
-      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/${encodeURIComponent(teamSessionCode)}/state?${params.toString()}`);
+      setOnlineRefreshBusy(true);
+      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/refresh/request`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: teamSessionCode,
+          client_id: getOrCreateTeamClientId(),
+        }),
+      });
       if (!response.ok) throw new Error(await readApiErrorDetail(response));
       const data = await response.json();
       applyTeamSessionState(data);
+      if (data?.refresh_pending_by_you) {
+        setToastMessage("Demande envoyée au coéquipier.");
+        setTimeout(() => setToastMessage(null), 1800);
+      }
     } catch (err) {
-      console.warn("Team refresh failed:", err);
+      console.warn("Team refresh request failed:", err);
+      const message = err instanceof Error ? err.message : "Impossible d'envoyer la demande.";
+      setToastMessage(message);
+      setTimeout(() => setToastMessage(null), 2200);
+    } finally {
+      setOnlineRefreshBusy(false);
     }
   };
 
-  const refreshVersusState = async () => {
+  const respondTeamSongRefresh = async (approve) => {
+    if (!SIMILARITY_API_BASE || !teamSessionCode) return;
+    try {
+      setOnlineRefreshBusy(true);
+      let songPayload = null;
+      if (approve) {
+        setLoading(true);
+        songPayload = await fetchSongData(minStreamsThreshold);
+      }
+
+      const body = {
+        code: teamSessionCode,
+        client_id: getOrCreateTeamClientId(),
+        approve: Boolean(approve),
+      };
+      if (approve) body.song = songPayload;
+
+      const response = await fetch(`${SIMILARITY_API_BASE}/team/session/refresh/respond`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      applyTeamSessionState(data);
+      if (!approve) {
+        setToastMessage("Demande refusée.");
+        setTimeout(() => setToastMessage(null), 1800);
+      }
+    } catch (err) {
+      console.warn("Team refresh response failed:", err);
+      const message = err instanceof Error ? err.message : "Impossible de répondre à la demande.";
+      setToastMessage(message);
+      setTimeout(() => setToastMessage(null), 2200);
+    } finally {
+      setLoading(false);
+      setOnlineRefreshBusy(false);
+    }
+  };
+
+  const requestVersusSongRefresh = async () => {
     if (!SIMILARITY_API_BASE || !versusSessionCode) return;
     try {
-      const params = new URLSearchParams({ client_id: getOrCreateTeamClientId() });
-      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/${encodeURIComponent(versusSessionCode)}/state?${params.toString()}`);
+      setOnlineRefreshBusy(true);
+      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/refresh/request`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: versusSessionCode,
+          client_id: getOrCreateTeamClientId(),
+        }),
+      });
       if (!response.ok) throw new Error(await readApiErrorDetail(response));
       const data = await response.json();
       applyVersusSessionState(data);
+      if (data?.refresh_pending_by_you) {
+        setToastMessage("Demande envoyée à l'adversaire.");
+        setTimeout(() => setToastMessage(null), 1800);
+      }
     } catch (err) {
-      console.warn("Versus refresh failed:", err);
+      console.warn("Versus refresh request failed:", err);
+      const message = err instanceof Error ? err.message : "Impossible d'envoyer la demande.";
+      setToastMessage(message);
+      setTimeout(() => setToastMessage(null), 2200);
+    } finally {
+      setOnlineRefreshBusy(false);
+    }
+  };
+
+  const respondVersusSongRefresh = async (approve) => {
+    if (!SIMILARITY_API_BASE || !versusSessionCode) return;
+    try {
+      setOnlineRefreshBusy(true);
+      let songPayload = null;
+      if (approve) {
+        setLoading(true);
+        songPayload = await fetchSongData(minStreamsThreshold);
+      }
+
+      const body = {
+        code: versusSessionCode,
+        client_id: getOrCreateTeamClientId(),
+        approve: Boolean(approve),
+      };
+      if (approve) body.song = songPayload;
+
+      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/refresh/respond`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      applyVersusSessionState(data);
+      if (!approve) {
+        setToastMessage("Demande refusée.");
+        setTimeout(() => setToastMessage(null), 1800);
+      }
+    } catch (err) {
+      console.warn("Versus refresh response failed:", err);
+      const message = err instanceof Error ? err.message : "Impossible de répondre à la demande.";
+      setToastMessage(message);
+      setTimeout(() => setToastMessage(null), 2200);
+    } finally {
+      setLoading(false);
+      setOnlineRefreshBusy(false);
     }
   };
 
   const handleRefreshGame = () => {
     if (activeMode === "team") {
-      refreshTeamState();
+      if (teamRefreshPendingForYou) {
+        setToastMessage("Réponds à la demande en cours.");
+        setTimeout(() => setToastMessage(null), 1800);
+        return;
+      }
+      requestTeamSongRefresh();
       return;
     }
     if (activeMode === "versus") {
-      refreshVersusState();
+      if (versusRefreshPendingForYou) {
+        setToastMessage("Réponds à la demande en cours.");
+        setTimeout(() => setToastMessage(null), 1800);
+        return;
+      }
+      requestVersusSongRefresh();
       return;
     }
     loadGame();
@@ -1909,7 +2188,7 @@ export default function App() {
             )}
           </div>
           <button onClick={openModeSelection} className="px-3 py-1.5 text-xs border border-gray-600 hover:bg-gray-700 rounded-lg transition-colors">Modes</button>
-          <button onClick={handleRefreshGame} className="p-2 hover:bg-gray-700 rounded-full transition-colors"><RefreshCw size={20} /></button>
+          <button onClick={handleRefreshGame} disabled={onlineRefreshBusy} className="p-2 hover:bg-gray-700 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"><RefreshCw size={20} /></button>
         </div>
       </header>
 
@@ -1943,7 +2222,7 @@ export default function App() {
                 <div className="mb-8 p-4 border border-gray-700 rounded bg-gray-800/50 text-center">
                     <h2 className="text-gray-400 text-sm uppercase tracking-widest mb-2">Morceau Mystère</h2>
                     <div className="flex justify-center gap-2 flex-wrap">
-                        <div className="flex gap-2 items-center"><span className="text-gray-500">Artiste:</span>{win ? <span className="text-yellow-400 font-bold">{song.artist}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">??????</span>}</div>
+                        <div className="flex gap-2 items-center"><span className="text-gray-500">Artiste:</span>{(win || (activeMode === "team" && teamTitleRevealed) || (activeMode === "versus" && versusTitleRevealed)) ? <span className="text-yellow-400 font-bold">{song.artist}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">??????</span>}</div>
                         <span className="text-gray-600">|</span>
                         <div className="flex gap-2 items-center"><span className="text-gray-500">Titre:</span>{(win || (activeMode === "team" && teamTitleRevealed) || (activeMode === "versus" && versusTitleRevealed)) ? <span className="text-yellow-400 font-bold">{song.title}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">?????????</span>}</div>
                     </div>
@@ -2020,9 +2299,67 @@ export default function App() {
                 Session partagée: {teamSessionCode} ({teamPlayerCount}/2 joueurs)
               </div>
             )}
+            {activeMode === "team" && teamRefreshPendingForYou && (
+              <div className="mt-2 text-center text-xs text-cyan-200">
+                Ton coéquipier demande un nouveau morceau.
+                <button
+                  onClick={() => respondTeamSongRefresh(true)}
+                  disabled={onlineRefreshBusy}
+                  className="ml-2 px-2 py-0.5 rounded border border-cyan-400/60 hover:bg-cyan-900/30 disabled:opacity-50"
+                >
+                  {onlineRefreshBusy ? "Chargement..." : "Accepter"}
+                </button>
+                <button
+                  onClick={() => respondTeamSongRefresh(false)}
+                  disabled={onlineRefreshBusy}
+                  className="ml-2 px-2 py-0.5 rounded border border-gray-500/60 hover:bg-gray-700/30 disabled:opacity-50"
+                >
+                  Refuser
+                </button>
+              </div>
+            )}
+            {activeMode === "team" && teamRefreshPendingByYou && !teamRefreshPendingForYou && (
+              <div className="mt-2 text-center text-xs text-cyan-200">
+                Demande envoyée, en attente de validation.
+              </div>
+            )}
+            {activeMode === "team" && teamRefreshRejectedForYou && !teamRefreshPendingByYou && (
+              <div className="mt-2 text-center text-xs text-orange-300">
+                Ton coéquipier a refusé le changement de morceau.
+              </div>
+            )}
             {activeMode === "versus" && versusSessionCode && (
               <div className="text-center text-xs text-rose-300 mt-1">
                 Session versus: {versusSessionCode} ({versusPlayerCount}/2 joueurs) · Toi {stats.found}/{stats.total} · Adversaire {versusOpponentFoundCount}/{stats.total}
+              </div>
+            )}
+            {activeMode === "versus" && versusRefreshPendingForYou && (
+              <div className="mt-2 text-center text-xs text-rose-200">
+                Ton adversaire demande un nouveau morceau.
+                <button
+                  onClick={() => respondVersusSongRefresh(true)}
+                  disabled={onlineRefreshBusy}
+                  className="ml-2 px-2 py-0.5 rounded border border-rose-400/60 hover:bg-rose-900/30 disabled:opacity-50"
+                >
+                  {onlineRefreshBusy ? "Chargement..." : "Accepter"}
+                </button>
+                <button
+                  onClick={() => respondVersusSongRefresh(false)}
+                  disabled={onlineRefreshBusy}
+                  className="ml-2 px-2 py-0.5 rounded border border-gray-500/60 hover:bg-gray-700/30 disabled:opacity-50"
+                >
+                  Refuser
+                </button>
+              </div>
+            )}
+            {activeMode === "versus" && versusRefreshPendingByYou && !versusRefreshPendingForYou && (
+              <div className="mt-2 text-center text-xs text-rose-200">
+                Demande envoyée, en attente de validation adverse.
+              </div>
+            )}
+            {activeMode === "versus" && versusRefreshRejectedForYou && !versusRefreshPendingByYou && (
+              <div className="mt-2 text-center text-xs text-orange-300">
+                L'adversaire a refusé le changement de morceau.
               </div>
             )}
             {activeMode === "team" && teamTeammateFoundTitle && !teamYouFoundTitle && (
