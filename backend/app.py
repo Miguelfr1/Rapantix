@@ -42,6 +42,8 @@ TEAM_CODE_LENGTH = 6
 
 TEAM_SESSIONS: dict[str, dict[str, Any]] = {}
 TEAM_LOCK = Lock()
+VERSUS_SESSIONS: dict[str, dict[str, Any]] = {}
+VERSUS_LOCK = Lock()
 
 app = FastAPI(
     title="Rapantix Similarity API",
@@ -103,6 +105,29 @@ class TeamTitleGuessRequest(BaseModel):
     title: str
 
 
+class VersusCreateRequest(BaseModel):
+    client_id: str
+    min_streams: int = 0
+    song: TeamSong
+
+
+class VersusJoinRequest(BaseModel):
+    code: str
+    client_id: str
+
+
+class VersusGuessRequest(BaseModel):
+    code: str
+    client_id: str
+    word: str
+
+
+class VersusTitleGuessRequest(BaseModel):
+    code: str
+    client_id: str
+    title: str
+
+
 @lru_cache(maxsize=1)
 def load_model() -> KeyedVectors:
     if not os.path.exists(MODEL_PATH):
@@ -136,26 +161,42 @@ def _is_allowed_host(host: str) -> bool:
     return any(host == allowed or host.endswith(f".{allowed}") for allowed in ALLOWED_PROXY_HOSTS)
 
 
-def _cleanup_team_sessions() -> None:
+def _cleanup_sessions(session_store: dict[str, dict[str, Any]]) -> None:
     if TEAM_SESSION_TTL_SECONDS <= 0:
         return
     now = time.time()
     expired_codes = [
         code
-        for code, session in TEAM_SESSIONS.items()
+        for code, session in session_store.items()
         if now - session.get("updated_at", session.get("created_at", now)) > TEAM_SESSION_TTL_SECONDS
     ]
     for code in expired_codes:
-        TEAM_SESSIONS.pop(code, None)
+        session_store.pop(code, None)
 
 
-def _generate_team_code() -> str:
+def _cleanup_team_sessions() -> None:
+    _cleanup_sessions(TEAM_SESSIONS)
+
+
+def _cleanup_versus_sessions() -> None:
+    _cleanup_sessions(VERSUS_SESSIONS)
+
+
+def _generate_session_code(session_store: dict[str, dict[str, Any]]) -> str:
     alphabet = string.ascii_uppercase + string.digits
     for _ in range(50):
         code = "".join(random.choice(alphabet) for _ in range(TEAM_CODE_LENGTH))
-        if code not in TEAM_SESSIONS:
+        if code not in session_store:
             return code
     raise RuntimeError("Unable to generate unique session code")
+
+
+def _generate_team_code() -> str:
+    return _generate_session_code(TEAM_SESSIONS)
+
+
+def _generate_versus_code() -> str:
+    return _generate_session_code(VERSUS_SESSIONS)
 
 
 def _normalize_guess_value(word: str) -> str:
@@ -188,6 +229,29 @@ def _build_team_state(session: dict[str, Any], client_id: str) -> dict[str, Any]
         "title_found_by_count": len(title_found_by),
         "you_found_title": you_found_title,
         "teammate_found_title": teammate_found_title,
+    }
+
+
+def _build_versus_state(session: dict[str, Any], client_id: str) -> dict[str, Any]:
+    players = session.get("players", {})
+    opponent_id = next((pid for pid in players if pid != client_id), "")
+    guesses_by_player = session.get("guesses_by_player", {})
+    winner_id = session.get("winner_id") or ""
+
+    return {
+        "code": session["code"],
+        "role": "host" if session.get("host_id") == client_id else "guest",
+        "player_count": len(players),
+        "is_full": len(players) >= TEAM_MAX_PLAYERS,
+        "min_streams": session.get("min_streams", 0),
+        "song": session.get("song", {}),
+        "your_guesses": guesses_by_player.get(client_id, []),
+        "opponent_guesses": guesses_by_player.get(opponent_id, []),
+        "opponent_id": opponent_id,
+        "winner_id": winner_id,
+        "finished": bool(winner_id),
+        "you_won": bool(winner_id) and winner_id == client_id,
+        "opponent_won": bool(winner_id) and winner_id != client_id,
     }
 
 
@@ -354,6 +418,177 @@ def add_team_title_guess(request: TeamTitleGuessRequest):
             session["updated_at"] = time.time()
 
         state = _build_team_state(session, client_id)
+        return {
+            "correct": correct,
+            "title": target_title if correct else None,
+            **state,
+        }
+
+
+@app.post("/versus/session/create")
+def create_versus_session(request: VersusCreateRequest):
+    client_id = (request.client_id or "").strip()
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not request.song.artist.strip() or not request.song.title.strip() or not request.song.lyrics.strip():
+        raise HTTPException(status_code=400, detail="Incomplete song payload")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        code = _generate_versus_code()
+        now = time.time()
+        session = {
+            "code": code,
+            "host_id": client_id,
+            "created_at": now,
+            "updated_at": now,
+            "min_streams": max(0, int(request.min_streams or 0)),
+            "song": request.song.model_dump(),
+            "players": {client_id: {"joined_at": now}},
+            "guesses_by_player": {client_id: []},
+            "guess_index_by_player": {client_id: {}},
+            "next_seq": 1,
+            "winner_id": "",
+        }
+        VERSUS_SESSIONS[code] = session
+        state = _build_versus_state(session, client_id)
+
+    return state
+
+
+@app.post("/versus/session/join")
+def join_versus_session(request: VersusJoinRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+
+        players = session.setdefault("players", {})
+        if client_id not in players and len(players) >= TEAM_MAX_PLAYERS:
+            raise HTTPException(status_code=409, detail="Session is full")
+
+        if client_id not in players:
+            players[client_id] = {"joined_at": time.time()}
+            session.setdefault("guesses_by_player", {})[client_id] = []
+            session.setdefault("guess_index_by_player", {})[client_id] = {}
+
+        session["updated_at"] = time.time()
+        state = _build_versus_state(session, client_id)
+
+    return state
+
+
+@app.get("/versus/session/{code}/state")
+def get_versus_session_state(code: str, client_id: str):
+    normalized_code = (code or "").strip().upper()
+    normalized_client = (client_id or "").strip()
+    if not normalized_code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not normalized_client:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(normalized_code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if normalized_client not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+        session["updated_at"] = time.time()
+        state = _build_versus_state(session, normalized_client)
+
+    return state
+
+
+@app.post("/versus/session/guess")
+def add_versus_guess(request: VersusGuessRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    word = (request.word or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not word:
+        raise HTTPException(status_code=400, detail="Missing word")
+
+    normalized_word = _normalize_guess_value(word)
+    if not normalized_word:
+        raise HTTPException(status_code=400, detail="Invalid word")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+        if session.get("winner_id"):
+            raise HTTPException(status_code=409, detail="Session finished")
+
+        guess_index_by_player = session.setdefault("guess_index_by_player", {})
+        player_guess_index = guess_index_by_player.setdefault(client_id, {})
+        if normalized_word in player_guess_index:
+            existing_event = player_guess_index[normalized_word]
+            return {"accepted": False, "event": existing_event}
+
+        event = {
+            "seq": session["next_seq"],
+            "word": word,
+            "client_id": client_id,
+            "created_at": time.time(),
+        }
+        session["next_seq"] += 1
+        session.setdefault("guesses_by_player", {}).setdefault(client_id, []).append(event)
+        player_guess_index[normalized_word] = event
+        session["updated_at"] = time.time()
+        return {"accepted": True, "event": event}
+
+
+@app.post("/versus/session/title_guess")
+def add_versus_title_guess(request: VersusTitleGuessRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    title_guess = (request.title or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not title_guess:
+        raise HTTPException(status_code=400, detail="Missing title")
+
+    with VERSUS_LOCK:
+        _cleanup_versus_sessions()
+        session = VERSUS_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+
+        target_title = str(session.get("song", {}).get("title", ""))
+        if not target_title.strip():
+            raise HTTPException(status_code=500, detail="Session song title missing")
+
+        normalized_target = _normalize_title_value(target_title)
+        normalized_guess = _normalize_title_value(title_guess)
+        if not normalized_target or not normalized_guess:
+            raise HTTPException(status_code=400, detail="Invalid title")
+
+        correct = normalized_guess == normalized_target
+        winner_id = str(session.get("winner_id") or "")
+        if correct and not winner_id:
+            session["winner_id"] = client_id
+            session["updated_at"] = time.time()
+
+        state = _build_versus_state(session, client_id)
         return {
             "correct": correct,
             "title": target_title if correct else None,

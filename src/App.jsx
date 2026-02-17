@@ -260,6 +260,40 @@ const mergeTeamGuessEvents = (currentEvents = [], nextEvents = []) => {
   return currentEvents;
 };
 
+const computeRevealedFromEvents = (guessEvents = [], tokenList = []) => {
+  const orderedEvents = mergeTeamGuessEvents([], guessEvents);
+  const nextRevealed = new Set();
+  const nextHistory = [];
+
+  orderedEvents.forEach((event) => {
+    const guess = String(event.word || "").trim();
+    if (!guess) return;
+    const normGuess = normalize(guess);
+    const guessVariations = new Set([normGuess, normGuess + "s", normGuess + "x"]);
+    if (normGuess.length > 3 && normGuess.endsWith("s")) {
+      guessVariations.add(normGuess.slice(0, -1));
+    }
+
+    let hitCount = 0;
+    tokenList.forEach((token) => {
+      if (token.type !== "word") return;
+      if (!guessVariations.has(normalize(token.value))) return;
+      if (nextRevealed.has(token.id)) return;
+      nextRevealed.add(token.id);
+      hitCount += 1;
+    });
+
+    nextHistory.unshift({
+      word: guess,
+      hits: hitCount,
+      sim: 0,
+      buckets: { strong: 0, mid: 0, low: 0, spelling: 0 },
+    });
+  });
+
+  return { nextRevealed, nextHistory };
+};
+
 const readApiErrorDetail = async (response) => {
   try {
     const data = await response.json();
@@ -310,6 +344,7 @@ export default function App() {
   const [minStreamsThreshold, setMinStreamsThreshold] = useState(0);
   const [soloMinStreams, setSoloMinStreams] = useState(0);
   const [teamMinStreams, setTeamMinStreams] = useState(0);
+  const [versusMinStreams, setVersusMinStreams] = useState(0);
   const [teamJoinCode, setTeamJoinCode] = useState("");
   const [teamSessionCode, setTeamSessionCode] = useState("");
   const [teamPlayerCount, setTeamPlayerCount] = useState(0);
@@ -319,6 +354,18 @@ export default function App() {
   const [teamTitleRevealed, setTeamTitleRevealed] = useState(false);
   const [teamBusy, setTeamBusy] = useState(false);
   const [teamError, setTeamError] = useState(null);
+  const [versusJoinCode, setVersusJoinCode] = useState("");
+  const [versusSessionCode, setVersusSessionCode] = useState("");
+  const [versusPlayerCount, setVersusPlayerCount] = useState(0);
+  const [versusYourGuesses, setVersusYourGuesses] = useState([]);
+  const [versusOpponentGuesses, setVersusOpponentGuesses] = useState([]);
+  const [versusWinnerId, setVersusWinnerId] = useState("");
+  const [versusYouWon, setVersusYouWon] = useState(false);
+  const [versusOpponentWon, setVersusOpponentWon] = useState(false);
+  const [versusTitleRevealed, setVersusTitleRevealed] = useState(false);
+  const [versusOpponentFoundCount, setVersusOpponentFoundCount] = useState(0);
+  const [versusBusy, setVersusBusy] = useState(false);
+  const [versusError, setVersusError] = useState(null);
   const [win, setWin] = useState(false);
   const [showWinOverlay, setShowWinOverlay] = useState(false);
   const [stats, setStats] = useState({ found: 0, total: 0 });
@@ -345,16 +392,20 @@ export default function App() {
   const soloEligibleTrackCount = hasTrackPool
     ? gameConfig.topTracks.filter((track) => getTrackTotalStreams(track) >= soloMinStreams).length
     : 0;
+  const versusEligibleTrackCount = hasTrackPool
+    ? gameConfig.topTracks.filter((track) => getTrackTotalStreams(track) >= versusMinStreams).length
+    : 0;
+  const isVersusLocked = activeMode === "versus" && Boolean(versusWinnerId) && !versusYouWon;
 
   const focusGuessInput = useCallback(() => {
-    if (win || loading || error || isProcessingGuess) return;
+    if (win || loading || error || isProcessingGuess || isVersusLocked) return;
     const active = document.activeElement;
     if (active && active !== guessInputRef.current) {
       const tag = active.tagName?.toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
     }
     guessInputRef.current?.focus();
-  }, [win, loading, error, isProcessingGuess]);
+  }, [win, loading, error, isProcessingGuess, isVersusLocked]);
 
   useEffect(() => {
     const loadConfig = async () => {
@@ -395,10 +446,12 @@ export default function App() {
           const defaultThreshold = clampNumber(20_000_000, safeTrackMin, safeTrackMax);
           setSoloMinStreams(defaultThreshold);
           setTeamMinStreams(defaultThreshold);
+          setVersusMinStreams(defaultThreshold);
           setMinStreamsThreshold(defaultThreshold);
         } else {
           setSoloMinStreams(0);
           setTeamMinStreams(0);
+          setVersusMinStreams(0);
           setMinStreamsThreshold(0);
         }
 
@@ -695,6 +748,26 @@ export default function App() {
     }
   };
 
+  const applyVersusSessionState = (data) => {
+    if (!data || typeof data !== "object") return;
+    setVersusPlayerCount(Number(data.player_count) || 0);
+    setVersusYourGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.your_guesses) ? data.your_guesses : []));
+    setVersusOpponentGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.opponent_guesses) ? data.opponent_guesses : []));
+
+    const winnerId = typeof data.winner_id === "string" ? data.winner_id : "";
+    const youWon = Boolean(data.you_won);
+    const opponentWon = Boolean(data.opponent_won);
+    setVersusWinnerId(winnerId);
+    setVersusYouWon(youWon);
+    setVersusOpponentWon(opponentWon);
+
+    if (!winnerId) {
+      setVersusTitleRevealed(false);
+    } else if (youWon) {
+      setVersusTitleRevealed(true);
+    }
+  };
+
   useEffect(() => {
     focusGuessInput();
   }, [focusGuessInput, song]);
@@ -761,37 +834,7 @@ export default function App() {
     if (setupStep !== "playing") return;
     if (!song) return;
 
-    const orderedEvents = mergeTeamGuessEvents([], teamGuesses);
-    const nextRevealed = new Set();
-    const nextHistory = [];
-
-    orderedEvents.forEach((event) => {
-      const guess = String(event.word || "").trim();
-      if (!guess) return;
-      const normGuess = normalize(guess);
-      const guessVariations = new Set([normGuess, normGuess + "s", normGuess + "x"]);
-      if (normGuess.length > 3 && normGuess.endsWith("s")) {
-        guessVariations.add(normGuess.slice(0, -1));
-      }
-
-      let hitCount = 0;
-      tokens.forEach((token) => {
-        if (token.type !== "word") return;
-        if (guessVariations.has(normalize(token.value))) {
-          if (!nextRevealed.has(token.id)) {
-            nextRevealed.add(token.id);
-            hitCount += 1;
-          }
-        }
-      });
-
-      nextHistory.unshift({
-        word: guess,
-        hits: hitCount,
-        sim: 0,
-        buckets: { strong: 0, mid: 0, low: 0, spelling: 0 },
-      });
-    });
+    const { nextRevealed, nextHistory } = computeRevealedFromEvents(teamGuesses, tokens);
 
     const totalWords = tokens.reduce((count, token) => (
       token.type === "word" ? count + 1 : count
@@ -823,11 +866,83 @@ export default function App() {
     setShowWinOverlay(true);
   }, [activeMode, setupStep, teamYouFoundTitle]);
 
+  useEffect(() => {
+    if (activeMode !== "versus") return;
+    if (setupStep !== "playing") return;
+    if (!versusSessionCode) return;
+    if (!SIMILARITY_API_BASE) return;
+
+    let cancelled = false;
+    const clientId = getOrCreateTeamClientId();
+    if (!clientId) return;
+
+    const pollState = async () => {
+      try {
+        const params = new URLSearchParams({ client_id: clientId });
+        const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/${encodeURIComponent(versusSessionCode)}/state?${params.toString()}`);
+        if (!response.ok) throw new Error(await readApiErrorDetail(response));
+        const data = await response.json();
+        if (cancelled) return;
+        applyVersusSessionState(data);
+      } catch (err) {
+        if (cancelled) return;
+        console.warn("Versus state polling failed:", err);
+      }
+    };
+
+    pollState();
+    const intervalId = window.setInterval(pollState, 1500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+    };
+  }, [activeMode, setupStep, versusSessionCode]);
+
+  useEffect(() => {
+    if (activeMode !== "versus") return;
+    if (setupStep !== "playing") return;
+    if (!song) return;
+
+    const { nextRevealed, nextHistory } = computeRevealedFromEvents(versusYourGuesses, tokens);
+    const { nextRevealed: nextOpponentRevealed } = computeRevealedFromEvents(versusOpponentGuesses, tokens);
+
+    const totalWords = tokens.reduce((count, token) => (
+      token.type === "word" ? count + 1 : count
+    ), 0);
+
+    setVersusOpponentFoundCount(nextOpponentRevealed.size);
+
+    if (versusYouWon) {
+      const allIndices = new Set();
+      tokens.forEach((token) => {
+        if (token.type === "word") allIndices.add(token.id);
+      });
+      setRevealedIndices(allIndices);
+      setSimilarIndices({});
+      setHistory(nextHistory);
+      setStats({ found: totalWords, total: totalWords });
+      return;
+    }
+
+    setRevealedIndices(nextRevealed);
+    setSimilarIndices({});
+    setHistory(nextHistory);
+    setStats({ found: nextRevealed.size, total: totalWords });
+  }, [activeMode, setupStep, song, tokens, versusYourGuesses, versusOpponentGuesses, versusYouWon]);
+
+  useEffect(() => {
+    if (activeMode !== "versus") return;
+    if (setupStep !== "playing") return;
+    if (!versusYouWon) return;
+    setWin(true);
+    setShowWinOverlay(true);
+  }, [activeMode, setupStep, versusYouWon]);
+
   // --- LOGIQUE DE JEU ---
 
   const handleGuess = async (e) => {
     e.preventDefault();
-    if (!inputValue.trim() || win || isProcessingGuess) return;
+    if (!inputValue.trim() || win || isProcessingGuess || isVersusLocked) return;
 
     const guess = inputValue.trim();
 
@@ -855,6 +970,41 @@ export default function App() {
         }
       } catch (err) {
         console.warn("Team guess submit failed:", err);
+        const message = err instanceof Error ? err.message : "Impossible d'envoyer le mot à la session.";
+        setToastMessage(message);
+        setTimeout(() => setToastMessage(null), 2000);
+      } finally {
+        setInputValue("");
+        setIsProcessingGuess(false);
+        setTimeout(focusGuessInput, 0);
+      }
+      return;
+    }
+
+    if (activeMode === "versus") {
+      if (!SIMILARITY_API_BASE || !versusSessionCode) {
+        setToastMessage("Session versus indisponible.");
+        setTimeout(() => setToastMessage(null), 2000);
+        return;
+      }
+      setIsProcessingGuess(true);
+      try {
+        const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/guess`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            code: versusSessionCode,
+            client_id: getOrCreateTeamClientId(),
+            word: guess,
+          }),
+        });
+        if (!response.ok) throw new Error(await readApiErrorDetail(response));
+        const data = await response.json();
+        if (data?.event) {
+          setVersusYourGuesses((prev) => mergeTeamGuessEvents(prev, [data.event]));
+        }
+      } catch (err) {
+        console.warn("Versus guess submit failed:", err);
         const message = err instanceof Error ? err.message : "Impossible d'envoyer le mot à la session.";
         setToastMessage(message);
         setTimeout(() => setToastMessage(null), 2000);
@@ -975,6 +1125,58 @@ export default function App() {
       return;
     }
 
+    if (activeMode === "versus") {
+      if (loading || error || isVersusLocked) return;
+      if (!SIMILARITY_API_BASE || !versusSessionCode) {
+        setToastMessage("Session versus indisponible.");
+        setTimeout(() => setToastMessage(null), 2000);
+        return;
+      }
+
+      const guess = titleGuessValue.trim();
+      fetch(`${SIMILARITY_API_BASE}/versus/session/title_guess`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: versusSessionCode,
+          client_id: getOrCreateTeamClientId(),
+          title: guess,
+        }),
+      })
+        .then(async (response) => {
+          if (!response.ok) throw new Error(await readApiErrorDetail(response));
+          return response.json();
+        })
+        .then((data) => {
+          applyVersusSessionState(data);
+          if (data?.correct && data?.you_won) {
+            setVersusTitleRevealed(true);
+            setWin(true);
+            setShowWinOverlay(true);
+            const allIndices = new Set();
+            tokens.forEach((t) => { if (t.type === "word") allIndices.add(t.id); });
+            setRevealedIndices(allIndices);
+            return;
+          }
+          if (data?.correct && data?.opponent_won) {
+            setToastMessage("Titre correct, mais l'adversaire a gagné avant.");
+            setTimeout(() => setToastMessage(null), 2200);
+            return;
+          }
+          setToastMessage("Ce n'est pas le bon titre...");
+          setTimeout(() => setToastMessage(null), 2000);
+        })
+        .catch((err) => {
+          console.warn("Versus title guess failed:", err);
+          const message = err instanceof Error ? err.message : "Erreur titre versus.";
+          setToastMessage(message);
+          setTimeout(() => setToastMessage(null), 2000);
+        });
+
+      setTitleGuessValue("");
+      return;
+    }
+
     if (win || !song) return;
     const guess = titleGuessValue.trim();
     if (normalize(guess) === normalize(song.title)) {
@@ -1017,18 +1219,38 @@ export default function App() {
     setTeamTitleRevealed(false);
     setTeamError(null);
     setTeamBusy(false);
+    setVersusSessionCode("");
+    setVersusJoinCode("");
+    setVersusPlayerCount(0);
+    setVersusYourGuesses([]);
+    setVersusOpponentGuesses([]);
+    setVersusWinnerId("");
+    setVersusYouWon(false);
+    setVersusOpponentWon(false);
+    setVersusTitleRevealed(false);
+    setVersusOpponentFoundCount(0);
+    setVersusError(null);
+    setVersusBusy(false);
   };
 
   const openSoloSetup = () => {
     setSetupStep("solo");
     setError(null);
     setTeamError(null);
+    setVersusError(null);
   };
 
   const openTeamSetup = () => {
     setSetupStep("team");
     setError(null);
     setTeamError(null);
+    setVersusError(null);
+  };
+
+  const openVersusSetup = () => {
+    setSetupStep("versus");
+    setError(null);
+    setVersusError(null);
   };
 
   const handleSoloMinStreamsChange = (e) => {
@@ -1045,6 +1267,14 @@ export default function App() {
     const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
     const safeMax = maxTrackStreams || Math.max(safeMin, 1);
     setTeamMinStreams(clampNumber(Math.floor(parsed), safeMin, safeMax));
+  };
+
+  const handleVersusMinStreamsChange = (e) => {
+    const parsed = Number(e.target.value);
+    if (!Number.isFinite(parsed)) return;
+    const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+    const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+    setVersusMinStreams(clampNumber(Math.floor(parsed), safeMin, safeMax));
   };
 
   const startSoloGame = () => {
@@ -1094,6 +1324,7 @@ export default function App() {
       setMinStreamsThreshold(Number(data.min_streams) || appliedThreshold);
       setTeamSessionCode(data.code || "");
       setTeamJoinCode(data.code || "");
+      setTeamGuesses([]);
       setTeamTitleRevealed(false);
       applyTeamSessionState(data);
       setError(null);
@@ -1144,6 +1375,7 @@ export default function App() {
       setMinStreamsThreshold(Number(data.min_streams) || 0);
       setTeamSessionCode(data.code || code);
       setTeamJoinCode(data.code || code);
+      setTeamGuesses([]);
       setTeamTitleRevealed(false);
       applyTeamSessionState(data);
       setError(null);
@@ -1156,6 +1388,120 @@ export default function App() {
       setTeamError(message);
     } finally {
       setTeamBusy(false);
+    }
+  };
+
+  const createVersusSession = async () => {
+    if (!SIMILARITY_API_BASE) {
+      setVersusError("Mode versus indisponible: backend non configuré.");
+      return;
+    }
+    if (!gameConfig) {
+      setVersusError("Configuration du jeu introuvable.");
+      return;
+    }
+
+    try {
+      setVersusBusy(true);
+      setVersusError(null);
+      setLoading(true);
+      const safeMin = Number.isFinite(minTrackStreams) ? minTrackStreams : 0;
+      const safeMax = maxTrackStreams || Math.max(safeMin, 1);
+      const appliedThreshold = clampNumber(Math.floor(versusMinStreams), safeMin, safeMax);
+      const songData = await fetchSongData(appliedThreshold);
+
+      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: getOrCreateTeamClientId(),
+          min_streams: appliedThreshold,
+          song: songData,
+        }),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+
+      resetRoundState();
+      setActiveMode("versus");
+      setSetupStep("playing");
+      setMinStreamsThreshold(Number(data.min_streams) || appliedThreshold);
+      setVersusSessionCode(data.code || "");
+      setVersusJoinCode(data.code || "");
+      setVersusYourGuesses([]);
+      setVersusOpponentGuesses([]);
+      setVersusWinnerId("");
+      setVersusYouWon(false);
+      setVersusOpponentWon(false);
+      setVersusTitleRevealed(false);
+      setVersusOpponentFoundCount(0);
+      applyVersusSessionState(data);
+      setError(null);
+      processSong(data.song || songData);
+      setLoading(false);
+    } catch (err) {
+      console.warn("Versus create failed:", err);
+      setLoading(false);
+      const message = err instanceof Error ? err.message : "Impossible de créer la session versus.";
+      setVersusError(message);
+    } finally {
+      setVersusBusy(false);
+    }
+  };
+
+  const joinVersusSession = async () => {
+    if (!SIMILARITY_API_BASE) {
+      setVersusError("Mode versus indisponible: backend non configuré.");
+      return;
+    }
+
+    const code = versusJoinCode.trim().toUpperCase();
+    if (!code) {
+      setVersusError("Entre un code de session.");
+      return;
+    }
+
+    try {
+      setVersusBusy(true);
+      setVersusError(null);
+      setLoading(true);
+      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/join`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code,
+          client_id: getOrCreateTeamClientId(),
+        }),
+      });
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      const sharedSong = data.song;
+      if (!sharedSong?.lyrics) throw new Error("Session sans morceau");
+
+      resetRoundState();
+      setActiveMode("versus");
+      setSetupStep("playing");
+      setMinStreamsThreshold(Number(data.min_streams) || 0);
+      setVersusSessionCode(data.code || code);
+      setVersusJoinCode(data.code || code);
+      setVersusYourGuesses([]);
+      setVersusOpponentGuesses([]);
+      setVersusWinnerId("");
+      setVersusYouWon(false);
+      setVersusOpponentWon(false);
+      setVersusTitleRevealed(false);
+      setVersusOpponentFoundCount(0);
+      applyVersusSessionState(data);
+      setError(null);
+      processSong(sharedSong);
+      setLoading(false);
+    } catch (err) {
+      console.warn("Versus join failed:", err);
+      setLoading(false);
+      const message = err instanceof Error ? err.message : "Impossible de rejoindre la session.";
+      setVersusError(message);
+    } finally {
+      setVersusBusy(false);
     }
   };
 
@@ -1172,9 +1518,26 @@ export default function App() {
     }
   };
 
+  const refreshVersusState = async () => {
+    if (!SIMILARITY_API_BASE || !versusSessionCode) return;
+    try {
+      const params = new URLSearchParams({ client_id: getOrCreateTeamClientId() });
+      const response = await fetch(`${SIMILARITY_API_BASE}/versus/session/${encodeURIComponent(versusSessionCode)}/state?${params.toString()}`);
+      if (!response.ok) throw new Error(await readApiErrorDetail(response));
+      const data = await response.json();
+      applyVersusSessionState(data);
+    } catch (err) {
+      console.warn("Versus refresh failed:", err);
+    }
+  };
+
   const handleRefreshGame = () => {
     if (activeMode === "team") {
       refreshTeamState();
+      return;
+    }
+    if (activeMode === "versus") {
+      refreshVersusState();
       return;
     }
     loadGame();
@@ -1259,17 +1622,17 @@ export default function App() {
                 </button>
 
                 <button
-                  disabled
-                  className="h-full border border-gray-700 bg-gray-900/40 rounded-xl p-5 text-left opacity-70 cursor-not-allowed"
+                  onClick={openVersusSetup}
+                  className="h-full border border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 rounded-xl p-5 text-left transition-colors"
                 >
                   <div className="flex items-center justify-between min-h-6 mb-2">
                     <div className="flex items-center gap-2">
-                      <Swords size={18} className="text-gray-400" />
-                      <span className="text-gray-300 font-semibold">Versus</span>
+                      <Swords size={18} className="text-rose-300" />
+                      <span className="text-rose-200 font-semibold">Versus</span>
                     </div>
-                    <span className="text-[10px] uppercase tracking-wider text-gray-500">Bientôt</span>
+                    <span className="text-[10px] uppercase tracking-wider text-rose-300/80">Nouveau</span>
                   </div>
-                  <p className="text-sm text-gray-500 min-h-[78px]">Affrontez un autre joueur en duel sur le même son.</p>
+                  <p className="text-sm text-gray-300 min-h-[78px]">Affrontez un autre joueur en duel sur le même son.</p>
                 </button>
               </div>
             </>
@@ -1419,6 +1782,93 @@ export default function App() {
               )}
             </>
           )}
+
+          {setupStep === "versus" && (
+            <>
+              <button
+                onClick={openModeSelection}
+                className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-200 mb-5"
+              >
+                <ChevronLeft size={16} />
+                Retour aux modes
+              </button>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-xl border border-rose-600/40 bg-rose-900/10 p-4 space-y-4">
+                  <div>
+                    <p className="text-rose-300 text-xs uppercase tracking-wider mb-2">Créer une session</p>
+                    <p className="text-white font-semibold mb-1">Versus (2 joueurs)</p>
+                    <p className="text-sm text-gray-400">Le premier qui trouve le titre gagne la manche.</p>
+                  </div>
+
+                  {hasTrackPool ? (
+                    <>
+                      <div>
+                        <div className="flex justify-between text-xs text-gray-400 mb-2">
+                          <span>Seuil minimum</span>
+                          <span>{formatStreamCount(versusMinStreams)} streams</span>
+                        </div>
+                        <input
+                          type="range"
+                          min={sliderMinStreams}
+                          max={sliderMaxStreams}
+                          step="1000000"
+                          value={versusMinStreams}
+                          onChange={handleVersusMinStreamsChange}
+                          className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-rose-400"
+                        />
+                      </div>
+                      <div className="text-sm text-gray-400">
+                        {versusEligibleTrackCount} morceau{versusEligibleTrackCount > 1 ? "x" : ""} disponible{versusEligibleTrackCount > 1 ? "s" : ""} avec ce seuil.
+                      </div>
+                    </>
+                  ) : (
+                    <div className="rounded-lg border border-red-500/40 bg-red-950/20 p-3 text-sm text-red-200">
+                      `topTracks` requis pour ce mode.
+                    </div>
+                  )}
+
+                  <button
+                    onClick={createVersusSession}
+                    disabled={versusBusy || !hasTrackPool || versusEligibleTrackCount === 0}
+                    className="w-full py-2.5 rounded-lg bg-rose-400 text-slate-950 font-semibold hover:bg-rose-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {versusBusy ? "Création..." : "Créer et lancer"}
+                  </button>
+                </div>
+
+                <div className="rounded-xl border border-gray-700 bg-gray-900/40 p-4 space-y-4">
+                  <div>
+                    <p className="text-gray-300 text-xs uppercase tracking-wider mb-2">Rejoindre une session</p>
+                    <p className="text-white font-semibold mb-1">Entre le code de ton adversaire</p>
+                    <p className="text-sm text-gray-400">Vous jouez sur le même morceau, en progression séparée.</p>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={versusJoinCode}
+                    onChange={(e) => setVersusJoinCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10))}
+                    placeholder="Code session"
+                    className="w-full bg-gray-950 border border-gray-600 text-white px-3 py-2 rounded-lg focus:outline-none focus:border-rose-400 tracking-widest uppercase"
+                  />
+
+                  <button
+                    onClick={joinVersusSession}
+                    disabled={versusBusy || !versusJoinCode.trim()}
+                    className="w-full py-2.5 rounded-lg bg-white text-slate-900 font-semibold hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {versusBusy ? "Connexion..." : "Rejoindre"}
+                  </button>
+                </div>
+              </div>
+
+              {versusError && (
+                <div className="mt-4 rounded-lg border border-red-500/40 bg-red-950/20 px-4 py-3 text-sm text-red-200">
+                  {versusError}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     );
@@ -1453,6 +1903,9 @@ export default function App() {
             )}
             {activeMode === "team" && teamSessionCode && (
               <span className="text-[11px] text-cyan-300">Session {teamSessionCode} · {teamPlayerCount}/2</span>
+            )}
+            {activeMode === "versus" && versusSessionCode && (
+              <span className="text-[11px] text-rose-300">Versus {versusSessionCode} · {versusPlayerCount}/2 · Toi {stats.found}/{stats.total} · Adv {versusOpponentFoundCount}/{stats.total}</span>
             )}
           </div>
           <button onClick={openModeSelection} className="px-3 py-1.5 text-xs border border-gray-600 hover:bg-gray-700 rounded-lg transition-colors">Modes</button>
@@ -1492,7 +1945,7 @@ export default function App() {
                     <div className="flex justify-center gap-2 flex-wrap">
                         <div className="flex gap-2 items-center"><span className="text-gray-500">Artiste:</span>{win ? <span className="text-yellow-400 font-bold">{song.artist}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">??????</span>}</div>
                         <span className="text-gray-600">|</span>
-                        <div className="flex gap-2 items-center"><span className="text-gray-500">Titre:</span>{(win || (activeMode === "team" && teamTitleRevealed)) ? <span className="text-yellow-400 font-bold">{song.title}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">?????????</span>}</div>
+                        <div className="flex gap-2 items-center"><span className="text-gray-500">Titre:</span>{(win || (activeMode === "team" && teamTitleRevealed) || (activeMode === "versus" && versusTitleRevealed)) ? <span className="text-yellow-400 font-bold">{song.title}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">?????????</span>}</div>
                     </div>
                 </div>
 
@@ -1540,14 +1993,14 @@ export default function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Proposez un mot..."
-                  disabled={win || loading || error || isProcessingGuess}
+                  disabled={win || loading || error || isProcessingGuess || isVersusLocked}
                   className="w-full bg-gray-900 border-2 border-gray-600 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-yellow-500 transition-colors placeholder-gray-500"
                   autoFocus
                 />
                 <button
                   type="submit"
                   onMouseDown={(e) => e.preventDefault()}
-                  disabled={win || loading || error || isProcessingGuess}
+                  disabled={win || loading || error || isProcessingGuess || isVersusLocked}
                   className="bg-yellow-600 hover:bg-yellow-700 text-black px-6 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50 flex items-center justify-center min-w-[60px]"
                 >
                   {isProcessingGuess ? <Loader2 size={20} className="animate-spin" /> : <Search size={20} />}
@@ -1555,8 +2008,8 @@ export default function App() {
               </form>
 
               <form onSubmit={handleTitleGuess} className="md:w-1/3 relative flex items-center">
-                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder={activeMode === "team" && teamYouFoundTitle ? "Titre déjà trouvé" : "Titre exact ?"} disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle)} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
-                <button type="submit" disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle)} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
+                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder={activeMode === "team" && teamYouFoundTitle ? "Titre déjà trouvé" : activeMode === "versus" && isVersusLocked ? "Partie terminée" : "Titre exact ?"} disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle) || (activeMode === "versus" && isVersusLocked)} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
+                <button type="submit" disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle) || (activeMode === "versus" && isVersusLocked)} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
               </form>
             </div>
             <div className="mt-2 text-center text-xs text-gray-500">
@@ -1565,6 +2018,11 @@ export default function App() {
             {activeMode === "team" && teamSessionCode && (
               <div className="text-center text-xs text-cyan-300 mt-1">
                 Session partagée: {teamSessionCode} ({teamPlayerCount}/2 joueurs)
+              </div>
+            )}
+            {activeMode === "versus" && versusSessionCode && (
+              <div className="text-center text-xs text-rose-300 mt-1">
+                Session versus: {versusSessionCode} ({versusPlayerCount}/2 joueurs) · Toi {stats.found}/{stats.total} · Adversaire {versusOpponentFoundCount}/{stats.total}
               </div>
             )}
             {activeMode === "team" && teamTeammateFoundTitle && !teamYouFoundTitle && (
@@ -1579,6 +2037,21 @@ export default function App() {
                   </button>
                 ) : (
                   <span className="ml-2 text-emerald-200">Tu peux le saisir, ou continuer à jouer.</span>
+                )}
+              </div>
+            )}
+            {activeMode === "versus" && versusOpponentWon && !versusYouWon && (
+              <div className="mt-2 text-center text-xs text-rose-300">
+                Ton adversaire a trouvé le titre en premier.
+                {!versusTitleRevealed ? (
+                  <button
+                    onClick={() => setVersusTitleRevealed(true)}
+                    className="ml-2 px-2 py-0.5 rounded border border-rose-400/60 hover:bg-rose-900/30"
+                  >
+                    Voir le titre
+                  </button>
+                ) : (
+                  <span className="ml-2 text-rose-200">Partie terminée.</span>
                 )}
               </div>
             )}
@@ -1700,10 +2173,10 @@ export default function App() {
                 Retour aux paroles
               </button>
               <button
-                onClick={activeMode === "team" ? openModeSelection : loadGame}
+                onClick={activeMode === "team" || activeMode === "versus" ? openModeSelection : loadGame}
                 className="w-full sm:w-auto bg-white text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition-colors"
               >
-                {activeMode === "team" ? "Quitter la session" : "Rejouer"}
+                {activeMode === "team" || activeMode === "versus" ? "Quitter la session" : "Rejouer"}
               </button>
             </div>
           </div>
