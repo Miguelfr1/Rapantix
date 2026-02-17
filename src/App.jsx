@@ -247,7 +247,17 @@ const mergeTeamGuessEvents = (currentEvents = [], nextEvents = []) => {
     if (!event || typeof event.seq !== "number") return;
     bySeq.set(event.seq, event);
   });
-  return Array.from(bySeq.values()).sort((a, b) => a.seq - b.seq);
+  const merged = Array.from(bySeq.values()).sort((a, b) => a.seq - b.seq);
+  if (merged.length !== currentEvents.length) return merged;
+  for (let i = 0; i < merged.length; i += 1) {
+    const prev = currentEvents[i];
+    const next = merged[i];
+    if (!prev || !next) return merged;
+    if (prev.seq !== next.seq || prev.word !== next.word || prev.client_id !== next.client_id) {
+      return merged;
+    }
+  }
+  return currentEvents;
 };
 
 const readApiErrorDetail = async (response) => {
@@ -304,6 +314,9 @@ export default function App() {
   const [teamSessionCode, setTeamSessionCode] = useState("");
   const [teamPlayerCount, setTeamPlayerCount] = useState(0);
   const [teamGuesses, setTeamGuesses] = useState([]);
+  const [teamYouFoundTitle, setTeamYouFoundTitle] = useState(false);
+  const [teamTeammateFoundTitle, setTeamTeammateFoundTitle] = useState(false);
+  const [teamTitleRevealed, setTeamTitleRevealed] = useState(false);
   const [teamBusy, setTeamBusy] = useState(false);
   const [teamError, setTeamError] = useState(null);
   const [win, setWin] = useState(false);
@@ -664,6 +677,24 @@ export default function App() {
     fetchGeniusData(selectedMinStreams);
   };
 
+  const applyTeamSessionState = (data) => {
+    if (!data || typeof data !== "object") return;
+    setTeamPlayerCount(Number(data.player_count) || 0);
+    setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
+
+    const titleFound = Boolean(data.title_found);
+    const youFound = Boolean(data.you_found_title);
+    const teammateFound = Boolean(data.teammate_found_title);
+    setTeamYouFoundTitle(youFound);
+    setTeamTeammateFoundTitle(teammateFound);
+
+    if (!titleFound) {
+      setTeamTitleRevealed(false);
+    } else if (youFound) {
+      setTeamTitleRevealed(true);
+    }
+  };
+
   useEffect(() => {
     focusGuessInput();
   }, [focusGuessInput, song]);
@@ -707,11 +738,10 @@ export default function App() {
       try {
         const params = new URLSearchParams({ client_id: clientId });
         const response = await fetch(`${SIMILARITY_API_BASE}/team/session/${encodeURIComponent(teamSessionCode)}/state?${params.toString()}`);
-        if (!response.ok) throw new Error(`Status ${response.status}`);
+        if (!response.ok) throw new Error(await readApiErrorDetail(response));
         const data = await response.json();
         if (cancelled) return;
-        setTeamPlayerCount(Number(data.player_count) || 0);
-        setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
+        applyTeamSessionState(data);
       } catch (err) {
         if (cancelled) return;
         console.warn("Team state polling failed:", err);
@@ -767,19 +797,31 @@ export default function App() {
       token.type === "word" ? count + 1 : count
     ), 0);
 
+    if (teamYouFoundTitle) {
+      const allIndices = new Set();
+      tokens.forEach((token) => {
+        if (token.type === "word") allIndices.add(token.id);
+      });
+      setRevealedIndices(allIndices);
+      setSimilarIndices({});
+      setHistory(nextHistory);
+      setStats({ found: totalWords, total: totalWords });
+      return;
+    }
+
     setRevealedIndices(nextRevealed);
     setSimilarIndices({});
     setHistory(nextHistory);
     setStats({ found: nextRevealed.size, total: totalWords });
-  }, [activeMode, setupStep, song, tokens, teamGuesses]);
+  }, [activeMode, setupStep, song, tokens, teamGuesses, teamYouFoundTitle]);
 
   useEffect(() => {
     if (activeMode !== "team") return;
     if (setupStep !== "playing") return;
-    if (!stats.total || stats.found < stats.total) return;
+    if (!teamYouFoundTitle) return;
     setWin(true);
     setShowWinOverlay(true);
-  }, [activeMode, setupStep, stats]);
+  }, [activeMode, setupStep, teamYouFoundTitle]);
 
   // --- LOGIQUE DE JEU ---
 
@@ -884,8 +926,56 @@ export default function App() {
 
   const handleTitleGuess = (e) => {
     e.preventDefault();
-    if (activeMode === "team") return;
-    if (!titleGuessValue.trim() || win || !song) return;
+    if (!titleGuessValue.trim() || !song) return;
+
+    if (activeMode === "team") {
+      if (teamYouFoundTitle || loading || error) return;
+      if (!SIMILARITY_API_BASE || !teamSessionCode) {
+        setToastMessage("Session équipe indisponible.");
+        setTimeout(() => setToastMessage(null), 2000);
+        return;
+      }
+
+      const guess = titleGuessValue.trim();
+      fetch(`${SIMILARITY_API_BASE}/team/session/title_guess`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: teamSessionCode,
+          client_id: getOrCreateTeamClientId(),
+          title: guess,
+        }),
+      })
+        .then(async (response) => {
+          if (!response.ok) throw new Error(await readApiErrorDetail(response));
+          return response.json();
+        })
+        .then((data) => {
+          applyTeamSessionState(data);
+          if (data?.correct) {
+            setTeamTitleRevealed(true);
+            setWin(true);
+            setShowWinOverlay(true);
+            const allIndices = new Set();
+            tokens.forEach((t) => { if (t.type === "word") allIndices.add(t.id); });
+            setRevealedIndices(allIndices);
+          } else {
+            setToastMessage("Ce n'est pas le bon titre...");
+            setTimeout(() => setToastMessage(null), 2000);
+          }
+        })
+        .catch((err) => {
+          console.warn("Team title guess failed:", err);
+          const message = err instanceof Error ? err.message : "Erreur titre équipe.";
+          setToastMessage(message);
+          setTimeout(() => setToastMessage(null), 2000);
+        });
+
+      setTitleGuessValue("");
+      return;
+    }
+
+    if (win || !song) return;
     const guess = titleGuessValue.trim();
     if (normalize(guess) === normalize(song.title)) {
         setWin(true);
@@ -922,6 +1012,9 @@ export default function App() {
     setTeamJoinCode("");
     setTeamPlayerCount(0);
     setTeamGuesses([]);
+    setTeamYouFoundTitle(false);
+    setTeamTeammateFoundTitle(false);
+    setTeamTitleRevealed(false);
     setTeamError(null);
     setTeamBusy(false);
   };
@@ -1001,8 +1094,8 @@ export default function App() {
       setMinStreamsThreshold(Number(data.min_streams) || appliedThreshold);
       setTeamSessionCode(data.code || "");
       setTeamJoinCode(data.code || "");
-      setTeamPlayerCount(Number(data.player_count) || 1);
-      setTeamGuesses(Array.isArray(data.guesses) ? data.guesses : []);
+      setTeamTitleRevealed(false);
+      applyTeamSessionState(data);
       setError(null);
       processSong(data.song || songData);
       setLoading(false);
@@ -1051,8 +1144,8 @@ export default function App() {
       setMinStreamsThreshold(Number(data.min_streams) || 0);
       setTeamSessionCode(data.code || code);
       setTeamJoinCode(data.code || code);
-      setTeamPlayerCount(Number(data.player_count) || 1);
-      setTeamGuesses(Array.isArray(data.guesses) ? data.guesses : []);
+      setTeamTitleRevealed(false);
+      applyTeamSessionState(data);
       setError(null);
       processSong(sharedSong);
       setLoading(false);
@@ -1073,8 +1166,7 @@ export default function App() {
       const response = await fetch(`${SIMILARITY_API_BASE}/team/session/${encodeURIComponent(teamSessionCode)}/state?${params.toString()}`);
       if (!response.ok) throw new Error(await readApiErrorDetail(response));
       const data = await response.json();
-      setTeamPlayerCount(Number(data.player_count) || 0);
-      setTeamGuesses((prev) => mergeTeamGuessEvents(prev, Array.isArray(data.guesses) ? data.guesses : []));
+      applyTeamSessionState(data);
     } catch (err) {
       console.warn("Team refresh failed:", err);
     }
@@ -1400,7 +1492,7 @@ export default function App() {
                     <div className="flex justify-center gap-2 flex-wrap">
                         <div className="flex gap-2 items-center"><span className="text-gray-500">Artiste:</span>{win ? <span className="text-yellow-400 font-bold">{song.artist}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">??????</span>}</div>
                         <span className="text-gray-600">|</span>
-                        <div className="flex gap-2 items-center"><span className="text-gray-500">Titre:</span>{win ? <span className="text-yellow-400 font-bold">{song.title}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">?????????</span>}</div>
+                        <div className="flex gap-2 items-center"><span className="text-gray-500">Titre:</span>{(win || (activeMode === "team" && teamTitleRevealed)) ? <span className="text-yellow-400 font-bold">{song.title}</span> : <span className="bg-gray-700 text-transparent rounded px-2 select-none">?????????</span>}</div>
                     </div>
                 </div>
 
@@ -1463,8 +1555,8 @@ export default function App() {
               </form>
 
               <form onSubmit={handleTitleGuess} className="md:w-1/3 relative flex items-center">
-                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder={activeMode === "team" ? "Titre désactivé en équipe" : "Titre exact ?"} disabled={win || loading || error || activeMode === "team"} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
-                <button type="submit" disabled={win || loading || error || activeMode === "team"} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
+                 <input type="text" value={titleGuessValue} onChange={(e) => setTitleGuessValue(e.target.value)} placeholder={activeMode === "team" && teamYouFoundTitle ? "Titre déjà trouvé" : "Titre exact ?"} disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle)} className="w-full bg-gray-900 border-2 border-purple-900/50 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-purple-500 transition-colors placeholder-gray-500" />
+                <button type="submit" disabled={win || loading || error || (activeMode === "team" && teamYouFoundTitle)} className="bg-purple-900 hover:bg-purple-700 text-white px-4 py-3 rounded-r-lg font-bold transition-colors disabled:opacity-50"><Disc size={20} /></button>
               </form>
             </div>
             <div className="mt-2 text-center text-xs text-gray-500">
@@ -1473,6 +1565,21 @@ export default function App() {
             {activeMode === "team" && teamSessionCode && (
               <div className="text-center text-xs text-cyan-300 mt-1">
                 Session partagée: {teamSessionCode} ({teamPlayerCount}/2 joueurs)
+              </div>
+            )}
+            {activeMode === "team" && teamTeammateFoundTitle && !teamYouFoundTitle && (
+              <div className="mt-2 text-center text-xs text-emerald-300">
+                Ton coéquipier a trouvé le titre.
+                {!teamTitleRevealed ? (
+                  <button
+                    onClick={() => setTeamTitleRevealed(true)}
+                    className="ml-2 px-2 py-0.5 rounded border border-emerald-400/60 hover:bg-emerald-900/30"
+                  >
+                    Voir le titre
+                  </button>
+                ) : (
+                  <span className="ml-2 text-emerald-200">Tu peux le saisir, ou continuer à jouer.</span>
+                )}
               </div>
             )}
             {!similarityServiceHealthy && (

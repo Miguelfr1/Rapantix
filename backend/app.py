@@ -97,6 +97,12 @@ class TeamGuessRequest(BaseModel):
     word: str
 
 
+class TeamTitleGuessRequest(BaseModel):
+    code: str
+    client_id: str
+    title: str
+
+
 @lru_cache(maxsize=1)
 def load_model() -> KeyedVectors:
     if not os.path.exists(MODEL_PATH):
@@ -158,15 +164,30 @@ def _normalize_guess_value(word: str) -> str:
     return re.sub(r"\s+", " ", normalized).strip()
 
 
+def _normalize_title_value(value: str) -> str:
+    normalized = normalize_word(value or "")
+    normalized = re.sub(r"\b(feat|ft|featuring)\b", " ", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
 def _build_team_state(session: dict[str, Any], client_id: str) -> dict[str, Any]:
+    players = session.get("players", {})
+    title_found_by = session.get("title_found_by", [])
+    you_found_title = client_id in title_found_by
+    teammate_found_title = any(pid != client_id for pid in title_found_by)
     return {
         "code": session["code"],
         "role": "host" if session.get("host_id") == client_id else "guest",
-        "player_count": len(session.get("players", {})),
-        "is_full": len(session.get("players", {})) >= TEAM_MAX_PLAYERS,
+        "player_count": len(players),
+        "is_full": len(players) >= TEAM_MAX_PLAYERS,
         "min_streams": session.get("min_streams", 0),
         "song": session.get("song", {}),
         "guesses": session.get("guesses", []),
+        "title_found": len(title_found_by) > 0,
+        "title_found_by_count": len(title_found_by),
+        "you_found_title": you_found_title,
+        "teammate_found_title": teammate_found_title,
     }
 
 
@@ -197,6 +218,7 @@ def create_team_session(request: TeamCreateRequest):
             "players": {client_id: {"joined_at": now}},
             "guesses": [],
             "guess_index": {},
+            "title_found_by": [],
             "next_seq": 1,
         }
         TEAM_SESSIONS[code] = session
@@ -294,6 +316,49 @@ def add_team_guess(request: TeamGuessRequest):
         guess_index[normalized_word] = event
         session["updated_at"] = time.time()
         return {"accepted": True, "event": event}
+
+
+@app.post("/team/session/title_guess")
+def add_team_title_guess(request: TeamTitleGuessRequest):
+    code = (request.code or "").strip().upper()
+    client_id = (request.client_id or "").strip()
+    title_guess = (request.title or "").strip()
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing code")
+    if not client_id:
+        raise HTTPException(status_code=400, detail="Missing client_id")
+    if not title_guess:
+        raise HTTPException(status_code=400, detail="Missing title")
+
+    with TEAM_LOCK:
+        _cleanup_team_sessions()
+        session = TEAM_SESSIONS.get(code)
+        if not session:
+            raise HTTPException(status_code=404, detail="Session not found")
+        if client_id not in session.get("players", {}):
+            raise HTTPException(status_code=403, detail="Join session first")
+
+        target_title = str(session.get("song", {}).get("title", ""))
+        if not target_title.strip():
+            raise HTTPException(status_code=500, detail="Session song title missing")
+
+        normalized_target = _normalize_title_value(target_title)
+        normalized_guess = _normalize_title_value(title_guess)
+        if not normalized_target or not normalized_guess:
+            raise HTTPException(status_code=400, detail="Invalid title")
+
+        title_found_by = session.setdefault("title_found_by", [])
+        correct = normalized_guess == normalized_target
+        if correct and client_id not in title_found_by:
+            title_found_by.append(client_id)
+            session["updated_at"] = time.time()
+
+        state = _build_team_state(session, client_id)
+        return {
+            "correct": correct,
+            "title": target_title if correct else None,
+            **state,
+        }
 
 
 @app.get("/proxy")
